@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DruidsCornerApp.MainPage"
+             Shell.FlyoutBehavior="Disabled"
+             Title=""
+             >
+
+    <ScrollView>
+        <Grid Padding="0,-30">
+            <Image
+                Source="startpage_bg.svg"
+                SemanticProperties.Description="Druids corner cloud app logo (to be redesigned)"
+                Aspect="AspectFill"
+                HorizontalOptions="Center" 
+                />
+        
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,30"
+                VerticalOptions="Center">
+            
+                <Image
+                    Source="logo.jpg"
+                    SemanticProperties.Description="Druids corner cloud app logo (to be redesigned)"
+                    HeightRequest="250"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    TranslationY="-70"
+                    />
+
+                
+                
+                <Label
+                    Text="Ready for another batch ?"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    TextColor="Beige"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="Center" />
+                
+                <Button
+                    x:Name="StartBrowsingBtn"
+                    Text="Start browsing !"
+                    FontSize="18"
+                    SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
+                    Clicked="OnStartBrowsingClicked"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

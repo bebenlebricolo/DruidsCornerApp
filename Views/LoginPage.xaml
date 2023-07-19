@@ -33,29 +33,24 @@
         </HorizontalStackLayout>
         
         <!-- Create account button group-->
-        <VerticalStackLayout Padding="35,10" Spacing="5">
+        <VerticalStackLayout Padding="30,10" Spacing="5">
             <Label Text="I don't have an account yet ?" TextColor="WhiteSmoke"/>
             <Button Text="Create new account" BackgroundColor="#ff6a00"/>
         </VerticalStackLayout>
         
         <!-- Login credentials block -->
-        <Frame CornerRadius="0" Margin="0" Padding="10" BackgroundColor="#CCffffff"  BorderColor="Transparent">
+        <Frame Margin="30,10" CornerRadius="15"  Padding="10" BackgroundColor="#ffffff"  BorderColor="Transparent">
             <VerticalStackLayout Padding="30,10">
                 <VerticalStackLayout Padding="0,10">    
                     <Label Text="Email address"/>
-                    <Frame BackgroundColor="Transparent" BorderColor="Orange" CornerRadius="25" >
-                        <Entry Text="someone@somewhere.com" TextColor="Black" />
-                    </Frame>
+                    <Entry Text="someone@somewhere.com" TextColor="Black" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Padding="0,10">
                     <Label Text="Password"/>
-                    <Frame BackgroundColor="Transparent" BorderColor="Orange" CornerRadius="25" IsClippedToBounds="True">
-                        <Entry InputTransparent="False" IsPassword="True" TextColor="Black" >
-                        </Entry>
-                    </Frame>
+                    <Entry InputTransparent="False" IsPassword="True" TextColor="Black" />
                 </VerticalStackLayout>
-                <HorizontalStackLayout Padding="30,30" 
-                                       Spacing="50" HorizontalOptions="Center">
+                <HorizontalStackLayout Padding="0,30" 
+                                       Spacing="50">
                     <Button Text="Login" VerticalOptions="Center" BackgroundColor="#ff6a00"/>
                     <Label Text="Forgotten password ?" VerticalOptions="Center" />
                 </HorizontalStackLayout>
@@ -63,15 +58,21 @@
         </Frame>
         
         <!-- Separator -->
-        <HorizontalStackLayout Padding="35,20,35, 0" Spacing="5" HorizontalOptions="Center">
+        <HorizontalStackLayout Padding="30,10" Spacing="5" HorizontalOptions="Center">
             <Line Stroke="WhiteSmoke" X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
             <Label Text="Or" TextColor="WhiteSmoke" VerticalOptions="Center"/>
             <Line Stroke="WhiteSmoke"  X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
         </HorizontalStackLayout>
         
         <!-- Google signIn or no account mode-->
-        <VerticalStackLayout Padding="35,20" Spacing="10">
-            <Button Text="SignIn with Google" BackgroundColor="#ff6a00"/>
+        <VerticalStackLayout Padding="30,10" Spacing="10">
+            <Button Text="Login with Google"
+                    TextColor="#2a8bf0"
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    BackgroundColor="White"
+                    ContentLayout="Left,10"
+                    ImageSource="google_logo.png"/>
             <Button Text="Continue without account" BackgroundColor="#ff6a00"/>
         </VerticalStackLayout>
       

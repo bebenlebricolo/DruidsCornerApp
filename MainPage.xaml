@@ -26,28 +26,27 @@
                     HeightRequest="250"
                     HorizontalOptions="Center"
                     VerticalOptions="Start"
-                    TranslationY="-70"
-                    />
-
+                />
                 
-                
-                <Label
-                    Text="Ready for another batch ?"
-                    SemanticProperties.HeadingLevel="Level1"
-                    FontSize="32"
-                    TextColor="Beige"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="Center" />
-                
-                <Button
-                    x:Name="StartBrowsingBtn"
-                    Text="Start browsing !"
-                    FontSize="18"
-                    SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
-                    Clicked="OnStartBrowsingClicked"
-                    HorizontalOptions="Center" />
-
+                <VerticalStackLayout Margin="0,200,0,0" Spacing="30">
+                    <Label
+                        Text="Ready for another batch ?"
+                        SemanticProperties.HeadingLevel="Level1"
+                        FontSize="32"
+                        TextColor="Beige"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center" />
+                    
+                    <Button
+                        x:Name="StartBrowsingBtn"
+                        Text="Start browsing !"
+                        FontSize="18"
+                        SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
+                        Clicked="OnStartBrowsingClicked"
+                        HorizontalOptions="Center" 
+                        BackgroundColor="#ff6a00"/>
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>

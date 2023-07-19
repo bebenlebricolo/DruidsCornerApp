@@ -1,4 +1,6 @@
-﻿namespace DruidsCornerApp;
+﻿using DruidsCornerApp.Views;
+
+namespace DruidsCornerApp;
 
 public partial class MainPage : ContentPage
 {
@@ -7,9 +9,9 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnStartBrowsingClicked(object? sender, EventArgs e)
+	private async void OnStartBrowsingClicked(object? sender, EventArgs e)
 	{
-		StartBrowsingBtn.Text = "Clicked !";
+		await Shell.Current.GoToAsync(nameof(LoginPage));
 	}
 }
 

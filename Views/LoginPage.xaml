@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="DruidsCornerApp.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}" >
+             <!-- xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels" -->
+             <!-- x:DataType="viewmodel:LoginPageViewModel" -->
+
+    <!-- Global vertical container -->
+    <VerticalStackLayout BackgroundColor="#ffa300" >
+        <!-- StartPoint defaults to (0,0) -->
+        <VerticalStackLayout.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="#ffa300"
+                              Offset="0.1" />
+                <GradientStop Color="#ffe68d"
+                              Offset="1.0" />
+            </LinearGradientBrush>
+        </VerticalStackLayout.Background>
+        
+        <!-- Header -->
+        <HorizontalStackLayout Spacing="200" VerticalOptions="Fill"
+                               Margin="0,5,0,10">
+            <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Clicked="ImageButton_OnClicked">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                </Image.Behaviors>
+            </ImageButton>
+            <Label Text="Login" FontSize="20" TextColor="WhiteSmoke" />
+        </HorizontalStackLayout>
+        
+        <!-- Create account button group-->
+        <VerticalStackLayout Padding="35,10" Spacing="5">
+            <Label Text="I don't have an account yet ?" TextColor="WhiteSmoke"/>
+            <Button Text="Create new account" BackgroundColor="#ff6a00"/>
+        </VerticalStackLayout>
+        
+        <!-- Login credentials block -->
+        <Frame CornerRadius="0" Margin="0" Padding="10" BackgroundColor="#CCffffff"  BorderColor="Transparent">
+            <VerticalStackLayout Padding="30,10">
+                <VerticalStackLayout Padding="0,10">    
+                    <Label Text="Email address"/>
+                    <Frame BackgroundColor="Transparent" BorderColor="Orange" CornerRadius="25" >
+                        <Entry Text="someone@somewhere.com" TextColor="Black" />
+                    </Frame>
+                </VerticalStackLayout>
+                <VerticalStackLayout Padding="0,10">
+                    <Label Text="Password"/>
+                    <Frame BackgroundColor="Transparent" BorderColor="Orange" CornerRadius="25" IsClippedToBounds="True">
+                        <Entry InputTransparent="False" IsPassword="True" TextColor="Black" >
+                        </Entry>
+                    </Frame>
+                </VerticalStackLayout>
+                <HorizontalStackLayout Padding="30,30" 
+                                       Spacing="50" HorizontalOptions="Center">
+                    <Button Text="Login" VerticalOptions="Center" BackgroundColor="#ff6a00"/>
+                    <Label Text="Forgotten password ?" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Separator -->
+        <HorizontalStackLayout Padding="35,20,35, 0" Spacing="5" HorizontalOptions="Center">
+            <Line Stroke="WhiteSmoke" X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
+            <Label Text="Or" TextColor="WhiteSmoke" VerticalOptions="Center"/>
+            <Line Stroke="WhiteSmoke"  X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        
+        <!-- Google signIn or no account mode-->
+        <VerticalStackLayout Padding="35,20" Spacing="10">
+            <Button Text="SignIn with Google" BackgroundColor="#ff6a00"/>
+            <Button Text="Continue without account" BackgroundColor="#ff6a00"/>
+        </VerticalStackLayout>
+      
+    </VerticalStackLayout>
+</ContentPage>

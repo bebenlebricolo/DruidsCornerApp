@@ -50,6 +50,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
@@ -86,6 +87,12 @@
 	  <None Remove="Platforms\MacCatalyst\**" />
 	  <None Remove="Platforms\Tizen\**" />
 	  <None Remove="Platforms\Windows\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 </Project>

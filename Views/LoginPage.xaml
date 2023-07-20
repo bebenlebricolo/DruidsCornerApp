@@ -6,7 +6,8 @@
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
              x:Class="DruidsCornerApp.Views.LoginPage"
              Shell.NavBarIsVisible="False"
-             Title="{Binding Title}" >
+             x:DataType="viewmodel:LoginPageViewModel"
+             Title="{Binding Title }" >
              <!-- x:DataType="viewmodel:LoginPageViewModel" -->
 
     <!-- Global vertical container -->
@@ -17,9 +18,9 @@
                 <GradientStop Color="#ffa300"
                               Offset="0.1" />
                 <GradientStop Color="#ffa300"
-                              Offset="0.50" />
+                              Offset="0.43" />
                 <GradientStop Color="#304057"
-                              Offset="0.51" />
+                              Offset="0.44" />
                 <GradientStop Color="#304057"
                               Offset="1.0" />
             </LinearGradientBrush>
@@ -28,7 +29,7 @@
         <!-- Header -->
         <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
             <HorizontalStackLayout Spacing="200" Margin="-20,10,0,10" Padding="0" >
-                <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Clicked="ImageButton_OnClicked">
+                <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Command="{Binding BtnLogin_OnClicked}">
                     <Image.Behaviors>
                         <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
                     </Image.Behaviors>
@@ -40,7 +41,7 @@
         <!-- Create account button group-->
         <VerticalStackLayout Padding="30,20" Spacing="5">
             <Label Text="Don't have an account yet ?" TextColor="WhiteSmoke" FontAttributes="Bold" FontSize="15"/>
-            <Button Text="Create new account" BackgroundColor="#ff6a00"/>
+            <Button Text="Create new account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke"/>
         </VerticalStackLayout>
         
         <!-- Login credentials / buttons block -->
@@ -82,6 +83,7 @@
                 <!-- Login / forgotten password group -->
                 <HorizontalStackLayout Padding="0,10" Spacing="25" HorizontalOptions="Center">
                     <Button Text="Login"
+                            TextColor="WhiteSmoke"
                             Padding="35,0"
                             VerticalOptions="Center"
                             BackgroundColor="#ff6a00"
@@ -126,8 +128,8 @@
                     BackgroundColor="White"
                     ContentLayout="Left,10"
                     ImageSource="google_logo.png"/>
-            <Button Text="Continue without account" BackgroundColor="#ff6a00"/>
+            <Button Text="Continue without account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke" />
         </VerticalStackLayout>
       
-    </VerticalStackLayout>
+    </VerticalStackLayout
 </ContentPage>

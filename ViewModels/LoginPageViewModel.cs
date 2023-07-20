@@ -1,32 +1,66 @@
-using System.Security.Claims;
-using AndroidX.AppCompat.View.Menu;
 using DruidsCornerApp.Views;
+using FirebaseAdmin;
 
 namespace DruidsCornerApp.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FirebaseAdmin.Auth;
+
 public partial class LoginPageViewModel : BaseViewModel
 {
     [ObservableProperty]
-    private string username = string.Empty;
+    private string _username = string.Empty;
 
     [ObservableProperty]
-    private string password = string.Empty;
+    private string _password = string.Empty;
 
     public LoginPageViewModel()
     {
         Title = "Login";
     }
 
+    
+    [RelayCommand]
+    public async void BtnBack_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..", animate:true);
+    }
+
+    [RelayCommand]
+    public async void BtnForgottenPassword_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.DisplayAlert("Forgotten password ?", "Too bad !", "Ok");
+    }
+
+    [RelayCommand]
+    public async Task Login()
+    {
+        var loginPage = (Shell.Current.CurrentPage as LoginPage)!;
+        var passwordFrame = loginPage.PasswordFrame;
+        var passwordEntry = loginPage.PasswordEntry;
+        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+        {
+            Password = string.Empty;
+            passwordFrame.BorderColor = Colors.Red;
+            passwordEntry.Text = "";
+            await Shell.Current.DisplayAlert("Login failed", "Invalid credentials", "Ok");
+        }
+        else
+        {
+            // Check if credentials are valid
+            // Todo : call firebase apis to check that
+            var firebaseApp = new FirebaseApp(new AppOptions(), "DruidsCornerCloud");
+            var authHandler = FirebaseAuth.GetAuth();
+        }
+        
+    }
+    
     [RelayCommand]
     public async Task Login()
     {
         var loginPage = Shell.Current.CurrentPage as LoginPage;
-        if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
-        {
-            Password = string.Empty;
-        }
+        
         else
         {
             // Call API to attempt a login$

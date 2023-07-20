@@ -41,6 +41,7 @@
                     <Button
                         x:Name="StartBrowsingBtn"
                         Text="Start browsing !"
+                        TextColor="WhiteSmoke"
                         FontSize="18"
                         SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
                         Clicked="OnStartBrowsingClicked"

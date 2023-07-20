@@ -16,56 +16,105 @@
             <LinearGradientBrush EndPoint="0,1">
                 <GradientStop Color="#ffa300"
                               Offset="0.1" />
-                <GradientStop Color="#ffe68d"
+                <GradientStop Color="#ffa300"
+                              Offset="0.50" />
+                <GradientStop Color="#304057"
+                              Offset="0.51" />
+                <GradientStop Color="#304057"
                               Offset="1.0" />
             </LinearGradientBrush>
         </VerticalStackLayout.Background>
         
         <!-- Header -->
-        <HorizontalStackLayout Spacing="200"
-                               Margin="-20,20,0,10">
-            <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Clicked="ImageButton_OnClicked">
-                <Image.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
-                </Image.Behaviors>
-            </ImageButton>
-            <Label Text="Login" FontSize="20" TextColor="WhiteSmoke" />
-        </HorizontalStackLayout>
+        <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
+            <HorizontalStackLayout Spacing="200" Margin="-20,10,0,10" Padding="0" >
+                <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Clicked="ImageButton_OnClicked">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                    </Image.Behaviors>
+                </ImageButton>
+                <Label Text="Login" FontSize="20" TextColor="WhiteSmoke" />
+            </HorizontalStackLayout>
+        </Frame>
         
         <!-- Create account button group-->
-        <VerticalStackLayout Padding="30,10" Spacing="5">
-            <Label Text="I don't have an account yet ?" TextColor="WhiteSmoke"/>
+        <VerticalStackLayout Padding="30,20" Spacing="5">
+            <Label Text="Don't have an account yet ?" TextColor="WhiteSmoke" FontAttributes="Bold" FontSize="15"/>
             <Button Text="Create new account" BackgroundColor="#ff6a00"/>
         </VerticalStackLayout>
         
-        <!-- Login credentials block -->
-        <Frame Margin="30,10" CornerRadius="15"  Padding="10" BackgroundColor="#ffffff"  BorderColor="Transparent">
+        <!-- Login credentials / buttons block -->
+        <Frame Margin="0,10" CornerRadius="0"  Padding="10" BackgroundColor="WhiteSmoke"  BorderColor="Transparent">
             <VerticalStackLayout Padding="30,10">
-                <VerticalStackLayout Padding="0,10">    
-                    <Label Text="Email address"/>
-                    <Entry Text="someone@somewhere.com" TextColor="Black" />
+                <!-- Username/email address group -->
+                <VerticalStackLayout Padding="0,10" Spacing="10">    
+                    <Label Text="Email address" TextColor="#304057"/>
+                    <Frame Padding="15,0" CornerRadius="20" BackgroundColor="Beige" BorderColor="#aaff6a00"> 
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="mail.svg" HeightRequest="13" Aspect="AspectFill">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Entry Text="someone@somewhere.com" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                        </HorizontalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-                <VerticalStackLayout Padding="0,10">
-                    <Label Text="Password"/>
-                    <Entry InputTransparent="False" IsPassword="True" TextColor="Black" />
+                
+                <!-- Password group -->
+                <VerticalStackLayout Padding="0,10" Spacing="5">
+                    <Label Text="Password" TextColor="#304057"/>
+                    <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="20" BackgroundColor="Beige" BorderColor="#aaff6a00">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="padlock.svg" HeightRequest="20" Aspect="AspectFill">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Entry x:Name="PasswordEntry" InputTransparent="False" IsPassword="True" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                        </HorizontalStackLayout>
+                    </Frame>
                 </VerticalStackLayout>
-                <HorizontalStackLayout Padding="0,30" 
-                                       Spacing="50">
-                    <Button Text="Login" VerticalOptions="Center" BackgroundColor="#ff6a00"/>
-                    <Label Text="Forgotten password ?" VerticalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LoginPageViewModel}}, Path=LoginCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                
+                <!-- Separator -->
+                <BoxView Color="#80ff6a00" HeightRequest="0.3" Margin="10,10"></BoxView>
+                
+                <!-- Login / forgotten password group -->
+                <HorizontalStackLayout Padding="0,10" Spacing="25" HorizontalOptions="Center">
+                    <Button Text="Login"
+                            Padding="35,0"
+                            VerticalOptions="Center"
+                            BackgroundColor="#ff6a00"
+                            Clicked="LoginButton_OnClicked"/>
+                    <Button Text="Forgotten password ?"
+                            Padding="20,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            BorderColor="#80304057"
+                            BorderWidth="0.25"
+                            TextColor="#304057"
+                            BackgroundColor="Transparent"
+                            Clicked="ForgottenPasswordButton_OnClicked"/>
                 </HorizontalStackLayout>
+                
             </VerticalStackLayout>
         </Frame>
         
+        
+        
         <!-- Separator -->
-        <HorizontalStackLayout Padding="30,10" Spacing="5" HorizontalOptions="Center">
-            <Line Stroke="WhiteSmoke" X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
-            <Label Text="Or" TextColor="WhiteSmoke" VerticalOptions="Center"/>
-            <Line Stroke="WhiteSmoke"  X1="0" X2="80" Y1="0" Y2="0" VerticalOptions="Center"/>
+        <HorizontalStackLayout Padding="30,20" Spacing="15" HorizontalOptions="Center">
+            <Image Source="doublehophalf.svg" HeightRequest="40">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                </Image.Behaviors>
+            </Image>
+            <Label Text="Or" TextColor="WhiteSmoke" VerticalOptions="Center" FontSize="18"/>
+            <Image Source="doublehoprighthalf.svg" HeightRequest="40" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                </Image.Behaviors>
+            </Image>
         </HorizontalStackLayout>
         
         <!-- Google signIn or no account mode-->

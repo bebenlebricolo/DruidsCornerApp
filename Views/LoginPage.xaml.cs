@@ -17,4 +17,18 @@ public partial class LoginPage : ContentPage
     {
         await Shell.Current.GoToAsync("..", animate:true);
     }
+
+    private async void ForgottenPasswordButton_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.DisplayAlert("Forgotten password ?", "Too bad !", "Ok");
+    }
+
+    private async void LoginButton_OnClicked(object? sender, EventArgs e)
+    {
+        var passwordFrame = PasswordFrame;
+        passwordFrame.BorderColor = Colors.Red;
+        PasswordEntry.Text = "";
+        
+        await Shell.Current.DisplayAlert("Login failed", "Invalid credentials", "Ok");
+    }
 }

@@ -49,14 +49,14 @@
                 <!-- Username/email address group -->
                 <VerticalStackLayout Padding="0,10" Spacing="10">    
                     <Label Text="Email address" TextColor="#304057"/>
-                    <Frame Padding="15,0" CornerRadius="20" BackgroundColor="Beige" BorderColor="#aaff6a00"> 
+                    <Frame Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00"> 
                         <HorizontalStackLayout Spacing="10">
                             <Image Source="mail.svg" HeightRequest="13" Aspect="AspectFill">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
                                 </Image.Behaviors>
                             </Image>
-                            <Entry Text="someone@somewhere.com" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                            <Entry Placeholder="someone@somewhere.com" TextColor="#ff6a00" MinimumWidthRequest="300"/>
                         </HorizontalStackLayout>
                     </Frame>
                 </VerticalStackLayout>
@@ -64,14 +64,14 @@
                 <!-- Password group -->
                 <VerticalStackLayout Padding="0,10" Spacing="5">
                     <Label Text="Password" TextColor="#304057"/>
-                    <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="20" BackgroundColor="Beige" BorderColor="#aaff6a00">
+                    <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00">
                         <HorizontalStackLayout Spacing="10">
                             <Image Source="padlock.svg" HeightRequest="20" Aspect="AspectFill">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
                                 </Image.Behaviors>
                             </Image>
-                            <Entry x:Name="PasswordEntry" InputTransparent="False" IsPassword="True" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                            <Entry x:Name="PasswordEntry" Placeholder="*******"  InputTransparent="False" IsPassword="True" TextColor="#ff6a00" MinimumWidthRequest="300"/>
                         </HorizontalStackLayout>
                     </Frame>
                 </VerticalStackLayout>

@@ -9,6 +9,7 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 		Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+		Routing.RegisterRoute(nameof(AccountCreationPage), typeof(AccountCreationPage));
 
 		// New custom entry mappings
 		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(OutlinedEntry), (handler, view) =>

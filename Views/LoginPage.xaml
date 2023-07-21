@@ -29,7 +29,7 @@
         <!-- Header -->
         <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
             <HorizontalStackLayout Spacing="200" Margin="-20,10,0,10" Padding="0" >
-                <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Command="{Binding BtnLogin_OnClicked}">
+                <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" Command="{Binding BackClickedCommand}">
                     <Image.Behaviors>
                         <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
                     </Image.Behaviors>
@@ -41,7 +41,7 @@
         <!-- Create account button group-->
         <VerticalStackLayout Padding="30,20" Spacing="5">
             <Label Text="Don't have an account yet ?" TextColor="WhiteSmoke" FontAttributes="Bold" FontSize="15"/>
-            <Button Text="Create new account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke"/>
+            <Button Text="Create new account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke" Command="{Binding CreateAccountClickedCommand}"/>
         </VerticalStackLayout>
         
         <!-- Login credentials / buttons block -->
@@ -57,22 +57,28 @@
                                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
                                 </Image.Behaviors>
                             </Image>
-                            <Entry Placeholder="someone@somewhere.com" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                            <Entry x:Name="EmailEntry"
+                                   Text="{Binding Email}"
+                                   Placeholder="someone@somewhere.com" 
+                                   TextColor="#ff6a00"
+                                   MinimumWidthRequest="300"/>
                         </HorizontalStackLayout>
                     </Frame>
                 </VerticalStackLayout>
                 
                 <!-- Password group -->
-                <VerticalStackLayout Padding="0,10" Spacing="5">
+                <VerticalStackLayout x:Name="PasswordVerticalStackLayout" Padding="0,10" Spacing="5">
                     <Label Text="Password" TextColor="#304057"/>
                     <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00">
-                        <HorizontalStackLayout Spacing="10">
+                        <HorizontalStackLayout x:Name="PasswordHorizontalStackLayout" Spacing="10">
                             <Image Source="padlock.svg" HeightRequest="20" Aspect="AspectFill">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
                                 </Image.Behaviors>
                             </Image>
-                            <Entry x:Name="PasswordEntry" Placeholder="*******"  InputTransparent="False" IsPassword="True" TextColor="#ff6a00" MinimumWidthRequest="300"/>
+                            <Entry x:Name="PasswordEntry"
+                                   Text="{Binding Password}"
+                                   Placeholder="*******"  InputTransparent="False" IsPassword="True" TextColor="#ff6a00" MinimumWidthRequest="300"/>
                         </HorizontalStackLayout>
                     </Frame>
                 </VerticalStackLayout>
@@ -87,7 +93,7 @@
                             Padding="35,0"
                             VerticalOptions="Center"
                             BackgroundColor="#ff6a00"
-                            Clicked="LoginButton_OnClicked"/>
+                            Command="{Binding Path=LoginCommand}"/>
                     <Button Text="Forgotten password ?"
                             Padding="20,0"
                             VerticalOptions="Center"
@@ -96,7 +102,7 @@
                             BorderWidth="0.25"
                             TextColor="#304057"
                             BackgroundColor="Transparent"
-                            Clicked="ForgottenPasswordButton_OnClicked"/>
+                            Command="{Binding Path=ForgotPasswordClickedCommand}"/>
                 </HorizontalStackLayout>
                 
             </VerticalStackLayout>
@@ -131,5 +137,5 @@
             <Button Text="Continue without account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke" />
         </VerticalStackLayout>
       
-    </VerticalStackLayout
+    </VerticalStackLayout>
 </ContentPage>

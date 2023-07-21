@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using DruidsCornerApp.Services;
 using DruidsCornerApp.ViewModels;
+using DruidsCornerApp.Views;
 using Microsoft.Extensions.Logging;
 
 namespace DruidsCornerApp;
@@ -18,8 +20,18 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		// Registering new services / view models here (for dependency injection)
+		// Registering Pages here (for dependency injection)
+		builder.Services.AddSingleton<LoginPage>();
+		builder.Services.AddSingleton<AccountCreationPage>();
+		
+		// Registering view models here (for dependency injection)
 		builder.Services.AddSingleton<LoginPageViewModel>();
+		builder.Services.AddSingleton<AccountCreationPageViewModel>();
+		
+		// Registering services here (for dependency injection)
+		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+		builder.Services.AddScoped<ISecureStorageService, SecureStorageService>();
+
 		
 #if DEBUG
 		builder.Logging.AddDebug();

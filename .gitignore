@@ -1,6 +1,8 @@
 # Visual studio and VSCode outputs and config
 .vs
 .vscode
+.config
+.idea
 
 # Development binaries
 [Bb]uild

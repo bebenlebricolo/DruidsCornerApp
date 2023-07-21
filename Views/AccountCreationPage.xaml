@@ -2,8 +2,255 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DruidsCornerApp.Views.AccountCreationPage">
+             x:Class="DruidsCornerApp.Views.AccountCreationPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodel:AccountCreationPageViewModel">
     <ContentPage.Content>
-        
+
+        <!-- Global vertical container -->
+        <VerticalStackLayout BackgroundColor="#ffa300">
+            <!-- StartPoint defaults to (0,0) -->
+            <VerticalStackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#ffa300"
+                                  Offset="0.1" />
+                    <GradientStop Color="#ffa300"
+                                  Offset="0.43" />
+                    <GradientStop Color="#304057"
+                                  Offset="0.44" />
+                    <GradientStop Color="#304057"
+                                  Offset="1.0" />
+                </LinearGradientBrush>
+            </VerticalStackLayout.Background>
+
+            <!-- Header -->
+            <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
+                <HorizontalStackLayout Spacing="120" Margin="-20,10,0,10" Padding="0">
+                    <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" HorizontalOptions="Start"
+                                 Command="{Binding Path=BackButtonClickedCommand}">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                        </Image.Behaviors>
+                    </ImageButton>
+                    <Label Text="Account Creation" FontSize="20" TextColor="WhiteSmoke"  HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Login credentials / buttons block -->
+            <Frame Margin="0,0" CornerRadius="0" Padding="10" BackgroundColor="WhiteSmoke" BorderColor="Transparent">
+                <VerticalStackLayout Padding="30,10">
+                    <!-- Username/email address group -->
+                    <VerticalStackLayout x:Name="EmailVerticalStackLayout" Padding="0,10" Spacing="10">
+                        <Label Text="Email address" TextColor="#304057" />
+                        <Frame x:Name="EmailEntryFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige"
+                               BorderColor="#aaff6a00">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <!-- <HorizontalStackLayout Spacing="10"> -->
+                                <Image Source="mail.svg"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       HeightRequest="13"
+                                       Aspect="AspectFit">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Entry x:Name="EmailEntry"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       Text="{Binding Email}"
+                                       Placeholder="someone@somewhere.com"
+                                       PlaceholderColor="#80ff6a00"
+                                       TextColor="#ff6a00" HorizontalOptions="Fill" />
+                                <Label Text="•"
+                                       Grid.Column="2"
+                                       Grid.Row="0"
+                                       FontSize="35"
+                                       TextColor="#ff6a00"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Padding="0,10" Spacing="10">
+                        <Label Text="Display name" TextColor="#304057" />
+                        <Frame Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="🦉"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       VerticalOptions="Center" />
+                                <Entry x:Name="NameEntry"
+                                       Text="{Binding DisplayName}"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Placeholder="my name here"
+                                       PlaceholderColor="#80ff6a00"
+                                       TextColor="#ff6a00" />
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Password group -->
+                    <VerticalStackLayout x:Name="PasswordVerticalStackLayout" Padding="0,10" Spacing="5">
+                        <Label Text="Password" TextColor="#304057" />
+                        <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige"
+                               BorderColor="#aaff6a00">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <!-- <HorizontalStackLayout x:Name="PasswordHorizontalStackLayout" Spacing="10"> -->
+                                <Image Source="padlock.svg"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       HeightRequest="20" Aspect="AspectFit"
+                                       HorizontalOptions="Start">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Entry x:Name="PasswordEntry"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Password}"
+                                       Placeholder="•••••••"
+                                       PlaceholderColor="#80ff6a00"
+                                       InputTransparent="False"
+                                       IsPassword="True"
+                                       TextColor="#ff6a00"
+                                       MinimumWidthRequest="150"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center" />
+                                <Label Text="•"
+                                       Grid.Column="2"
+                                       Grid.Row="0"
+                                       FontSize="35"
+                                       TextColor="#ff6a00"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Password group -->
+                    <VerticalStackLayout x:Name="PasswordValidationGroup" Padding="0,10" Spacing="5">
+                        <Label Text="Password validation" TextColor="#304057" />
+                        <Frame x:Name="PasswordValidationFrame" Padding="15,0" CornerRadius="25"
+                               BackgroundColor="Beige" BorderColor="#aaff6a00">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- <HorizontalStackLayout x:Name="PasswordValidationHorizontalStackLayout" Spacing="10"> -->
+                                <Image Source="padlock.svg"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       HeightRequest="20" Aspect="AspectFit"
+                                       HorizontalOptions="Start">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Entry x:Name="PasswordValidationEntry"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       Text="{Binding PasswordValidation}"
+                                       Placeholder=""
+                                       InputTransparent="False"
+                                       IsPassword="True"
+                                       TextColor="#ff6a00"
+                                       MinimumWidthRequest="150"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start">
+                                    <Entry.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                            EventName="TextChanged"
+                                            Command="{Binding PasswordValidationTextChangedCommand}" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Label x:Name="PasswordValidationStatusTxtIcon"
+                                       Grid.Column="2"
+                                       Grid.Row="0"
+                                       VerticalOptions="Center"
+                                       Text="{Binding PasswordStatusTxtIcon}"
+                                       TextColor="{Binding PasswordStatusTxtIconColor}" />
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Separator -->
+                    <BoxView Color="#80ff6a00" HeightRequest="0.3" Margin="10,10"></BoxView>
+
+                    <!-- Login / forgotten password group -->
+                    <HorizontalStackLayout Padding="0,10" Spacing="25" HorizontalOptions="Center">
+                        <Button Text="Create Account !"
+                                x:Name="CreateAccountButton"
+                                TextColor="WhiteSmoke"
+                                Padding="35,0"
+                                VerticalOptions="Center"
+                                BackgroundColor="#ff6a00"
+                                Command="{Binding Path=CreateAccountCommand }" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Footer elements -->
+            <Grid VerticalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Text="Fields marked with a dot &lt; • &gt; are mandatory fields."
+                       Padding="0,10"
+                       Grid.Row="0"
+                       TextColor="WhiteSmoke"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center" />
+
+                <ActivityIndicator IsRunning="False"
+                                   Color="#ff6a00"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   VerticalOptions="Fill" />
+
+                <!-- Separator -->
+                <HorizontalStackLayout
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalOptions="End"
+                    Padding="30,0" Spacing="15" HorizontalOptions="Center">
+                    <Image Source="doublehophalf.svg" HeightRequest="40">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Image Source="doublehoprighthalf.svg" HeightRequest="40">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                        </Image.Behaviors>
+                    </Image>
+                </HorizontalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>

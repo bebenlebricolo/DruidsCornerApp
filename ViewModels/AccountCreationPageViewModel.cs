@@ -134,10 +134,12 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         {
             var createdUser = await _authenticationService.CreateNewUserAsync(userArgs, cancellationToken);
             await Shell.Current.DisplayAlert("Account creation status", "Successfully created new account!", "Ok");
-            IsLoggingNow = false;
         }
         catch (UserAlreadyExistException)
         {
+            page.AddEmailHint("Consider tweaking this email address a little bit");
+            page.RemovePasswordHint();
+            await Shell.Current.DisplayAlert(CredentialsErrorStr, "An account already exist with this email", "Ok");
         }
         catch (FirebaseAuthException fbEx)
         {
@@ -161,8 +163,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
                     await Shell.Current.DisplayAlert(CredentialsErrorStr, "Email address already exist.", "Ok");
                     break;
             }
-            IsLoggingNow = false;
         }
+        IsLoggingNow = false;
     }
 
     [RelayCommand]

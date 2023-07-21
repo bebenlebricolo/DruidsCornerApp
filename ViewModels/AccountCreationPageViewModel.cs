@@ -1,12 +1,10 @@
-using Android.Accounts;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Views;
 using Firebase.Auth;
-using Firebase.Auth.Providers;
-using Xamarin.Google.Crypto.Tink.Util;
+using Microsoft.Maui.Platform;
 
 namespace DruidsCornerApp.ViewModels;
 
@@ -29,11 +27,23 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     private string _password = string.Empty;
     
     /// <summary>
+    /// Used to toggle the password field from obfuscated mode to regular
+    /// </summary>
+    [ObservableProperty]
+    private bool _passwordObfuscated = true;
+    
+    /// <summary>
     /// Password validation text entry field
     /// </summary>
     [ObservableProperty]
     private string _passwordValidation = string.Empty;
 
+    /// <summary>
+    /// Used to toggle the password validation field from obfuscated mode to regular
+    /// </summary>
+    [ObservableProperty]
+    private bool _passwordValidationObfuscated = true;
+    
     /// <summary>
     /// User "display name" property
     /// </summary>
@@ -51,6 +61,19 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     /// </summary>
     [ObservableProperty]
     private Color _passwordStatusTxtIconColor = Colors.Grey;
+
+
+    [ObservableProperty]
+    private bool _isLoggingNow = false;
+    
+    [ObservableProperty]
+    private ImageSource _passwordEyeIcon;
+
+    [ObservableProperty]
+    private ImageSource _passwordValidationEyeIcon;
+    
+    private readonly ImageSource _eyeOpenIcon;
+    private readonly ImageSource _eyeClosedIcon;
     
     /// <summary>
     /// 
@@ -62,6 +85,11 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     {
         _authenticationService = authenticationService;
         _secureStorageService = secureStorageService;
+        _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
+        _eyeClosedIcon = ImageSource.FromFile("eye_closed.svg");
+
+        _passwordEyeIcon = _eyeClosedIcon;
+        _passwordValidationEyeIcon = _eyeClosedIcon;
     }
 
     protected AccountCreationPage GetPage()
@@ -72,7 +100,11 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     [RelayCommand]
     public async Task CreateAccount(CancellationToken cancellationToken)
     {
+#if __ANDROID__
+        Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+#endif
         var page = GetPage();
+        IsLoggingNow = true;
 
         if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(PasswordValidation))
         {
@@ -101,6 +133,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         try
         {
             var createdUser = await _authenticationService.CreateNewUserAsync(userArgs, cancellationToken);
+            await Shell.Current.DisplayAlert("Account creation status", "Successfully created new account!", "Ok");
+            IsLoggingNow = false;
         }
         catch (UserAlreadyExistException)
         {
@@ -127,6 +161,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
                     await Shell.Current.DisplayAlert(CredentialsErrorStr, "Email address already exist.", "Ok");
                     break;
             }
+            IsLoggingNow = false;
         }
     }
 
@@ -151,5 +186,34 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     {
         // yup ... 
         await Shell.Current.GoToAsync("..");
+    }
+    
+    [RelayCommand]
+    public void PasswordEyeFlicker()
+    {
+        PasswordObfuscated = !PasswordObfuscated;
+        if (PasswordObfuscated)
+        {
+            PasswordEyeIcon = _eyeClosedIcon;
+        }
+        else
+        {
+            PasswordEyeIcon = _eyeOpenIcon;
+        }
+    }
+    
+    
+    [RelayCommand]
+    public void PasswordValidationEyeFlicker()
+    {
+        PasswordValidationObfuscated = !PasswordValidationObfuscated;
+        if (PasswordValidationObfuscated)
+        {
+            PasswordValidationEyeIcon = _eyeClosedIcon;
+        }
+        else
+        {
+            PasswordValidationEyeIcon = _eyeOpenIcon;
+        }
     }
 }

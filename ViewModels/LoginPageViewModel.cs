@@ -23,10 +23,24 @@ public partial class LoginPageViewModel : BaseViewModel
     [ObservableProperty]
     private string _password = string.Empty;
 
+    [ObservableProperty]
+    private bool _passwordVisible = false;
+    
+    [ObservableProperty]
+    private ImageSource _eyeIcon;
+
+    private ImageSource _eyeOpenIcon;
+    private ImageSource _eyeClosedIcon;
+    
+    
     public LoginPageViewModel(IAuthenticationService authenticationService)
     {
         Title = "Login";
         _authenticationService = authenticationService;
+        _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
+        _eyeClosedIcon = ImageSource.FromFile("eye_closed.svg");
+
+        EyeIcon = _eyeClosedIcon;
     }
     
     [RelayCommand]
@@ -127,43 +141,19 @@ public partial class LoginPageViewModel : BaseViewModel
         }
         
     }
-    
-    // [RelayCommand]
-    // public async Task Login()
-    // {
-    //     var loginPage = Shell.Current.CurrentPage as LoginPage;
-    //     
-    //     else
-    //     {
-    //         // Call API to attempt a login$
-    //         // var loginModel = new LoginModel(Username, Password, 1);
-    //         // var response = await _carApiService.Login(loginModel);
-    //
-    //         // if (response is not null && !string.IsNullOrEmpty(response.AccessToken))
-    //         // {
-    //         //     // Display a welcome message
-    //         //     await SecureStorage.SetAsync("AccessToken", response.AccessToken);
-    //         //     //
-    //         //     // var handler = new JwtSecurityTokenHandler();
-    //         //     // var jwt = handler.ReadJwtToken(response.AccessToken);
-    //         //     //
-    //         //     // await Shell.Current.DisplayAlert("Login status", _carApiService.StatusMessage, "Ok");
-    //         //     //
-    //         //     // // Build a menu on the fly ... based on the user role
-    //         //     // var userInfo = new UserInfo(Username,
-    //         //     //     jwt.Claims.FirstOrDefault(q => q.Type.Equals(ClaimTypes.Role))?.Value, Password);
-    //         //     // App.UserInfo = userInfo;
-    //         //     //
-    //         //     // // Navigate to app's main page
-    //         //     // MenuBuilder.BuildMenu();
-    //         //     // var route = nameof(MainPage);
-    //         //     // await Shell.Current.GoToAsync(route);
-    //         //
-    //         // }
-    //         // else
-    //         // {
-    //         //     Password = "";
-    //         // }
-    //     }
-    // }
+
+
+    [RelayCommand]
+    public void EyeFlicker()
+    {
+        PasswordVisible = !PasswordVisible;
+        if (PasswordVisible)
+        {
+            EyeIcon = _eyeClosedIcon;
+        }
+        else
+        {
+            EyeIcon = _eyeOpenIcon;
+        }
+    }
 }

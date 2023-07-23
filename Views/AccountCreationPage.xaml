@@ -263,12 +263,6 @@
                            FontAttributes="Italic"
                            HorizontalOptions="Center" />
 
-                    <ActivityIndicator IsRunning="{Binding IsLoggingNow}"
-                                       Color="#ff6a00"
-                                       Grid.Row="1"
-                                       Grid.Column="0"
-                                       VerticalOptions="Fill" />
-
                     <!-- Separator -->
                     <HorizontalStackLayout
                         Grid.Row="2"

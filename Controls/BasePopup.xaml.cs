@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Android.Views;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Mopups.Services;
 
 namespace DruidsCornerApp.Controls;
 
-public partial class BasePopup : Popup
+public partial class BasePopup
 {
     private IView? _centralElement = null;
     
@@ -59,6 +60,25 @@ public partial class BasePopup : Popup
     }
 
     /// <summary>
+    /// Returns the central element
+    /// </summary>
+    /// <returns></returns>
+    public IView? GetCentralElement()
+    {
+        return _centralElement;
+    }
+
+    /// <summary>
+    /// Returned a typed variant of the internal Central Element
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public T? GetCentralElement<T>() where T : class
+    {
+        return _centralElement as T;
+    }
+    
+    /// <summary>
     /// Remove element from central layout
     /// </summary>
     public void RemoveCentralElement()
@@ -86,7 +106,6 @@ public partial class BasePopup : Popup
     {
         return MessageLabel;
     }
-
 
     /// <summary>
     /// Returns the Popup frame for further customization
@@ -121,13 +140,34 @@ public partial class BasePopup : Popup
         return OkButton;
     }
 
-    public void UpdateLayout()
+    // Shorthand that removes MopupService dependency from client code
+    /// <summary>
+    /// Shows this popup on screen
+    /// Task is not awaited internally so you need to await it yourself in the client code (allows for concurrent operations)
+    /// </summary>
+    /// <param name="animate"></param>
+    public Task Show(bool animate = true)
     {
-        
+        return MopupService.Instance.PushAsync(this, true);
     }
+
+    // Shorthand that removes MopupService dependency from client code
+    /// <summary>
+    /// Closes the popup, if it was shown beforehand.
+    /// Task is not awaited internally so you need to await it yourself in the client code (allows for concurrent operations)
+    /// </summary>
+    /// <param name="animate"></param>
+    public Task Close(bool animate = true)
+    {
+        return MopupService.Instance.RemovePageAsync(this, animate);
+    }
+    
+    
+    
     
     protected void OkButton_OnClicked(object? sender, EventArgs e)
     {
-        Close();
+        //Close();
+        Mopups.Services.MopupService.Instance.PopAsync(true);
     }
 }

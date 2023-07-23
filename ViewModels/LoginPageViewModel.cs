@@ -1,11 +1,11 @@
-using AndroidX.Browser.Trusted;
-using AndroidX.Loader.Content;
-using CommunityToolkit.Maui.Views;
 using DruidsCornerApp.Controls;
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Services;
+using DruidsCornerApp.Utils;
 using Firebase.Auth;
+using Microsoft.Maui.Platform;
+using Mopups.Services;
 
 namespace DruidsCornerApp.ViewModels;
 
@@ -19,6 +19,7 @@ public partial class LoginPageViewModel : BaseViewModel
 {
     private static readonly string LoginErrorStr = "Login error";
     private readonly IAuthenticationService _authenticationService;
+    private readonly ISecureStorageService _secureStorageService;
     private uint _loginErrorCounter = 0;
 
 
@@ -38,53 +39,22 @@ public partial class LoginPageViewModel : BaseViewModel
     private ImageSource _eyeClosedIcon;
 
 
-    public LoginPageViewModel(IAuthenticationService authenticationService)
+    public LoginPageViewModel(IAuthenticationService authenticationService,
+                              ISecureStorageService secureStorageService)
     {
         Title = "Login";
         _authenticationService = authenticationService;
+        _secureStorageService = secureStorageService;
+        
         _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
         _eyeClosedIcon = ImageSource.FromFile("eye_closed.svg");
 
         EyeIcon = _eyeClosedIcon;
     }
-
-    private LoginPopup CreateErrorPopup(string title, string message)
-    {
-        var popup = new LoginPopup();
-        popup.SetTitle(title);
-        popup.SetMessage(message);
-
-
-        return popup;
-    }
-
+    
     [RelayCommand]
     public async Task BackClicked(CancellationToken cancellationToken)
     {
-        var popup = new LoginPopup(true);
-        var activity = popup.GetActivityIndicator()!;
-        activity.Color = Colors.SkyBlue;
-        activity.IsRunning = true;
-
-        popup.SetTitle("Back popup");
-        popup.SetMessage("Taking you back to homepage");
-        popup.GetOkButton().IsEnabled = false;
-
-        var popupShowTask = Shell.Current.ShowPopupAsync(popup);
-        await Task.Delay(2000).WaitAsync(cancellationToken);
-        activity.IsRunning = false;
-        popup.SetCentralElement(new Label()
-        {
-            Text = "✔",
-            FontSize = 40,
-            TextColor = Colors.Green,
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center
-        });
-        popup.SetMessage("Loading Completed !");
-        popup.GetOkButton().IsEnabled = true;
-        popup.GetOkButton().IsVisible = true;
-        await popupShowTask;
         await Shell.Current.GoToAsync("..", animate: true);
     }
 
@@ -103,6 +73,13 @@ public partial class LoginPageViewModel : BaseViewModel
     [RelayCommand]
     public async Task Login(CancellationToken cancellationToken)
     {
+#if __ANDROID__
+        if (Platform.CurrentActivity != null && Platform.CurrentActivity.CurrentFocus != null)
+        {
+            Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        }
+#endif
+        
         var loginPage = (Shell.Current.CurrentPage as LoginPage)!;
 
         if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Email))
@@ -110,50 +87,59 @@ public partial class LoginPageViewModel : BaseViewModel
             Password = string.Empty;
             loginPage.SetPasswordEntryOutlineColor(Colors.Red);
             loginPage.ClearPassword();
-            await Shell.Current.DisplayAlert("Login failed", "Invalid credentials", "Ok");
+            await PopupUtils.CreateAndShowErrorPopup("SignIn Error", "Invalid credentials");
         }
         else
         {
             // Check if credentials are valid
             try
             {
+                var loginPopup = PopupUtils.CreateLoggingPopup();
+                var popupTask = loginPopup.Show();
                 var token = await _authenticationService.SignInBasicAsync(Email, Password, cancellationToken);
                 if (token == null)
                 {
-                    await Shell.Current.DisplayAlert(LoginErrorStr, "Login encountered some issue", "Ok");
-                    Password = "";
+                    throw new AuthenticationException("Token cannot be retrieved", AuthenticationError.EmptyToken);
                 }
 
-                await SecureStorage.SetAsync("TOKEN", token!);
+                // Success !
+                PopupUtils.SetLoginPopupCompletedTask(loginPopup, "Successfully SignedIn !");
+
+                // Store credentials for later use
+                await _secureStorageService.StoreEmailAsync(Email);
+                await _secureStorageService.StorePasswordAsync(Password);
+                await _secureStorageService.StoreTokenAsync(token);
+
+                await Task.Delay(200);
+                await loginPopup.Close();
+                await Shell.Current.GoToAsync("..", true);
                 _loginErrorCounter = 0;
             }
             catch (Firebase.Auth.FirebaseAuthException fbEx)
             {
+                await PopupUtils.PopAllPopupsAsync(false);
                 switch (fbEx.Reason)
                 {
                     case AuthErrorReason.UserNotFound:
                     case AuthErrorReason.UnknownEmailAddress:
                         loginPage.AddPasswordHint("Create a new account ?");
-                        await Shell.Current.DisplayAlert(LoginErrorStr,
-                            "User does not exist, maybe try to create a new account, or continue as Guest.", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr,
+                            "User does not exist, maybe try to create a new account, or continue as Guest.");
                         break;
 
                     case AuthErrorReason.InvalidEmailAddress:
                         loginPage.AddPasswordHint("Formatting : <someone>@<somewhere>.<xyz>", Colors.Red);
-                        await Shell.Current.DisplayAlert(LoginErrorStr,
-                            "Invalid email address, please check formatting", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Invalid email address, please check formatting");
                         break;
 
                     case AuthErrorReason.UserDisabled:
                         loginPage.AddPasswordHint("Create new account or login as Guest ?", Colors.Red);
-                        await Shell.Current.DisplayAlert(LoginErrorStr,
-                            "User account is disabled.", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "User account is disabled.");
                         break;
 
                     case AuthErrorReason.TooManyAttemptsTryLater:
                         loginPage.AddPasswordHint("Maybe consider resetting your password ?", Colors.Grey);
-                        await Shell.Current.DisplayAlert(LoginErrorStr,
-                            "Invalid email address, please check formatting", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Invalid email address, please check formatting");
                         break;
 
                     case AuthErrorReason.WrongPassword:
@@ -167,17 +153,33 @@ public partial class LoginPageViewModel : BaseViewModel
                             loginPage.AddPasswordHint("Wrong password : forgotten password ?", Colors.Red);
                         }
 
-                        await Shell.Current.DisplayAlert(LoginErrorStr,
-                            "Invalid password.", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Invalid password.");
                         break;
 
                     default:
                         loginPage.AddPasswordHint("Whoops ! Try again ?", Colors.Red);
-                        await Shell.Current.DisplayAlert("Login error", "Login encountered some issue", "Ok");
+                        await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
                         break;
                 }
-
+                Password = "";
                 loginPage.ClearPassword();
+            }
+            catch (AuthenticationException ex)
+            {
+                // Pop the login popup and show the error one
+                await PopupUtils.PopAllPopupsAsync(false);
+                await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
+                Password = "";
+                loginPage.ClearPassword();
+
+            }
+            catch(System.Exception)
+            {
+                await PopupUtils.PopAllPopupsAsync(false);
+                loginPage.ClearPassword();
+                Password = "";
+                loginPage.ClearPassword();
+
             }
         }
     }

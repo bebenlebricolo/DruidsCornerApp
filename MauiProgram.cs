@@ -3,6 +3,7 @@ using DruidsCornerApp.Services;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.Views;
 using Microsoft.Extensions.Logging;
+using Mopups.Hosting;
 
 namespace DruidsCornerApp;
 
@@ -14,6 +15,7 @@ public static class MauiProgram
 		builder
 			.UseMauiCommunityToolkit()
 			.UseMauiApp<App>()
+			.ConfigureMopups()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

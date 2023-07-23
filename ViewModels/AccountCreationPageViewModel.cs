@@ -2,9 +2,12 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Services;
+using DruidsCornerApp.Utils;
 using DruidsCornerApp.Views;
 using Firebase.Auth;
+using Java.Lang;
 using Microsoft.Maui.Platform;
+using Exception = System.Exception;
 
 namespace DruidsCornerApp.ViewModels;
 
@@ -101,14 +104,18 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     public async Task CreateAccount(CancellationToken cancellationToken)
     {
 #if __ANDROID__
-        Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        if (Platform.CurrentActivity != null && Platform.CurrentActivity.CurrentFocus != null)
+        {
+            Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        }
 #endif
         var page = GetPage();
         IsLoggingNow = true;
 
+        // Preprocess ...
         if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(PasswordValidation))
         {
-            await Shell.Current.DisplayAlert(CredentialsErrorStr, "Invalid credentials", "Ok");
+            await Shell.Current.DisplayAlert(CredentialsErrorStr, "Password validation differ from original Password", "Ok");
         }
 
         // Preprocess data
@@ -116,11 +123,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         if (!Password.Equals(PasswordValidation))
         {
             page.AddPasswordHint("⚠ Password and its validation counterpart must exactly match !");
-            await Shell.Current.DisplayAlert(CredentialsErrorStr, "Password validation differ from original Password", "Ok");
+            await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Password validation differ from original Password");
         }
-
-        // Todo : Start the "Loading" animation
-        //var button = page.CreateAccountButton;
 
         // Create account
         var userArgs = new FirebaseAdmin.Auth.UserRecordArgs()
@@ -132,17 +136,44 @@ public partial class AccountCreationPageViewModel : BaseViewModel
 
         try
         {
+            var loginPopup = PopupUtils.CreateLoggingPopup("Account creation");
+            var popupShowTask = loginPopup.Show();
+            
             var createdUser = await _authenticationService.CreateNewUserAsync(userArgs, cancellationToken);
-            await Shell.Current.DisplayAlert("Account creation status", "Successfully created new account!", "Ok");
+            PopupUtils.SetLoginPopupCompletedTask(loginPopup, "Successfully created new account !");
+            await Task.Delay(500);
+            await loginPopup.Close();
+
+            var signinPopup = PopupUtils.CreateLoggingPopup("SignIn");
+            signinPopup.SetMessage("Signing you in ...");
+            var signinPopupTask = signinPopup.Show();
+            var token = await _authenticationService.SignInBasicAsync(Email, Password, cancellationToken);
+            if (token == null)
+            {
+                throw new AuthenticationException("Token cannot be retrieved", AuthenticationError.EmptyToken);
+            }
+
+            // Store user creds and token to let the app know user is
+            // Authenticated
+            await _secureStorageService.StoreEmailAsync(Email);
+            await _secureStorageService.StoreTokenAsync(token);
+            await _secureStorageService.StorePasswordAsync(Password);
+
+            PopupUtils.SetLoginPopupCompletedTask(signinPopup, "Successfully authenticated !");
+            await Task.Delay(1000);
+            await signinPopup.Close();
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}", true);
         }
-        catch (UserAlreadyExistException)
+        catch (AuthenticationException ex)
         {
+            await PopupUtils.PopAllPopupsAsync(true);
             page.AddEmailHint("Consider tweaking this email address a little bit");
             page.RemovePasswordHint();
-            await Shell.Current.DisplayAlert(CredentialsErrorStr, "An account already exist with this email", "Ok");
+            await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "An account already exist with this email");
         }
         catch (FirebaseAuthException fbEx)
         {
+            await PopupUtils.PopAllPopupsAsync(true);
             switch (fbEx.Reason)
             {
                 case AuthErrorReason.EmailExists:
@@ -150,19 +181,24 @@ public partial class AccountCreationPageViewModel : BaseViewModel
                 case AuthErrorReason.AccountExistsWithDifferentCredential:
                     page.RemovePasswordHint();
                     page.AddEmailHint("Consider tweaking this email address a little bit");
-                    await Shell.Current.DisplayAlert(CredentialsErrorStr, "Email address already exist.", "Ok");
+                    await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Email address already exist.");
                     break;
 
                 case AuthErrorReason.WeakPassword:
                     page.RemoveEmailHint();
                     page.AddPasswordHint("Consider using an alphanumeric passphrase with complex characters.");
-                    await Shell.Current.DisplayAlert(CredentialsErrorStr, "Password is considered too weak.", "Ok");
+                    await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Password is considered too weak.");
                     break;
 
                 default:
-                    await Shell.Current.DisplayAlert(CredentialsErrorStr, "Email address already exist.", "Ok");
+                    await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Email address already exist.");
                     break;
             }
+        }
+        catch (Exception ex)
+        {
+            // Log exception
+            await PopupUtils.PopAllPopupsAsync(true);
         }
         IsLoggingNow = false;
     }

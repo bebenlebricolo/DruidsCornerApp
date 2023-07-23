@@ -55,6 +55,7 @@
 		<PackageReference Include="FirebaseAdmin" Version="2.4.0" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Mopups" Version="1.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -62,10 +63,6 @@
 	  <Compile Remove="Platforms\MacCatalyst\**" />
 	  <Compile Remove="Platforms\Tizen\**" />
 	  <Compile Remove="Platforms\Windows\**" />
-	  <Compile Update="Controls\BasePopup.xaml.cs">
-	    <DependentUpon>BasePopup.xaml</DependentUpon>
-	    <SubType>Code</SubType>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -80,9 +77,6 @@
 	  <MauiXaml Remove="Platforms\MacCatalyst\**" />
 	  <MauiXaml Remove="Platforms\Tizen\**" />
 	  <MauiXaml Remove="Platforms\Windows\**" />
-	  <MauiXaml Update="Controls\BasePopup.xaml">
-	    <SubType>Designer</SubType>
-	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

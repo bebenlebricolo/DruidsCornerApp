@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="DruidsCornerApp.Controls.BasePopup"
+               Color="Transparent">
+
+    <StackLayout x:Name="MainLayout">
+        <Frame x:Name="OuterFrame"
+               HorizontalOptions="Fill"
+               Padding="50, 10, 50, 20"
+               CornerRadius="15"
+               BackgroundColor="White"
+               HasShadow="True"
+               BorderColor="Transparent"
+               IsClippedToBounds="False">
+
+            <VerticalStackLayout x:Name="CentralLayout" Spacing="10">
+                <Label x:Name="TitleLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Text="Title"
+                       TextColor="#cc202020"
+                       FontSize="20"
+                       FontAttributes="Bold" />
+                <BoxView x:Name="SeparatorControl" BackgroundColor="Grey"
+                         HeightRequest="0.2"
+                         Margin="-200,0"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center" />
+                <!-- New central element will be inserted here -->
+                <Label x:Name="MessageLabel"
+                       Text="Message"
+                       TextColor="#cc202020"
+                       FontAttributes="None"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+                <Grid x:Name="ButtonGridLayout"
+                      RowDefinitions="*"
+                      ColumnDefinitions="*">
+                    <Button x:Name="OkButton"
+                            IsVisible="False"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Ok"
+                            TextColor="#ccd0d0d0"
+                            BackgroundColor="#304057"
+                            HorizontalOptions="Fill"
+                            Clicked="OkButton_OnClicked" />
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+    </StackLayout>
+</toolkit:Popup>

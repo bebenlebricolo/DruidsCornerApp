@@ -29,15 +29,30 @@
 
                 <!-- Header -->
                 <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
-                    <HorizontalStackLayout Spacing="120" Margin="-20,10,0,10" Padding="0">
-                        <ImageButton Source="back.svg" Aspect="AspectFit" HeightRequest="28" HorizontalOptions="Start"
+                    
+                    <Grid RowDefinitions="*"
+                          ColumnDefinitions="40,*,Auto"
+                          Padding="10"
+                          HorizontalOptions="Fill">
+                        <ImageButton Source="back.svg" 
+                                     Grid.Row="0"
+                                     Grid.Column="0"
+                                     Aspect="AspectFit" 
+                                     HeightRequest="28"
+                                     HorizontalOptions="Start"
                                      Command="{Binding Path=BackButtonClickedCommand}">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
                             </Image.Behaviors>
                         </ImageButton>
-                        <Label Text="Account Creation" FontSize="20" TextColor="WhiteSmoke" HorizontalOptions="End" />
-                    </HorizontalStackLayout>
+                        <Label Text="Account Creation"
+                               Grid.Row="0"
+                               Grid.Column="2"
+                               FontSize="20"
+                               TextColor="WhiteSmoke"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"/>
+                    </Grid>
                 </Frame>
 
                 <!-- Login credentials / buttons block -->

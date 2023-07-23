@@ -62,6 +62,10 @@
 	  <Compile Remove="Platforms\MacCatalyst\**" />
 	  <Compile Remove="Platforms\Tizen\**" />
 	  <Compile Remove="Platforms\Windows\**" />
+	  <Compile Update="Controls\BasePopup.xaml.cs">
+	    <DependentUpon>BasePopup.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,6 +80,9 @@
 	  <MauiXaml Remove="Platforms\MacCatalyst\**" />
 	  <MauiXaml Remove="Platforms\Tizen\**" />
 	  <MauiXaml Remove="Platforms\Windows\**" />
+	  <MauiXaml Update="Controls\BasePopup.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

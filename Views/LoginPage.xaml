@@ -106,7 +106,7 @@
                                    Placeholder="*******"
                                    PlaceholderColor="Grey"
                                    InputTransparent="False"
-                                   IsPassword="{Binding PasswordVisible}" TextColor="#ff6a00"
+                                   IsPassword="{Binding PasswordObfuscated}" TextColor="#ff6a00"
                                    MinimumWidthRequest="300" />
                             <ImageButton Source="{Binding EyeIcon}"
                                          Grid.Column="2"

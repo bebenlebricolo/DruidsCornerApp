@@ -1,8 +1,11 @@
 # Visual studio and VSCode outputs and config
 .vs
 .vscode
-.config
 .idea
+
+
+# Local configuration
+AuthConfig.json
 
 # Development binaries
 [Bb]uild

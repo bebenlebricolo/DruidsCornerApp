@@ -4,7 +4,7 @@ namespace DruidsCornerApp.Models.Config;
 /// <summary>
 /// Represents Firebase's authentication configuration.
 /// </summary>
-public record FirebaseConfig
+public record AuthConfig
 {
     /// <summary>
     /// Firebase Project's Api Key

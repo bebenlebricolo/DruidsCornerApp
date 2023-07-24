@@ -5,7 +5,6 @@ using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.Views;
 using Firebase.Auth;
-using Java.Lang;
 using Microsoft.Maui.Platform;
 using Exception = System.Exception;
 

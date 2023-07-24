@@ -1,9 +1,11 @@
 using System.Diagnostics;
+using System.Security.Authentication;
 using DruidsCornerApp.Models.Exceptions;
 using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using AuthenticationException = DruidsCornerApp.Models.Exceptions.AuthenticationException;
 
 namespace DruidsCornerApp.Services;
 
@@ -18,41 +20,25 @@ using Firebase.Auth;
 public class AuthenticationService : IAuthenticationService
 {
     // private static FirebaseApp? _fbApp = null;
-    private static FirebaseAuthClient? _fbAuthClient = null;
+    private static FirebaseAuthClient _fbAuthClient;
+    private readonly IAuthConfigProvider _authConfigProvider;
 
-    public AuthenticationService()
+    public AuthenticationService(IAuthConfigProvider authConfigProvider)
     {
-        // if (_fbApp == null)
-        // {
-        //     var appOptions = new AppOptions()
-        //     {
-        //         Credential = new GoogleCredential
-        //         {
-        //             
-        //         }
-        //     };
-        //     _fbApp = FirebaseApp.Create();
-        // }
-
-        if (_fbAuthClient == null)
+        _authConfigProvider = authConfigProvider;
+        var authConfig = _authConfigProvider.GetAuthConfig();
+        var config = new FirebaseAuthConfig
         {
-            var config = new FirebaseAuthConfig
+            ApiKey = authConfig.ApiKey,
+            AuthDomain = authConfig.AuthDomain,
+            Providers = new []
             {
-                ApiKey = "someapikey",
-                AuthDomain = "somedomain",
-                Providers = new FirebaseAuthProvider[]
-                {
-                    // Add and configure individual providers
-                    new GoogleProvider().AddScopes(
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/userinfo.email",
-                        "https://www.googleapis.com/auth/userinfo.profile",
-                        "openid"),
-                    new EmailProvider()
-                }
-            };
-            _fbAuthClient = new FirebaseAuthClient(config);
-        }
+                // Add and configure individual providers
+                new GoogleProvider().AddScopes(authConfig.JwtScopes.ToArray()),
+                new EmailProvider()
+            }
+        };
+        _fbAuthClient = new FirebaseAuthClient(config);
     }
     
     /// <summary>
@@ -77,7 +63,7 @@ public class AuthenticationService : IAuthenticationService
             // Todo : Log something here
             if (fbEx.Reason == AuthErrorReason.EmailExists)
             {
-                throw new UserAlreadyExistException(fbEx);
+                throw new AuthenticationException("Email already exist", AuthenticationError.UserAlreadyExist);
             }
 
             // Propagate exception, we don't know enough to handle it at this stage

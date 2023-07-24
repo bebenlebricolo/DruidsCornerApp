@@ -29,6 +29,7 @@ public static class MauiProgram
 		// Registering view models here (for dependency injection)
 		builder.Services.AddSingleton<LoginPageViewModel>();
 		builder.Services.AddSingleton<AccountCreationPageViewModel>();
+		builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();
 		
 		// Registering services here (for dependency injection)
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

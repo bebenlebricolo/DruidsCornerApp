@@ -2,6 +2,7 @@
 using DruidsCornerApp.Services;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.Views;
+using MetroLog.MicrosoftExtensions;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
 
@@ -35,7 +36,10 @@ public static class MauiProgram
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 		builder.Services.AddScoped<ISecureStorageService, SecureStorageService>();
 
-		
+		builder.Logging.AddTraceLogger(options =>
+		{
+			options.MinLevel = LogLevel.Information;
+		});
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

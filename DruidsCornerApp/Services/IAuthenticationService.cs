@@ -13,7 +13,7 @@ public interface IAuthenticationService
     /// <param name="userArgs">User record arguments, coming from UI</param>
     /// <param name="cancellationToken">Used to monitor and abort operations that are too long.</param>
     /// <returns>New user record</returns>
-    /// <exception cref="UserAlreadyExistException"></exception>
+    /// <exception cref="System.Security.Authentication.AuthenticationException"></exception>
     public Task<UserCredential> CreateNewUserAsync(UserRecordArgs userArgs, CancellationToken cancellationToken);
 
     /// <summary>

@@ -5,6 +5,8 @@ using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.Views;
 using Firebase.Auth;
+using MetroLog;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Platform;
 using Exception = System.Exception;
 
@@ -15,7 +17,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     private static readonly string CredentialsErrorStr = "Credentials error";
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
-    
+    private readonly ILogger<AccountCreationPageViewModel> _logger;
+
     /// <summary>
     /// User email
     /// </summary>
@@ -27,13 +30,13 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     /// </summary>
     [ObservableProperty]
     private string _password = string.Empty;
-    
+
     /// <summary>
     /// Used to toggle the password field from obfuscated mode to regular
     /// </summary>
     [ObservableProperty]
     private bool _passwordObfuscated = true;
-    
+
     /// <summary>
     /// Password validation text entry field
     /// </summary>
@@ -45,7 +48,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     /// </summary>
     [ObservableProperty]
     private bool _passwordValidationObfuscated = true;
-    
+
     /// <summary>
     /// User "display name" property
     /// </summary>
@@ -67,24 +70,26 @@ public partial class AccountCreationPageViewModel : BaseViewModel
 
     [ObservableProperty]
     private bool _isLoggingNow = false;
-    
+
     [ObservableProperty]
     private ImageSource _passwordEyeIcon;
 
     [ObservableProperty]
     private ImageSource _passwordValidationEyeIcon;
-    
+
     private readonly ImageSource _eyeOpenIcon;
     private readonly ImageSource _eyeClosedIcon;
-    
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="authenticationService"></param>
     /// <param name="secureStorageService"></param>
-    public AccountCreationPageViewModel(IAuthenticationService authenticationService,
-                                        ISecureStorageService secureStorageService)
+    public AccountCreationPageViewModel(ILogger<AccountCreationPageViewModel> logger,
+                                        IAuthenticationService authenticationService,
+                                        ISecureStorageService secureStorageService) : base("Account creation", false)
     {
+        _logger = logger;
         _authenticationService = authenticationService;
         _secureStorageService = secureStorageService;
         _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
@@ -137,7 +142,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         {
             var loginPopup = PopupUtils.CreateLoggingPopup("Account creation");
             var popupShowTask = loginPopup.Show();
-            
+
             var createdUser = await _authenticationService.CreateNewUserAsync(userArgs, cancellationToken);
             PopupUtils.SetLoginPopupCompletedTask(loginPopup, "Successfully created new account !");
             await Task.Delay(500);
@@ -165,6 +170,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         }
         catch (AuthenticationException ex)
         {
+            _logger.LogError($"Caught exception while authenticating : {ex.Message}, {ex.Error.ToString()}");
             await PopupUtils.PopAllPopupsAsync(true);
             page.AddEmailHint("Consider tweaking this email address a little bit");
             page.RemovePasswordHint();
@@ -172,6 +178,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         }
         catch (FirebaseAuthException fbEx)
         {
+            _logger.LogError($"Caught exception while authenticating : {fbEx.Message}, {fbEx.Reason.ToString()}");
             await PopupUtils.PopAllPopupsAsync(true);
             switch (fbEx.Reason)
             {
@@ -197,8 +204,10 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         catch (Exception ex)
         {
             // Log exception
+            _logger.LogError($"Caught exception while authenticating : {ex.Message}");
             await PopupUtils.PopAllPopupsAsync(true);
         }
+
         IsLoggingNow = false;
     }
 
@@ -224,7 +233,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         // yup ... 
         await Shell.Current.GoToAsync("..");
     }
-    
+
     [RelayCommand]
     public void PasswordEyeFlicker()
     {
@@ -238,8 +247,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
             PasswordEyeIcon = _eyeOpenIcon;
         }
     }
-    
-    
+
+
     [RelayCommand]
     public void PasswordValidationEyeFlicker()
     {

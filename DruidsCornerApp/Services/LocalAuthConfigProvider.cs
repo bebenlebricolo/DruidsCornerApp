@@ -9,6 +9,7 @@ namespace DruidsCornerApp.Services;
 /// </summary>
 public class LocalAuthConfigProvider : IAuthConfigProvider
 {
+    public const string DefaultConfigFileName = "AuthConfig.json";
     private static Stream BuildResourceStream(string name)
     {
         var assembly = Assembly.GetExecutingAssembly();
@@ -23,12 +24,20 @@ public class LocalAuthConfigProvider : IAuthConfigProvider
     /// <summary>
     /// Retrieves authentication configuration from local resources
     /// </summary>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <returns>AuthConfig object, parsed from filestream of empty object</returns>
     public async Task<AuthConfig> GetAuthConfigAsync()
     {
-        const string resourceName = "DruidsCornerApp/AuthConfig.json";
-        var stream = BuildResourceStream(resourceName);
+        return await GetAuthConfigAsync(DefaultConfigFileName);
+    }
+    
+    /// <summary>
+    /// Retrieves authentication configuration from local resources
+    /// </summary>
+    /// <param name="name">Configuration file name</param>
+    /// <returns>AuthConfig object, parsed from filestream of empty object</returns>
+    public async Task<AuthConfig> GetAuthConfigAsync(string name)
+    {
+        var stream = BuildResourceStream(name);
 
         var authConfig = await JsonSerializer.DeserializeAsync<AuthConfig>(stream, new JsonSerializerOptions()
         {
@@ -44,22 +53,24 @@ public class LocalAuthConfigProvider : IAuthConfigProvider
         return authConfig;
     }
 
+    /// <summary>
+    /// Retrieves authentication configuration from local resources
+    /// Synchronous version of the <see cref="GetAuthConfigAsync()"/> method.
+    /// </summary>
+    /// <returns>AuthConfig object, parsed from filestream of empty object</returns>
     public AuthConfig GetAuthConfig()
     {
-        const string resourceName = "DruidsCornerApp/AuthConfig.json";
-        var stream = BuildResourceStream(resourceName);
-
-        var authConfig = JsonSerializer.Deserialize<AuthConfig>(stream, new JsonSerializerOptions()
-        {
-            // Fancy options there ..
-        });
-        
-        // Reject null results, or maybe throw an exception instead ?
-        if (authConfig == null)
-        {
-            return new AuthConfig();
-        }
-
-        return authConfig;
+        return Task.Run(async () => await GetAuthConfigAsync()).Result;
+    }
+    
+    /// <summary>
+    /// Retrieves authentication configuration from local resources
+    /// Synchronous version of the <see cref="GetAuthConfigAsync()"/> method.
+    /// </summary>
+    /// <param name="name">Configuration file name</param>
+    /// <returns>AuthConfig object, parsed from filestream of empty object</returns>
+    public AuthConfig GetAuthConfig(string name)
+    {
+        return Task.Run(async () => await GetAuthConfigAsync(name)).Result;
     }
 }

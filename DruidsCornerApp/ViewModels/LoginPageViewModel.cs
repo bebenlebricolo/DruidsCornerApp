@@ -4,6 +4,7 @@ using DruidsCornerApp.Views;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
 using Firebase.Auth;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Platform;
 using Mopups.Services;
 
@@ -22,6 +23,7 @@ public partial class LoginPageViewModel : BaseViewModel
     private readonly ISecureStorageService _secureStorageService;
     private uint _loginErrorCounter = 0;
 
+    private readonly ILogger<LoginPageViewModel> _logger;
 
     [ObservableProperty]
     private string _email = string.Empty;
@@ -39,19 +41,20 @@ public partial class LoginPageViewModel : BaseViewModel
     private ImageSource _eyeClosedIcon;
 
 
-    public LoginPageViewModel(IAuthenticationService authenticationService,
-                              ISecureStorageService secureStorageService)
+    public LoginPageViewModel(ILogger<LoginPageViewModel> logger,
+                              IAuthenticationService authenticationService,
+                              ISecureStorageService secureStorageService) : base("Login", false)
     {
-        Title = "Login";
+        _logger = logger;
         _authenticationService = authenticationService;
         _secureStorageService = secureStorageService;
-        
+
         _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
         _eyeClosedIcon = ImageSource.FromFile("eye_closed.svg");
 
         EyeIcon = _eyeClosedIcon;
     }
-    
+
     [RelayCommand]
     public async Task BackClicked(CancellationToken cancellationToken)
     {
@@ -79,7 +82,7 @@ public partial class LoginPageViewModel : BaseViewModel
             Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
         }
 #endif
-        
+
         var loginPage = (Shell.Current.CurrentPage as LoginPage)!;
 
         if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Email))
@@ -161,25 +164,25 @@ public partial class LoginPageViewModel : BaseViewModel
                         await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
                         break;
                 }
+
                 Password = "";
                 loginPage.ClearPassword();
             }
             catch (AuthenticationException ex)
             {
+                _logger.LogError($"Caught exception while authenticating : {ex.Message}, {ex.Error.ToString()}");
                 // Pop the login popup and show the error one
                 await PopupUtils.PopAllPopupsAsync(false);
                 await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
                 Password = "";
                 loginPage.ClearPassword();
-
             }
-            catch(System.Exception)
+            catch (System.Exception)
             {
                 await PopupUtils.PopAllPopupsAsync(false);
                 loginPage.ClearPassword();
                 Password = "";
                 loginPage.ClearPassword();
-
             }
         }
     }

@@ -5,6 +5,7 @@ using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Microsoft.Extensions.Logging;
 using AuthenticationException = DruidsCornerApp.Models.Exceptions.AuthenticationException;
 
 namespace DruidsCornerApp.Services;
@@ -20,13 +21,14 @@ using Firebase.Auth;
 public class AuthenticationService : IAuthenticationService
 {
     // private static FirebaseApp? _fbApp = null;
-    private static FirebaseAuthClient _fbAuthClient;
-    private readonly IAuthConfigProvider _authConfigProvider;
+    private static FirebaseAuthClient? _fbAuthClient;
+    private readonly ILogger<AuthenticationService> _logger;
 
-    public AuthenticationService(IAuthConfigProvider authConfigProvider)
+    public AuthenticationService(ILogger<AuthenticationService> logger, 
+                                 IAuthConfigProvider authConfigProvider)
     {
-        _authConfigProvider = authConfigProvider;
-        var authConfig = _authConfigProvider.GetAuthConfig();
+        _logger = logger;
+        var authConfig = authConfigProvider.GetAuthConfig();
         var config = new FirebaseAuthConfig
         {
             ApiKey = authConfig.ApiKey,
@@ -48,7 +50,7 @@ public class AuthenticationService : IAuthenticationService
     /// <param name="userArgs">User record arguments, coming from UI</param>
     /// <param name="cancellationToken">Used to monitor and abort operations that are too long.</param>
     /// <returns>New user record</returns>
-    /// <exception cref="UserAlreadyExistException"></exception>
+    /// <exception cref="System.Security.Authentication.AuthenticationException"></exception>
     public async Task<UserCredential> CreateNewUserAsync(UserRecordArgs userArgs, CancellationToken cancellationToken)
     {
         // var auth = FirebaseAuth.GetAuth(_fbApp);
@@ -60,7 +62,7 @@ public class AuthenticationService : IAuthenticationService
         }
         catch (Firebase.Auth.FirebaseAuthException fbEx)
         {
-            // Todo : Log something here
+            _logger.LogError($"Caught exception from firebase : {fbEx.Message}, reason = {fbEx.Reason.ToString()}");
             if (fbEx.Reason == AuthErrorReason.EmailExists)
             {
                 throw new AuthenticationException("Email already exist", AuthenticationError.UserAlreadyExist);
@@ -81,9 +83,9 @@ public class AuthenticationService : IAuthenticationService
             var authenticatedUser = await _fbAuthClient!.SignInWithEmailAndPasswordAsync(email, password);
             token = await authenticatedUser.User.GetIdTokenAsync();
         }
-        catch (FirebaseAdmin.Auth.FirebaseAuthException)
+        catch (FirebaseAdmin.Auth.FirebaseAuthException fbEx)
         {
-            // Todo log error here
+            _logger.LogError($"Caught exception from firebase : {fbEx.Message}, reason = {fbEx.ErrorCode.ToString()}");
             throw;
         }
 
@@ -101,5 +103,4 @@ public class AuthenticationService : IAuthenticationService
     {
         return await _fbAuthClient!.User.GetIdTokenAsync(true);
     }
-    
 }

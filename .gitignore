@@ -6,6 +6,7 @@
 
 # Local configuration
 AuthConfig.json
+google-services.json
 
 # Development binaries
 [Bb]uild

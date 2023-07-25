@@ -18,7 +18,7 @@
 		<ApplicationTitle>DruidsCornerApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.druidscornerapp</ApplicationId>
+		<ApplicationId>com.calciferlimited.druidscornerapp</ApplicationId>
 		<ApplicationIdGuid>d465d3bc-0385-4c44-9fc5-46c0ceebd2e1</ApplicationIdGuid>
 
 		<!-- Versions -->

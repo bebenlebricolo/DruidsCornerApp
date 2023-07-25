@@ -3,6 +3,8 @@
 .vscode
 .idea
 
+# Dotsettings from JetBrains' IDE
+*sln.DotSettings.user
 
 # Local configuration
 AuthConfig.json

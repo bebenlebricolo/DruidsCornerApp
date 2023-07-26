@@ -112,6 +112,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Docs\" />
 	  <Folder Include="Resources\Images\Icons\" />
 	</ItemGroup>
 

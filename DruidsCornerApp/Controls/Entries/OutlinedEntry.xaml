@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:DruidsCornerApp.Controls.Entries"
              x:Class="DruidsCornerApp.Controls.Entries.OutlinedEntry"
              x:DataType="local:OutlinedEntry"
-             x:Name="OutlinedFrame">
+             x:Name="CustomControl">
     
     <Frame x:Name="EntryFrame"
            x:FieldModifier="public"
            Padding="15,0"
-           CornerRadius="{Binding CornerRadius, Source={x:Reference OutlinedFrame}}" 
-           BackgroundColor="{Binding BackgroundColor , Source={x:Reference OutlinedFrame}}"
-           BorderColor="{Binding BorderColor, Source={x:Reference OutlinedFrame}}">
+           CornerRadius="{Binding CornerRadius, Source={x:Reference CustomControl}}" 
+           BackgroundColor="{Binding BackgroundColor , Source={x:Reference CustomControl}}"
+           BorderColor="{Binding BorderColor, Source={x:Reference CustomControl}}">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30" />
@@ -22,7 +22,7 @@
             <!-- <HorizontalStackLa1yout Spacing="10"> -->
             <Image x:Name="EntryIcon" 
                    x:FieldModifier="public"
-                   Source="{Binding Icon, Source={x:Reference OutlinedFrame}}"
+                   Source="{Binding Icon, Source={x:Reference CustomControl}}"
                    Grid.Column="0"
                    Grid.Row="0"
                    HeightRequest="13"
@@ -35,11 +35,11 @@
                    x:FieldModifier="public"
                    Grid.Column="1"
                    Grid.Row="0"
-                   Text="{Binding Text, Source={x:Reference OutlinedFrame}}"
-                   Placeholder="{Binding Placeholder, Source={x:Reference OutlinedFrame}}"
-                   PlaceholderColor="{Binding PlaceholderColor, Source={x:Reference OutlinedFrame}}"
-                   IsPassword="{Binding IsPassword, Source={x:Reference OutlinedFrame}}"
-                   TextColor="{Binding TextColor, Source={x:Reference OutlinedFrame}}"
+                   Text="{Binding Text, Source={x:Reference CustomControl}}"
+                   Placeholder="{Binding Placeholder, Source={x:Reference CustomControl}}"
+                   PlaceholderColor="{Binding PlaceholderColor, Source={x:Reference CustomControl}}"
+                   IsPassword="{Binding IsPassword, Source={x:Reference CustomControl}}"
+                   TextColor="{Binding TextColor, Source={x:Reference CustomControl}}"
                    HorizontalOptions="Fill" />
         </Grid>
     </Frame>

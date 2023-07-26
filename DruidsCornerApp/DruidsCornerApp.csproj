@@ -74,6 +74,10 @@
 	  <Compile Remove="Platforms\MacCatalyst\**" />
 	  <Compile Remove="Platforms\Tizen\**" />
 	  <Compile Remove="Platforms\Windows\**" />
+	  <Compile Update="Controls\Popups\BasePopup.xaml.cs">
+	    <DependentUpon>BasePopup.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,6 +92,9 @@
 	  <MauiXaml Remove="Platforms\MacCatalyst\**" />
 	  <MauiXaml Remove="Platforms\Tizen\**" />
 	  <MauiXaml Remove="Platforms\Windows\**" />
+	  <MauiXaml Update="Controls\Popups\BasePopup.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -112,6 +119,10 @@
 	  <EmbeddedResource Include=".config\AuthConfig.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AdditionalFiles Include="Controls\Popups\BasePopup.xaml" />
 	</ItemGroup>
 
 </Project>

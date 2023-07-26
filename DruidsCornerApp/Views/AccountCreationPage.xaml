@@ -5,6 +5,7 @@
              x:Class="DruidsCornerApp.Views.AccountCreationPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
+             xmlns:customEntries="clr-namespace:DruidsCornerApp.Controls.Entries"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodel:AccountCreationPageViewModel">
     <ContentPage.Content>
@@ -29,15 +30,15 @@
 
                 <!-- Header -->
                 <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
-                    
+
                     <Grid RowDefinitions="*"
                           ColumnDefinitions="40,*,Auto"
                           Padding="10"
                           HorizontalOptions="Fill">
-                        <ImageButton Source="back.svg" 
+                        <ImageButton Source="back.svg"
                                      Grid.Row="0"
                                      Grid.Column="0"
-                                     Aspect="AspectFit" 
+                                     Aspect="AspectFit"
                                      HeightRequest="28"
                                      HorizontalOptions="Start"
                                      Command="{Binding Path=BackButtonClickedCommand}">
@@ -51,7 +52,7 @@
                                FontSize="20"
                                TextColor="WhiteSmoke"
                                HorizontalOptions="End"
-                               VerticalOptions="Center"/>
+                               VerticalOptions="Center" />
                     </Grid>
                 </Frame>
 
@@ -62,56 +63,31 @@
                         <!-- Username/email address group -->
                         <VerticalStackLayout x:Name="EmailVerticalStackLayout" Padding="0,10" Spacing="10">
                             <Label Text="Email address *" TextColor="#304057" />
-                            <Frame x:Name="EmailEntryFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige"
-                                   BorderColor="#aaff6a00">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <!-- <HorizontalStackLayout Spacing="10"> -->
-                                    <Image Source="mail.svg"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           HeightRequest="13"
-                                           Aspect="AspectFit">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Entry x:Name="EmailEntry"
-                                           Grid.Column="1"
-                                           Grid.Row="0"
-                                           Text="{Binding Email}"
-                                           Placeholder="someone@somewhere.com"
-                                           PlaceholderColor="#44808080"
-                                           TextColor="#ff6a00" HorizontalOptions="Fill" />
-                                </Grid>
-                            </Frame>
+                            <customEntries:OutlinedEntry x:Name="EmailEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding Email}"
+                                                         TextColor="#ff6a00"
+                                                         Icon="mail.svg"
+                                                         CornerRadius="25"
+                                                         Placeholder="someone@somewhere.com"
+                                                         PlaceholderColor="#44808080">
+
+                            </customEntries:OutlinedEntry>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Padding="0,10" Spacing="10">
                             <Label Text="Display name" TextColor="#304057" />
-                            <Frame Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="20" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="🦉"
-                                           Grid.Row="0"
-                                           Grid.Column="0"
-                                           VerticalOptions="Center" />
-                                    <Entry x:Name="NameEntry"
-                                           Text="{Binding DisplayName}"
-                                           Grid.Row="0"
-                                           Grid.Column="1"
-                                           Placeholder="my name here"
-                                           PlaceholderColor="#44808080"
-                                           TextColor="#ff6a00" />
-                                </Grid>
-                            </Frame>
+                            <customEntries:OutlinedEntry x:Name="NameEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding DisplayName}"
+                                                         TextColor="#ff6a00" 
+                                                         Icon="mail.svg"
+                                                         CornerRadius="25"
+                                                         Placeholder="my name here"
+                                                         PlaceholderColor="#44808080">
+                            </customEntries:OutlinedEntry>
                         </VerticalStackLayout>
 
                         <!-- Password group -->
@@ -146,7 +122,7 @@
                                            TextColor="#ff6a00"
                                            MinimumWidthRequest="150"
                                            HorizontalOptions="Start"
-                                           VerticalOptions="Center" >
+                                           VerticalOptions="Center">
                                         <Entry.Behaviors>
                                             <toolkit:EventToCommandBehavior
                                                 EventName="TextChanged"

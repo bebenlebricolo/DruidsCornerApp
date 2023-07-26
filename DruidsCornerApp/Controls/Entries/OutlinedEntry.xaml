@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:DruidsCornerApp.Controls.Entries"
+             x:Class="DruidsCornerApp.Controls.Entries.OutlinedEntry"
+             x:DataType="local:OutlinedEntry"
+             x:Name="OutlinedFrame">
+    
+    <Frame x:Name="EntryFrame"
+           x:FieldModifier="public"
+           Padding="15,0"
+           CornerRadius="{Binding CornerRadius, Source={x:Reference OutlinedFrame}}" 
+           BackgroundColor="{Binding BackgroundColor , Source={x:Reference OutlinedFrame}}"
+           BorderColor="{Binding BorderColor, Source={x:Reference OutlinedFrame}}">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- <HorizontalStackLa1yout Spacing="10"> -->
+            <Image x:Name="EntryIcon" 
+                   x:FieldModifier="public"
+                   Source="{Binding Icon, Source={x:Reference OutlinedFrame}}"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HeightRequest="13"
+                   Aspect="AspectFit">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                </Image.Behaviors>
+            </Image>
+            <Entry x:Name="EntryText"
+                   x:FieldModifier="public"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Text="{Binding Text, Source={x:Reference OutlinedFrame}}"
+                   Placeholder="{Binding Placeholder, Source={x:Reference OutlinedFrame}}"
+                   PlaceholderColor="{Binding PlaceholderColor, Source={x:Reference OutlinedFrame}}"
+                   IsPassword="{Binding IsPassword, Source={x:Reference OutlinedFrame}}"
+                   TextColor="{Binding TextColor, Source={x:Reference OutlinedFrame}}"
+                   HorizontalOptions="Fill" />
+        </Grid>
+    </Frame>
+</ContentView>

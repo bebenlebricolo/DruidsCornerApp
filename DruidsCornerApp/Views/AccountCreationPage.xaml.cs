@@ -94,8 +94,8 @@ public partial class AccountCreationPage : ContentPage
         // Otherwise the _emailHintLabel should still be pointing at the right object in memory (referenced)
         if (isNew)
         {
-            var parentLayout = (EmailEntryFrame.Parent as VerticalStackLayout)!;
-            var emailFrameIndex = parentLayout.IndexOf(EmailEntryFrame);
+            var parentLayout = (EmailVerticalStackLayout as VerticalStackLayout)!;
+            var emailFrameIndex = parentLayout.IndexOf(EmailEntry);
             parentLayout.Insert(emailFrameIndex + 1, _emailHintLabel);
         }
     }
@@ -111,7 +111,7 @@ public partial class AccountCreationPage : ContentPage
             return true;
         }
         
-        var parentLayout = (EmailEntryFrame.Parent as VerticalStackLayout)!;
+        var parentLayout = (EmailVerticalStackLayout.Parent as VerticalStackLayout)!;
         var removed = parentLayout.Remove(_emailHintLabel);
 
         if (removed)

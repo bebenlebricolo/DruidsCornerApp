@@ -119,7 +119,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         // Preprocess ...
         if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(PasswordValidation))
         {
-            await Shell.Current.DisplayAlert(CredentialsErrorStr, "Password validation differ from original Password", "Ok");
+            await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Password validation differ from original Password");
+            return;
         }
 
         // Preprocess data
@@ -128,6 +129,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
         {
             page.AddPasswordHint("⚠ Password and its validation counterpart must exactly match !");
             await PopupUtils.CreateAndShowErrorPopup(CredentialsErrorStr, "Password validation differ from original Password");
+            return;
         }
 
         // Create account

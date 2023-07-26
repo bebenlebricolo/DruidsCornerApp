@@ -1,5 +1,5 @@
-﻿using DruidsCornerApp.Controls;
-using DruidsCornerApp.Views;
+﻿using DruidsCornerApp.Views;
+using DruidsCornerApp.Controls.Entries;
 
 namespace DruidsCornerApp;
 

@@ -91,3 +91,13 @@ keytool -list -v -alias <key alias> -keystore <keyfile location>
 *Note : I experienced issues with the **default jvm runtime** (hence keytool) on my machine as it **gave a 32-wide SHA-1 fingerprint**, because the default jvm 
 happened to not be the one I needed.
 So ensure the keytool used comes from the **open-jdk 11** !*
+
+# Sign the .apk in both Debug and Release modes (for debug and deployment purposes)
+In Rider :
+select ProjectProperties > <Debug | Release> "Sign the .APK file using the next keystore information" > File in the blanks !
+```
+* Keystore : <path to the keystore file>
+* Password : <Keystore password>
+* Keystore alias : <Keystore alias>
+* Keystore alias password : <Keystore alias password>
+```

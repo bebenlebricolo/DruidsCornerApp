@@ -5,6 +5,7 @@ using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
 using Firebase.Auth;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Platform;
 using Mopups.Services;
 
@@ -120,6 +121,10 @@ public partial class LoginPageViewModel : BaseViewModel
             }
             catch (Firebase.Auth.FirebaseAuthException fbEx)
             {
+#if __ANDROID__
+
+#endif
+                
                 await PopupUtils.PopAllPopupsAsync(false);
                 switch (fbEx.Reason)
                 {

@@ -40,8 +40,8 @@ public partial class AccountCreationPage : ContentPage
         // Otherwise the _passwordHintLabel should still be pointing at the right object in memory (referenced)
         if (isNew)
         {
-            var parentLayout = (PasswordValidationFrame.Parent as VerticalStackLayout)!;
-            var passwordIndexInChildren = parentLayout.IndexOf(PasswordValidationFrame);
+            var parentLayout = (PasswordValidationEntry.Parent as VerticalStackLayout)!;
+            var passwordIndexInChildren = parentLayout.IndexOf(PasswordValidationEntry);
             parentLayout.Insert(passwordIndexInChildren + 1, _passwordHintLabel);
         }
     }
@@ -57,7 +57,7 @@ public partial class AccountCreationPage : ContentPage
             return true;
         }
         
-        var parentLayout = (PasswordValidationFrame.Parent as VerticalStackLayout)!;
+        var parentLayout = (PasswordValidationEntry.Parent as VerticalStackLayout)!;
         var removed = parentLayout.Remove(_passwordHintLabel);
 
         if (removed)

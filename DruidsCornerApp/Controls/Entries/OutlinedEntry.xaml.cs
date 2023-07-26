@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Behaviors;
+
 namespace DruidsCornerApp.Controls.Entries;
 
 public partial class OutlinedEntry : ContentView
@@ -17,7 +19,7 @@ public partial class OutlinedEntry : ContentView
     public string Placeholder
     {
         get => (string)GetValue(PlaceholderProperty);
-        set 
+        set
         {
             SetValue(PlaceholderProperty, value);
             OnPropertyChanged();
@@ -84,6 +86,36 @@ public partial class OutlinedEntry : ContentView
         }
     }
 
+    public double IconHeightRequest
+    {
+        get => (double)GetValue(IconHeightRequestProperty);
+        set
+        {
+            SetValue(IconHeightRequestProperty, value);
+            OnPropertyChanged();
+        }
+    }
+
+    public double IconWidthRequest
+    {
+        get => (double)GetValue(IconWidthRequestProperty);
+        set
+        {
+            SetValue(IconWidthRequestProperty, value);
+            OnPropertyChanged();
+        }
+    }
+
+    public Color IconColor
+    {
+        get => (Color)GetValue(IconColorProperty);
+        set
+        {
+            SetValue(IconColorProperty, value);
+            OnPropertyChanged();
+        }
+    }
+
     public bool IsPassword
     {
         get => (bool)GetValue(IsPasswordProperty);
@@ -102,21 +134,21 @@ public partial class OutlinedEntry : ContentView
     public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text),
                                                                           typeof(string),
                                                                           typeof(OutlinedEntry),
-                                                                          defaultBindingMode:BindingMode.TwoWay,
+                                                                          defaultBindingMode: BindingMode.TwoWay,
                                                                           propertyChanged: OnTextPropertyChanged
                                                                          );
 
     public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder),
                                                                                  typeof(string),
                                                                                  typeof(OutlinedEntry),
-                                                                                 defaultBindingMode:BindingMode.TwoWay,
+                                                                                 defaultBindingMode: BindingMode.TwoWay,
                                                                                  propertyChanged: OnPlaceholderPropertyChanged
                                                                                 );
 
     public static BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor),
                                                                                typeof(Color),
                                                                                typeof(OutlinedEntry),
-                                                                               defaultBindingMode:BindingMode.TwoWay,
+                                                                               defaultBindingMode: BindingMode.TwoWay,
                                                                                propertyChanged: OnTextColorPropertyChanged
                                                                               );
 
@@ -124,14 +156,14 @@ public partial class OutlinedEntry : ContentView
     public static BindableProperty PlaceholderColorProperty = BindableProperty.Create(nameof(PlaceholderColor),
                                                                                       typeof(Color),
                                                                                       typeof(OutlinedEntry),
-                                                                                      defaultBindingMode:BindingMode.TwoWay,
+                                                                                      defaultBindingMode: BindingMode.TwoWay,
                                                                                       propertyChanged: OnPlaceholderColorPropertyChanged
                                                                                      );
 
     public new static BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor),
                                                                                          typeof(Color),
                                                                                          typeof(OutlinedEntry),
-                                                                                         defaultBindingMode:BindingMode.TwoWay,
+                                                                                         defaultBindingMode: BindingMode.TwoWay,
                                                                                          propertyChanged: OnBackgroundColorPropertyChanged
                                                                                         );
 
@@ -144,21 +176,42 @@ public partial class OutlinedEntry : ContentView
     public static BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius),
                                                                                   typeof(double),
                                                                                   typeof(OutlinedEntry),
-                                                                                  defaultBindingMode:BindingMode.TwoWay,
+                                                                                  defaultBindingMode: BindingMode.TwoWay,
                                                                                   propertyChanged: OnCornerRadiusPropertyChanged
                                                                                  );
 
     public static BindableProperty IconProperty = BindableProperty.Create(nameof(Icon),
                                                                           typeof(string),
                                                                           typeof(OutlinedEntry),
-                                                                          defaultBindingMode:BindingMode.TwoWay,
+                                                                          defaultBindingMode: BindingMode.TwoWay,
                                                                           propertyChanged: OnIconPropertyChanged
                                                                          );
+
+    public static BindableProperty IconHeightRequestProperty = BindableProperty.Create(nameof(IconHeightRequest),
+                                                                                       typeof(double),
+                                                                                       typeof(OutlinedEntry),
+                                                                                       defaultBindingMode: BindingMode.TwoWay,
+                                                                                       propertyChanged: OnIconHeightRequestPropertyChanged
+                                                                                      );
+
+    public static BindableProperty IconWidthRequestProperty = BindableProperty.Create(nameof(IconWidthRequest),
+                                                                                       typeof(double),
+                                                                                       typeof(OutlinedEntry),
+                                                                                       defaultBindingMode: BindingMode.TwoWay,
+                                                                                       propertyChanged: OnIconWidthRequestPropertyChanged
+                                                                                      );
+
+    public static BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor),
+                                                                               typeof(Color),
+                                                                               typeof(OutlinedEntry),
+                                                                               defaultBindingMode: BindingMode.TwoWay,
+                                                                               propertyChanged: OnIconColorPropertyChanged
+                                                                              );
 
     public static BindableProperty IsPasswordProperty = BindableProperty.Create(nameof(IsPassword),
                                                                                 typeof(bool),
                                                                                 typeof(OutlinedEntry),
-                                                                                defaultBindingMode:BindingMode.TwoWay,
+                                                                                defaultBindingMode: BindingMode.TwoWay,
                                                                                 propertyChanged: OnIsPasswordPropertyChanged
                                                                                );
 
@@ -235,6 +288,31 @@ public partial class OutlinedEntry : ContentView
         var control = (OutlinedEntry)bindable;
         control.Icon = (string)newvalue;
         control.EntryIcon.Source = ImageSource.FromFile(control.Icon);
+        control.InvalidateLayout();
+    }
+    
+    private static void OnIconHeightRequestPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+    {
+        var control = (OutlinedEntry)bindable;
+        control.IconHeightRequest = (double)newvalue;
+        control.EntryIcon.HeightRequest = control.IconHeightRequest ;
+        control.InvalidateLayout();
+    }
+    
+    private static void OnIconWidthRequestPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+    {
+        var control = (OutlinedEntry)bindable;
+        control.IconWidthRequest = (double)newvalue;
+        control.EntryIcon.WidthRequest = control.IconWidthRequest;
+        control.InvalidateLayout();
+    }
+    
+    private static void OnIconColorPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+    {
+        var control = (OutlinedEntry)bindable;
+        control.IconColor = (Color) newvalue;
+        var behavior = (IconTintColorBehavior)control.EntryIcon.Behaviors[0];
+        behavior.TintColor = control.IconColor;
         control.InvalidateLayout();
     }
 

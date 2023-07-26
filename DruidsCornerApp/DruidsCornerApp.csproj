@@ -34,6 +34,23 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+	  <AndroidKeyStore>true</AndroidKeyStore>
+	  <AndroidSigningKeyStore>/home/groben/.android/debug.keystore</AndroidSigningKeyStore>
+	  <AndroidSigningStorePass>android</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>androiddebugkey</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>android</AndroidSigningKeyPass>
+	  <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+	  <AndroidKeyStore>true</AndroidKeyStore>
+	  <AndroidSigningKeyStore>/home/groben/.android/debug.keystore</AndroidSigningKeyStore>
+	  <AndroidSigningStorePass>android</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>androiddebugkey</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>android</AndroidSigningKeyPass>
+	</PropertyGroup>
+
 <!--	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">-->
 <!--	  <AndroidSupportedAbis>armeabi-v7a;x86_64</AndroidSupportedAbis>-->
 <!--	</PropertyGroup>-->

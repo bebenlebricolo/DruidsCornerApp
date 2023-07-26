@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
+             xmlns:customEntries="clr-namespace:DruidsCornerApp.Controls.Entries"
              x:Class="DruidsCornerApp.Views.LoginPage"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodel:LoginPageViewModel"
@@ -52,75 +53,49 @@
                 <!-- Username/email address group -->
                 <VerticalStackLayout Padding="0,10" Spacing="10">
                     <Label Text="Email address" TextColor="#304057" />
-                    <Frame Padding="15,0" CornerRadius="25" BackgroundColor="Beige" BorderColor="#aaff6a00">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="20" />
-                            </Grid.ColumnDefinitions>
-                            <Image Source="mail.svg"
-                                   Grid.Column="0"
-                                   HeightRequest="13"
-                                   Aspect="AspectFit"
-                                   HorizontalOptions="Start">
-                                <Image.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                </Image.Behaviors>
-                            </Image>
-                            <Entry x:Name="EmailEntry"
-                                   Grid.Column="1"
-                                   Text="{Binding Email}"
-                                   Placeholder="someone@somewhere.com"
-                                   TextColor="#ff6a00"
-                                   MinimumWidthRequest="300" />
-                        </Grid>
-                    </Frame>
+                    <customEntries:OutlinedEntry x:Name="EmailEntry"
+                                                 BackgroundColor="Beige"
+                                                 BorderColor="#aaff6a00"
+                                                 Text="{Binding Email}"
+                                                 TextColor="#ff6a00"
+                                                         
+                                                 Icon="mail.svg"
+                                                 IconColor="#ff6a00"
+                                                 IconHeightRequest="15"
+                                                 IconWidthRequest="15"
+                                                         
+                                                 CornerRadius="25"
+                                                 Placeholder="someone@somewhere.com"
+                                                 PlaceholderColor="#44808080">
+
+                    </customEntries:OutlinedEntry>
                 </VerticalStackLayout>
 
                 <!-- Password group -->
                 <VerticalStackLayout x:Name="PasswordVerticalStackLayout" Padding="0,10" Spacing="5">
                     <Label Text="Password" TextColor="#304057" />
-                    <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige"
-                           BorderColor="#aaff6a00">
-                        <Grid RowDefinitions="Auto">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="20" />
-                            </Grid.ColumnDefinitions>
-                            <!-- <HorizontalStackLayout x:Name="PasswordHorizontalStackLayout" Spacing="10"> -->
-                            <Image Source="padlock.svg"
-                                   Grid.Column="0"
-                                   HeightRequest="20"
-                                   Aspect="AspectFit"
-                                   HorizontalOptions="Start">
-                                <Image.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                </Image.Behaviors>
-                            </Image>
-                            <Entry x:Name="PasswordEntry"
-                                   Grid.Column="1"
-                                   Text="{Binding Password}"
-                                   VerticalOptions="Center"
-                                   Placeholder="*******"
-                                   PlaceholderColor="Grey"
-                                   InputTransparent="False"
-                                   IsPassword="{Binding PasswordObfuscated}" TextColor="#ff6a00"
-                                   MinimumWidthRequest="300" />
-                            <ImageButton Source="{Binding EyeIcon}"
-                                         Grid.Column="2"
-                                         Padding="1"
-                                         HeightRequest="20"
-                                         Aspect="AspectFit"
-                                         HorizontalOptions="Start"
-                                         Command="{Binding EyeFlickerCommand}">
-                                <Image.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                </Image.Behaviors>
-                            </ImageButton>
-                        </Grid>
-                    </Frame>
+                    <customEntries:OutlinedPasswordEntry x:Name="PasswordEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding Password}"
+                                                         TextColor="#ff6a00"
+
+                                                         Icon="padlock.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="18"
+                                                         IconWidthRequest="18"
+
+                                                         HideIcon="eye_closed.png"
+                                                         ShowIcon="eye_open.svg"
+                                                         HideShowIconHeightRequest="18"
+                                                         HideShowIconWidthRequest="18"
+                                                         HideShowIconColor="#ff6a00"
+
+                                                         CornerRadius="25"
+                                                         Placeholder="******"
+                                                         PlaceholderColor="#44808080">
+
+                    </customEntries:OutlinedPasswordEntry>
                 </VerticalStackLayout>
 
                 <!-- Separator -->

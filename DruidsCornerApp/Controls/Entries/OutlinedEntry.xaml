@@ -14,7 +14,8 @@
            CornerRadius="{Binding CornerRadius, Source={x:Reference CustomControl}}" 
            BackgroundColor="{Binding BackgroundColor , Source={x:Reference CustomControl}}"
            BorderColor="{Binding BorderColor, Source={x:Reference CustomControl}}">
-        <Grid >
+        <Grid x:Name="GridContent"
+              x:FieldModifier="protected">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="*" />
@@ -25,7 +26,7 @@
                    Source="{Binding Icon, Source={x:Reference CustomControl}}"
                    Grid.Column="0"
                    Grid.Row="0"
-                   HeightRequest="13"
+                   HeightRequest="15"
                    Aspect="AspectFit">
                 <Image.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" />

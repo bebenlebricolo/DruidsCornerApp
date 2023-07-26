@@ -18,7 +18,7 @@ public partial class LoginPage : ContentPage
 
     public void SetPasswordEntryOutlineColor(Color color)
     {
-        PasswordFrame.BorderColor = color;
+        PasswordEntry.BorderColor = color;
     }
 
     /// <summary>
@@ -47,15 +47,15 @@ public partial class LoginPage : ContentPage
         // Otherwise the _passwordHintLabel should still be pointing at the right object in memory (referenced)
         if (isNew)
         {
-            var parentLayout = PasswordFrame.Parent as VerticalStackLayout;
-            var passwordIndexInChildren = parentLayout!.IndexOf(PasswordFrame);
+            var parentLayout = PasswordEntry.Parent as VerticalStackLayout;
+            var passwordIndexInChildren = parentLayout!.IndexOf(PasswordEntry);
             parentLayout.Insert(passwordIndexInChildren + 1, _passwordHintLabel);
         }
     }
     
     public Color GetPasswordEntryOutlineColor()
     {
-        return PasswordFrame.BorderColor;
+        return PasswordEntry.BorderColor;
     }
 
     public void ClearPassword()

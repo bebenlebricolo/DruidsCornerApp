@@ -68,7 +68,12 @@
                                                          BorderColor="#aaff6a00"
                                                          Text="{Binding Email}"
                                                          TextColor="#ff6a00"
+                                                         
                                                          Icon="mail.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="15"
+                                                         IconWidthRequest="15"
+                                                         
                                                          CornerRadius="25"
                                                          Placeholder="someone@somewhere.com"
                                                          PlaceholderColor="#44808080">
@@ -84,6 +89,9 @@
                                                          Text="{Binding DisplayName}"
                                                          TextColor="#ff6a00" 
                                                          Icon="mail.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="15"
+                                                         IconWidthRequest="15"
                                                          CornerRadius="25"
                                                          Placeholder="my name here"
                                                          PlaceholderColor="#44808080">
@@ -93,118 +101,55 @@
                         <!-- Password group -->
                         <VerticalStackLayout x:Name="PasswordVerticalStackLayout" Padding="0,10" Spacing="5">
                             <Label Text="Password *" TextColor="#304057" />
-                            <Frame x:Name="PasswordFrame" Padding="15,0" CornerRadius="25" BackgroundColor="Beige"
-                                   BorderColor="#aaff6a00">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="30" />
-                                    </Grid.ColumnDefinitions>
-                                    <!-- <HorizontalStackLayout x:Name="PasswordHorizontalStackLayout" Spacing="10"> -->
-                                    <Image Source="padlock.svg"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           HeightRequest="20" Aspect="AspectFit"
-                                           HorizontalOptions="Start">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Entry x:Name="PasswordEntry"
-                                           Grid.Row="0"
-                                           Grid.Column="1"
-                                           Text="{Binding Password}"
-                                           Placeholder="******"
-                                           PlaceholderColor="#44808080"
-                                           InputTransparent="False"
-                                           IsPassword="{Binding PasswordObfuscated}"
-                                           TextColor="#ff6a00"
-                                           MinimumWidthRequest="150"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center">
-                                        <Entry.Behaviors>
-                                            <toolkit:EventToCommandBehavior
-                                                EventName="TextChanged"
-                                                Command="{Binding PasswordValidationTextChangedCommand}" />
-                                        </Entry.Behaviors>
-                                    </Entry>
-                                    <ImageButton Source="{Binding PasswordEyeIcon}"
-                                                 Grid.Column="2"
-                                                 HeightRequest="20"
-                                                 WidthRequest="18"
-                                                 Aspect="AspectFit"
-                                                 HorizontalOptions="End"
-                                                 Command="{Binding PasswordEyeFlickerCommand}">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                        </Image.Behaviors>
-                                    </ImageButton>
-                                </Grid>
-                            </Frame>
+                            <customEntries:OutlinedPasswordEntry x:Name="PasswordEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding Password}"
+                                                         TextColor="#ff6a00"
+                                                         
+                                                         Icon="padlock.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="18"
+                                                         IconWidthRequest="18"
+                                                         
+                                                         HideIcon="eye_closed.png"
+                                                         ShowIcon="eye_open.svg"
+                                                         HideShowIconHeightRequest="18"
+                                                         HideShowIconWidthRequest="18"
+                                                         HideShowIconColor="#ff6a00"
+                                                         
+                                                         CornerRadius="25"
+                                                         Placeholder="******"
+                                                         PlaceholderColor="#44808080">
+
+                            </customEntries:OutlinedPasswordEntry>
                         </VerticalStackLayout>
 
                         <!-- Password group -->
                         <VerticalStackLayout x:Name="PasswordValidationGroup" Padding="0,10" Spacing="5">
                             <Label Text="Password validation *" TextColor="#304057" />
-                            <Frame x:Name="PasswordValidationFrame" Padding="15,0" CornerRadius="25"
-                                   BackgroundColor="Beige" BorderColor="#aaff6a00">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="20" />
-                                        <ColumnDefinition Width="25" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <!-- <HorizontalStackLayout x:Name="PasswordValidationHorizontalStackLayout" Spacing="10"> -->
-                                    <Image Source="padlock.svg"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           HeightRequest="20" Aspect="AspectFit"
-                                           HorizontalOptions="Start">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Entry x:Name="PasswordValidationEntry"
-                                           Grid.Column="1"
-                                           Grid.Row="0"
-                                           Text="{Binding PasswordValidation}"
-                                           Placeholder="*****"
-                                           PlaceholderColor="#44808080"
-                                           InputTransparent="False"
-                                           IsPassword="{Binding PasswordValidationObfuscated}"
-                                           TextColor="#ff6a00"
-                                           MinimumWidthRequest="150"
-                                           VerticalOptions="Center"
-                                           HorizontalOptions="Start">
-                                        <Entry.Behaviors>
-                                            <toolkit:EventToCommandBehavior
-                                                EventName="TextChanged"
-                                                Command="{Binding PasswordValidationTextChangedCommand}" />
-                                        </Entry.Behaviors>
-                                    </Entry>
-                                    <ImageButton Source="{Binding PasswordValidationEyeIcon}"
-                                                 Grid.Column="3"
-                                                 HeightRequest="15"
-                                                 WidthRequest="18"
-                                                 Aspect="AspectFit"
-                                                 VerticalOptions="Center"
-                                                 HorizontalOptions="End"
-                                                 Command="{Binding PasswordValidationEyeFlickerCommand}">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
-                                        </Image.Behaviors>
-                                    </ImageButton>
-                                    <Label x:Name="PasswordValidationStatusTxtIcon"
-                                           Grid.Column="2"
-                                           Grid.Row="0"
-                                           VerticalOptions="Center"
-                                           Text="{Binding PasswordStatusTxtIcon}"
-                                           TextColor="{Binding PasswordStatusTxtIconColor}" />
-                                </Grid>
-                            </Frame>
+                            <customEntries:OutlinedPasswordEntry x:Name="PasswordValidationEntry"
+                                                                 BackgroundColor="Beige"
+                                                                 BorderColor="#aaff6a00"
+                                                                 Text="{Binding PasswordValidation}"
+                                                                 TextColor="#ff6a00"
+                                                                 
+                                                                 Icon="padlock.svg"
+                                                                 IconColor="#ff6a00"
+                                                                 IconHeightRequest="18"
+                                                                 IconWidthRequest="18"
+                                                                 
+                                                                 HideIcon="eye_closed.png"
+                                                                 ShowIcon="eye_open.svg"
+                                                                 HideShowIconHeightRequest="18"
+                                                                 HideShowIconWidthRequest="18"
+                                                                 HideShowIconColor="#ff6a00"
+                                                                 
+                                                                 CornerRadius="25"
+                                                                 Placeholder="******"
+                                                                 PlaceholderColor="#44808080">
+                            </customEntries:OutlinedPasswordEntry>
+                            
                         </VerticalStackLayout>
 
                         <!-- Separator -->

@@ -129,7 +129,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Docs\" />
 	  <Folder Include="Resources\Images\Icons\" />
 	</ItemGroup>
 
@@ -141,6 +140,19 @@
 
 	<ItemGroup>
 	  <AdditionalFiles Include="Controls\Popups\BasePopup.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include=".config\google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="..\Docs\ConnectingToFirebaseLinks.md">
+	    <Link>Docs\ConnectingToFirebaseLinks.md</Link>
+	  </Content>
+	  <Content Include="..\Docs\CustomizableControls.md">
+	    <Link>Docs\CustomizableControls.md</Link>
+	  </Content>
 	</ItemGroup>
 
 </Project>

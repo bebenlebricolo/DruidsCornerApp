@@ -34,7 +34,7 @@ Development on .net maui is a bit crooked, especially on Linux, so there is a li
 ```bash
 sudo pacman -S dotnet-runtime dotnet-sdk aspnet-runtime
 sudo pacman -S jdk11-openjdk
-sudo dotnet workload intall maui-android
+sudo dotnet workload install maui-android
 ```
 
 # Visual Studio Code Net MAUI extension configuration

@@ -90,7 +90,7 @@ public partial class LoginPageViewModel : BaseViewModel
         {
             Password = string.Empty;
             loginPage.SetPasswordEntryOutlineColor(Colors.Red);
-            loginPage.ClearPassword();
+            
             await PopupUtils.CreateAndShowErrorPopup("SignIn Error", "Invalid credentials");
         }
         else
@@ -171,7 +171,6 @@ public partial class LoginPageViewModel : BaseViewModel
                 }
 
                 Password = "";
-                loginPage.ClearPassword();
             }
             catch (AuthenticationException ex)
             {
@@ -180,14 +179,13 @@ public partial class LoginPageViewModel : BaseViewModel
                 await PopupUtils.PopAllPopupsAsync(false);
                 await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
                 Password = "";
-                loginPage.ClearPassword();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
+                _logger.LogError($"Caught exception while authenticating : {ex.Message}");
                 await PopupUtils.PopAllPopupsAsync(false);
-                loginPage.ClearPassword();
+                await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr, "Login encountered some issue");
                 Password = "";
-                loginPage.ClearPassword();
             }
         }
     }

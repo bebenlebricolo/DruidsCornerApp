@@ -147,12 +147,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="..\Docs\ConnectingToFirebaseLinks.md">
+	  <None Include="..\Docs\ConnectingToFirebaseLinks.md">
 	    <Link>Docs\ConnectingToFirebaseLinks.md</Link>
-	  </Content>
-	  <Content Include="..\Docs\CustomizableControls.md">
+	  </None>
+	  <None Include="..\Docs\CustomizableControls.md">
 	    <Link>Docs\CustomizableControls.md</Link>
-	  </Content>
+	  </None>
 	</ItemGroup>
 
 </Project>

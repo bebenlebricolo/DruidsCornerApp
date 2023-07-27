@@ -1,10 +1,6 @@
-using System.Diagnostics;
-using System.Security.Authentication;
 using DruidsCornerApp.Models.Exceptions;
+using DruidsCornerApp.Utils;
 using Firebase.Auth.Providers;
-using Firebase.Auth.Repository;
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
 using Microsoft.Extensions.Logging;
 using AuthenticationException = DruidsCornerApp.Models.Exceptions.AuthenticationException;
 
@@ -29,16 +25,25 @@ public class AuthenticationService : IAuthenticationService
     {
         _logger = logger;
         var authConfig = authConfigProvider.GetAuthConfig();
+        var sha1Sigs = PackageUtils.GetPackageSha1Signatures();
+        if (sha1Sigs == null || sha1Sigs.Count == 0)
+        {
+            throw new System.Exception("Empty SHA-1 signature for this app!");
+        }
+        var packageName = PackageUtils.GetPackageName();
+        var sha1Signature = sha1Sigs[0].Replace(":", "").ToLower();
+        
         var config = new FirebaseAuthConfig
         {
             ApiKey = authConfig.ApiKey,
-            AuthDomain = authConfig.AuthDomain,
+            AuthDomain = $"{authConfig.AuthDomain}.firebaseapp.com",
             Providers = new []
             {
                 // Add and configure individual providers
                 new GoogleProvider().AddScopes(authConfig.JwtScopes.ToArray()),
                 new EmailProvider()
-            }
+            },
+            HttpClient = new PlatformHttpClient(sha1Signature , packageName)
         };
         _fbAuthClient = new FirebaseAuthClient(config);
     }

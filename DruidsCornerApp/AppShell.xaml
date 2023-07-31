@@ -3,23 +3,12 @@
     x:Class="DruidsCornerApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:DruidsCornerApp"
     xmlns:views="clr-namespace:DruidsCornerApp.Views"
+    x:Name="Shell"
     Shell.FlyoutBehavior="Disabled">
     
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
-    <ShellContent
-        Title="LoginPage"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" />
-    
-    <ShellContent
-        Title="AccountCreationPage"
-        ContentTemplate="{DataTemplate views:AccountCreationPage}"
-        Route="AccountCreationPage" />
-    
+    <!-- Single startup page -->
+    <ShellContent Route="WelcomePage"
+                  ContentTemplate="{DataTemplate views:WelcomePage}"
+                  Title="WelcomePage"/>
 </Shell>

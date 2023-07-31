@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DruidsCornerApp.MainPage"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
+             x:Class="DruidsCornerApp.Views.WelcomePage"
+             x:DataType="viewmodel:WelcomePageViewModel"
              Shell.FlyoutBehavior="Disabled"
-             Title=""
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}"
              >
 
     <ScrollView>
         <Grid Padding="0,-30">
             <Image
                 Source="startpage_bg.svg"
-                SemanticProperties.Description="Druids corner cloud app logo (to be redesigned)"
+                SemanticProperties.Description="Druids corner cloud app logo (tos be redesigned)"
                 Aspect="AspectFill"
                 HorizontalOptions="Center" 
                 />
@@ -44,7 +47,7 @@
                         TextColor="WhiteSmoke"
                         FontSize="18"
                         SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
-                        Clicked="OnStartBrowsingClicked"
+                        Command="{Binding Path=StartBrowsingClickedCommand}"
                         HorizontalOptions="Center" 
                         BackgroundColor="#ff6a00"/>
                 </VerticalStackLayout>

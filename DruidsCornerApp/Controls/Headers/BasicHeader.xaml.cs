@@ -227,8 +227,13 @@ public partial class BasicHeader : ContentView
 
 
     [RelayCommand]
-    public async Task OnBackButtonClicked()
+    public async Task BackButtonClicked()
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("..", true);
+    }
+
+    private async void OnBackButtonClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..", true);
     }
 }

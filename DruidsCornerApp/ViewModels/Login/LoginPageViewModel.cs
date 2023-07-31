@@ -55,13 +55,7 @@ public partial class LoginPageViewModel : BaseViewModel
 
         EyeIcon = _eyeClosedIcon;
     }
-
-    [RelayCommand]
-    public async Task BackClicked(CancellationToken cancellationToken)
-    {
-        await Shell.Current.GoToAsync("..", animate: true);
-    }
-
+    
     [RelayCommand]
     public async Task ForgotPasswordClicked(CancellationToken cancellationToken)
     {
@@ -71,7 +65,7 @@ public partial class LoginPageViewModel : BaseViewModel
     [RelayCommand]
     public async Task CreateAccountClicked(CancellationToken cancellationToken)
     {
-        await Shell.Current.GoToAsync(nameof(AccountCreationPage));
+        await Shell.Current.GoToAsync(Navigator.GetAccountCreationPageRoute(), true);
     }
 
     [RelayCommand]
@@ -84,7 +78,7 @@ public partial class LoginPageViewModel : BaseViewModel
         }
 #endif
 
-        var loginPage = (Shell.Current.CurrentPage as LoginPage)!;
+        var loginPage = (Shell.Current.CurrentPage as BasicSignInPage)!;
 
         if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Email))
         {

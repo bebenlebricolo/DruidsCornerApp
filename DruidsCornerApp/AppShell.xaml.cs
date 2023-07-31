@@ -1,23 +1,21 @@
-﻿using DruidsCornerApp.Views;
-using DruidsCornerApp.Controls.Entries;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DruidsCornerApp;
+using DruidsCornerApp.Views;
+using DruidsCornerApp.Utils;
 
 public partial class AppShell : Shell
 {
+	public string StartupPage
+	{
+		get => Navigator.GetWelcomePageRoute();
+	}
+
 	public AppShell()
 	{
 		InitializeComponent();
-		Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-		Routing.RegisterRoute(nameof(AccountCreationPage), typeof(AccountCreationPage));
-
-		// New custom entry mappings
-		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(OutlinedEntry), (handler, view) =>
-		{
-#if __ANDROID__
-			handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-#endif
-		});
-		
+		Routing.RegisterRoute(Navigator.GetBasicSignInPageRoute(), typeof(BasicSignInPage));
+		Routing.RegisterRoute(Navigator.GetAccountCreationPageRoute(), typeof(AccountCreationPage));
+		Routing.RegisterRoute(Navigator.GetGoogleSignInPageRoute(), typeof(GoogleSignInPage));
 	}
 }

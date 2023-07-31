@@ -99,6 +99,26 @@
 	    <DependentUpon>OutlinedEntry.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	  <Compile Update="Views\WelcomePage.xaml.cs">
+	    <DependentUpon>WelcomePage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Login\AccountCreationPage.xaml.cs">
+	    <DependentUpon>AccountCreationPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Login\BasicSignInPage.xaml.cs">
+	    <DependentUpon>BasicSignInPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Login\GoogleSignInPage.xaml.cs">
+	    <DependentUpon>GoogleSignInPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Views\Login\ResetPasswordPage.xaml.cs">
+	    <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -117,6 +137,21 @@
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\Headers\BasicHeader.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\WelcomePage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\AccountCreationPage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\BasicSignInPage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\GoogleSignInPage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\ResetPasswordPage.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>

@@ -12,12 +12,12 @@ using Exception = System.Exception;
 
 namespace DruidsCornerApp.ViewModels;
 
-public partial class AccountCreationPageViewModel : BaseViewModel
+public partial class GoogleSignInPageViewModel : BaseViewModel
 {
     private static readonly string CredentialsErrorStr = "Credentials error";
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
-    private readonly ILogger<AccountCreationPageViewModel> _logger;
+    private readonly ILogger<GoogleSignInPageViewModel> _logger;
 
     /// <summary>
     /// User email
@@ -85,7 +85,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     /// </summary>
     /// <param name="authenticationService"></param>
     /// <param name="secureStorageService"></param>
-    public AccountCreationPageViewModel(ILogger<AccountCreationPageViewModel> logger,
+    public GoogleSignInPageViewModel(ILogger<GoogleSignInPageViewModel> logger,
                                         IAuthenticationService authenticationService,
                                         ISecureStorageService secureStorageService) : base("Account creation", false)
     {
@@ -168,7 +168,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
             PopupUtils.SetLoginPopupCompletedTask(signinPopup, "Successfully authenticated !");
             await Task.Delay(1000);
             await signinPopup.Close();
-            await Shell.Current.GoToAsync($"//{nameof(MainPage)}", true);
+            await Shell.Current.GoToAsync($"//{nameof(WelcomePage)}", true);
         }
         catch (AuthenticationException ex)
         {

@@ -1,11 +1,11 @@
 using DruidsCornerApp.ViewModels;
 namespace DruidsCornerApp.Views;
 
-public partial class LoginPage : ContentPage
+public partial class BasicSignInPage : ContentPage
 {
     private Label? _passwordHintLabel = null;
     
-    public LoginPage(LoginPageViewModel viewModel)
+    public BasicSignInPage(LoginPageViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

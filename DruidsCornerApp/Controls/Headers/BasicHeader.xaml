@@ -30,7 +30,10 @@
                          WidthRequest="{Binding BackIconWidthRequest, Source={x:Reference CustomControl}}"
                          HorizontalOptions="Start"
                          VerticalOptions="Center"
-                         Command="{Binding Path=BackButtonClickedCommand}">
+                         Clicked="OnBackButtonClicked"
+                         >
+                         <!-- Command="{Binding Path=BackButtonClickedCommand}" -->
+                         
                 <Image.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="{Binding BackIconColor, Source={x:Reference CustomControl}}" />
                 </Image.Behaviors>

@@ -7,7 +7,7 @@
              xmlns:customEntries="clr-namespace:DruidsCornerApp.Controls.Entries"
              xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
 
-             x:Class="DruidsCornerApp.Views.LoginPage"
+             x:Class="DruidsCornerApp.Views.BasicSignInPage"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodel:LoginPageViewModel"
              Title="{Binding Title }">

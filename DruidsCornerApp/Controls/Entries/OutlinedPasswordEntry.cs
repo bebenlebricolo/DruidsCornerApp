@@ -6,8 +6,8 @@ namespace DruidsCornerApp.Controls.Entries;
 public partial class OutlinedPasswordEntry : OutlinedEntry
 {
     private readonly ImageButton _button;
-    private ImageSource _hiddenIcon;
-    private ImageSource _shownIcon;
+    private ImageSource? _hiddenIcon;
+    private ImageSource? _shownIcon;
 
     #region PublicProperties
 

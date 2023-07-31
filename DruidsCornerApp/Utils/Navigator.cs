@@ -1,5 +1,6 @@
-using DruidsCornerApp.Views;
 namespace DruidsCornerApp.Utils;
+using DruidsCornerApp.Views;
+using DruidsCornerApp.Views.Login;
 
 /// <summary>
 /// Implements a very simple navigator service whose role is to serve Route names

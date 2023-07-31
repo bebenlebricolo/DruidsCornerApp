@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Input;
+using DruidsCornerApp.Models.Login;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
 using Microsoft.Extensions.Logging;
@@ -12,9 +13,9 @@ public partial class WelcomePageViewModel : BaseViewModel
 
     
     /// <summary>
-    /// 
+    /// Welcome Page view model, simply used to bind some commands
+    /// and reroute user upon startup 
     /// </summary>
-    /// <param name="authenticationService"></param>
     /// <param name="secureStorageService"></param>
     public WelcomePageViewModel(ILogger<WelcomePageViewModel> logger,
                                         ISecureStorageService secureStorageService) : base("Account creation", false)
@@ -27,7 +28,7 @@ public partial class WelcomePageViewModel : BaseViewModel
     public async Task StartBrowsingClicked(CancellationToken cancellationToken)
     {
         // Already logged in ?
-        if (await _secureStorageService.GetStoredTokenAsync() != null)
+        if (await _secureStorageService.GetAsync(AccountKeys.AccountStateKey) != null)
         {
             // Todo : check if token is still valid
             // if token valid -> go to browsing page

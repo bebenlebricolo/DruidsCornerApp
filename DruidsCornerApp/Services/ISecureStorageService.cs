@@ -2,40 +2,35 @@ namespace DruidsCornerApp.Services;
 
 public interface ISecureStorageService
 {
+
+#region GeneralAccessors
     /// <summary>
-    /// Store user token in secure storage
+    /// Fetches an arbitrary data pair from secure storage.
+    /// Returns null if data cannot be located.
     /// </summary>
-    /// <param name="token"></param>
-    public Task StoreTokenAsync(string token);
+    /// <param name="key">Key of the stored data</param>
+    /// <returns>Data content (string) or null if none could be found.</returns>
+    public Task<string?> GetAsync(string key);
 
     /// <summary>
-    /// Retrieves Stored token from secure storage
+    /// Stores an arbitrary value in secure storage
+    /// Key management is external to this service
     /// </summary>
-    /// <returns></returns>
-    public Task<string?> GetStoredTokenAsync();
-
-
-    /// <summary>
-    /// Stores user password in secure storage
-    /// </summary>
-    /// <param name="password"></param>
-    public Task StorePasswordAsync(string password);
+    /// <param name="key">Key of the data pair</param>
+    /// <param name="value">Content of the data pair</param>
+    public Task StoreAsync(string key, string value);
 
     /// <summary>
-    /// Fetches user password from secure storage
+    /// Remove arbitrary data from secure storage
+    /// Key management is external to this service
     /// </summary>
-    /// <returns></returns>
-    public Task<string?> GetStoredPassword();
+    /// <param name="key">Key of the data pair</param>
+    public void Remove(string key);
 
     /// <summary>
-    /// Store user email in secure storage
+    /// Frees the whole secure storage block
     /// </summary>
-    /// <param name="email"></param>
-    public Task StoreEmailAsync(string email);
-
-    /// <summary>
-    /// Fetches user email from secure storage
-    /// </summary>
-    /// <returns></returns>
-    public Task<string?> GetStoredEmailAsync();
+    public void RemoveAllData();
+    
+#endregion GeneralAccessors
 }

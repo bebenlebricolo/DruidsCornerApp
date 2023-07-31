@@ -127,7 +127,7 @@ public static class PackageUtils
             sigList.Add(hashStr);
         }
 #else
-        List<string> sigList = null;
+        List<string>? sigList = null;
 #endif
 
         return sigList;

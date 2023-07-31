@@ -1,6 +1,5 @@
-using DruidsCornerApp.ViewModels;
-
-namespace DruidsCornerApp.Views;
+namespace DruidsCornerApp.Views.Login;
+using DruidsCornerApp.ViewModels.Login;
 
 public partial class AccountCreationPage : ContentPage
 {

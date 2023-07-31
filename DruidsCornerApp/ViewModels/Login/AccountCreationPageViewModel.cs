@@ -1,16 +1,17 @@
+using DruidsCornerApp.Models.Login;
+using DruidsCornerApp.Views.Login;
+using Microsoft.Maui.Platform;
+
+namespace DruidsCornerApp.ViewModels.Login;
+using Firebase.Auth;
+using Microsoft.Extensions.Logging;
+using Exception = System.Exception;
+
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
-using DruidsCornerApp.Views;
-using Firebase.Auth;
-using MetroLog;
-using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Platform;
-using Exception = System.Exception;
-
-namespace DruidsCornerApp.ViewModels;
 
 public partial class AccountCreationPageViewModel : BaseViewModel
 {
@@ -87,7 +88,8 @@ public partial class AccountCreationPageViewModel : BaseViewModel
     /// <param name="secureStorageService"></param>
     public AccountCreationPageViewModel(ILogger<AccountCreationPageViewModel> logger,
                                         IAuthenticationService authenticationService,
-                                        ISecureStorageService secureStorageService) : base("Account creation", false)
+                                        ISecureStorageService secureStorageService
+    ) : base("Account creation", false)
     {
         _logger = logger;
         _authenticationService = authenticationService;
@@ -161,14 +163,15 @@ public partial class AccountCreationPageViewModel : BaseViewModel
 
             // Store user creds and token to let the app know user is
             // Authenticated
-            await _secureStorageService.StoreEmailAsync(Email);
-            await _secureStorageService.StoreTokenAsync(token);
-            await _secureStorageService.StorePasswordAsync(Password);
+            await _secureStorageService.StoreAsync(AccountKeys.EmailKey, Email);
+            await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
+            await _secureStorageService.StoreAsync(AccountKeys.PasswordKey, Password);
+            await _secureStorageService.StoreAsync(AccountKeys.AccountStateKey, AccountStates.BasicCredsConnection.ToString());
 
             PopupUtils.SetLoginPopupCompletedTask(signinPopup, "Successfully authenticated !");
             await Task.Delay(1000);
             await signinPopup.Close();
-            await Shell.Current.GoToAsync($"//{nameof(WelcomePage)}", true);
+            await Shell.Current.GoToAsync($"//{Navigator.GetWelcomePageRoute()}", true);
         }
         catch (AuthenticationException ex)
         {

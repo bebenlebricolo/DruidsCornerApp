@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Maui;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.ViewModels;
+using DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.Views;
+using DruidsCornerApp.Views.Login;
 using MetroLog.MicrosoftExtensions;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
@@ -30,7 +32,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<GoogleSignInPage>();
 		
 		// Registering view models here (for dependency injection)
-		builder.Services.AddSingleton<LoginPageViewModel>();
+		builder.Services.AddSingleton<BasicSignInPageViewModel>();
 		builder.Services.AddSingleton<GoogleSignInPageViewModel>();
 		builder.Services.AddSingleton<AccountCreationPageViewModel>();
 		builder.Services.AddSingleton<WelcomePageViewModel>();

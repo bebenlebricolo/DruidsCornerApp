@@ -1,15 +1,14 @@
-using DruidsCornerApp.Controls;
+using DruidsCornerApp.Models.Login;
+using Microsoft.Maui.Platform;
+
+namespace DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.Models.Exceptions;
-using DruidsCornerApp.Views;
+using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
+
 using Firebase.Auth;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Platform;
-using Mopups.Services;
-
-namespace DruidsCornerApp.ViewModels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -17,14 +16,14 @@ using CommunityToolkit.Mvvm.Input;
 /// <summary>
 /// Login page view model, controls the UI state and provides commands
 /// </summary>
-public partial class LoginPageViewModel : BaseViewModel
+public partial class BasicSignInPageViewModel : BaseViewModel
 {
     private static readonly string LoginErrorStr = "Login error";
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
     private uint _loginErrorCounter = 0;
 
-    private readonly ILogger<LoginPageViewModel> _logger;
+    private readonly ILogger<BasicSignInPageViewModel> _logger;
 
     [ObservableProperty]
     private string _email = string.Empty;
@@ -42,7 +41,7 @@ public partial class LoginPageViewModel : BaseViewModel
     private ImageSource _eyeClosedIcon;
 
 
-    public LoginPageViewModel(ILogger<LoginPageViewModel> logger,
+    public BasicSignInPageViewModel(ILogger<BasicSignInPageViewModel> logger,
                               IAuthenticationService authenticationService,
                               ISecureStorageService secureStorageService) : base("Login", false)
     {
@@ -104,9 +103,10 @@ public partial class LoginPageViewModel : BaseViewModel
                 PopupUtils.SetLoginPopupCompletedTask(loginPopup, "Successfully SignedIn !");
 
                 // Store credentials for later use
-                await _secureStorageService.StoreEmailAsync(Email);
-                await _secureStorageService.StorePasswordAsync(Password);
-                await _secureStorageService.StoreTokenAsync(token);
+                await _secureStorageService.StoreAsync(AccountKeys.EmailKey, Email);
+                await _secureStorageService.StoreAsync(AccountKeys.PasswordKey, Password);
+                await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
+                await _secureStorageService.StoreAsync(AccountKeys.AccountStateKey, AccountStates.BasicCredsConnection.ToString());
 
                 await Task.Delay(200);
                 await loginPopup.Close();
@@ -184,7 +184,22 @@ public partial class LoginPageViewModel : BaseViewModel
         }
     }
 
+    [RelayCommand]
+    public async Task GoogleSignInButtonClicked()
+    {
+        await Shell.Current.GoToAsync(Navigator.GetGoogleSignInPageRoute());
+    }
+    
+    [RelayCommand]
+    public async Task ContinueWithoutAccountClicked()
+    {
+        // At this point we know that the user does not want to Login anyway
+        _secureStorageService.RemoveAllData();
+        await _secureStorageService.StoreAsync(AccountKeys.AccountStateKey, AccountStates.GuestMode.ToString());
+        await Shell.Current.GoToAsync(Navigator.GetGoogleSignInPageRoute());
+    }
 
+    
     [RelayCommand]
     public void EyeFlicker()
     {

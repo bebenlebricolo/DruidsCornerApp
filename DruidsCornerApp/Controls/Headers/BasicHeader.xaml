@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:DruidsCornerApp.Controls.Headers"
+             x:Class="DruidsCornerApp.Controls.Headers.BasicHeader"
+             x:DataType="local:BasicHeader"
+             x:Name="CustomControl">
+
+    <!-- Header -->
+    <Frame x:Name="OuterFrame"
+           BackgroundColor="{Binding BackgroundColor, Source={x:Reference CustomControl}}"
+           BorderColor="Transparent"
+           CornerRadius="0"
+           Padding="0"
+           Margin="0">
+
+        <Grid x:Name="GridLayout"
+              RowDefinitions="*"
+              ColumnDefinitions="40,*,Auto"
+              Padding="10"
+              HorizontalOptions="Fill">
+            <ImageButton x:Name="BackButton"
+                         Source="{Binding BackIcon, Source={x:Reference CustomControl}}"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Aspect="AspectFit"
+                         HeightRequest="{Binding BackIconHeightRequest, Source={x:Reference CustomControl}}"
+                         WidthRequest="{Binding BackIconWidthRequest, Source={x:Reference CustomControl}}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Command="{Binding Path=BackButtonClickedCommand}">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{Binding BackIconColor, Source={x:Reference CustomControl}}" />
+                </Image.Behaviors>
+            </ImageButton>
+            <Label Text="Account Creation"
+                   x:Name="TitleLabel"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   FontSize="{Binding TitleFontSize, Source={x:Reference CustomControl}}"
+                   TextColor="{Binding TitleColor, Source={x:Reference CustomControl}}"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
+        </Grid>
+    </Frame>
+</ContentView>

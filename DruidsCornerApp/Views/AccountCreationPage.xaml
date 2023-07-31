@@ -6,12 +6,11 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
              xmlns:customEntries="clr-namespace:DruidsCornerApp.Controls.Entries"
+             xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodel:AccountCreationPageViewModel">
     <ContentPage.Content>
         <ScrollView>
-
-
             <!-- Global vertical container -->
             <VerticalStackLayout BackgroundColor="#ffa300">
                 <!-- StartPoint defaults to (0,0) -->
@@ -29,32 +28,16 @@
                 </VerticalStackLayout.Background>
 
                 <!-- Header -->
-                <Frame BackgroundColor="#ff6a00" BorderColor="Transparent" CornerRadius="0" Padding="0" Margin="0">
-
-                    <Grid RowDefinitions="*"
-                          ColumnDefinitions="40,*,Auto"
-                          Padding="10"
-                          HorizontalOptions="Fill">
-                        <ImageButton Source="back.svg"
-                                     Grid.Row="0"
-                                     Grid.Column="0"
-                                     Aspect="AspectFit"
-                                     HeightRequest="28"
-                                     HorizontalOptions="Start"
-                                     Command="{Binding Path=BackButtonClickedCommand}">
-                            <Image.Behaviors>
-                                <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
-                            </Image.Behaviors>
-                        </ImageButton>
-                        <Label Text="Account Creation"
-                               Grid.Row="0"
-                               Grid.Column="2"
-                               FontSize="20"
-                               TextColor="WhiteSmoke"
-                               HorizontalOptions="End"
-                               VerticalOptions="Center" />
-                    </Grid>
-                </Frame>
+                <headers:BasicHeader x:Name="Header"
+                                     BackgroundColor="#ff6a00"
+                                     BackIcon="back.svg"
+                                     BackIconColor="WhiteSmoke"
+                                     BackIconHeightRequest="28"
+                                     BackIconWidthRequest="28"
+                                     Title="{Binding Title}"
+                                     TitleColor="WhiteSmoke"
+                                     TitleFontSize="20">
+                </headers:BasicHeader>
 
                 <!-- Login credentials / buttons block -->
                 <Frame Margin="0,0" CornerRadius="0" Padding="10" BackgroundColor="WhiteSmoke"

@@ -95,6 +95,10 @@
 	    <DependentUpon>BasePopup.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	  <Compile Update="Controls\Headers\BasicHeader.xaml.cs">
+	    <DependentUpon>OutlinedEntry.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -110,6 +114,9 @@
 	  <MauiXaml Remove="Platforms\Tizen\**" />
 	  <MauiXaml Remove="Platforms\Windows\**" />
 	  <MauiXaml Update="Controls\Popups\BasePopup.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\Headers\BasicHeader.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>

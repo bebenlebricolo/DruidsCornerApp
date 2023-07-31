@@ -37,4 +37,10 @@ public interface IAuthenticationService
     /// </summary>
     /// <returns></returns>
     public Task<string> RefreshTokenAsync();
+
+    /// <summary>
+    /// Sends the password reset email to targeted email address, if it exists.
+    /// </summary>
+    /// <param name="email">Email address used to send the link</param>
+    public Task SendPasswordResetEmailAsync(string email);
 }

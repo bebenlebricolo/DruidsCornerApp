@@ -1,3 +1,5 @@
+using System.Net.Quic;
+using System.Web;
 using DruidsCornerApp.Models.Login;
 using Microsoft.Maui.Platform;
 
@@ -16,7 +18,7 @@ using CommunityToolkit.Mvvm.Input;
 /// <summary>
 /// Login page view model, controls the UI state and provides commands
 /// </summary>
-public partial class BasicSignInPageViewModel : BaseViewModel
+public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributable
 {
     private static readonly string LoginErrorStr = "Login error";
     private readonly IAuthenticationService _authenticationService;
@@ -58,7 +60,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel
     [RelayCommand]
     public async Task ForgotPasswordClicked(CancellationToken cancellationToken)
     {
-        await Shell.Current.DisplayAlert("Forgotten password ?", "Too bad !", "Ok");
+        await Shell.Current.GoToAsync(Navigator.GetAccountPasswordResetPageRoute());
     }
 
     [RelayCommand]
@@ -211,6 +213,26 @@ public partial class BasicSignInPageViewModel : BaseViewModel
         else
         {
             EyeIcon = _eyeOpenIcon;
+        }
+    }
+
+    /// <summary>
+    /// Apply query attributes when navigated back to this page
+    /// </summary>
+    /// <param name="query"></param>
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (!query.Keys.Contains("email"))
+        {
+            return;
+        }
+        
+        // Used when navigated back after a password reset for instance, 
+        // When email was already filled once in another text entry, it's duplicated here so that user doesn't need to enter it again.
+        string? email = HttpUtility.UrlDecode(query["email"].ToString());
+        if (email != null)
+        {
+            Email = email;
         }
     }
 }

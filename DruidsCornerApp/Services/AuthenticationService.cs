@@ -17,7 +17,7 @@ using Firebase.Auth;
 public class AuthenticationService : IAuthenticationService
 {
     // private static FirebaseApp? _fbApp = null;
-    private static FirebaseAuthClient? _fbAuthClient;
+    private readonly FirebaseAuthClient _fbAuthClient;
     private readonly ILogger<AuthenticationService> _logger;
 
     public AuthenticationService(ILogger<AuthenticationService> logger, 
@@ -28,7 +28,7 @@ public class AuthenticationService : IAuthenticationService
         var sha1Sigs = PackageUtils.GetPackageSha1Signatures();
         if (sha1Sigs == null || sha1Sigs.Count == 0)
         {
-            throw new System.Exception("Empty SHA-1 signature for this app!");
+            throw new Exception("Empty SHA-1 signature for this app!");
         }
         var packageName = PackageUtils.GetPackageName();
         var sha1Signature = sha1Sigs[0].Replace(":", "").ToLower();
@@ -63,7 +63,7 @@ public class AuthenticationService : IAuthenticationService
         try
         {
             // userRecord = await auth.CreateUserAsync(userArgs, cancellationToken);
-            creds = await _fbAuthClient!.CreateUserWithEmailAndPasswordAsync(userArgs.Email, userArgs.Password, userArgs.DisplayName);
+            creds = await _fbAuthClient.CreateUserWithEmailAndPasswordAsync(userArgs.Email, userArgs.Password, userArgs.DisplayName);
         }
         catch (Firebase.Auth.FirebaseAuthException fbEx)
         {
@@ -85,7 +85,7 @@ public class AuthenticationService : IAuthenticationService
         string? token;
         try
         {
-            var authenticatedUser = await _fbAuthClient!.SignInWithEmailAndPasswordAsync(email, password);
+            var authenticatedUser = await _fbAuthClient.SignInWithEmailAndPasswordAsync(email, password);
             token = await authenticatedUser.User.GetIdTokenAsync();
         }
         catch (FirebaseAdmin.Auth.FirebaseAuthException fbEx)
@@ -100,12 +100,17 @@ public class AuthenticationService : IAuthenticationService
     public async Task<string?> SignInAsGuest(CancellationToken cancellationToken)
     {
         // ...and create your FirebaseAuthClient
-        var anonymousUser = await _fbAuthClient!.SignInAnonymouslyAsync();
+        var anonymousUser = await _fbAuthClient.SignInAnonymouslyAsync();
         return await anonymousUser.User.GetIdTokenAsync();
     }
 
     public async Task<string> RefreshTokenAsync()
     {
-        return await _fbAuthClient!.User.GetIdTokenAsync(true);
+        return await _fbAuthClient.User.GetIdTokenAsync(true);
+    }
+
+    public async Task SendPasswordResetEmailAsync(string email)
+    {
+        await _fbAuthClient.ResetEmailPasswordAsync(email);
     }
 }

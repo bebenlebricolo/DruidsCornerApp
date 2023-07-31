@@ -30,12 +30,14 @@ public static class MauiProgram
 		builder.Services.AddSingleton<BasicSignInPage>();
 		builder.Services.AddSingleton<AccountCreationPage>();
 		builder.Services.AddSingleton<GoogleSignInPage>();
+		builder.Services.AddSingleton<ResetPasswordPage>();
 		
 		// Registering view models here (for dependency injection)
+		builder.Services.AddSingleton<WelcomePageViewModel>();
 		builder.Services.AddSingleton<BasicSignInPageViewModel>();
+		builder.Services.AddSingleton<ResetPasswordPageViewModel>();
 		builder.Services.AddSingleton<GoogleSignInPageViewModel>();
 		builder.Services.AddSingleton<AccountCreationPageViewModel>();
-		builder.Services.AddSingleton<WelcomePageViewModel>();
 		
 		// Registering services here (for dependency injection)
 		builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();

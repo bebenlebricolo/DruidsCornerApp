@@ -152,8 +152,11 @@
                         BackgroundColor="White"
                         ContentLayout="Left,10"
                         ImageSource="google_logo.png"
-                        Command="{Binding }" />
-                <Button Text="Continue without account" BackgroundColor="#ff6a00" TextColor="WhiteSmoke" />
+                        Command="{Binding GoogleSignInButtonClickedCommand}" />
+                <Button Text="Continue without account"
+                        BackgroundColor="#ff6a00"
+                        TextColor="WhiteSmoke"
+                        Command="{Binding ContinueWithoutAccountClickedCommand}"/>
             </VerticalStackLayout>
 
         </VerticalStackLayout>

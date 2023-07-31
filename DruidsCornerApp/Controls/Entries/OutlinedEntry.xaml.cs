@@ -220,7 +220,6 @@ public partial class OutlinedEntry : ContentView
     public OutlinedEntry()
     {
         InitializeComponent();
-
         // Register content-based events
         //EntryText.TextChanged += (sender, args) => { Text = args.NewTextValue; };
     }

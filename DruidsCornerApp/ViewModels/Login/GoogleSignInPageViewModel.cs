@@ -89,7 +89,7 @@ public partial class GoogleSignInPageViewModel : BaseViewModel
     /// <param name="secureStorageService"></param>
     public GoogleSignInPageViewModel(ILogger<GoogleSignInPageViewModel> logger,
                                         IAuthenticationService authenticationService,
-                                        ISecureStorageService secureStorageService) : base("Account creation", false)
+                                        ISecureStorageService secureStorageService) : base("SignIn with Google", false)
     {
         _logger = logger;
         _authenticationService = authenticationService;

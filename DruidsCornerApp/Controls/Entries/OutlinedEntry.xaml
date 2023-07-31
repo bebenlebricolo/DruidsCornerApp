@@ -41,7 +41,8 @@
                    PlaceholderColor="{Binding PlaceholderColor, Source={x:Reference CustomControl}}"
                    IsPassword="{Binding IsPassword, Source={x:Reference CustomControl}}"
                    TextColor="{Binding TextColor, Source={x:Reference CustomControl}}"
-                   HorizontalOptions="Fill" />
+                   HorizontalOptions="Fill" >
+            </Entry>
         </Grid>
     </Frame>
 </ContentView>

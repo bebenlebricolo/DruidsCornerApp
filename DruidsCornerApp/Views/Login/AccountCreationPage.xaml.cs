@@ -1,15 +1,19 @@
 namespace DruidsCornerApp.Views.Login;
 using DruidsCornerApp.ViewModels.Login;
 
-public partial class AccountCreationPage : ContentPage
+public partial class AccountCreationPage : AutoReloadPage
 {
     private Label? _passwordHintLabel = null;
     private Label? _emailHintLabel = null;
     
     public AccountCreationPage(AccountCreationPageViewModel viewModel)
     {
-        InitializeComponent();
         BindingContext = viewModel;
+    }
+
+    public override void  Build()
+    {
+        InitializeComponent();
     }
     
     

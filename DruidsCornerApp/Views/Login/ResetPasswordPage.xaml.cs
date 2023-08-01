@@ -2,11 +2,15 @@ using DruidsCornerApp.ViewModels.Login;
 
 namespace DruidsCornerApp.Views.Login;
 
-public partial class ResetPasswordPage : ContentPage
+public partial class ResetPasswordPage : AutoReloadPage
 {
     public ResetPasswordPage(ResetPasswordPageViewModel viewModel)
     {
-        InitializeComponent();
         BindingContext = viewModel;
+    }
+
+    public override void Build()
+    {
+        InitializeComponent();
     }
 }

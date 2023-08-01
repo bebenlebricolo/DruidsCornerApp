@@ -1,13 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
-             x:Class="DruidsCornerApp.Views.WelcomePage"
-             x:DataType="viewmodel:WelcomePageViewModel"
-             Shell.FlyoutBehavior="Disabled"
-             Shell.NavBarIsVisible="False"
-             Title="{Binding Title}"
-             >
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:AutoReloadPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
+                      xmlns:views="clr-namespace:DruidsCornerApp.Views"
+
+                      x:Class="DruidsCornerApp.Views.WelcomePage"
+                      x:DataType="viewmodel:WelcomePageViewModel"
+                      Shell.FlyoutBehavior="Disabled"
+                      Shell.NavBarIsVisible="False"
+                      Title="{Binding Title}">
 
     <ScrollView>
         <Grid Padding="0,-30">
@@ -15,22 +17,20 @@
                 Source="startpage_bg.svg"
                 SemanticProperties.Description="Druids corner cloud app logo (tos be redesigned)"
                 Aspect="AspectFill"
-                HorizontalOptions="Center" 
-                />
-        
+                HorizontalOptions="Center" />
+
             <VerticalStackLayout
                 Spacing="25"
                 Padding="30,30"
                 VerticalOptions="Center">
-            
+
                 <Image
                     Source="logo.jpg"
                     SemanticProperties.Description="Druids corner cloud app logo (to be redesigned)"
                     HeightRequest="250"
                     HorizontalOptions="Center"
-                    VerticalOptions="Start"
-                />
-                
+                    VerticalOptions="Start" />
+
                 <VerticalStackLayout Margin="0,200,0,0" Spacing="30">
                     <Label
                         Text="Ready for another batch ?"
@@ -40,7 +40,7 @@
                         FontAttributes="Bold"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions="Center" />
-                    
+
                     <Button
                         x:Name="StartBrowsingBtn"
                         Text="Start browsing !"
@@ -48,11 +48,11 @@
                         FontSize="18"
                         SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
                         Command="{Binding Path=StartBrowsingClickedCommand}"
-                        HorizontalOptions="Center" 
-                        BackgroundColor="#ff6a00"/>
+                        HorizontalOptions="Center"
+                        BackgroundColor="#ff6a00" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
 
-</ContentPage>
+</views:AutoReloadPage>

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
-             xmlns:viewmodels="clr-namespace:DruidsCornerApp.ViewModels.Login"
-             x:Class="DruidsCornerApp.Views.Login.GoogleSignInPage"
-             x:DataType="viewmodels:GoogleSignInPageViewModel"
-             Shell.NavBarIsVisible="False"
-             BackgroundColor="{DynamicResource Secondary}"
-             Title="{Binding Title}"
-             Padding="0">
+<views:AutoReloadPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
+                      xmlns:viewmodels="clr-namespace:DruidsCornerApp.ViewModels.Login"
+                      xmlns:views="clr-namespace:DruidsCornerApp.Views"
+                      x:Class="DruidsCornerApp.Views.Login.GoogleSignInPage"
+                      x:DataType="viewmodels:GoogleSignInPageViewModel"
+                      Shell.NavBarIsVisible="False"
+                      BackgroundColor="{DynamicResource Secondary}"
+                      Title="{Binding Title}"
+                      Padding="0">
 
     <ContentPage.Content>
         <ScrollView Padding="0"
@@ -96,4 +97,4 @@
 
         </ScrollView>
     </ContentPage.Content>
-</ContentPage>
+</views:AutoReloadPage>

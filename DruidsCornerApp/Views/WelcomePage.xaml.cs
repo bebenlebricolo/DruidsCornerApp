@@ -1,15 +1,20 @@
 ﻿namespace DruidsCornerApp.Views;
 using DruidsCornerApp.ViewModels;
 
-public partial class WelcomePage : ContentPage
+public partial class WelcomePage : AutoReloadPage
 {
-	private WelcomePageViewModel _viewModel;
-	public WelcomePage(WelcomePageViewModel viewModel)
-	{
-		InitializeComponent();
-		_viewModel = viewModel;
-		BindingContext = viewModel;
-	}
+    private WelcomePageViewModel _viewModel;
+    
+    public WelcomePage(WelcomePageViewModel viewModel)
+    {
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+    }
+
+    public override void Build()
+    {
+        InitializeComponent();
+    }
     
 }
 

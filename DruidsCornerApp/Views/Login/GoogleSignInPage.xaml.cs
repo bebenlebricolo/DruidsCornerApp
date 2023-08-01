@@ -2,15 +2,19 @@ using DruidsCornerApp.ViewModels.Login;
 
 namespace DruidsCornerApp.Views.Login;
 
-public partial class GoogleSignInPage : ContentPage
+public partial class GoogleSignInPage : AutoReloadPage
 {
     private readonly GoogleSignInPageViewModel _viewModel;
     
     public GoogleSignInPage(GoogleSignInPageViewModel viewModel)
     {
-        InitializeComponent();
         _viewModel = viewModel;
         BindingContext = viewModel;
+    }
+
+    public override void Build()
+    {
+        InitializeComponent();
     }
 
     protected override void OnAppearing()

@@ -1,14 +1,18 @@
 namespace DruidsCornerApp.Views.Login;
 using DruidsCornerApp.ViewModels.Login;
 
-public partial class BasicSignInPage : ContentPage
+public partial class BasicSignInPage : AutoReloadPage
 {
     private Label? _passwordHintLabel = null;
     
     public BasicSignInPage(BasicSignInPageViewModel viewModel)
     {
-        InitializeComponent();
         BindingContext = viewModel;
+    }
+
+    public override void Build()
+    {
+        InitializeComponent();
     }
 
     public string GetPassword()

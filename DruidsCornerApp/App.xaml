@@ -10,5 +10,7 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <!-- <ResourceDictionary Source="Resources/Themes/LightTheme.xaml"></ResourceDictionary> -->
+        <!-- <ResourceDictionary Source="Resources/Themes/DarkTheme.xaml"></ResourceDictionary> -->
     </Application.Resources>
 </Application>

@@ -55,6 +55,7 @@
                                    HorizontalOptions="Start">
                             </Image>
                             <Label Text="Use current Google account"
+                                   x:Name="CurrentAccountLabel"
                                    TextColor="{DynamicResource Secondary}"
                                    FontSize="15"
                                    VerticalOptions="Center"

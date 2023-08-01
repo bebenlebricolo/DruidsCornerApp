@@ -5,6 +5,7 @@
 
 # Dotsettings from JetBrains' IDE
 *sln.DotSettings.user
+*.csproj.user*
 
 # Local configuration
 AuthConfig.json

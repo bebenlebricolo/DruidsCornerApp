@@ -1,18 +1,17 @@
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Utils;
+using Firebase.Auth;
 using Firebase.Auth.Providers;
+using FirebaseAdmin.Auth;
 using Microsoft.Extensions.Logging;
 using AuthenticationException = DruidsCornerApp.Models.Exceptions.AuthenticationException;
 
-namespace DruidsCornerApp.Services;
+namespace DruidsCornerApp.Services.Authentication;
 
 // Firebase server-side and admin toolkit, not meant to perform signIn operations
 // Note : Firebase _fbAuthClient sdk do exist, but not on .NET ecosystem...
-using FirebaseAdmin.Auth;
-
 // Unofficial firebase _fbAuthClient side support for .net based apps
 // https://github.com/step-up-labs/firebase-authentication-dotnet
-using Firebase.Auth;
 
 public class AuthenticationService : IAuthenticationService
 {

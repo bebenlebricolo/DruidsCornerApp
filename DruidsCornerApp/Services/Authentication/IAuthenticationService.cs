@@ -1,8 +1,7 @@
-using DruidsCornerApp.Models.Exceptions;
 using Firebase.Auth;
 using FirebaseAdmin.Auth;
 
-namespace DruidsCornerApp.Services;
+namespace DruidsCornerApp.Services.Authentication;
 
 public interface IAuthenticationService
 {

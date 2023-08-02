@@ -123,6 +123,12 @@
             <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Services\Authentication\GoogleAccountManager.cs">
+          <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+        </Compile>
+        <Compile Update="Platforms\Android\Authentication\GoogleSignInActivity.cs">
+          <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -206,9 +212,9 @@
 
 
     <ItemGroup>
-      <Content Include="..\Docs\DotnetMauiQuircks.md">
+      <None Include="..\Docs\DotnetMauiQuircks.md">
         <Link>Docs\DotnetMauiQuircks.md</Link>
-      </Content>
+      </None>
     </ItemGroup>
 
 </Project>

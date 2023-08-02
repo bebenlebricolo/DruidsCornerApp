@@ -1,8 +1,8 @@
-using DruidsCornerApp.Models.Config;
 using System.Reflection;
 using System.Text.Json;
+using DruidsCornerApp.Models.Config;
 
-namespace DruidsCornerApp.Services;
+namespace DruidsCornerApp.Services.Authentication;
 
 /// <summary>
 /// Local authentication configuration provider

@@ -1,6 +1,7 @@
 using System.Net.Quic;
 using System.Web;
 using DruidsCornerApp.Models.Login;
+using DruidsCornerApp.Services.Authentication;
 using Microsoft.Maui.Platform;
 
 namespace DruidsCornerApp.ViewModels.Login;

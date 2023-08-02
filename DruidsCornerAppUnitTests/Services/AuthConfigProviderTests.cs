@@ -1,5 +1,5 @@
-namespace DruidsCornerAppUnitTests;
-using DruidsCornerApp.Services;
+using DruidsCornerApp.Services.Authentication;
+namespace DruidsCornerAppUnitTests.Services;
 
 public class AuthConfigProviderTests
 {

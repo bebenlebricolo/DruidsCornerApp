@@ -1,6 +1,6 @@
 using DruidsCornerApp.Models.Config;
 
-namespace DruidsCornerApp.Services;
+namespace DruidsCornerApp.Services.Authentication;
 
 /// <summary>
 /// Global interface for authentication configuration providers

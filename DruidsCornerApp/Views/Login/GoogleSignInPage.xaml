@@ -14,7 +14,8 @@
     <ContentPage.Content>
         <ScrollView Padding="0"
                     Margin="0">
-            <VerticalStackLayout Spacing="5"
+            <VerticalStackLayout x:Name="BaseVerticalStackLayout" 
+                                 Spacing="5"
                                  Margin="0,0"
                                  BackgroundColor="{DynamicResource Secondary}">
                 <!-- Header -->
@@ -28,69 +29,69 @@
                                      TitleColor="{DynamicResource LightBackground}"
                                      TitleFontSize="20">
                 </headers:BasicHeader>
-
-                <Grid Padding="10,10"
-                      RowSpacing="10"
-                      RowDefinitions="Auto,Auto, *">
-                    <Label Text="Connect with which Google account ?"
-                           TextColor="{DynamicResource White}"
-                           FontSize="20"
-                           HorizontalOptions="Center"
-                           Grid.Row="0">
-                    </Label>
-
-                    <Frame x:Name="CurrentGoogleAccountFrame"
-                           CornerRadius="5"
-                           BackgroundColor="White"
-                           BorderColor="LightSkyBlue"
-                           VerticalOptions="Start"
-                           Grid.Row="1">
-                        <Grid ColumnDefinitions="50,*">
-                            <Image x:Name="AccountImage"
-                                   Source="dotnet_bot.svg"
-                                   Aspect="AspectFit"
-                                   HeightRequest="35"
-                                   Grid.Column="0"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Start">
-                            </Image>
-                            <Label Text="Use current Google account"
-                                   x:Name="CurrentAccountLabel"
-                                   TextColor="{DynamicResource Secondary}"
-                                   FontSize="15"
-                                   VerticalOptions="Center"
-                                   Grid.Column="1"
-                                   HorizontalOptions="Start">
-                            </Label>
-                        </Grid>
-                    </Frame>
-
-                    <Frame x:Name="OtherGoogleAccount"
-                           CornerRadius="5"
-                           BackgroundColor="White"
-                           BorderColor="LightSkyBlue"
-                           VerticalOptions="Start"
-                           Grid.Row="2">
-                        <Grid ColumnDefinitions="50,*">
-                            <Image x:Name="OtherAccountImage"
-                                   Source="dotnet_bot.svg"
-                                   Aspect="AspectFit"
-                                   HeightRequest="35"
-                                   VerticalOptions="Center"
-                                   Grid.Column="0"
-                                   HorizontalOptions="Start">
-                            </Image>
-                            <Label Text="Switch to another account"
-                                   TextColor="{DynamicResource Secondary}"
-                                   FontSize="15"
-                                   VerticalOptions="Center"
-                                   Grid.Column="1"
-                                   HorizontalOptions="Start">
-                            </Label>
-                        </Grid>
-                    </Frame>
-
-                </Grid>
+                
+                <!-- <Grid Padding="10,10" -->
+                <!--       RowSpacing="10" -->
+                <!--       RowDefinitions="Auto,Auto, *"> -->
+                <!--     <Label Text="Connect with which Google account ?" -->
+                <!--            TextColor="{DynamicResource White}" -->
+                <!--            FontSize="20" -->
+                <!--            HorizontalOptions="Center" -->
+                <!--            Grid.Row="0"> -->
+                <!--     </Label> -->
+                <!-- -->
+                <!--     <Frame x:Name="CurrentGoogleAccountFrame" -->
+                <!--            CornerRadius="5" -->
+                <!--            BackgroundColor="White" -->
+                <!--            BorderColor="LightSkyBlue" -->
+                <!--            VerticalOptions="Start" -->
+                <!--            Grid.Row="1"> -->
+                <!--         <Grid ColumnDefinitions="50,*"> -->
+                <!--             <Image x:Name="AccountImage" -->
+                <!--                    Source="dotnet_bot.svg" -->
+                <!--                    Aspect="AspectFit" -->
+                <!--                    HeightRequest="35" -->
+                <!--                    Grid.Column="0" -->
+                <!--                    VerticalOptions="Center" -->
+                <!--                    HorizontalOptions="Start"> -->
+                <!--             </Image> -->
+                <!--             <Label Text="Use current Google account" -->
+                <!--                    x:Name="CurrentAccountLabel" -->
+                <!--                    TextColor="{DynamicResource Secondary}" -->
+                <!--                    FontSize="15" -->
+                <!--                    VerticalOptions="Center" -->
+                <!--                    Grid.Column="1" -->
+                <!--                    HorizontalOptions="Start"> -->
+                <!--             </Label> -->
+                <!--         </Grid> -->
+                <!--     </Frame> -->
+                <!-- -->
+                <!--     <Frame x:Name="OtherGoogleAccount" -->
+                <!--            CornerRadius="5" -->
+                <!--            BackgroundColor="White" -->
+                <!--            BorderColor="LightSkyBlue" -->
+                <!--            VerticalOptions="Start" -->
+                <!--            Grid.Row="2"> -->
+                <!--         <Grid ColumnDefinitions="50,*"> -->
+                <!--             <Image x:Name="OtherAccountImage" -->
+                <!--                    Source="dotnet_bot.svg" -->
+                <!--                    Aspect="AspectFit" -->
+                <!--                    HeightRequest="35" -->
+                <!--                    VerticalOptions="Center" -->
+                <!--                    Grid.Column="0" -->
+                <!--                    HorizontalOptions="Start"> -->
+                <!--             </Image> -->
+                <!--             <Label Text="Switch to another account" -->
+                <!--                    TextColor="{DynamicResource Secondary}" -->
+                <!--                    FontSize="15" -->
+                <!--                    VerticalOptions="Center" -->
+                <!--                    Grid.Column="1" -->
+                <!--                    HorizontalOptions="Start"> -->
+                <!--             </Label> -->
+                <!--         </Grid> -->
+                <!--     </Frame> -->
+                <!-- -->
+                <!-- </Grid> -->
             </VerticalStackLayout>
 
 

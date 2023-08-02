@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using Mopups.Services;
 
 namespace DruidsCornerApp.Utils;
@@ -31,10 +32,10 @@ public static class PopupUtils
         return popup;
     }
     
-    public static Task CreateAndShowLoggingPopupAsync(string title = "SignIn")
+    public static Tuple<Task, LoginPopup> CreateAndShowLoggingPopupAsync(string title = "SignIn")
     {
         var popup = CreateLoggingPopup(title);
-        return popup.Show();
+        return new Tuple<Task, LoginPopup>(popup.Show(), popup);
     }
 
     public static void SetLoginPopupCompletedTask(LoginPopup popup, string message)

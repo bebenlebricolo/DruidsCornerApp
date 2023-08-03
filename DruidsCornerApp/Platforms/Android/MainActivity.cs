@@ -66,7 +66,7 @@ public class MainActivity : MauiAppCompatActivity
     }
 
 
-    public async Task WaitForSignInAsync(CancellationToken cancellationToken)
+    public async Task WaitForAccountListingFinishedAsync(CancellationToken cancellationToken)
     {
         while (GoogleAccount == null && !cancellationToken.IsCancellationRequested)
         {

@@ -21,12 +21,12 @@ public partial class GoogleAccountManager : IGoogleAccountManager
     /// </summary>
     /// <returns></returns>
 #if __ANDROID__
-    public partial Task<GoogleAccount?> GetCurrentGoogleAccountAsync(CancellationToken cancellationToken);
+    public partial Task<List<GoogleAccount>> ListGoogleAccountsOnDeviceAsync(CancellationToken cancellationToken);
 // Standard .Net7.0 implementation, overriden at build time by the platform specific one.
 #else
-    public Task<GoogleAccount?> GetCurrentGoogleAccountAsync(CancellationToken cancellationToken)
+    public Task<List<GoogleAccount>> ListGoogleAccountsOnDeviceAsync(CancellationToken cancellationToken)
     {
-        return Task.FromResult<GoogleAccount?>(null);
+        return Task.FromResult<List<GoogleAccount>>(new List<GoogleAccount>());
     }
 
 #endif

@@ -11,5 +11,5 @@ public interface IGoogleAccountManager
     /// Retrieves the Current Google Account of the device, if any.
     /// </summary>
     /// <returns>Google account or null, if none could be retrieved.</returns>
-    public Task<GoogleAccount?> GetCurrentGoogleAccountAsync(CancellationToken cancellationToken);
+    public Task<List<GoogleAccount>> ListGoogleAccountsOnDeviceAsync(CancellationToken cancellationToken);
 }

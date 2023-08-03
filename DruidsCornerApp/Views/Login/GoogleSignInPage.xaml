@@ -12,89 +12,59 @@
              Padding="0">
 
     <ContentPage.Content>
-        <ScrollView Padding="0"
-                    Margin="0">
-            <VerticalStackLayout x:Name="BaseVerticalStackLayout" 
-                                 Spacing="5"
-                                 Margin="0,0"
-                                 BackgroundColor="{DynamicResource Secondary}">
-                <!-- Header -->
-                <headers:BasicHeader x:Name="Header"
-                                     BackgroundColor="{DynamicResource Primary}"
-                                     BackIcon="back.svg"
-                                     BackIconColor="{DynamicResource LightBackground}"
-                                     BackIconHeightRequest="28"
-                                     BackIconWidthRequest="28"
-                                     Title="{Binding Title}"
-                                     TitleColor="{DynamicResource LightBackground}"
-                                     TitleFontSize="20">
-                </headers:BasicHeader>
-                
-                <!-- <Grid Padding="10,10" -->
-                <!--       RowSpacing="10" -->
-                <!--       RowDefinitions="Auto,Auto, *"> -->
-                <!--     <Label Text="Connect with which Google account ?" -->
-                <!--            TextColor="{DynamicResource White}" -->
-                <!--            FontSize="20" -->
-                <!--            HorizontalOptions="Center" -->
-                <!--            Grid.Row="0"> -->
-                <!--     </Label> -->
-                <!-- -->
-                <!--     <Frame x:Name="CurrentGoogleAccountFrame" -->
-                <!--            CornerRadius="5" -->
-                <!--            BackgroundColor="White" -->
-                <!--            BorderColor="LightSkyBlue" -->
-                <!--            VerticalOptions="Start" -->
-                <!--            Grid.Row="1"> -->
-                <!--         <Grid ColumnDefinitions="50,*"> -->
-                <!--             <Image x:Name="AccountImage" -->
-                <!--                    Source="dotnet_bot.svg" -->
-                <!--                    Aspect="AspectFit" -->
-                <!--                    HeightRequest="35" -->
-                <!--                    Grid.Column="0" -->
-                <!--                    VerticalOptions="Center" -->
-                <!--                    HorizontalOptions="Start"> -->
-                <!--             </Image> -->
-                <!--             <Label Text="Use current Google account" -->
-                <!--                    x:Name="CurrentAccountLabel" -->
-                <!--                    TextColor="{DynamicResource Secondary}" -->
-                <!--                    FontSize="15" -->
-                <!--                    VerticalOptions="Center" -->
-                <!--                    Grid.Column="1" -->
-                <!--                    HorizontalOptions="Start"> -->
-                <!--             </Label> -->
-                <!--         </Grid> -->
-                <!--     </Frame> -->
-                <!-- -->
-                <!--     <Frame x:Name="OtherGoogleAccount" -->
-                <!--            CornerRadius="5" -->
-                <!--            BackgroundColor="White" -->
-                <!--            BorderColor="LightSkyBlue" -->
-                <!--            VerticalOptions="Start" -->
-                <!--            Grid.Row="2"> -->
-                <!--         <Grid ColumnDefinitions="50,*"> -->
-                <!--             <Image x:Name="OtherAccountImage" -->
-                <!--                    Source="dotnet_bot.svg" -->
-                <!--                    Aspect="AspectFit" -->
-                <!--                    HeightRequest="35" -->
-                <!--                    VerticalOptions="Center" -->
-                <!--                    Grid.Column="0" -->
-                <!--                    HorizontalOptions="Start"> -->
-                <!--             </Image> -->
-                <!--             <Label Text="Switch to another account" -->
-                <!--                    TextColor="{DynamicResource Secondary}" -->
-                <!--                    FontSize="15" -->
-                <!--                    VerticalOptions="Center" -->
-                <!--                    Grid.Column="1" -->
-                <!--                    HorizontalOptions="Start"> -->
-                <!--             </Label> -->
-                <!--         </Grid> -->
-                <!--     </Frame> -->
-                <!-- -->
-                <!-- </Grid> -->
-            </VerticalStackLayout>
+        <VerticalStackLayout x:Name="BaseVerticalStackLayout"
+                             Spacing="5"
+                             Margin="0,0"
+                             BackgroundColor="{DynamicResource Secondary}">
+            <!-- Header -->
+            <headers:BasicHeader x:Name="Header"
+                                 BackgroundColor="{DynamicResource Primary}"
+                                 BackIcon="back.svg"
+                                 BackIconColor="{DynamicResource LightBackground}"
+                                 BackIconHeightRequest="28"
+                                 BackIconWidthRequest="28"
+                                 Title="{Binding Title}"
+                                 TitleColor="{DynamicResource LightBackground}"
+                                 TitleFontSize="20">
+            </headers:BasicHeader>
+            <Label Text="Pick an account"
+                   Padding="0,10"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+            <!-- RefreshView where Identities will be loaded -->
+            <!-- <RefreshView x:Name="RefreshView" -->
+            <!--              RefreshColor="Teal" -->
+            <!--              IsRefreshing="{Binding IsLoading}" -->
+            <!--              Command="{Binding StartGoogleAccountListingCommand}"> -->
 
-
-        </ScrollView>
+                <!-- Where new cards will be written upon Completion -->
+                <!-- <ScrollView> -->
+                <!--     <FlexLayout Direction="Row" -->
+                <!--                 Wrap="Wrap" -->
+                <!--                 AlignItems="Center" -->
+                <!--                 AlignContent="Center" -->
+                <!--                 BindableLayout.ItemsSource="{Binding GoogleAccountsCards}"> -->
+                <!--     </FlexLayout> -->
+                <!-- </ScrollView> -->
+                <ScrollView Padding="10,0">
+                    <VerticalStackLayout x:Name="CardsLayout">
+                        <!-- ItemsSource="{Binding GoogleAccountsCards}"> -->
+                        <!-- <CollectionView.ItemTemplate> -->
+                        <!--     <DataTemplate x:DataType="Grid"> -->
+                        <!--         <Frame CornerRadius="10" -->
+                        <!--                BackgroundColor="White" -->
+                        <!--                BorderColor="DeepSkyBlue" -->
+                        <!--                Content="{Binding .}"> -->
+                        <!--         </Frame> -->
+                        <!--     </DataTemplate> -->
+                        <!-- </CollectionView.ItemTemplate> -->
+                        <!-- <CollectionView.ItemTemplate> -->
+                        <!-- </CollectionView.ItemTemplate> -->
+                    </VerticalStackLayout>
+                </ScrollView>
+            <!-- </RefreshView> -->
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>

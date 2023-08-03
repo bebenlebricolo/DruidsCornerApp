@@ -22,7 +22,7 @@ public class GoogleSignInActivity : MauiAppCompatActivity
         StartSignInProcess();
     }
 
-    protected override async void OnActivityResult(int requestCode, Result resultCode, Intent? data)
+    protected override void OnActivityResult(int requestCode, Result resultCode, Intent? data)
     {
         base.OnActivityResult(requestCode, resultCode, data);
       
@@ -52,6 +52,7 @@ public class GoogleSignInActivity : MauiAppCompatActivity
         }
         catch (Exception ex)
         {
+            
             _running = false;
         }
     }

@@ -67,18 +67,45 @@ public partial class GoogleAccountManager : IGoogleAccountManager
         };
     }
 
-    protected Account? PickGoogleAccount()
+    protected List<Account> ListAvailableLocalGoogleAccounts()
     {
+        var outList = new List<Account>();
         // Trying with the local account method now
         var accountManager = AccountManager.Get(Microsoft.Maui.ApplicationModel.Platform.AppContext);
-        if (accountManager == null)
+        if (accountManager != null)
         {
-            return null;
+            outList =  accountManager.GetAccountsByType("com.google").ToList();
         }
 
-        return accountManager.GetAccountsByType("com.google").ToList().FirstOrDefault<Account>();
+        return outList;
     }
 
+    private void StartGoogleAccountsListingActivity(MainActivity mainActivity)
+    {
+        try
+        {
+            // Configure sign-in to request the user's ID, email address, and basic
+            // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
+                                      .RequestEmail()
+                                      .RequestProfile()
+                                      .Build();
+
+            // Build a GoogleSignInClient with the options specified by gso.
+            // We need the main activity to provide the Google Sign In Client (don't know why ...)
+            GoogleSignInClient client = GoogleSignIn.GetClient(Platform.CurrentActivity, gso);
+            Intent signInIntent = client.SignInIntent;
+                
+            mainActivity.StartActivityForResult(signInIntent, (int) CustomCodes.GoogleSignIn);
+        }
+        catch (Exception ex)
+        {
+            // Uh-oh!
+            _logger.LogError($"{ex.Message}");
+        }
+    }
+    
+    
     protected async Task<Account?> LetUserChooseAccountAsync(CancellationToken cancellationToken)
     {
         // Starts a new Android activity that lets the user choose the account he/she wants to use with the app.
@@ -101,71 +128,57 @@ public partial class GoogleAccountManager : IGoogleAccountManager
         await currentActivity.WaitForAccountPickupAsync(cancellationToken);
         
         // When ready, pick the first available account
-        var localAccount = PickGoogleAccount();
-        return localAccount;
+        var localAccount = ListAvailableLocalGoogleAccounts();
+        return localAccount.FirstOrDefault();
     }
 
-    public async partial Task<GoogleAccount?> GetCurrentGoogleAccountAsync(CancellationToken cancellationToken)
+    public async partial Task<List<GoogleAccount>> ListGoogleAccountsOnDeviceAsync(CancellationToken cancellationToken)
     {
-        GoogleAccount? account = null;
+        List<GoogleAccount> outList = new List<GoogleAccount>();
         CheckAndRequestPermissions();
         try
         {
-            
 #if false
             GoogleSignInAccount? gAccount = GoogleSignIn.GetLastSignedInAccount(Microsoft.Maui.ApplicationModel.Platform.AppContext);
             if (gAccount != null)
             {
                 account = ConvertAccountFrom(gAccount);
-                return account;
+                outList.Add(account);
+                return outList;
             }
 #endif
 
             // Just pick the local one if it has already been selected
-            var localAccount = PickGoogleAccount();
-            if (localAccount == null || string.IsNullOrEmpty(localAccount.Name))
+            var localAccounts = ListAvailableLocalGoogleAccounts();
+            if (localAccounts.Count == 0)
             {
-                localAccount = await LetUserChooseAccountAsync(cancellationToken);
+                var pickedAccount = await LetUserChooseAccountAsync(cancellationToken);
+                if (pickedAccount == null)
+                {
+                    // Uh-oh ! No account retrieved from this method !
+                    _logger.LogError("Could not retrieve user account from user interaction !");
+                    return new List<GoogleAccount>();
+                }
             }
 
             // Well, now we don't have other solutions than to 
             // Request the user to enter its account credentials again !
-            if (localAccount == null)
+            if (localAccounts.Count == 0)
             {
-                return null;
+                // return the empty list
+                return outList;
             }
 
-            // Minimum common denominator is the account name (...)
-            // Todo : use GoogleSignIn / PlayServices apis to retrieve a bit more data for this account.
-            // This way you won’t get a consent screen  
+            
+            // Start the Google Sign In Activity and retrieve its result asynchronously
             var mainActivity =  (MainActivity) Platform.CurrentActivity!;
-            try
-            {
-                // Configure sign-in to request the user's ID, email address, and basic
-                // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                                          .RequestEmail()
-                                          .RequestProfile()
-                                          .Build();
-
-                // Build a GoogleSignInClient with the options specified by gso.
-                // We need the main activity to provide the Google Sign In Client (don't know why ...)
-                GoogleSignInClient client = GoogleSignIn.GetClient(Platform.CurrentActivity, gso);
-                Intent signInIntent = client.SignInIntent;
-                
-                mainActivity.StartActivityForResult(signInIntent, (int) CustomCodes.GoogleSignIn);
-            }
-            catch (Exception ex)
-            {
-                // Uh-oh!
-                _logger.LogError($"{ex.Message}");
-            }
-
-            await mainActivity.WaitForSignInAsync(cancellationToken);
+            StartGoogleAccountsListingActivity(mainActivity);
+            await mainActivity.WaitForAccountListingFinishedAsync(cancellationToken);            
+            
             var googleAccount = mainActivity.GoogleAccount;
             if (googleAccount != null)
             {
-                account = ConvertAccountFrom(googleAccount);
+                outList.Add(ConvertAccountFrom(googleAccount));
             }
         }
         catch (Exception ex)
@@ -173,6 +186,6 @@ public partial class GoogleAccountManager : IGoogleAccountManager
             _logger.LogError($"Exception caught while retrieving google account : {ex.Message}");
         }
 
-        return account;
+        return outList;
     }
 }

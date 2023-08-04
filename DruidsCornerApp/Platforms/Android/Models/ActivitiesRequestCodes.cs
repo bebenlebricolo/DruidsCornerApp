@@ -6,5 +6,6 @@ namespace DruidsCornerApp.Platforms.Android.Models;
 public enum CustomCodes : int
 {
     GoogleSignIn = 1,
-    ChooseGoogleAccount = 2
+    ChooseGoogleAccount = 2,
+    GoogleSignInScoped = 3
 };

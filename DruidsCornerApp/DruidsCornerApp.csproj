@@ -126,9 +126,6 @@
         <Compile Update="Services\Authentication\GoogleAccountManager.cs">
           <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
         </Compile>
-        <Compile Update="Platforms\Android\Authentication\GoogleSignInActivity.cs">
-          <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
-        </Compile>
     </ItemGroup>
 
     <ItemGroup>

@@ -14,6 +14,11 @@ public record GoogleAccount
     /// User unique Id
     /// </summary>
     public string? Id { get; set; } = "";
+    
+    /// <summary>
+    /// Authenticated account ID Token
+    /// </summary>
+    public string? IdToken { get; set; } = "";
 
     /// <summary>
     /// User photo url

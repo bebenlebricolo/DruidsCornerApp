@@ -132,6 +132,34 @@ public static class PackageUtils
 
         return sigList;
     }
+    
+    /// <summary>
+    /// Retrieves the first package signature available
+    /// </summary>
+    /// <returns></returns>
+    public static string? GetPackageDefaultSignature()
+    {
+        var signatures = GetPackageSha1Signatures();
+        if (signatures == null)
+        {
+            return null;
+        }
+        return signatures.FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Simply removes ":" characters from a signature and turns all characters to lowercase
+    /// So that it is compatible with Google expected Signatures format
+    /// </summary>
+    /// <param name="sig"></param>
+    /// <returns></returns>
+    public static string SigToGoogleFormat(string sig)
+    {
+        var formatted = sig.Replace(":", "").ToLower();
+        return formatted;
+    }
+
+    
 
     /// <summary>
     /// Reads the current .apk application name 

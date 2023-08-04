@@ -5,14 +5,13 @@ using DruidsCornerApp.Services.Authentication;
 using Microsoft.Maui.Platform;
 
 namespace DruidsCornerApp.ViewModels.Login;
+
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Utils;
-
 using Firebase.Auth;
 using Microsoft.Extensions.Logging;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -22,8 +21,10 @@ using CommunityToolkit.Mvvm.Input;
 public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributable
 {
     private static readonly string LoginErrorStr = "Login error";
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationService _firebaseAuthService;
     private readonly ISecureStorageService _secureStorageService;
+    private readonly IGoogleAccountManager _googleAccountManager;
+    private readonly IAuthConfigProvider _authConfigProvider;
     private uint _loginErrorCounter = 0;
 
     private readonly ILogger<BasicSignInPageViewModel> _logger;
@@ -37,27 +38,20 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
     [ObservableProperty]
     private bool _passwordObfuscated = true;
 
-    [ObservableProperty]
-    private ImageSource _eyeIcon;
-
-    private ImageSource _eyeOpenIcon;
-    private ImageSource _eyeClosedIcon;
-
-
     public BasicSignInPageViewModel(ILogger<BasicSignInPageViewModel> logger,
-                              IAuthenticationService authenticationService,
-                              ISecureStorageService secureStorageService) : base("Login", false)
+                                    IAuthenticationService firebaseAuthService,
+                                    ISecureStorageService secureStorageService,
+                                    IGoogleAccountManager googleAccountManager,
+                                    IAuthConfigProvider authConfigProvider
+    ) : base("Login", false)
     {
         _logger = logger;
-        _authenticationService = authenticationService;
+        _firebaseAuthService = firebaseAuthService;
         _secureStorageService = secureStorageService;
-
-        _eyeOpenIcon = ImageSource.FromFile("eye_open.svg");
-        _eyeClosedIcon = ImageSource.FromFile("eye_closed.svg");
-
-        EyeIcon = _eyeClosedIcon;
+        _googleAccountManager = googleAccountManager;
+        _authConfigProvider = authConfigProvider;
     }
-    
+
     [RelayCommand]
     public async Task ForgotPasswordClicked(CancellationToken cancellationToken)
     {
@@ -86,7 +80,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         {
             Password = string.Empty;
             loginPage.SetPasswordEntryOutlineColor(Colors.Red);
-            
+
             await PopupUtils.CreateAndShowErrorPopup("SignIn Error", "Invalid credentials");
         }
         else
@@ -96,7 +90,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
             {
                 var loginPopup = PopupUtils.CreateLoggingPopup();
                 var popupTask = loginPopup.Show();
-                var token = await _authenticationService.SignInBasicAsync(Email, Password, cancellationToken);
+                var token = await _firebaseAuthService.SignInBasicAsync(Email, Password, cancellationToken);
                 if (token == null)
                 {
                     throw new AuthenticationException("Token cannot be retrieved", AuthenticationError.EmptyToken);
@@ -121,7 +115,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
 #if __ANDROID__
 
 #endif
-                
+
                 await PopupUtils.PopAllPopupsAsync(false);
                 switch (fbEx.Reason)
                 {
@@ -129,7 +123,8 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
                     case AuthErrorReason.UnknownEmailAddress:
                         loginPage.AddPasswordHint("Create a new account ?");
                         await PopupUtils.CreateAndShowErrorPopup(LoginErrorStr,
-                            "User does not exist, maybe try to create a new account, or continue as Guest.");
+                                                                 "User does not exist, maybe try to create a new account, or continue as Guest."
+                                                                );
                         break;
 
                     case AuthErrorReason.InvalidEmailAddress:
@@ -190,31 +185,27 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
     [RelayCommand]
     public async Task GoogleSignInButtonClicked()
     {
-        await Shell.Current.GoToAsync(Navigator.GetGoogleSignInPageRoute());
+        var authConfig = await _authConfigProvider.GetAuthConfigAsync();
+        var authService = new GoogleAuthService(authConfig.RefOauthClientid);
+        var account = await authService.AuthenticateAsync(CancellationToken.None);
+        if (account == null)
+        {
+            _logger.LogError("Could not authenticate user via Google SignIn Method");
+            await PopupUtils.CreateAndShowErrorPopup("SignIn Error", "Failed to authenticate with Google SignIn");
+        }
+        else
+        {
+            // Do something !
+        }
     }
-    
+
     [RelayCommand]
     public async Task ContinueWithoutAccountClicked()
     {
         // At this point we know that the user does not want to Login anyway
         _secureStorageService.RemoveAllData();
         await _secureStorageService.StoreAsync(AccountKeys.AccountStateKey, AccountStates.GuestMode.ToString());
-        await Shell.Current.GoToAsync(Navigator.GetGoogleSignInPageRoute());
-    }
-
-    
-    [RelayCommand]
-    public void EyeFlicker()
-    {
-        PasswordObfuscated = !PasswordObfuscated;
-        if (PasswordObfuscated)
-        {
-            EyeIcon = _eyeClosedIcon;
-        }
-        else
-        {
-            EyeIcon = _eyeOpenIcon;
-        }
+        
     }
 
     /// <summary>
@@ -227,7 +218,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         {
             return;
         }
-        
+
         // Used when navigated back after a password reset for instance, 
         // When email was already filled once in another text entry, it's duplicated here so that user doesn't need to enter it again.
         string? email = HttpUtility.UrlDecode(query["email"].ToString());

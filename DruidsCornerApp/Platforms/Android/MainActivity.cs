@@ -22,11 +22,12 @@ using Task = System.Threading.Tasks.Task;
 public class MainActivity : MauiAppCompatActivity
 {
     public GoogleSignInAccount? GoogleAccount = null;
+    public bool PendingGoogleAccountSignin = false;
     public bool PendingLocalAccount = false;
 
     public void HandleGoogleSignInEvent(Result resultCode, Intent? data)
     {
-
+        PendingGoogleAccountSignin = false;
         if (resultCode == Result.Ok)
         {
             // This task is already finished (that's why, per the documentation https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignIn#public-static-taskgooglesigninaccount-getsignedinaccountfromintent-intent-data
@@ -35,6 +36,11 @@ public class MainActivity : MauiAppCompatActivity
             GoogleSignInAccount googleSignInAccount =
                 (GoogleSignInAccount) GoogleSignIn.GetSignedInAccountFromIntent(data).GetResult(Java.Lang.Class.FromType(typeof(ApiException)));
             GoogleAccount = googleSignInAccount;
+        }
+        else
+        {
+            // Raise an error or something
+            
         }
     }
 
@@ -51,10 +57,12 @@ public class MainActivity : MauiAppCompatActivity
         switch (requestCode)
         {
             case (int)CustomCodes.GoogleSignIn:
+            case (int)CustomCodes.GoogleSignInScoped:
                 HandleGoogleSignInEvent(resultCode, data);
                 break;
 
             case (int)CustomCodes.ChooseGoogleAccount:
+                HandleAccountPickupEvent(resultCode, data);
                 break;
 
             default:
@@ -68,7 +76,7 @@ public class MainActivity : MauiAppCompatActivity
 
     public async Task WaitForAccountListingFinishedAsync(CancellationToken cancellationToken)
     {
-        while (GoogleAccount == null && !cancellationToken.IsCancellationRequested)
+        while (PendingGoogleAccountSignin == true && !cancellationToken.IsCancellationRequested)
         {
             await Task.Delay(500, cancellationToken);
         }

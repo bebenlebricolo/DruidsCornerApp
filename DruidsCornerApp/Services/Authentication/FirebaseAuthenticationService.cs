@@ -13,24 +13,24 @@ namespace DruidsCornerApp.Services.Authentication;
 // Unofficial firebase _fbAuthClient side support for .net based apps
 // https://github.com/step-up-labs/firebase-authentication-dotnet
 
-public class AuthenticationService : IAuthenticationService
+public class FirebaseAuthenticationService : IAuthenticationService
 {
     // private static FirebaseApp? _fbApp = null;
     private readonly FirebaseAuthClient _fbAuthClient;
-    private readonly ILogger<AuthenticationService> _logger;
+    private readonly ILogger<FirebaseAuthenticationService> _logger;
 
-    public AuthenticationService(ILogger<AuthenticationService> logger, 
+    public FirebaseAuthenticationService(ILogger<FirebaseAuthenticationService> logger, 
                                  IAuthConfigProvider authConfigProvider)
     {
         _logger = logger;
         var authConfig = authConfigProvider.GetAuthConfig();
-        var sha1Sigs = PackageUtils.GetPackageSha1Signatures();
-        if (sha1Sigs == null || sha1Sigs.Count == 0)
+        var sha1Sig = PackageUtils.GetPackageDefaultSignature();
+        if (sha1Sig == null)
         {
             throw new Exception("Empty SHA-1 signature for this app!");
         }
         var packageName = PackageUtils.GetPackageName();
-        var sha1Signature = sha1Sigs[0].Replace(":", "").ToLower();
+        var sha1Signature = PackageUtils.SigToGoogleFormat(sha1Sig);
         
         var config = new FirebaseAuthConfig
         {

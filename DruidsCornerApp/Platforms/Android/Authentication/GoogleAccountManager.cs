@@ -62,6 +62,7 @@ public partial class GoogleAccountManager : IGoogleAccountManager
             PhotoUrl = account.PhotoUrl.ToString(),
             Email = account.Email,
             Id = account.Id,
+            IdToken = account.IdToken,
             FullName = account.DisplayName,
             UserName = account.GivenName
         };
@@ -80,23 +81,30 @@ public partial class GoogleAccountManager : IGoogleAccountManager
         return outList;
     }
 
+    private GoogleSignInClient GetGoogleSignInClient()
+    {
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
+                                  .RequestEmail()
+                                  .RequestProfile()
+                                  .Build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        // We need the main activity to provide the Google Sign In Client (don't know why ...)
+        GoogleSignInClient client = GoogleSignIn.GetClient(Platform.CurrentActivity, gso);
+        return client;
+    }
+    
     private void StartGoogleAccountsListingActivity(MainActivity mainActivity)
     {
         try
         {
-            // Configure sign-in to request the user's ID, email address, and basic
-            // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                                      .RequestEmail()
-                                      .RequestProfile()
-                                      .Build();
-
-            // Build a GoogleSignInClient with the options specified by gso.
-            // We need the main activity to provide the Google Sign In Client (don't know why ...)
-            GoogleSignInClient client = GoogleSignIn.GetClient(Platform.CurrentActivity, gso);
+            var client = GetGoogleSignInClient();
             Intent signInIntent = client.SignInIntent;
                 
             mainActivity.StartActivityForResult(signInIntent, (int) CustomCodes.GoogleSignIn);
+            mainActivity.PendingGoogleAccountSignin = true;
         }
         catch (Exception ex)
         {
@@ -138,16 +146,6 @@ public partial class GoogleAccountManager : IGoogleAccountManager
         CheckAndRequestPermissions();
         try
         {
-#if false
-            GoogleSignInAccount? gAccount = GoogleSignIn.GetLastSignedInAccount(Microsoft.Maui.ApplicationModel.Platform.AppContext);
-            if (gAccount != null)
-            {
-                account = ConvertAccountFrom(gAccount);
-                outList.Add(account);
-                return outList;
-            }
-#endif
-
             // Just pick the local one if it has already been selected
             var localAccounts = ListAvailableLocalGoogleAccounts();
             if (localAccounts.Count == 0)
@@ -173,7 +171,7 @@ public partial class GoogleAccountManager : IGoogleAccountManager
             // Start the Google Sign In Activity and retrieve its result asynchronously
             var mainActivity =  (MainActivity) Platform.CurrentActivity!;
             StartGoogleAccountsListingActivity(mainActivity);
-            await mainActivity.WaitForAccountListingFinishedAsync(cancellationToken);            
+            await mainActivity.WaitForAccountListingFinishedAsync(cancellationToken);
             
             var googleAccount = mainActivity.GoogleAccount;
             if (googleAccount != null)
@@ -188,4 +186,23 @@ public partial class GoogleAccountManager : IGoogleAccountManager
 
         return outList;
     }
+
+    public partial GoogleAccount? GetCurrentGoogleAccount()
+    {
+        GoogleSignInAccount? gAccount = GoogleSignIn.GetLastSignedInAccount(Microsoft.Maui.ApplicationModel.Platform.AppContext);
+        if (gAccount != null)
+        {
+            return ConvertAccountFrom(gAccount);
+        }
+
+        return null;
+    }
+
+    public partial Task<bool> SignInWithAccountAsync(GoogleAccount account)
+    {
+        var client = GetGoogleSignInClient();
+        return Task.FromResult(false);
+    }
+
+
 }

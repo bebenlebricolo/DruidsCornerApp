@@ -62,7 +62,7 @@ public static class MauiProgram
 
         // Registering services here (for dependency injection)
         builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();
-        builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+        builder.Services.AddSingleton<IAuthenticationService, FirebaseAuthenticationService>();
         builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
         builder.Services.AddSingleton<IGoogleAccountManager, GoogleAccountManager>();
 

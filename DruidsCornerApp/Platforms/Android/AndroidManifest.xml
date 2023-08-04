@@ -6,15 +6,21 @@
                  android:supportsRtl="true">
 
         <activity android:name=".GoogleSignInActivity"/>
+        
 
 
     </application>
     <!-- <application android:allowBackup="true" android:supportsRtl="true"></application>-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
 
-    <!--    <activity android:label="@string/app_name" android:name="GoogleSignInActivity"/>-->
-
+    
+    <!-- Queries used for the WebAuthenticator activity -->
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
 </manifest>

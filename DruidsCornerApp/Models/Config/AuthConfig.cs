@@ -19,6 +19,25 @@ public record AuthConfig
     public string AuthDomain { get; set; }  = string.Empty;
     
     /// <summary>
+    /// Public access api key, used to reach the authentication gateway endpoint
+    /// </summary>
+    [JsonPropertyName("PUBLIC_ACCESS_API_KEY")]
+    public string PublicAccessApiKey { get; set; }  = string.Empty;
+    
+    /// <summary>
+    /// Application authentication gateway : used to provide public use access tokens to the service
+    /// </summary>
+    [JsonPropertyName("AUTH_GATEWAY_ENDPOINT")]
+    public string AuthGatewayEndpoint { get; set; }  = string.Empty;
+    
+    /// <summary>
+    /// Reference Client Id, used when authenticating end user via OAuth2 protocol (IdToken generation requires a Web client kind in order to retrieve an IdToken)
+    /// </summary>
+    [JsonPropertyName("REF_OAUTH_CLIENT_ID")]
+    public string RefOauthClientid { get; set; }  = string.Empty;
+
+    
+    /// <summary>
     /// JWT Token required scopes.
     /// This is required in order to be able to retrieve a token that has
     /// the right scopes (and more generally to retrieve a jwt token (aka "ID Token") from google that

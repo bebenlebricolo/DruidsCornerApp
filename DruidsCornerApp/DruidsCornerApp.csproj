@@ -173,6 +173,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Models\DruidsCornerApi\" />
         <Folder Include="Resources\Images\Icons\"/>
     </ItemGroup>
 

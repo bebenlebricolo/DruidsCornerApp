@@ -1,0 +1,13 @@
+namespace DruidsCornerAPI.Models.DiyDog.References
+{
+    /// <summary>
+    /// Very simple Known Good Styles list
+    /// </summary>
+    public class ReferenceStyles
+    {
+        /// <summary>
+        /// List of Style properties
+        /// </summary>
+        public List<StyleProperty> Styles {get; set; } = new List<StyleProperty>();  
+    }
+}

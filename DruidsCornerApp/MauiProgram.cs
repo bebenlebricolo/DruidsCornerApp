@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
+using DruidsCornerApp.Utils;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.Views;
@@ -40,11 +41,10 @@ public static class MauiProgram
 //             })
 // #endif
             .ConfigureFonts(fonts =>
-                            {
-                                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                            }
-                           );
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
         // Registering Pages here (for dependency injection)
         builder.Services.AddTransient<WelcomePage>();
@@ -60,11 +60,21 @@ public static class MauiProgram
         builder.Services.AddTransient<GoogleSignInPageViewModel>();
         builder.Services.AddTransient<AccountCreationPageViewModel>();
 
+#if __ANDROID__
+        builder.Services.AddTransient<HttpClient, PlatformHttpClient>(client =>
+        {
+            var sha1 = PackageUtils.SigToGoogleFormat(PackageUtils.GetPackageDefaultSignature()!);
+            var pkgname = PackageUtils.GetPackageName();
+            return new PlatformHttpClient(sha1, pkgname);
+        });
+#endif
+
         // Registering services here (for dependency injection)
         builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();
         builder.Services.AddSingleton<IAuthenticationService, FirebaseAuthenticationService>();
         builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
         builder.Services.AddSingleton<IGoogleAccountManager, GoogleAccountManager>();
+        builder.Services.AddSingleton<IGuestAuthService, GuestAuthService>();
 
         builder.Logging.AddTraceLogger(options => { options.MinLevel = LogLevel.Information; });
 #if DEBUG

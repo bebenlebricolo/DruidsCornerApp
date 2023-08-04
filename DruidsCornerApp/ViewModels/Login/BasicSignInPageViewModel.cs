@@ -25,6 +25,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
     private readonly ISecureStorageService _secureStorageService;
     private readonly IGoogleAccountManager _googleAccountManager;
     private readonly IAuthConfigProvider _authConfigProvider;
+    private readonly IGuestAuthService _guestAuthService;
     private uint _loginErrorCounter = 0;
 
     private readonly ILogger<BasicSignInPageViewModel> _logger;
@@ -42,7 +43,8 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
                                     IAuthenticationService firebaseAuthService,
                                     ISecureStorageService secureStorageService,
                                     IGoogleAccountManager googleAccountManager,
-                                    IAuthConfigProvider authConfigProvider
+                                    IAuthConfigProvider authConfigProvider,
+                                    IGuestAuthService guestAuthService
     ) : base("Login", false)
     {
         _logger = logger;
@@ -50,6 +52,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         _secureStorageService = secureStorageService;
         _googleAccountManager = googleAccountManager;
         _authConfigProvider = authConfigProvider;
+        _guestAuthService = guestAuthService;
     }
 
     [RelayCommand]
@@ -200,12 +203,18 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
     }
 
     [RelayCommand]
-    public async Task ContinueWithoutAccountClicked()
+    public async Task ContinueWithoutAccountClicked(CancellationToken cancellationToken)
     {
         // At this point we know that the user does not want to Login anyway
         _secureStorageService.RemoveAllData();
         await _secureStorageService.StoreAsync(AccountKeys.AccountStateKey, AccountStates.GuestMode.ToString());
-        
+        var token = await _guestAuthService.GetPublicAccessTokenAsync(cancellationToken);
+
+        // Store token !
+        if (!string.IsNullOrEmpty(token))
+        {
+            await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
+        }
     }
 
     /// <summary>

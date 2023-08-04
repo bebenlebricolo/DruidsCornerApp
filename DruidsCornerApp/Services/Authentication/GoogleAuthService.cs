@@ -11,6 +11,7 @@ public partial class GoogleAuthService : IGoogleAuthService
 
     public partial Task<GoogleAccount?> GetCurrentUserAsync(CancellationToken cancellationToken);
 #else
+
     public GoogleAuthService(string refClientId, List<string>? customScopes = null)
     {
     }

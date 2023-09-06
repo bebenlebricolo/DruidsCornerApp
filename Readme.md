@@ -34,7 +34,7 @@ Development on .net maui is a bit crooked, especially on Linux, so there is a li
 ```bash
 sudo pacman -S dotnet-runtime dotnet-sdk aspnet-runtime
 sudo pacman -S jdk11-openjdk
-sudo dotnet workload intall maui-android
+sudo dotnet workload install maui-android
 ```
 
 # Visual Studio Code Net MAUI extension configuration
@@ -60,4 +60,44 @@ Android SDK recommended optional components:
 
 > Note I had issues with the autocompletion (which never worked on dotnet MAUI projects so far for me on Linux), so I gave a try to Rider from JetBrains and it does the job quite nicely.
 > Just remember to correctly set the Android SDK paths and openjdk11 paths in Rider's settings :
-`Rider > File > Settings ... > Build, Execution, Deployment > Android` 
+`Rider > File > Settings ... > Build, Execution, Deployment > Android`
+
+# Authentication configuration setup
+This application needs to connect to Firebase in order to perform user authentication / authorization.
+A Firebase public ApiKey is then required for the app to connect to Firebase servers.
+This configuration needs to be written into a "AuthConfig.json" file, located under the [DruidsCornerApp/.config](DruidsCornerApp/.config) folder.
+A template version exist and can be found here : [DruidsCornerApp/.config/TemplateAuthConfig.json](DruidsCornerApp/.config/TemplateAuthConfig.json).
+```json
+{
+  "FIREBASE_API_KEY" : "Abcdefghijklmnopqrstuvwxyz",
+  "FIREBASE_AUTH_DOMAIN" : "my-project-name-in-firebase-settings",
+  "JWT_SCOPES" : [
+    "scope 1",
+    "scope 2",
+    "scope 3"
+  ]
+}
+```
+Real ApiKey and AuthDomain can be found in [Firebase console project parameters](https://console.firebase.google.com/project/).
+Furthermore, JWT Scopes also need to be provided, and they are used by the application to ask permissions on user's behalf when authenticating against Google OAuth2.
+
+# Signed Android app and public *ApiKey limitations*
+In order to secure calls to Firebase servers, the public ApiKey is protected and leverages Google Cloud apiKey limitations.
+As such, only this app is whitelisted alongside its certificate (SHA1 sum).
+SHA-1 footprints can be retrieved from a key like so :
+```bash
+keytool -list -v -alias <key alias> -keystore <keyfile location>
+```
+*Note : I experienced issues with the **default jvm runtime** (hence keytool) on my machine as it **gave a 32-wide SHA-1 fingerprint**, because the default jvm 
+happened to not be the one I needed.
+So ensure the keytool used comes from the **open-jdk 11** !*
+
+# Sign the .apk in both Debug and Release modes (for debug and deployment purposes)
+In Rider :
+select ProjectProperties > <Debug | Release> "Sign the .APK file using the next keystore information" > File in the blanks !
+```
+* Keystore : <path to the keystore file>
+* Password : <Keystore password>
+* Keystore alias : <Keystore alias>
+* Keystore alias password : <Keystore alias password>
+```

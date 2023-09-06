@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DruidsCornerApp.Views.Login.AccountCreationPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.Login"
+             xmlns:customEntries="clr-namespace:DruidsCornerApp.Controls.Entries"
+             xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodel:AccountCreationPageViewModel">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Global vertical container -->
+            <VerticalStackLayout BackgroundColor="#ffa300">
+                <!-- StartPoint defaults to (0,0) -->
+                <VerticalStackLayout.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#ffa300"
+                                      Offset="0.1" />
+                        <GradientStop Color="#ffa300"
+                                      Offset="0.43" />
+                        <GradientStop Color="#304057"
+                                      Offset="0.44" />
+                        <GradientStop Color="#304057"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </VerticalStackLayout.Background>
+
+                <!-- Header -->
+                <headers:BasicHeader x:Name="Header"
+                                     BackgroundColor="#ff6a00"
+                                     BackIcon="back.svg"
+                                     BackIconColor="WhiteSmoke"
+                                     BackIconHeightRequest="28"
+                                     BackIconWidthRequest="28"
+                                     Title="{Binding Title}"
+                                     TitleColor="WhiteSmoke"
+                                     TitleFontSize="20">
+                </headers:BasicHeader>
+
+                <!-- Login credentials / buttons block -->
+                <Frame Margin="0,0" CornerRadius="0" Padding="10" BackgroundColor="WhiteSmoke"
+                       BorderColor="Transparent">
+                    <VerticalStackLayout Padding="30,10">
+                        <!-- Username/email address group -->
+                        <VerticalStackLayout x:Name="EmailVerticalStackLayout" Padding="0,10" Spacing="10">
+                            <Label Text="Email address *" TextColor="#304057" />
+                            <customEntries:OutlinedEntry x:Name="EmailEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding Email}"
+                                                         TextColor="#ff6a00"
+                                                         
+                                                         Icon="mail.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="15"
+                                                         IconWidthRequest="15"
+                                                         
+                                                         CornerRadius="25"
+                                                         Placeholder="someone@somewhere.com"
+                                                         PlaceholderColor="#44808080">
+
+                            </customEntries:OutlinedEntry>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Padding="0,10" Spacing="10">
+                            <Label Text="Display name" TextColor="#304057" />
+                            <customEntries:OutlinedEntry x:Name="NameEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding DisplayName}"
+                                                         TextColor="#ff6a00" 
+                                                         Icon="mail.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="15"
+                                                         IconWidthRequest="15"
+                                                         CornerRadius="25"
+                                                         Placeholder="my name here"
+                                                         PlaceholderColor="#44808080">
+                            </customEntries:OutlinedEntry>
+                        </VerticalStackLayout>
+
+                        <!-- Password group -->
+                        <VerticalStackLayout x:Name="PasswordVerticalStackLayout" Padding="0,10" Spacing="5">
+                            <Label Text="Password *" TextColor="#304057" />
+                            <customEntries:OutlinedPasswordEntry x:Name="PasswordEntry"
+                                                         BackgroundColor="Beige"
+                                                         BorderColor="#aaff6a00"
+                                                         Text="{Binding Password}"
+                                                         TextColor="#ff6a00"
+                                                         
+                                                         Icon="padlock.svg"
+                                                         IconColor="#ff6a00"
+                                                         IconHeightRequest="18"
+                                                         IconWidthRequest="18"
+                                                         
+                                                         HideIcon="eye_closed.png"
+                                                         ShowIcon="eye_open.svg"
+                                                         HideShowIconHeightRequest="18"
+                                                         HideShowIconWidthRequest="18"
+                                                         HideShowIconColor="#ff6a00"
+                                                         
+                                                         CornerRadius="25"
+                                                         Placeholder="******"
+                                                         PlaceholderColor="#44808080">
+
+                            </customEntries:OutlinedPasswordEntry>
+                        </VerticalStackLayout>
+
+                        <!-- Password group -->
+                        <VerticalStackLayout x:Name="PasswordValidationGroup" Padding="0,10" Spacing="5">
+                            <Label Text="Password validation *" TextColor="#304057" />
+                            <customEntries:OutlinedPasswordEntry x:Name="PasswordValidationEntry"
+                                                                 BackgroundColor="Beige"
+                                                                 BorderColor="#aaff6a00"
+                                                                 Text="{Binding PasswordValidation}"
+                                                                 TextColor="#ff6a00"
+                                                                 
+                                                                 Icon="padlock.svg"
+                                                                 IconColor="#ff6a00"
+                                                                 IconHeightRequest="18"
+                                                                 IconWidthRequest="18"
+                                                                 
+                                                                 HideIcon="eye_closed.png"
+                                                                 ShowIcon="eye_open.svg"
+                                                                 HideShowIconHeightRequest="18"
+                                                                 HideShowIconWidthRequest="18"
+                                                                 HideShowIconColor="#ff6a00"
+                                                                 
+                                                                 CornerRadius="25"
+                                                                 Placeholder="******"
+                                                                 PlaceholderColor="#44808080">
+                            </customEntries:OutlinedPasswordEntry>
+                            
+                        </VerticalStackLayout>
+
+                        <!-- Separator -->
+                        <BoxView Color="#80ff6a00" HeightRequest="0.3" Margin="10,10"></BoxView>
+
+                        <!-- Login / forgotten password group -->
+                        <HorizontalStackLayout Padding="0,10" Spacing="25" HorizontalOptions="Center">
+                            <Button Text="Create Account !"
+                                    x:Name="CreateAccountButton"
+                                    TextColor="WhiteSmoke"
+                                    Padding="35,0"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="#ff6a00"
+                                    Command="{Binding Path=CreateAccountCommand }" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Footer elements -->
+                <Grid VerticalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Fields marked with an asterisk &lt; * &gt; are mandatory fields."
+                           Padding="0,10"
+                           Grid.Row="0"
+                           TextColor="WhiteSmoke"
+                           FontAttributes="Italic"
+                           HorizontalOptions="Center" />
+
+                    <!-- Separator -->
+                    <HorizontalStackLayout
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        VerticalOptions="End"
+                        Padding="30,0" Spacing="15" HorizontalOptions="Center">
+                        <Image Source="doublehophalf.svg" HeightRequest="40">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Image Source="doublehoprighthalf.svg" HeightRequest="40">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="WhiteSmoke" />
+                            </Image.Behaviors>
+                        </Image>
+                    </HorizontalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

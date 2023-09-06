@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:headers="clr-namespace:DruidsCornerApp.Controls.Headers"
+             xmlns:viewmodels="clr-namespace:DruidsCornerApp.ViewModels.Login"
+             x:Class="DruidsCornerApp.Views.Login.GoogleSignInPage"
+             x:DataType="viewmodels:GoogleSignInPageViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource Secondary}"
+             Title="{Binding Title}"
+             Padding="0">
+
+    <ContentPage.Content>
+        <VerticalStackLayout x:Name="BaseVerticalStackLayout"
+                             Spacing="5"
+                             Margin="0,0"
+                             BackgroundColor="{DynamicResource Secondary}">
+            <!-- Header -->
+            <headers:BasicHeader x:Name="Header"
+                                 BackgroundColor="{DynamicResource Primary}"
+                                 BackIcon="back.svg"
+                                 BackIconColor="{DynamicResource LightBackground}"
+                                 BackIconHeightRequest="28"
+                                 BackIconWidthRequest="28"
+                                 Title="{Binding Title}"
+                                 TitleColor="{DynamicResource LightBackground}"
+                                 TitleFontSize="20">
+            </headers:BasicHeader>
+            <Label Text="Pick an account"
+                   Padding="0,10"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+            <!-- RefreshView where Identities will be loaded -->
+            <!-- <RefreshView x:Name="RefreshView" -->
+            <!--              RefreshColor="Teal" -->
+            <!--              IsRefreshing="{Binding IsLoading}" -->
+            <!--              Command="{Binding StartGoogleAccountListingCommand}"> -->
+
+                <!-- Where new cards will be written upon Completion -->
+                <!-- <ScrollView> -->
+                <!--     <FlexLayout Direction="Row" -->
+                <!--                 Wrap="Wrap" -->
+                <!--                 AlignItems="Center" -->
+                <!--                 AlignContent="Center" -->
+                <!--                 BindableLayout.ItemsSource="{Binding GoogleAccountsCards}"> -->
+                <!--     </FlexLayout> -->
+                <!-- </ScrollView> -->
+                <ScrollView Padding="10,0">
+                    <VerticalStackLayout x:Name="CardsLayout">
+                        <!-- ItemsSource="{Binding GoogleAccountsCards}"> -->
+                        <!-- <CollectionView.ItemTemplate> -->
+                        <!--     <DataTemplate x:DataType="Grid"> -->
+                        <!--         <Frame CornerRadius="10" -->
+                        <!--                BackgroundColor="White" -->
+                        <!--                BorderColor="DeepSkyBlue" -->
+                        <!--                Content="{Binding .}"> -->
+                        <!--         </Frame> -->
+                        <!--     </DataTemplate> -->
+                        <!-- </CollectionView.ItemTemplate> -->
+                        <!-- <CollectionView.ItemTemplate> -->
+                        <!-- </CollectionView.ItemTemplate> -->
+                    </VerticalStackLayout>
+                </ScrollView>
+            <!-- </RefreshView> -->
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

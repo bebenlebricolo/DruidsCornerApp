@@ -1,0 +1,9 @@
+{
+  "FIREBASE_API_KEY" : "Abcdefghijklmnopqrstuvwxyz",
+  "FIREBASE_AUTH_DOMAIN" : "my-project-name-in-firebase-settings",
+  "JWT_SCOPES" : [
+    "scope 1",
+    "scope 2",
+    "scope 3"
+  ]
+}

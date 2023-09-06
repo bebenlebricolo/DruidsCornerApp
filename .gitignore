@@ -1,6 +1,15 @@
 # Visual studio and VSCode outputs and config
 .vs
 .vscode
+.idea
+
+# Dotsettings from JetBrains' IDE
+*sln.DotSettings.user
+*.csproj.user*
+
+# Local configuration
+AuthConfig.json
+google-services.json
 
 # Development binaries
 [Bb]uild

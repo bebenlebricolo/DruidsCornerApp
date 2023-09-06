@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+                  xmlns:controls="clr-namespace:DruidsCornerApp.Controls"
+                  x:Class="DruidsCornerApp.Controls.BasePopup"
+                  BackgroundColor="Transparent"
+                  CloseWhenBackgroundIsClicked="False">
+
+    <Frame x:Name="OuterFrame"
+           x:FieldModifier="protected"
+           Margin="50"
+           HorizontalOptions="Fill"
+           Padding="50, 10, 50, 20"
+           CornerRadius="15"
+           BackgroundColor="White"
+           HasShadow="True"
+           BorderColor="Transparent"
+           IsClippedToBounds="False"
+           VerticalOptions="Center">
+        <Frame.Shadow>
+            <Shadow Brush="Black"
+                    Offset="20,20"
+                    Radius="40"
+                    Opacity="0.8" />
+        </Frame.Shadow>
+
+        <VerticalStackLayout x:Name="CentralLayout"
+                             x:FieldModifier="protected"
+                             Spacing="10">
+            <Label x:Name="TitleLabel"
+                   x:FieldModifier="protected"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Text="Title"
+                   TextColor="#cc202020"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            <BoxView x:Name="SeparatorControl"
+                     x:FieldModifier="protected"
+                     BackgroundColor="Grey"
+                     HeightRequest="0.2"
+                     Margin="-200,0"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center" />
+            <!-- New central element will be inserted here -->
+            <Label x:Name="MessageLabel"
+                   x:FieldModifier="protected"
+                   Text="Message"
+                   TextColor="#cc202020"
+                   FontAttributes="None"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <Grid x:Name="ButtonGridLayout"
+                  x:FieldModifier="protected"
+                  RowDefinitions="*"
+                  ColumnDefinitions="*">
+                <Button x:Name="OkButton"
+                        x:FieldModifier="protected"
+                        IsVisible="False"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Ok"
+                        TextColor="#ccd0d0d0"
+                        BackgroundColor="#304057"
+                        HorizontalOptions="Fill"
+                        Clicked="OkButton_OnClicked" />
+            </Grid>
+        </VerticalStackLayout>
+    </Frame>
+</mopups:PopupPage>

@@ -33,9 +33,12 @@ public partial class WelcomePageViewModel : BaseViewModel
             // Todo : check if token is still valid
             // if token valid -> go to browsing page
             // else -> go to login page
+            await Shell.Current.GoToAsync($"{Navigator.GetRecipesBrowserPageRoute()}", true);
         }
-
-        // Navigate to basic auth first
-        await Shell.Current.GoToAsync($"{Navigator.GetBasicSignInPageRoute()}", true);
+        else
+        {
+            // Navigate to basic auth first
+            await Shell.Current.GoToAsync($"{Navigator.GetBasicSignInPageRoute()}", true);
+        }
     }
 }

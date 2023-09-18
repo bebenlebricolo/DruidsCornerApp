@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DruidsCornerApp.Views;
+using DruidsCornerApp.Views.Recipes;
 
 namespace DruidsCornerApp;
 using DruidsCornerApp.Views.Login;
@@ -14,10 +16,13 @@ public partial class AppShell : Shell
 	public AppShell()
 	{
 		InitializeComponent();
-		// Routing.RegisterRoute(Navigator.GetWelcomePageRoute(), typeof(WelcomePage));
+		Routing.RegisterRoute(Navigator.GetWelcomePageRoute(), typeof(WelcomePage));
 		Routing.RegisterRoute(Navigator.GetBasicSignInPageRoute(), typeof(BasicSignInPage));
 		Routing.RegisterRoute(Navigator.GetAccountCreationPageRoute(), typeof(AccountCreationPage));
 		Routing.RegisterRoute(Navigator.GetGoogleSignInPageRoute(), typeof(GoogleSignInPage));
 		Routing.RegisterRoute(Navigator.GetAccountPasswordResetPageRoute(), typeof(ResetPasswordPage));
+		
+		// Recipe-related pages
+		Routing.RegisterRoute(Navigator.GetRecipesBrowserPageRoute(), typeof(RecipesBrowserPage));
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <RunConfiguration>
+        <EnvironmentVariables>
+            <ACCESS_TOKEN>test</ACCESS_TOKEN>
+        </EnvironmentVariables>
+    </RunConfiguration>
+</RunSettings>

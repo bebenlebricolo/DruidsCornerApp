@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Reflection;
+using CommunityToolkit.Maui;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
 using DruidsCornerApp.Utils;
@@ -6,9 +7,9 @@ using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
-using MetroLog.MicrosoftExtensions;
+using DruidsCornerApp.Views.Recipes;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.LifecycleEvents;
 using Mopups.Hosting;
 
 namespace DruidsCornerApp;
@@ -22,36 +23,30 @@ public static class MauiProgram
             .UseMauiCommunityToolkit()
             .UseMauiApp<App>()
             .ConfigureMopups()
-// #if __ANDROID__
-//             .ConfigureLifecycleEvents(events => 
-//             {
-//                 events.AddAndroid(android =>
-//                                   {
-//                                       return android
-//                                              .OnActivityResult((activity, requestCode, resultCode, data) =>
-//                                              {
-//                                                  MainActivity.HandleGoogleSignInEvent(requestCode, resultCode, data); 
-//                                              })
-//                                              .OnStart((activity) => LogEvent(nameof(AndroidLifecycle.OnStart)))
-//                                              .OnCreate((activity, bundle) => LogEvent(nameof(AndroidLifecycle.OnCreate)))
-//                                              .OnBackPressed((activity) => LogEvent(nameof(AndroidLifecycle.OnBackPressed)) && false)
-//                                              .OnStop((activity) => LogEvent(nameof(AndroidLifecycle.OnStop)));
-//                                   }
-//                                  );
-//             })
-// #endif
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
+        // Load configuration from embedded resources
+        var a = Assembly.GetExecutingAssembly();
+        using var stream = a.GetManifestResourceStream("DruidsCornerApp.appsettings.json");
+
+        var config = new ConfigurationBuilder()
+                     .AddJsonStream(stream!)
+                     .Build();
+        builder.Configuration.AddConfiguration(config);
+        
         // Registering Pages here (for dependency injection)
         builder.Services.AddTransient<WelcomePage>();
         builder.Services.AddTransient<BasicSignInPage>();
         builder.Services.AddTransient<AccountCreationPage>();
         builder.Services.AddTransient<GoogleSignInPage>();
         builder.Services.AddTransient<ResetPasswordPage>();
+        
+        // Recipes related pages
+        builder.Services.AddTransient<RecipesBrowserPage>();
 
         // Registering view models here (for dependency injection)
         builder.Services.AddTransient<WelcomePageViewModel>();
@@ -76,7 +71,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IGoogleAccountManager, GoogleAccountManager>();
         builder.Services.AddSingleton<IGuestAuthService, GuestAuthService>();
 
-        builder.Logging.AddTraceLogger(options => { options.MinLevel = LogLevel.Information; });
+        //builder.Logging.AddTraceLogger(options => { options.MinLevel = LogLevel.Information; });
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

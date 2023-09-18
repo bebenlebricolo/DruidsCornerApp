@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <!-- <HorizontalStackLa1yout Spacing="10"> -->
+            <!-- <HorizontalStackLayout Spacing="10"> -->
             <Image x:Name="EntryIcon" 
                    x:FieldModifier="public"
                    Source="{Binding Icon, Source={x:Reference CustomControl}}"

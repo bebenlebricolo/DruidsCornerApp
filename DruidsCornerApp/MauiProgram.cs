@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
+using DruidsCornerApp.Services.Config;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
@@ -28,15 +29,6 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
-        // Load configuration from embedded resources
-        var a = Assembly.GetExecutingAssembly();
-        using var stream = a.GetManifestResourceStream("DruidsCornerApp.appsettings.json");
-
-        var config = new ConfigurationBuilder()
-                     .AddJsonStream(stream!)
-                     .Build();
-        builder.Configuration.AddConfiguration(config);
         
         // Registering Pages here (for dependency injection)
         builder.Services.AddTransient<WelcomePage>();
@@ -70,6 +62,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<ISecureStorageService, SecureStorageService>();
         builder.Services.AddSingleton<IGoogleAccountManager, GoogleAccountManager>();
         builder.Services.AddSingleton<IGuestAuthService, GuestAuthService>();
+
+        // Configuration providers
+        builder.Services.AddSingleton<ConfigProvider>();
 
         //builder.Logging.AddTraceLogger(options => { options.MinLevel = LogLevel.Information; });
 #if DEBUG

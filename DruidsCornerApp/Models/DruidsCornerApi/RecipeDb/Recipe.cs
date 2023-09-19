@@ -90,15 +90,15 @@
         public PackagingType PackagingType { get; set; } = PackagingType.Bottle;
 
         /// <summary>
-        /// Beer's image (can either point to a local file source or a cloud record.)
-        /// </summary>
-        public DataRecord Image { get; set; } = new FileRecord();
-
-        /// <summary>
-        /// Beer's original PDF page. Can either point to a local file source or a cloud record.
-        /// This PDF page might be requested for the end user to countercheck some values, parsing is not 100% reliable! 
-        /// </summary>
-        public DataRecord PdfPage { get; set; } = new FileRecord();
+        // /// Beer's image (can either point to a local file source or a cloud record.)
+        // /// </summary>
+        // public DataRecord Image { get; set; } = new FileRecord();
+        //
+        // /// <summary>
+        // /// Beer's original PDF page. Can either point to a local file source or a cloud record.
+        // /// This PDF page might be requested for the end user to countercheck some values, parsing is not 100% reliable! 
+        // /// </summary>
+        // public DataRecord PdfPage { get; set; } = new FileRecord();
 
         /// <summary>
         /// Optional list of food pairings

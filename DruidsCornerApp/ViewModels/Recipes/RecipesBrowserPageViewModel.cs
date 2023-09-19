@@ -48,6 +48,6 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
     public async Task RefreshContent()
     {
         // Fetch new content
-        var recipe = await _apiClient.GetRecipeAsync(0);
+        var recipe = await _apiClient.GetRecipeByNumberAsync(0);
     }
 }

@@ -32,6 +32,9 @@
       <ProjectReference Include="..\DruidsCornerApp\DruidsCornerApp.csproj" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <RunSettingsFilePath>$(MSBuildProjectDirectory)/.runsettings</RunSettingsFilePath>
+    </PropertyGroup>
 
 
     <ItemGroup>

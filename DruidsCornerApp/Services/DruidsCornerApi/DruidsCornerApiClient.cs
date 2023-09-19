@@ -1,8 +1,8 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DruidsCornerAPI.Models.DiyDog.RecipeDb;
 using DruidsCornerApp.Models.Config;
+using DruidsCornerApp.Models.DruidsCornerApi.RecipeDb;
 using DruidsCornerApp.Models.DruidsCornerApi.Wrappers;
 using DruidsCornerApp.Models.Exceptions;
 using DruidsCornerApp.Models.Login;

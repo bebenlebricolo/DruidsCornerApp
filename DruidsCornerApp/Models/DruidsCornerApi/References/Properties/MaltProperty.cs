@@ -1,4 +1,4 @@
-namespace DruidsCornerAPI.Models.DiyDog.References
+namespace DruidsCornerApp.Models.DruidsCornerApi.References.Properties
 {
     /// <summary>
     /// Encodes a known good Malt property

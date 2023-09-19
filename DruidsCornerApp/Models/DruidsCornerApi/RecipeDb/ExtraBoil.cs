@@ -1,4 +1,4 @@
-﻿namespace DruidsCornerAPI.Models.DiyDog.RecipeDb
+﻿namespace DruidsCornerApp.Models.DruidsCornerApi.RecipeDb
 {
     /// <summary>
     /// Extra boil / fermentation ingredient which is not a Hop.

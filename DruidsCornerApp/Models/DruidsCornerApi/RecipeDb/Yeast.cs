@@ -1,4 +1,4 @@
-﻿namespace DruidsCornerAPI.Models.DiyDog.RecipeDb
+﻿namespace DruidsCornerApp.Models.DruidsCornerApi.RecipeDb
 {
     /// <summary>
     /// Yeast used in the fermentation(s) step(s)

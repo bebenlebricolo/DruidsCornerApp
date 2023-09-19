@@ -1,4 +1,4 @@
-﻿namespace DruidsCornerAPI.Models.DiyDog.IndexedDb
+﻿namespace DruidsCornerApp.Models.DruidsCornerApi.IndexedDb
 {
 
     /// <summary>

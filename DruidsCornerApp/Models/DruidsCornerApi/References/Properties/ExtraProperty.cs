@@ -1,4 +1,4 @@
-namespace DruidsCornerAPI.Models.DiyDog.References
+namespace DruidsCornerApp.Models.DruidsCornerApi.References.Properties
 {
     /// <summary>
     /// Depicts the main kinds of extra ingredients found in a recipe

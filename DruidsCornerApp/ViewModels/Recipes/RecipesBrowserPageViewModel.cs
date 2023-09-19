@@ -1,5 +1,5 @@
 using CommunityToolkit.Mvvm.Input;
-using DruidsCornerAPI.Models.DiyDog.RecipeDb;
+using DruidsCornerApp.Models.DruidsCornerApi.RecipeDb;
 using DruidsCornerApp.Services.Authentication;
 using DruidsCornerApp.Services.DruidsCornerApi;
 using DruidsCornerApp.Utils;

@@ -1,4 +1,4 @@
-using DruidsCornerAPI.Models.DiyDog.RecipeDb;
+using DruidsCornerApp.Models.DruidsCornerApi.RecipeDb;
 
 namespace DruidsCornerApp.Models.DruidsCornerApi.Wrappers
 {

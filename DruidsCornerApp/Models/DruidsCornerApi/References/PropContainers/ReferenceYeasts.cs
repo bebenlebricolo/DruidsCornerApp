@@ -1,4 +1,6 @@
-namespace DruidsCornerAPI.Models.DiyDog.References
+using DruidsCornerApp.Models.DruidsCornerApi.References.Properties;
+
+namespace DruidsCornerApp.Models.DruidsCornerApi.References.PropContainers
 {
     /// <summary>
     /// Very simple Known Good Yeasts list

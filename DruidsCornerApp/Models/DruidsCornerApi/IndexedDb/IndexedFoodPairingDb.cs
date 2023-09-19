@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace DruidsCornerAPI.Models.DiyDog.IndexedDb
+﻿namespace DruidsCornerApp.Models.DruidsCornerApi.IndexedDb
 {
     /// <summary>
     /// Encodes basic information about BrewDog's beer recipe.

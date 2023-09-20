@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DruidsCornerApiClient.Models;
@@ -19,44 +20,188 @@ public class SearchClient : ISearchClient
     private ILogger<IBaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _configuration;
-    
+
     public SearchClient(ILogger<IBaseClient> logger,
                         HttpClient httpClient,
-                        ClientConfiguration configuration  )
+                        ClientConfiguration configuration
+    )
     {
         _logger = logger;
         _httpClient = httpClient;
         _configuration = configuration;
     }
-    
-    private string GetRecipeEndpointUrl(string endpointName)
+
+    private string GetEndpointUrl(string endpointName)
     {
         var url = $"{WebConstants.Scheme}://{_configuration.Domain}/search/{endpointName}";
         return url;
     }
 
-    public async Task<List<Recipe>> SearchAllCandidatesAsync(Queries queries, string token)
+    public async Task<List<Recipe>?> SearchAllCandidatesAsync(Queries queries, string token)
     {
-            throw new NotImplementedException();
+        var url = GetEndpointUrl("all");
+
+        var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+
+        MediaTypeHeaderValue type = new MediaTypeHeaderValue("application/json");
+        requestMessage.Content = JsonContent.Create(queries, type, JsonOptionProvider.GetJsonOptions());
+
+        var response = await _httpClient.SendAsync(requestMessage);
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not perform search query, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var recipe = await JsonSerializer.DeserializeAsync<List<Recipe>>(await response.Content.ReadAsStreamAsync(),
+                                                                             JsonOptionProvider.GetJsonOptions());
+            return recipe;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Could not perform search query, caught issue while deserializing Json response");
+            _logger.LogError($"Error was : {ex.Message}");
+            return null;
+        }
     }
 
-    public async Task<List<HopProperty>> SearchHopsByNameAsync(List<string> names, string token)
+    private string EncodeNamesQuery(List<string> names)
     {
-        throw new NotImplementedException();
+        var encodedStr = "";
+        // Encodes like that : <url>?names=item1&names=item2
+        for(int i = 0 ; i < names.Count ; i++)
+        {
+            encodedStr += names[i];
+            if (i != names.Count - 1)
+            {
+                encodedStr += "&names";
+            }
+        }
+
+        return encodedStr;
     }
 
-    public async Task<List<MaltProperty>> SearchMaltsByNameAsync(List<string> names, string token)
+    public async Task<List<HopProperty>?> SearchHopsByNameAsync(List<string> names, string token)
     {
-        throw new NotImplementedException();
+        var url = GetEndpointUrl("hops");
+        url += "?names=";
+        url += EncodeNamesQuery(names);
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not perform hops search query, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var hopProperties = await JsonSerializer.DeserializeAsync<List<HopProperty>>(await response.Content.ReadAsStreamAsync(),
+                                                                             JsonOptionProvider.GetJsonOptions());
+            return hopProperties;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Could not perform hops search query, caught issue while deserializing Json response");
+            _logger.LogError($"Error was : {ex.Message}");
+            return null;
+        }
     }
 
-    public async Task<List<YeastProperty>> SearchYeastsByNameAsync(List<string> names, string token)
+    public async Task<List<MaltProperty>?> SearchMaltsByNameAsync(List<string> names, string token)
     {
-        throw new NotImplementedException();
+        var url = GetEndpointUrl("malts");
+        url += "?names=";
+        url += EncodeNamesQuery(names);
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not perform malts search query, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var maltProperties = await JsonSerializer.DeserializeAsync<List<MaltProperty>>(await response.Content.ReadAsStreamAsync(),
+                                                                                         JsonOptionProvider.GetJsonOptions());
+            return maltProperties;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Could not perform malts search query, caught issue while deserializing Json response");
+            _logger.LogError($"Error was : {ex.Message}");
+            return null;
+        }
     }
 
-    public async Task<List<StyleProperty>> SearchStylesByNameAsync(List<string> names, string token, uint minimumMatchingScore = 50)
+    public async Task<List<YeastProperty>?> SearchYeastsByNameAsync(List<string> names, string token)
     {
-        throw new NotImplementedException();
+        var url = GetEndpointUrl("yeasts");
+        url += "?names=";
+        url += EncodeNamesQuery(names);
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not perform yeasts search query, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var yeastProperties = await JsonSerializer.DeserializeAsync<List<YeastProperty>>(await response.Content.ReadAsStreamAsync(),
+                                                                                         JsonOptionProvider.GetJsonOptions());
+            return yeastProperties;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Could not perform yeasts search query, caught issue while deserializing Json response");
+            _logger.LogError($"Error was : {ex.Message}");
+            return null;
+        }
+    }
+
+    public async Task<List<StyleProperty>?> SearchStylesByNameAsync(List<string> names, string token, uint minimumMatchingScore = 50)
+    {
+        var url = GetEndpointUrl("styles");
+        url += "?names=";
+        url += EncodeNamesQuery(names);
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not perform styles search query, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var stylesProperties = await JsonSerializer.DeserializeAsync<List<StyleProperty>>(await response.Content.ReadAsStreamAsync(),
+                                                                                              JsonOptionProvider.GetJsonOptions());
+            return stylesProperties;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Could not perform styles search query, caught issue while deserializing Json response");
+            _logger.LogError($"Error was : {ex.Message}");
+            return null;
+        }
     }
 }

@@ -13,7 +13,7 @@ public interface ISearchClient : IBaseClient
     /// </summary>
     /// <param name="queries"></param>
     /// <returns></returns>
-    public Task<List<Recipe>> SearchAllCandidatesAsync(Queries queries, string token);
+    public Task<List<Recipe>?> SearchAllCandidatesAsync(Queries queries, string token);
 
     /// <summary>
     /// Queries the database and finds candidate hops that best match the list of queried names.
@@ -23,7 +23,7 @@ public interface ISearchClient : IBaseClient
     /// </summary>
     /// <param name="names"></param>
     /// <returns></returns>
-    public Task<List<HopProperty>> SearchHopsByNameAsync(List<string> names, string token);
+    public Task<List<HopProperty>?> SearchHopsByNameAsync(List<string> names, string token);
 
     /// <summary>
     /// Queries the database and finds Well-Known Malt candidates that best match the list of queried names.
@@ -33,7 +33,7 @@ public interface ISearchClient : IBaseClient
     /// </summary>
     /// <param name="names"></param>
     /// <returns></returns>
-    public Task<List<MaltProperty>> SearchMaltsByNameAsync(List<string> names, string token);
+    public Task<List<MaltProperty>?> SearchMaltsByNameAsync(List<string> names, string token);
 
     /// <summary>
     /// Queries the database and finds Well-Known Yeasts candidates that best match the list of queried names.
@@ -43,7 +43,7 @@ public interface ISearchClient : IBaseClient
     /// </summary>
     /// <param name="names"></param>
     /// <returns></returns>
-    public Task<List<YeastProperty>> SearchYeastsByNameAsync(List<string> names, string token);
+    public Task<List<YeastProperty>?> SearchYeastsByNameAsync(List<string> names, string token);
 
     /// <summary>
     /// Queries the database and finds Well-Known Styles candidates that best match the list of queried names.
@@ -54,5 +54,5 @@ public interface ISearchClient : IBaseClient
     /// <param name="minimumMatchingScore">Tweaks the minimum threshold used to select data.
     ///                                    The higher the threshold the harder it gets to find data</param>
     /// <returns></returns>
-    public Task<List<StyleProperty>> SearchStylesByNameAsync(List<string> names, string token, uint minimumMatchingScore = 50);
+    public Task<List<StyleProperty>?> SearchStylesByNameAsync(List<string> names, string token, uint minimumMatchingScore = 50);
 }

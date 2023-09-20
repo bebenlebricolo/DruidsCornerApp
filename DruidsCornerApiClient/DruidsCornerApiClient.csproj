@@ -15,4 +15,8 @@
 
 
 
+    <ItemGroup>
+      <Folder Include="Models\Search\" />
+    </ItemGroup>
+
 </Project>

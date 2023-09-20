@@ -1,14 +1,12 @@
-using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Mime;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using DruidsCornerApiClient.Models;
-using DruidsCornerApiClient.Models.Exceptions;
-using DruidsCornerApiClient.Models.RecipeDb;
-using DruidsCornerApiClient.Models.Wrappers;
-using DruidsCornerApiClient.Services.Interfaces;
-using DruidsCornerApiClient.Utils;
 using Microsoft.Extensions.Logging;
+
+using DruidsCornerApiClient.Models;
+using DruidsCornerApiClient.Models.Wrappers;
+using DruidsCornerApiClient.Utils;
+using DruidsCornerApiClient.Services.Interfaces;
 
 namespace DruidsCornerApiClient.Services;
 
@@ -27,9 +25,67 @@ public class ResourceClient : IResourcesClient
         _configuration = configuration;
     }
     
-    private string GetRecipeEndpointUrl(string endpointName)
+    private string GetEndpointUrl(string endpointName)
     {
-        var url = $"{WebConstants.Scheme}://{_configuration.Domain}/recipe/{endpointName}";
+        var url = $"{WebConstants.Scheme}://{_configuration.Domain}/resources/{endpointName}";
         return url;
+    }
+
+    public async Task<ImageStream?> GetImageAsync(uint number, string token)
+    {
+        var url = GetEndpointUrl("image");
+        url += $"?number={number}";
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not retrieve image from recipe, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var imageStream = await ImageStream.FromHttpResponseAsync(response);
+            return imageStream;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Caught issue while reading Image as a FileStream");
+            _logger.LogError($"Exception was : {ex.Message}");
+            return null;
+        }
+    }
+
+    public async Task<PdfStream?> GetPdfPageAsync(uint number, string token)
+    {
+        var url = GetEndpointUrl("pdf");
+        url += $"?number={number}";
+        
+        var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
+        var response = await _httpClient.SendAsync(requestMessage);
+
+        if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
+        {
+            _logger.LogError($"Could not retrieve pdf page from recipe, caught issue within http response");
+            _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
+            return null;
+        }
+
+        try
+        {
+            var pdfStream = await PdfStream.FromHttpResponseAsync(response);
+            return pdfStream;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Caught issue while reading Pdf page as a FileStream");
+            _logger.LogError($"Exception was : {ex.Message}");
+            return null;
+        }
     }
 }

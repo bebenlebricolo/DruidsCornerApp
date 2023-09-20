@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.Input;
 using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApiClient.Services;
+using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Models.Login;
 using DruidsCornerApp.Services.Authentication;
 
@@ -15,7 +16,7 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
     private readonly ILogger<RecipesBrowserPageViewModel> _logger;
-    private readonly IDruidsCornerApiClient _apiClient;
+    private readonly IRecipeClient _apiClient;
     
     private List<Recipe> recipes;
 
@@ -33,7 +34,7 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
     public RecipesBrowserPageViewModel(ILogger<RecipesBrowserPageViewModel> logger,
                                        IAuthenticationService authenticationService,
                                        ISecureStorageService secureStorageService,
-                                       IDruidsCornerApiClient apiClient) : base("Recipes browser", false)
+                                       IRecipeClient apiClient) : base("Recipes browser", false)
     {
         _logger = logger;
         _authenticationService = authenticationService;

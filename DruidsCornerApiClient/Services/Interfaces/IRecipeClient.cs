@@ -1,9 +1,9 @@
 using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApiClient.Models.Wrappers;
 
-namespace DruidsCornerApiClient.Services;
+namespace DruidsCornerApiClient.Services.Interfaces;
 
-public interface IDruidsCornerApiClient
+public interface IRecipeClient : IBaseClient
 {
     /// <summary>
     /// Retrieves a single recipe

@@ -69,7 +69,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
         
         // Retrieve a real token from execution environment
@@ -77,7 +77,7 @@ public class ClientRecipeTest
 
         // Don't need a Platform client for that as DruidsCornerApi doesn't care about terminals (but it needs an appropriate JWT token however)
         var httpClient = new HttpClient();
-        var client = new Client(mockedLogger.Object, httpClient, config!);
+        var client = new RecipeClient(mockedLogger.Object, httpClient, config!);
 
         var recipes = await client.GetAllRecipesAsync(token);
         Assert.That(recipes, Is.Not.Null);
@@ -90,7 +90,7 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -106,7 +106,7 @@ public class ClientRecipeTest
                                     Content = new StringContent("Whoops !")
                                 });
 
-        var client = new Client(mockedLogger.Object, mockedHttpClient, config);
+        var client = new RecipeClient(mockedLogger.Object, mockedHttpClient, config);
 
         // Should return null reference when Error 500 Internal Server Error is caught
         var recipes = await client.GetAllRecipesAsync(token);
@@ -165,7 +165,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -173,7 +173,7 @@ public class ClientRecipeTest
 
         // Don't need a Platform client for that as DruidsCornerApi doesn't care about terminals (but it needs an appropriate JWT token however)
         var httpClient = new HttpClient();
-        var client = new Client(mockedLogger.Object, httpClient, config!);
+        var client = new RecipeClient(mockedLogger.Object, httpClient, config!);
 
         var recipe = await client.GetRecipeByNumberAsync(1, token);
         Assert.That(recipe, Is.Not.Null);
@@ -185,7 +185,7 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -201,7 +201,7 @@ public class ClientRecipeTest
                                     Content = new StringContent("Whoops !")
                                 });
 
-        var client = new Client(mockedLogger.Object, mockedHttpClient, config);
+        var client = new RecipeClient(mockedLogger.Object, mockedHttpClient, config);
 
         // Should return null reference when Error 500 Internal Server Error is caught
         var recipe = await client.GetRecipeByNumberAsync(1,token);
@@ -259,7 +259,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -267,7 +267,7 @@ public class ClientRecipeTest
 
         // Don't need a Platform client for that as DruidsCornerApi doesn't care about terminals (but it needs an appropriate JWT token however)
         var httpClient = new HttpClient();
-        var client = new Client(mockedLogger.Object, httpClient, config!);
+        var client = new RecipeClient(mockedLogger.Object, httpClient, config!);
 
         var candidateRecipe = await client.GetRecipeByNameAsync("Punk ipa", token);
         Assert.That(candidateRecipe, Is.Not.Null);
@@ -279,7 +279,7 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<Client>>();
+        var mockedLogger = new Mock<ILogger<RecipeClient>>();
         var config = await GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -295,7 +295,7 @@ public class ClientRecipeTest
                                     Content = new StringContent("Whoops !")
                                 });
 
-        var client = new Client(mockedLogger.Object, mockedHttpClient, config);
+        var client = new RecipeClient(mockedLogger.Object, mockedHttpClient, config);
 
         // Should return null reference when Error 500 Internal Server Error is caught
         var recipe = await client.GetRecipeByNumberAsync(1,token);

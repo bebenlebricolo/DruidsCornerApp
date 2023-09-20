@@ -6,18 +6,19 @@ using DruidsCornerApiClient.Models;
 using DruidsCornerApiClient.Models.Exceptions;
 using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApiClient.Models.Wrappers;
+using DruidsCornerApiClient.Services.Interfaces;
+using DruidsCornerApiClient.Utils;
 using Microsoft.Extensions.Logging;
 
 namespace DruidsCornerApiClient.Services;
 
-public class Client : IDruidsCornerApiClient
+public class RecipeClient : IRecipeClient
 {
-    private const string Scheme = "https";
-    private const string BearerStr = "Bearer";
-    private ILogger<Client> _logger;
+    private ILogger<IBaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _configuration;
-    public Client(ILogger<Client> logger,
+    
+    public RecipeClient(ILogger<IBaseClient> logger,
                   HttpClient httpClient,
                   ClientConfiguration configuration  )
     {
@@ -26,21 +27,9 @@ public class Client : IDruidsCornerApiClient
         _configuration = configuration;
     }
 
-    private static JsonSerializerOptions GetJsonOptions()
-    {
-        return new JsonSerializerOptions()
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            Converters =
-            {
-                new JsonStringEnumConverter()
-            }
-        };
-    }
-    
     private string GetRecipeEndpointUrl(string endpointName)
     {
-        var url = $"{Scheme}://{_configuration.Domain}/recipe/{endpointName}";
+        var url = $"{WebConstants.Scheme}://{_configuration.Domain}/recipe/{endpointName}";
         return url;
     }
     
@@ -56,7 +45,7 @@ public class Client : IDruidsCornerApiClient
         url += $"?number={number}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(BearerStr, token);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
@@ -68,7 +57,7 @@ public class Client : IDruidsCornerApiClient
 
         try
         {
-            var recipe = await JsonSerializer.DeserializeAsync<Recipe>(await response.Content.ReadAsStreamAsync(), GetJsonOptions());
+            var recipe = await JsonSerializer.DeserializeAsync<Recipe>(await response.Content.ReadAsStreamAsync(), JsonOptionProvider.GetJsonOptions());
             return recipe;
         }
         catch (Exception ex)
@@ -84,7 +73,7 @@ public class Client : IDruidsCornerApiClient
         var url = GetRecipeEndpointUrl("all");
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(BearerStr, token);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
@@ -102,7 +91,7 @@ public class Client : IDruidsCornerApiClient
 
         try
         {
-            var recipes = await JsonSerializer.DeserializeAsync<List<Recipe>>(await response.Content.ReadAsStreamAsync(), GetJsonOptions());
+            var recipes = await JsonSerializer.DeserializeAsync<List<Recipe>>(await response.Content.ReadAsStreamAsync(), JsonOptionProvider.GetJsonOptions());
             return recipes;
         }
         catch (Exception ex)
@@ -119,7 +108,7 @@ public class Client : IDruidsCornerApiClient
         url += $"?name={name}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(BearerStr, token);
+        requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
@@ -131,7 +120,7 @@ public class Client : IDruidsCornerApiClient
 
         try
         {
-            var recipe = await JsonSerializer.DeserializeAsync<RecipeResult>(await response.Content.ReadAsStreamAsync(), GetJsonOptions());
+            var recipe = await JsonSerializer.DeserializeAsync<RecipeResult>(await response.Content.ReadAsStreamAsync(), JsonOptionProvider.GetJsonOptions());
             return recipe;
         }
         catch (Exception ex)

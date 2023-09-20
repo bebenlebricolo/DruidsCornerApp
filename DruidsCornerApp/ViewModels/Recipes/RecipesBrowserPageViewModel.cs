@@ -1,10 +1,8 @@
 using CommunityToolkit.Mvvm.Input;
-using DruidsCornerApp.Models.DruidsCornerApi.RecipeDb;
+using DruidsCornerApiClient.Models.RecipeDb;
+using DruidsCornerApiClient.Services;
+using DruidsCornerApp.Models.Login;
 using DruidsCornerApp.Services.Authentication;
-using DruidsCornerApp.Services.DruidsCornerApi;
-using DruidsCornerApp.Utils;
-using Firebase.Auth;
-using Google.Apis.Requests;
 
 namespace DruidsCornerApp.ViewModels.Recipes;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -48,6 +46,11 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
     public async Task RefreshContent()
     {
         // Fetch new content
-        var recipe = await _apiClient.GetRecipeByNumberAsync(0);
+        var token = await _secureStorageService.GetAsync(AccountKeys.TokenKey);
+        if (token == null)
+        {
+            throw new UnauthorizedAccessException("Access token should be present to use this api client !");
+        }
+        var recipe = await _apiClient.GetRecipeByNumberAsync(0, token);
     }
 }

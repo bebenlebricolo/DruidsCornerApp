@@ -1,7 +1,4 @@
-using System.Reflection;
-using System.Text.Json;
-using DruidsCornerApp.Models.Config;
-using Microsoft.Extensions.Logging;
+using DruidsCornerApiClient.Models;
 
 namespace DruidsCornerApp.Services.Config;
 
@@ -21,5 +18,5 @@ public interface IConfigProvider
     /// <param name="noCache">If set, cached values will be ignored and a call to embedded resources + deserialization
     /// will be performed, otherwise cached values are preferred</param>
     /// <returns></returns>
-    public Task<DruidsCornerApiConfig?> GetConfigAsync(bool noCache = false);
+    public Task<ClientConfiguration?> GetConfigAsync(bool noCache = false);
 }

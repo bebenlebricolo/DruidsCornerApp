@@ -2,6 +2,7 @@
 <RunSettings>
     <RunConfiguration>
         <EnvironmentVariables>
+            <WEBAPI_DOMAIN>www.somedomain.com</WEBAPI_DOMAIN>
             <ACCESS_TOKEN>test</ACCESS_TOKEN>
         </EnvironmentVariables>
     </RunConfiguration>

@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Text.Json;
 using DruidsCornerApp.Models.Config;
 using Microsoft.Extensions.Logging;
-
+using DruidsCornerApiClient.Models;
 namespace DruidsCornerApp.Services.Config;
 
 /// <summary>
@@ -15,7 +15,7 @@ public class ConfigProvider : IConfigProvider
 {
     private const string ConfigFilename = "appsettings.json";
     private readonly ILogger<ConfigProvider> _logger;
-    private DruidsCornerApiConfig? _config = null;
+    private ClientConfiguration? _config = null;
 
     public ConfigProvider(ILogger<ConfigProvider> logger)
     {
@@ -38,7 +38,7 @@ public class ConfigProvider : IConfigProvider
     /// <param name="noCache">If set, cached values will be ignored and a call to embedded resources + deserialization
     /// will be performed, otherwise cached values are preferred</param>
     /// <returns></returns>
-    public async Task<DruidsCornerApiConfig?> GetConfigAsync(bool noCache = false)
+    public async Task<ClientConfiguration?> GetConfigAsync(bool noCache = false)
     {
         // Cached data
         if (!noCache && _config != null)
@@ -54,7 +54,7 @@ public class ConfigProvider : IConfigProvider
 
         try
         {
-            var data = await JsonSerializer.DeserializeAsync<DruidsCornerApiConfig>(stream, new JsonSerializerOptions()
+            var data = await JsonSerializer.DeserializeAsync<ClientConfiguration>(stream, new JsonSerializerOptions()
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 PropertyNameCaseInsensitive = true

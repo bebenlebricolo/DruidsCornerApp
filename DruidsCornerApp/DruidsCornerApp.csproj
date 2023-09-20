@@ -218,4 +218,9 @@
       </None>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <ProjectReference Include="..\DruidsCornerApiClient\DruidsCornerApiClient.csproj" />
+    </ItemGroup>
+
 </Project>

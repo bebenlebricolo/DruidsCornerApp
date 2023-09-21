@@ -3,18 +3,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.Recipes"
+             xmlns:model="clr-namespace:DruidsCornerApp.Models.RecipeExplorer"
              x:Class="DruidsCornerApp.Views.Recipes.RecipesBrowserPage"
              x:DataType="viewmodel:RecipesBrowserPageViewModel"
              Shell.FlyoutBehavior="Flyout"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <RefreshView IsRefreshing="{Binding IsLoading}">
-            <CollectionView>
-                <CollectionView.ItemsLayout>
-                    
-                    
-                </CollectionView.ItemsLayout>
-            </CollectionView>
-        </RefreshView>
+        <CollectionView ItemsSource="{Binding Recipes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:CompactRecipe">
+                    <Frame BackgroundColor="#2b2b2b" CornerRadius="15" Margin="2">
+                        <Grid ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="100"
+                                   BorderColor="White"
+                                   Margin="0,0,10,0"
+                                   Padding="7"
+                                   Grid.RowSpan="3">
+                                <Image 
+                                         WidthRequest="80"
+                                         HeightRequest="80"
+                                         Aspect="AspectFit"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Source="{Binding ImageSource}"/>
+                            </Frame>
+                            <Label Grid.Row="1" Grid.Column="1" TextColor="White"
+                                   Text="{Binding Name}"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="2" TextColor="White"
+                                   Grid.Column="1"
+                                   Text="{Binding Brewer}"
+                                   FontAttributes="Italic"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

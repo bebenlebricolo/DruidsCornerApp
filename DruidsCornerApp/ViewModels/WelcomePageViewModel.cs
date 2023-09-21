@@ -16,9 +16,10 @@ public partial class WelcomePageViewModel : BaseViewModel
     /// Welcome Page view model, simply used to bind some commands
     /// and reroute user upon startup 
     /// </summary>
+    /// <param name="logger"></param>
     /// <param name="secureStorageService"></param>
     public WelcomePageViewModel(ILogger<WelcomePageViewModel> logger,
-                                        ISecureStorageService secureStorageService) : base("Account creation", false)
+                                ISecureStorageService secureStorageService) : base("Account creation", false)
     {
         _logger = logger;
         _secureStorageService = secureStorageService;

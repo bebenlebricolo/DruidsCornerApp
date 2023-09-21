@@ -46,13 +46,6 @@ public class SearchClient : BaseClient, ISearchClient
 
         MediaTypeHeaderValue type = new MediaTypeHeaderValue("application/json");
         queries.PreProcessParameters();
-        // var queriesJsonStream = new MemoryStream();
-        // await JsonSerializer.SerializeAsync(queriesJsonStream, queries, JsonOptionProvider.GetJsonOptions());
-        // var streamReader = new StreamReader(queriesJsonStream);
-        // queriesJsonStream.Position = 0;
-        // var stringRepr = await streamReader.ReadToEndAsync();
-        // requestMessage.Content = new StringContent(stringRepr, Encoding.UTF8, type);
-
         var queriesJsonContent = JsonContent.Create(queries, type ,JsonOptionProvider.GetJsonOptions());
         requestMessage.Content = queriesJsonContent;
         

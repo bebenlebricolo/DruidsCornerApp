@@ -1,21 +1,18 @@
 using System.Net;
-using System.Net.Mime;
-using DruidsCornerApiClient.Models;
+using Moq;
+using RichardSzalay.MockHttp;
 using DruidsCornerApiClient.Models.Exceptions;
-using DruidsCornerApiClient.Models.References.Properties;
 using DruidsCornerApiClient.Models.Search;
 using DruidsCornerApiClient.Services;
 using DruidsCornerApiClient.Services.Interfaces;
-using DruidsCornerApp.Services.Authentication;
-using DruidsCornerApp.Services.Config;
 using Microsoft.Extensions.Logging;
-using Moq;
-using RichardSzalay.MockHttp;
 
 namespace DruidsCornerAppUnitTests.DruidsCornerApiClientTests;
 
 public class ClientSearchTest
 {
+    #region Test helpers
+
     public async Task TestEndpointAgainstCommonHttpErrors<T>(SearchClient client,
                                                              MockHttpMessageHandler mockedHttpMessageHandler,
                                                              string endpoint,
@@ -68,8 +65,9 @@ public class ClientSearchTest
         }
     }
 
+    #endregion
 
-    #region GetImage tests
+    #region Search Hops tests
 
     [Test]
     public async Task TestSearchHops_RealCalls()
@@ -180,6 +178,8 @@ public class ClientSearchTest
 
     #endregion
 
+    #region Search Yeasts tests
+
     [Test]
     public async Task TestSearchYeasts_RealCalls()
     {
@@ -209,7 +209,7 @@ public class ClientSearchTest
         var returnedPropList = await client.SearchYeastsByNameAsync(queryNames, token);
         Assert.That(returnedPropList, Is.Not.Null);
     }
-    
+
     [Test]
     public async Task TestSearchYeasts_HttpErrors()
     {
@@ -230,6 +230,10 @@ public class ClientSearchTest
                                                   endpoint,
                                                   searchClient => searchClient.SearchYeastsByNameAsync(new List<string>() { "plop" }, token));
     }
+
+    #endregion
+
+    #region Search Styles tests
 
     [Test]
     public async Task TestSearchStyles_RealCalls()
@@ -260,7 +264,7 @@ public class ClientSearchTest
         var returnedPropList = await client.SearchStylesByNameAsync(queryNames, token);
         Assert.That(returnedPropList, Is.Not.Null);
     }
-    
+
     [Test]
     public async Task TestSearchStyles_HttpErrors()
     {
@@ -281,7 +285,11 @@ public class ClientSearchTest
                                                   endpoint,
                                                   searchClient => searchClient.SearchStylesByNameAsync(new List<string>() { "plop" }, token));
     }
-    
+
+    #endregion
+
+    #region Search Multiple Queries tests
+
     [Test]
     public async Task TestSearchMultipleQueries_RealCalls()
     {
@@ -312,4 +320,6 @@ public class ClientSearchTest
         var candidates = await client.SearchAllCandidatesAsync(queries, token);
         Assert.That(candidates, Is.Not.Null);
     }
+
+    #endregion
 }

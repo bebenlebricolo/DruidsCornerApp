@@ -1,11 +1,15 @@
 ﻿using System.Reflection;
 using CommunityToolkit.Maui;
+using DruidsCornerApiClient.Models;
+using DruidsCornerApiClient.Services;
+using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
 using DruidsCornerApp.Services.Config;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
+using DruidsCornerApp.ViewModels.Recipes;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.Recipes;
@@ -46,7 +50,16 @@ public static class MauiProgram
         builder.Services.AddTransient<ResetPasswordPageViewModel>();
         builder.Services.AddTransient<GoogleSignInPageViewModel>();
         builder.Services.AddTransient<AccountCreationPageViewModel>();
-
+        builder.Services.AddTransient<RecipesBrowserPageViewModel>();
+        
+        builder.Services.AddTransient<MainClient>(service =>
+        {
+            var configProvider = service.GetService<ConfigProvider>();
+            var clientConfiguration = Task.Run(async () => await configProvider!.GetConfigAsync()).Result;
+            var logger = service.GetService<ILogger<BaseClient>>();
+            return new MainClient(logger!, clientConfiguration!, new HttpClient());
+        });
+        
 #if __ANDROID__
         builder.Services.AddTransient<HttpClient, PlatformHttpClient>(client =>
         {

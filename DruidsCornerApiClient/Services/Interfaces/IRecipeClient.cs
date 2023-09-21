@@ -3,7 +3,7 @@ using DruidsCornerApiClient.Models.Wrappers;
 
 namespace DruidsCornerApiClient.Services.Interfaces;
 
-public interface IRecipeClient : IBaseClient
+public interface IRecipeClient
 {
     /// <summary>
     /// Retrieves a single recipe

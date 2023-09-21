@@ -11,9 +11,9 @@ namespace DruidsCornerApiClient.Services;
 /// var recipes = await client.Recipe.GetAllAsync(...);
 /// var result = await client.Search.SingleQueryAsync(...);
 /// </summary>
-public class MainClient : IBaseClient
+public class MainClient : BaseClient
 {
-    private readonly ILogger<IBaseClient> _logger;
+    private readonly ILogger<BaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _clientConfiguration;
 
@@ -53,7 +53,7 @@ public class MainClient : IBaseClient
     /// <param name="recipe">Optional Recipe webapi client, autoinstantiated if left null</param>
     /// <param name="resources">Optional Resources webapi client, autoinstantiated if left null</param>
     /// <param name="search">Optional Search webapi client, autoinstantiated if left null</param>
-    public MainClient(ILogger<IBaseClient> logger,
+    public MainClient(ILogger<BaseClient> logger,
                       ClientConfiguration clientConfiguration,
                       HttpClient httpClient,
                       IRecipeClient? recipe = null,

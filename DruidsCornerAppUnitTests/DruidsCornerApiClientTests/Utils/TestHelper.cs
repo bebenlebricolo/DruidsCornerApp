@@ -1,4 +1,5 @@
 using DruidsCornerApiClient.Models;
+using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Services.Config;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -34,5 +35,5 @@ public class TestHelper
     {
         return !string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("CI"));
     }
-
+    
 }

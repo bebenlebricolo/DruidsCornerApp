@@ -4,7 +4,7 @@ using DruidsCornerApiClient.Models.Search;
 
 namespace DruidsCornerApiClient.Services.Interfaces;
 
-public interface ISearchClient : IBaseClient
+public interface ISearchClient
 {
     /// <summary>
     /// Queries the database and finds all candidate recipe that match input queries.

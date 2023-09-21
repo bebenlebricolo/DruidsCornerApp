@@ -2,7 +2,7 @@ using DruidsCornerApiClient.Models.Wrappers;
 
 namespace DruidsCornerApiClient.Services.Interfaces;
 
-public interface IResourcesClient : IBaseClient
+public interface IResourcesClient 
 {
    /// <summary>
    /// Fetches the pdf page of the recipe matching the queried number.

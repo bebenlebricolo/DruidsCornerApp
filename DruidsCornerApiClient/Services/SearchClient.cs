@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DruidsCornerApiClient.Models;
@@ -8,20 +9,19 @@ using DruidsCornerApiClient.Models.Exceptions;
 using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApiClient.Models.References.Properties;
 using DruidsCornerApiClient.Models.Search;
-using DruidsCornerApiClient.Models.Wrappers;
 using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApiClient.Utils;
 using Microsoft.Extensions.Logging;
 
 namespace DruidsCornerApiClient.Services;
 
-public class SearchClient : ISearchClient
+public class SearchClient : BaseClient, ISearchClient
 {
-    private ILogger<IBaseClient> _logger;
+    private ILogger<BaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _configuration;
 
-    public SearchClient(ILogger<IBaseClient> logger,
+    public SearchClient(ILogger<BaseClient> logger,
                         HttpClient httpClient,
                         ClientConfiguration configuration
     )
@@ -45,11 +45,29 @@ public class SearchClient : ISearchClient
         requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
 
         MediaTypeHeaderValue type = new MediaTypeHeaderValue("application/json");
-        requestMessage.Content = JsonContent.Create(queries, type, JsonOptionProvider.GetJsonOptions());
+        queries.PreProcessParameters();
+        // var queriesJsonStream = new MemoryStream();
+        // await JsonSerializer.SerializeAsync(queriesJsonStream, queries, JsonOptionProvider.GetJsonOptions());
+        // var streamReader = new StreamReader(queriesJsonStream);
+        // queriesJsonStream.Position = 0;
+        // var stringRepr = await streamReader.ReadToEndAsync();
+        // requestMessage.Content = new StringContent(stringRepr, Encoding.UTF8, type);
 
+        var queriesJsonContent = JsonContent.Create(queries, type ,JsonOptionProvider.GetJsonOptions());
+        requestMessage.Content = queriesJsonContent;
+        
         var response = await _httpClient.SendAsync(requestMessage);
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
+            // Normal error case, when the input query is too restrictive
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                _logger.LogInformation("Could not find a suitable recipe.");
+                return null;
+            }
+
             _logger.LogError($"Could not perform search query, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -73,12 +91,12 @@ public class SearchClient : ISearchClient
     {
         var encodedStr = "";
         // Encodes like that : <url>?names=item1&names=item2
-        for(int i = 0 ; i < names.Count ; i++)
+        for (int i = 0; i < names.Count; i++)
         {
             encodedStr += names[i];
             if (i != names.Count - 1)
             {
-                encodedStr += "&names";
+                encodedStr += "&names=";
             }
         }
 
@@ -90,12 +108,14 @@ public class SearchClient : ISearchClient
         var url = GetEndpointUrl("hops");
         url += "?names=";
         url += EncodeNamesQuery(names);
-        
+
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not perform hops search query, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -104,7 +124,7 @@ public class SearchClient : ISearchClient
         try
         {
             var hopProperties = await JsonSerializer.DeserializeAsync<List<HopProperty>>(await response.Content.ReadAsStreamAsync(),
-                                                                             JsonOptionProvider.GetJsonOptions());
+                                                                                         JsonOptionProvider.GetJsonOptions());
             return hopProperties;
         }
         catch (Exception ex)
@@ -120,12 +140,14 @@ public class SearchClient : ISearchClient
         var url = GetEndpointUrl("malts");
         url += "?names=";
         url += EncodeNamesQuery(names);
-        
+
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not perform malts search query, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -134,7 +156,7 @@ public class SearchClient : ISearchClient
         try
         {
             var maltProperties = await JsonSerializer.DeserializeAsync<List<MaltProperty>>(await response.Content.ReadAsStreamAsync(),
-                                                                                         JsonOptionProvider.GetJsonOptions());
+                                                                                           JsonOptionProvider.GetJsonOptions());
             return maltProperties;
         }
         catch (Exception ex)
@@ -150,12 +172,14 @@ public class SearchClient : ISearchClient
         var url = GetEndpointUrl("yeasts");
         url += "?names=";
         url += EncodeNamesQuery(names);
-        
+
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not perform yeasts search query, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -164,7 +188,7 @@ public class SearchClient : ISearchClient
         try
         {
             var yeastProperties = await JsonSerializer.DeserializeAsync<List<YeastProperty>>(await response.Content.ReadAsStreamAsync(),
-                                                                                         JsonOptionProvider.GetJsonOptions());
+                                                                                             JsonOptionProvider.GetJsonOptions());
             return yeastProperties;
         }
         catch (Exception ex)
@@ -180,12 +204,14 @@ public class SearchClient : ISearchClient
         var url = GetEndpointUrl("styles");
         url += "?names=";
         url += EncodeNamesQuery(names);
-        
+
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Authorization = new AuthenticationHeaderValue(WebConstants.BearerStr, token);
         var response = await _httpClient.SendAsync(requestMessage);
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not perform styles search query, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;

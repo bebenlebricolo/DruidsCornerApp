@@ -2,6 +2,7 @@ using System.Net;
 using DruidsCornerApiClient.Models;
 using DruidsCornerApiClient.Models.Exceptions;
 using DruidsCornerApiClient.Services;
+using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Services.Authentication;
 using DruidsCornerApp.Services.Config;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
         
         // Retrieve a real token from execution environment
@@ -46,13 +47,13 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
         var token = TestHelper.GetEnv(TestContstants.AccessTokenEnvVarName);
-        var domain = TestHelper.GetEnv(TestContstants.WebApiDomainEnvVarName);
-        var endpoint = $"https://{domain}/recipe/all*";
+        
+        var endpoint = $"https://{config.Domain}/recipe/all*";
 
         var mockedHttpClient = mockedHttpMessageHandler.ToHttpClient();
         mockedHttpMessageHandler.When(endpoint)
@@ -121,7 +122,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -141,13 +142,13 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
         var token = TestHelper.GetEnv(TestContstants.AccessTokenEnvVarName);
-        var domain = TestHelper.GetEnv(TestContstants.WebApiDomainEnvVarName);
-        var endpoint = $"https://{domain}/recipe/bynumber*";
+        
+        var endpoint = $"https://{config.Domain}/recipe/bynumber*";
         
         var mockedHttpClient = mockedHttpMessageHandler.ToHttpClient();
         mockedHttpMessageHandler.When(endpoint)
@@ -215,7 +216,7 @@ public class ClientRecipeTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
@@ -235,13 +236,13 @@ public class ClientRecipeTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<RecipeClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
         var token = TestHelper.GetEnv(TestContstants.AccessTokenEnvVarName);
-        var domain = TestHelper.GetEnv(TestContstants.WebApiDomainEnvVarName);
-        var endpoint = $"https://{domain}/recipe/byname*";
+        
+        var endpoint = $"https://{config.Domain}/recipe/byname*";
         
         var mockedHttpClient = mockedHttpMessageHandler.ToHttpClient();
         mockedHttpMessageHandler.When(endpoint)

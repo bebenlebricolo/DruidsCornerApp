@@ -1,22 +1,24 @@
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 
 using DruidsCornerApiClient.Models;
+using DruidsCornerApiClient.Models.Exceptions;
 using DruidsCornerApiClient.Models.Wrappers;
 using DruidsCornerApiClient.Utils;
 using DruidsCornerApiClient.Services.Interfaces;
 
 namespace DruidsCornerApiClient.Services;
 
-public class ResourceClient : IResourcesClient
+public class ResourceClient : BaseClient, IResourcesClient
 {
-    private ILogger<IBaseClient> _logger;
+    private ILogger<BaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _configuration;
     
-    public ResourceClient(ILogger<IBaseClient> logger,
+    public ResourceClient(ILogger<BaseClient> logger,
                           HttpClient httpClient,
                           ClientConfiguration configuration  )
     {
@@ -42,6 +44,8 @@ public class ResourceClient : IResourcesClient
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+            
             _logger.LogError($"Could not retrieve image from recipe, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -71,6 +75,13 @@ public class ResourceClient : IResourcesClient
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                throw new ClientException("Caught authorization issues", FailureModes.AuthenticationFailure);
+            }
+            
             _logger.LogError($"Could not retrieve pdf page from recipe, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;

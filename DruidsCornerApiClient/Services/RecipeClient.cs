@@ -12,13 +12,13 @@ using Microsoft.Extensions.Logging;
 
 namespace DruidsCornerApiClient.Services;
 
-public class RecipeClient : IRecipeClient
+public class RecipeClient : BaseClient, IRecipeClient
 {
-    private ILogger<IBaseClient> _logger;
+    private ILogger<BaseClient> _logger;
     private readonly HttpClient _httpClient;
     private readonly ClientConfiguration _configuration;
     
-    public RecipeClient(ILogger<IBaseClient> logger,
+    public RecipeClient(ILogger<BaseClient> logger,
                   HttpClient httpClient,
                   ClientConfiguration configuration  )
     {
@@ -50,6 +50,8 @@ public class RecipeClient : IRecipeClient
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not retrieve recipe by number, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -78,12 +80,8 @@ public class RecipeClient : IRecipeClient
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
-            if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
-            {
-                // Throwing an authentication failure will tell upper layers to try to reauthenticate with the servers.
-                throw new ClientException($"Caught authentication issue. Status code was : {response.StatusCode}",
-                                                         FailureModes.AuthenticationFailure);
-            }
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not retrieve all recipes, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;
@@ -113,6 +111,8 @@ public class RecipeClient : IRecipeClient
 
         if ((int)response.StatusCode < 200 || (int)response.StatusCode >= 400)
         {
+            HandleResponseStatus(response);
+
             _logger.LogError($"Could not retrieve recipe by name, caught issue within http response");
             _logger.LogError($"StatusCode : {response.StatusCode} ; Reason : {response.ReasonPhrase} ; Headers : {response.Headers}");
             return null;

@@ -27,7 +27,7 @@ public class ClientResourceTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<IBaseClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
         
         // Retrieve a real token from execution environment
@@ -49,13 +49,13 @@ public class ClientResourceTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<IBaseClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
         var token = TestHelper.GetEnv(TestContstants.AccessTokenEnvVarName);
-        var domain = TestHelper.GetEnv(TestContstants.WebApiDomainEnvVarName);
-        var endpoint = $"https://{domain}/resources/image*";
+        
+        var endpoint = $"https://{config.Domain}/resources/image*";
 
         var mockedHttpClient = mockedHttpMessageHandler.ToHttpClient();
         mockedHttpMessageHandler.When(endpoint)
@@ -124,7 +124,7 @@ public class ClientResourceTest
         }
         
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<IBaseClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
         
         // Retrieve a real token from execution environment
@@ -146,13 +146,13 @@ public class ClientResourceTest
         var mockedHttpMessageHandler = new MockHttpMessageHandler();
 
         // Provide a local database handler
-        var mockedLogger = new Mock<ILogger<IBaseClient>>();
+        var mockedLogger = new Mock<ILogger<BaseClient>>();
         var config = await TestHelper.GetConfigAsync();
 
         // Retrieve a real token from execution environment
         var token = TestHelper.GetEnv(TestContstants.AccessTokenEnvVarName);
-        var domain = TestHelper.GetEnv(TestContstants.WebApiDomainEnvVarName);
-        var endpoint = $"https://{domain}/resources/image*";
+        
+        var endpoint = $"https://{config.Domain}/resources/image*";
 
         var mockedHttpClient = mockedHttpMessageHandler.ToHttpClient();
         mockedHttpMessageHandler.When(endpoint)

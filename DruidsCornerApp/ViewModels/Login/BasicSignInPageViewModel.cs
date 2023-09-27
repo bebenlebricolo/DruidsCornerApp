@@ -216,7 +216,9 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         {
             await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
         }
-        await Shell.Current.GoToAsync(Navigator.GetRecipesBrowserPageRoute(), true);
+
+        // Go to the new AppShell now, where our application core is.
+        Application.Current.MainPage = new AppShell(_secureStorageService);
     }
 
     /// <summary>

@@ -8,18 +8,18 @@ using DruidsCornerApp.Models.RecipeExplorer;
 using DruidsCornerApp.Services.Authentication;
 
 namespace DruidsCornerApp.ViewModels.Recipes;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.Services;
 using Microsoft.Extensions.Logging;
 
-
-public partial class RecipesBrowserPageViewModel : BaseViewModel
+public partial class RecipeExplorerViewModel : BaseViewModel
 {
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
-    private readonly ILogger<RecipesBrowserPageViewModel> _logger;
+    private readonly ILogger<RecipeExplorerViewModel> _logger;
     private readonly MainClient _apiClient;
-    
+
     public ObservableCollection<CompactRecipe> Recipes { get; } = new ObservableCollection<CompactRecipe>();
 
     /// <summary>
@@ -35,16 +35,17 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
     /// <param name="authenticationService"></param>
     /// <param name="secureStorageService"></param>
     /// <param name="apiClient"></param>
-    public RecipesBrowserPageViewModel(ILogger<RecipesBrowserPageViewModel> logger,
-                                       IAuthenticationService authenticationService,
-                                       ISecureStorageService secureStorageService,
-                                       MainClient apiClient) : base("Recipes browser", false)
+    public RecipeExplorerViewModel(ILogger<RecipeExplorerViewModel> logger,
+                                   IAuthenticationService authenticationService,
+                                   ISecureStorageService secureStorageService,
+                                   MainClient apiClient
+    ) : base("Recipes browser", false)
     {
         _logger = logger;
         _authenticationService = authenticationService;
         _secureStorageService = secureStorageService;
         _apiClient = apiClient;
-        
+
         InitRecipesList();
     }
 
@@ -104,6 +105,7 @@ public partial class RecipesBrowserPageViewModel : BaseViewModel
         {
             throw new UnauthorizedAccessException("Access token should be present to use this api client !");
         }
+
         var recipe = await _apiClient.Recipe!.GetRecipeByNumberAsync(2, token);
     }
 }

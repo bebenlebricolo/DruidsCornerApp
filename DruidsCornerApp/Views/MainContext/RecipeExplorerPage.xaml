@@ -4,8 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.Recipes"
              xmlns:model="clr-namespace:DruidsCornerApp.Models.RecipeExplorer"
-             x:Class="DruidsCornerApp.Views.Recipes.RecipesBrowserPage"
-             x:DataType="viewmodel:RecipesBrowserPageViewModel"
+             x:Class="DruidsCornerApp.Views.MainContext.RecipeExplorerPage"
+             x:DataType="viewmodel:RecipeExplorerViewModel"
              Shell.FlyoutBehavior="Flyout"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>

@@ -12,7 +12,7 @@ using DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.ViewModels.Recipes;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
-using DruidsCornerApp.Views.Recipes;
+using DruidsCornerApp.Views.MainContext;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
@@ -42,7 +42,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ResetPasswordPage>();
         
         // Recipes related pages
-        builder.Services.AddTransient<RecipesBrowserPage>();
+        builder.Services.AddTransient<RecipeExplorerPage>();
 
         // Registering view models here (for dependency injection)
         builder.Services.AddTransient<WelcomePageViewModel>();
@@ -50,7 +50,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ResetPasswordPageViewModel>();
         builder.Services.AddTransient<GoogleSignInPageViewModel>();
         builder.Services.AddTransient<AccountCreationPageViewModel>();
-        builder.Services.AddTransient<RecipesBrowserPageViewModel>();
+        builder.Services.AddTransient<RecipeExplorerViewModel>();
         
         builder.Services.AddTransient<MainClient>(service =>
         {

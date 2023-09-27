@@ -1,4 +1,4 @@
-using DruidsCornerApp.Views.Recipes;
+using DruidsCornerApp.Views.MainContext;
 
 namespace DruidsCornerApp.Utils;
 using DruidsCornerApp.Views;
@@ -49,7 +49,7 @@ public static class Navigator
 
     public static string GetRecipesBrowserPageRoute()
     {
-        return $"{GetRootLoginPage()}/{nameof(RecipesBrowserPage)}";
+        return $"{GetRootLoginPage()}/{nameof(RecipeExplorerPage)}";
     }
     
 }

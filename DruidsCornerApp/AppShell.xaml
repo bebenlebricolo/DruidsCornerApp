@@ -4,11 +4,51 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:DruidsCornerApp.Views"
+    xmlns:main="clr-namespace:DruidsCornerApp.Views.MainContext"
     x:Name="Shell"
-    Shell.FlyoutBehavior="Disabled">
+    FlyoutBehavior="Flyout"
+    TabBarBackgroundColor="DeepSkyBlue"
+    TabBarDisabledColor="Grey"
+    TabBarForegroundColor="White"
+    TabBarTitleColor="Grey"
+    TabBarUnselectedColor="White"
+    >
     
-    <!-- Single startup page -->
-    <ShellContent Route="WelcomePage"
-                  ContentTemplate="{DataTemplate views:WelcomePage}"
-                  Title="WelcomePage"/>
+    <FlyoutItem>
+        <ShellContent Icon="account.svg"
+                      Title="Account"
+                      ContentTemplate="{DataTemplate views:WelcomePage}"/>
+        <ShellContent Icon="gear.svg"
+                      Title="Settings"
+                      ContentTemplate="{DataTemplate views:WelcomePage}"/>
+        <ShellContent Icon="about.svg"
+                      Title="About"
+                      ContentTemplate="{DataTemplate views:WelcomePage}"/>
+    </FlyoutItem>
+    <TabBar>
+        <Tab Icon="erlenmeyer.svg"
+             Title="Create">
+            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}"/>
+        </Tab>
+        <Tab Icon="labelled_stock_box.svg"
+             Title="Stock">
+            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}"/>
+        </Tab>
+        <Tab Icon="recipebook.svg"
+             Title="References">
+            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}"/>
+        </Tab>
+        <Tab Icon="compass_flat_simple.svg"
+             Title="Explore">
+            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}"/>
+        </Tab>
+        <Tab Icon="recipe_book_2.svg"
+             Title="Collection">
+            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}"/>
+        </Tab>
+        <Tab Icon="magic_wand.svg"
+             Title="Conversion">
+            <ShellContent ContentTemplate="{DataTemplate views:WelcomePage}"/>
+        </Tab>
+    </TabBar>
 </Shell>

@@ -172,7 +172,9 @@ public partial class AccountCreationPageViewModel : BaseViewModel
             PopupUtils.SetLoginPopupCompletedTask(signinPopup, "Successfully authenticated !");
             await Task.Delay(1000);
             await signinPopup.Close();
-            await Shell.Current.GoToAsync($"//{Navigator.GetWelcomePageRoute()}", true);
+            
+            // Go to the new AppShell now, where our application core is.
+            Application.Current.MainPage = new AppShell(_secureStorageService);
         }
         catch (AuthenticationException ex)
         {

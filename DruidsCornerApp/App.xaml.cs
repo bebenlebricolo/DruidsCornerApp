@@ -29,6 +29,7 @@ public partial class App : Application
             if(firstStart != null  && !bool.Parse(firstStart))
             {
                 MainPage = new AppShell(_storageService);
+                _ = Shell.Current.GoToAsync("///Explore");
             }
         });
 

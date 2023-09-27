@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels"
              x:Class="DruidsCornerApp.Views.WelcomePage"
-             x:DataType="viewmodel:WelcomePageViewModel"
-             Shell.FlyoutBehavior="Disabled"
-             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodel:DefaultPageViewModel"
              Title="{Binding Title}"
              >
 
@@ -28,8 +26,7 @@
                     SemanticProperties.Description="Druids corner cloud app logo (to be redesigned)"
                     HeightRequest="250"
                     HorizontalOptions="Center"
-                    VerticalOptions="Start"
-                />
+                    VerticalOptions="Start" />
                 
                 <VerticalStackLayout Margin="0,200,0,0" Spacing="30">
                     <Label
@@ -40,19 +37,9 @@
                         FontAttributes="Bold"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions="Center" />
-                    
-                    <Button
-                        x:Name="StartBrowsingBtn"
-                        Text="Start browsing !"
-                        TextColor="WhiteSmoke"
-                        FontSize="18"
-                        SemanticProperties.Hint="Moves from startup page to login page / recipe browsing landing page"
-                        Command="{Binding Path=StartBrowsingClickedCommand}"
-                        HorizontalOptions="Center" 
-                        BackgroundColor="#ff6a00"/>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
-
+    
 </ContentPage>

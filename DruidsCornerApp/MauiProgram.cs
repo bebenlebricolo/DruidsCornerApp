@@ -45,7 +45,7 @@ public static class MauiProgram
         builder.Services.AddTransient<RecipeExplorerPage>();
 
         // Registering view models here (for dependency injection)
-        builder.Services.AddTransient<WelcomePageViewModel>();
+        builder.Services.AddTransient<DefaultPageViewModel>();
         builder.Services.AddTransient<BasicSignInPageViewModel>();
         builder.Services.AddTransient<ResetPasswordPageViewModel>();
         builder.Services.AddTransient<GoogleSignInPageViewModel>();

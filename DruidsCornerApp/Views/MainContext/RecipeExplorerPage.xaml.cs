@@ -1,4 +1,4 @@
-using DruidsCornerApp.ViewModels.Recipes;
+using RecipeExplorerViewModel = DruidsCornerApp.ViewModels.MainContext.RecipeExplorerViewModel;
 
 namespace DruidsCornerApp.Views.MainContext;
 

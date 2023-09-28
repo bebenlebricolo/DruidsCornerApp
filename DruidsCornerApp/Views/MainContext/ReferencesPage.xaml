@@ -2,11 +2,9 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
-             xmlns:model="clr-namespace:DruidsCornerApp.Models.RecipeExplorer"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:mainContext="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
-             x:Class="DruidsCornerApp.Views.MainContext.RecipeExplorerPage"
+             x:Class="DruidsCornerApp.Views.MainContext.ReferencesPage"
              x:DataType="mainContext:RecipeExplorerViewModel"
              Shell.FlyoutBehavior="Flyout"
              Shell.NavBarIsVisible="False">
@@ -16,8 +14,8 @@
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-        <Grid RowDefinitions="auto,*" Margin="0" Padding="0">
-            <Grid Grid.Row="0" RowDefinitions="*">
+        <StackLayout Margin="0" Padding="0">
+            <Grid RowDefinitions="*">
                 <Frame x:Name="HeaderImageFrame"
                        BackgroundColor="Transparent"
                        CornerRadius="0"
@@ -134,11 +132,11 @@
                 </Grid>
             </Grid>
 
-            <ScrollView Grid.Row="1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <ScrollView>
                 <StackLayout>
                     <Grid RowDefinitions="auto,*"
                           ColumnDefinitions="*,auto"
-                          Padding="0,2,0,0"
+                          Padding="5"
                           ColumnSpacing="2">
                         <Frame Grid.Row="0" Grid.Column="0"
                                BorderColor="Orange"
@@ -150,8 +148,7 @@
                                    PlaceholderColor="Orange" />
                         </Frame>
                         <Button Grid.Row="0" Grid.Column="1"
-                                Text="Search !"
-                                Padding="20,0"
+                                Text="Go !"
                                 TextColor="White"
                                 BackgroundColor="Orange"
                                 CornerRadius="10">
@@ -159,46 +156,46 @@
                     </Grid>
 
                     <CollectionView ItemsSource="{Binding Recipes}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="model:CompactRecipe">
-                                <Frame BackgroundColor="#2b2b2b" CornerRadius="15" Margin="2" BorderColor="Transparent">
-                                    <Grid ColumnSpacing="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Frame CornerRadius="100"
-                                               BorderColor="White"
-                                               Margin="0,0,10,0"
-                                               Padding="7"
-                                               Grid.RowSpan="3">
-                                            <Image
-                                                WidthRequest="80"
-                                                HeightRequest="80"
-                                                Aspect="AspectFit"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center"
-                                                Source="{Binding ImageSource}" />
-                                        </Frame>
-                                        <Label Grid.Row="1" Grid.Column="1" TextColor="White"
-                                               Text="{Binding Name}"
-                                               FontAttributes="Bold" />
-                                        <Label Grid.Row="2" TextColor="White"
-                                               Grid.Column="1"
-                                               Text="{Binding Brewer}"
-                                               FontAttributes="Italic" />
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                        <!-- <CollectionView.ItemTemplate> -->
+                        <!--     <DataTemplate x:DataType="model:CompactRecipe"> -->
+                        <!--         <Frame BackgroundColor="#2b2b2b" CornerRadius="15" Margin="2" BorderColor="Transparent"> -->
+                        <!--             <Grid ColumnSpacing="5"> -->
+                        <!--                 <Grid.RowDefinitions> -->
+                        <!--                     <RowDefinition Height="*" /> -->
+                        <!--                     <RowDefinition Height="*" /> -->
+                        <!--                     <RowDefinition Height="*" /> -->
+                        <!--                 </Grid.RowDefinitions> -->
+                        <!--                 <Grid.ColumnDefinitions> -->
+                        <!--                     <ColumnDefinition Width="Auto" /> -->
+                        <!--                     <ColumnDefinition Width="Auto" /> -->
+                        <!--                 </Grid.ColumnDefinitions> -->
+                        <!--                 <Frame CornerRadius="100" -->
+                        <!--                        BorderColor="White" -->
+                        <!--                        Margin="0,0,10,0" -->
+                        <!--                        Padding="7" -->
+                        <!--                        Grid.RowSpan="3"> -->
+                        <!--                     <Image -->
+                        <!--                         WidthRequest="80" -->
+                        <!--                         HeightRequest="80" -->
+                        <!--                         Aspect="AspectFit" -->
+                        <!--                         HorizontalOptions="Center" -->
+                        <!--                         VerticalOptions="Center" -->
+                        <!--                         Source="{Binding ImageSource}" /> -->
+                        <!--                 </Frame> -->
+                        <!--                 <Label Grid.Row="1" Grid.Column="1" TextColor="White" -->
+                        <!--                        Text="{Binding Name}" -->
+                        <!--                        FontAttributes="Bold" /> -->
+                        <!--                 <Label Grid.Row="2" TextColor="White" -->
+                        <!--                        Grid.Column="1" -->
+                        <!--                        Text="{Binding Brewer}" -->
+                        <!--                        FontAttributes="Italic" /> -->
+                        <!--             </Grid> -->
+                        <!--         </Frame> -->
+                        <!--     </DataTemplate> -->
+                        <!-- </CollectionView.ItemTemplate> -->
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

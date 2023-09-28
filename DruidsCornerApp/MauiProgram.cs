@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using CommunityToolkit.Maui;
-using DruidsCornerApiClient.Models;
+﻿using CommunityToolkit.Maui;
 using DruidsCornerApiClient.Services;
 using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Services;
@@ -9,11 +7,10 @@ using DruidsCornerApp.Services.Config;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
-using DruidsCornerApp.ViewModels.Recipes;
+using DruidsCornerApp.ViewModels.MainContext;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.MainContext;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
 
@@ -43,6 +40,7 @@ public static class MauiProgram
         
         // Recipes related pages
         builder.Services.AddTransient<RecipeExplorerPage>();
+        builder.Services.AddTransient<ReferencesPage>();
 
         // Registering view models here (for dependency injection)
         builder.Services.AddTransient<DefaultPageViewModel>();

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DruidsCornerApp.ViewModels.MainContext;
 
-public partial class RecipeExplorerViewModel : BaseViewModel
+public partial class ReferencesPageViewModel : BaseViewModel
 {
     private readonly IAuthenticationService _authenticationService;
     private readonly ISecureStorageService _secureStorageService;
@@ -32,7 +32,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
     /// <param name="authenticationService"></param>
     /// <param name="secureStorageService"></param>
     /// <param name="apiClient"></param>
-    public RecipeExplorerViewModel(ILogger<RecipeExplorerViewModel> logger,
+    public ReferencesPageViewModel(ILogger<RecipeExplorerViewModel> logger,
                                    IAuthenticationService authenticationService,
                                    ISecureStorageService secureStorageService,
                                    MainClient apiClient

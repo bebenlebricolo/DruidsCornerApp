@@ -33,7 +33,7 @@
 
         <Tab Icon="recipebook.svg"
              Title="References">
-            <ShellContent ContentTemplate="{DataTemplate main:RecipeExplorerPage}" Route="References" />
+            <ShellContent ContentTemplate="{DataTemplate main:ReferencesPage}" Route="References" />
         </Tab>
 
 

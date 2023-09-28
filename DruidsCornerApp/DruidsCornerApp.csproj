@@ -77,7 +77,8 @@
         <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
         
         <!-- Icons -->
-        <MauiImage Update="Resources\Icons\**" />
+        <MauiImage Include="Resources\Icons\**" />
+        <MauiImage Update="Resources\Icons\hamburger.svg" />
 
         
         <!-- Custom Fonts -->
@@ -137,6 +138,10 @@
           <DependentUpon>BootShell.xaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Views\MainContext\ReferencesPage.xaml.cs">
+          <DependentUpon>ReferencesPage.xaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -174,6 +179,9 @@
             <SubType>Designer</SubType>
         </MauiXaml>
         <MauiXaml Update="BootShell.xaml">
+          <SubType>Designer</SubType>
+        </MauiXaml>
+        <MauiXaml Update="Views\MainContext\ReferencesPage.xaml">
           <SubType>Designer</SubType>
         </MauiXaml>
     </ItemGroup>

@@ -20,12 +20,6 @@ public partial class RecipeExplorerViewModel : BaseViewModel
     public ObservableCollection<CompactRecipe> Recipes { get; } = new ObservableCollection<CompactRecipe>();
 
     /// <summary>
-    /// User email
-    /// </summary>
-    [ObservableProperty]
-    private string _email = string.Empty;
-
-    /// <summary>
     /// 
     /// </summary>
     /// <param name="logger"></param>
@@ -53,6 +47,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Punk Ipa",
             Style = "India Pale Ale",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = true,
+            Rating = 4.5,
             ImageSource =
                 "https://www.brewdog.com/media/catalog/product/cache/eb360c13587b21a8ac6c611a2762b864/b/d/bd_webbundle_pdp_1x330can_single_punk.png"
         });
@@ -61,6 +61,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Speed Bird ",
             Style = "Transatlantic Ipa",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = true,
+            Rating = 3,
             ImageSource = "https://brewdog.mtchost.com/public/files/BLOG%20PHOTOS/Speedbird100.jpg"
         });
         Recipes.Add(new CompactRecipe()
@@ -68,6 +74,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Chaos Theory",
             Style = "Predictably Random Ipa",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = false,
+            Rating = 3.1,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/19.jpg"
         });
         Recipes.Add(new CompactRecipe()
@@ -75,6 +87,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Tokyo Rising Sun - Lowland",
             Style = "A Beautiful Accident",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = true,
+            Rating = 4.2,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/27.jpg"
         });
         Recipes.Add(new CompactRecipe()
@@ -82,6 +100,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Sink the Bismarck !",
             Style = "IPA For the Dedicated",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = false,
+            Rating = 3.5,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/27.jpg"
         });
         Recipes.Add(new CompactRecipe()
@@ -89,6 +113,12 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Brewer = "BrewDog",
             Name = "Hardkogt Ipa",
             Style = "A SPECIAL DOUBLE IPA FOR OUR DANISH FRIENDS",
+            Abv = 3.5,
+            Ebc = 20,
+            Ibu = 35,
+            BrewDate = "2018",
+            Favorite = false,
+            Rating = 3.6,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/46.jpg"
         });
     }

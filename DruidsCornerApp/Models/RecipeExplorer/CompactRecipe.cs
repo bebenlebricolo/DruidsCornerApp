@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace DruidsCornerApp.Models.RecipeExplorer;
 
 /// <summary>
@@ -5,6 +7,30 @@ namespace DruidsCornerApp.Models.RecipeExplorer;
 /// </summary>
 public class CompactRecipe
 {
+    /// <summary>
+    /// Recipe's Alcoholic content
+    /// </summary>
+    public double Abv { get; set; } = 3.5;
+
+    /// <summary>
+    /// Recipe's bitterness grade
+    /// </summary>
+    public double Ibu { get; set; } = 35;
+
+    /// <summary>
+    /// Recipe's color
+    /// </summary>
+    public double Ebc { get; set; } = 30;
+
+    public double Rating { get; set; } = 2.5;
+
+    public bool Favorite { get; set; } = false;
+    
+    /// <summary>
+    /// Brew date
+    /// </summary>
+    public string BrewDate { get; set; } = "2023";
+    
     /// <summary>
     /// Recipe's name
     /// </summary>

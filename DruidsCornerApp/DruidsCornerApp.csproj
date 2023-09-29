@@ -73,6 +73,7 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
+        <MauiImage Include="Resources\Images\PngIcons\*" />
         <MauiImage Include="Resources\Images\PageHeaders\*" />
         <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
         
@@ -98,6 +99,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
         <PackageReference Include="Mopups" Version="1.1.1" />
+        <PackageReference Include="Sharpnado.Tabs.Maui" Version="3.0.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -238,5 +240,7 @@
     <ItemGroup>
       <ProjectReference Include="..\DruidsCornerApiClient\DruidsCornerApiClient.csproj" />
     </ItemGroup>
+
+
 
 </Project>

@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DruidsCornerApiClient.Services;
 using DruidsCornerApp.Models.Login;
-using DruidsCornerApp.Models.RecipeExplorer;
+using DruidsCornerApp.Models.MainContext;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
 using Microsoft.Extensions.Logging;
@@ -17,7 +17,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
     private readonly ILogger<RecipeExplorerViewModel> _logger;
     private readonly MainClient _apiClient;
 
-    public ObservableCollection<CompactRecipe> Recipes { get; } = new ObservableCollection<CompactRecipe>();
+    public ObservableCollection<CompactRecipeModel> Recipes { get; } = new ObservableCollection<CompactRecipeModel>();
 
     /// <summary>
     /// 
@@ -42,7 +42,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
 
     private void InitRecipesList()
     {
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Punk Ipa",
@@ -56,7 +56,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             ImageSource =
                 "https://www.brewdog.com/media/catalog/product/cache/eb360c13587b21a8ac6c611a2762b864/b/d/bd_webbundle_pdp_1x330can_single_punk.png"
         });
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Speed Bird ",
@@ -69,7 +69,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Rating = 3,
             ImageSource = "https://brewdog.mtchost.com/public/files/BLOG%20PHOTOS/Speedbird100.jpg"
         });
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Chaos Theory",
@@ -82,7 +82,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Rating = 3.1,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/19.jpg"
         });
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Tokyo Rising Sun - Lowland",
@@ -95,7 +95,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Rating = 4.2,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/27.jpg"
         });
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Sink the Bismarck !",
@@ -108,7 +108,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
             Rating = 3.5,
             ImageSource = "https://brewdogrecipes.com/assets/recipes/27.jpg"
         });
-        Recipes.Add(new CompactRecipe()
+        Recipes.Add(new CompactRecipeModel()
         {
             Brewer = "BrewDog",
             Name = "Hardkogt Ipa",

@@ -1,11 +1,9 @@
-using System.Diagnostics.Contracts;
-
-namespace DruidsCornerApp.Models.RecipeExplorer;
+namespace DruidsCornerApp.Models.MainContext;
 
 /// <summary>
 /// Compact Recipe that allows the recipe browser to list recipes with minimal data
 /// </summary>
-public class CompactRecipe
+public class CompactRecipeModel
 {
     /// <summary>
     /// Recipe's Alcoholic content

@@ -13,6 +13,7 @@ using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.MainContext;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
+using Sharpnado.Tabs;
 
 namespace DruidsCornerApp;
 
@@ -24,6 +25,7 @@ public static class MauiProgram
         builder
             .UseMauiCommunityToolkit()
             .UseMauiApp<App>()
+            .UseSharpnadoTabs(true)
             .ConfigureMopups()
             .ConfigureFonts(fonts =>
             {
@@ -40,6 +42,7 @@ public static class MauiProgram
         
         // Recipes related pages
         builder.Services.AddTransient<RecipeExplorerPage>();
+        builder.Services.AddTransient<HopReferenceView>();
         builder.Services.AddTransient<ReferencesPage>();
 
         // Registering view models here (for dependency injection)
@@ -48,7 +51,10 @@ public static class MauiProgram
         builder.Services.AddTransient<ResetPasswordPageViewModel>();
         builder.Services.AddTransient<GoogleSignInPageViewModel>();
         builder.Services.AddTransient<AccountCreationPageViewModel>();
+        
         builder.Services.AddTransient<RecipeExplorerViewModel>();
+        builder.Services.AddTransient<ReferencesPageViewModel>();
+        builder.Services.AddTransient<HopReferenceViewModel>();
         
         builder.Services.AddTransient<MainClient>(service =>
         {

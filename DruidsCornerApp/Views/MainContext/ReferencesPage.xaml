@@ -3,9 +3,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:mainContext="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
+             xmlns:views="clr-namespace:DruidsCornerApp.Views.MainContext"
+             xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Maui.Tabs"
              x:Class="DruidsCornerApp.Views.MainContext.ReferencesPage"
-             x:DataType="mainContext:RecipeExplorerViewModel"
+             x:DataType="viewmodel:RecipeExplorerViewModel"
              Shell.FlyoutBehavior="Flyout"
              Shell.NavBarIsVisible="False">
 
@@ -13,6 +15,49 @@
         <toolkit:StatusBarBehavior StatusBarColor="#333333" StatusBarStyle="Default" />
     </ContentPage.Behaviors>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MaterialTabStyle" TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
+                <Setter Property="IconSize" Value="24" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="LabelSize" Value="14" />
+                <Setter Property="UnderlineAllTab" Value="True" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource Gray200}" />
+            </Style>
+
+            <Style x:Key="BottomTabStyle"
+                   BasedOn="{StaticResource MaterialTabStyle}"
+                   TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="LabelSize" Value="12" />
+            </Style>
+
+            <Style x:Key="LabelHeader" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansExtraBold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="16,0" />
+            </Style>
+
+            <Style x:Key="LabelDescription" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!-- <Style x:Key="Card" TargetType="Border"> -->
+            <!--     <Setter Property="Padding" Value="0" /> -->
+            <!--     <Setter Property="Stroke" Value="{StaticResource Gray975}" /> -->
+            <!--     <Setter Property="StrokeShape" Value="RoundRectangle 20" /> -->
+            <!--     <Setter Property="StrokeThickness" Value="2" /> -->
+            <!-- </Style> -->
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    
     <ContentPage.Content>
         <StackLayout Margin="0" Padding="0">
             <Grid RowDefinitions="*">
@@ -21,11 +66,14 @@
                        CornerRadius="0"
                        Padding="0"
                        Margin="0"
+                       IsClippedToBounds="True"
                        HeightRequest="150"
                        BorderColor="Transparent">
-                    <Image Source="explorer_background_header.jpg"
+                    <Image Source="reference_background_header.jpg"
                            Aspect="AspectFill"
-                           Margin="0" />
+                           Margin="0"
+                           Scale="1.6"
+                           TranslationY="40" />
                 </Frame>
                 <Grid RowDefinitions="auto,*,auto">
                     <!-- Header Grid : hamburger and title-->
@@ -45,157 +93,107 @@
                             </ImageButton.Behaviors>
                         </ImageButton>
                         <Label Grid.Column="2"
-                               Text="Explore"
+                               Text="Reference book"
                                TextColor="White"
                                FontSize="25"
                                Margin="10,0"
                                HorizontalOptions="End"
                                VerticalOptions="Center" />
                     </Grid>
-                    <ImageButton Grid.Row="1"
-                                 Source="option_dots_h.svg"
-                                 BackgroundColor="Transparent"
-                                 HeightRequest="30"
-                                 WidthRequest="30"
-                                 Margin="10,0"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="End">
-                        <ImageButton.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="White" />
-                        </ImageButton.Behaviors>
-                    </ImageButton>
 
-                    <!-- Advanced search banner -->
+
+                    <!-- Banner -->
                     <Frame Grid.Row="2"
                            BackgroundColor="#33ffffff"
                            CornerRadius="0"
                            Margin="0"
-                           Padding="10"
+                           Padding="10,20"
                            VerticalOptions="End"
                            BorderColor="Transparent">
                         <StackLayout>
-                            <Grid ColumnDefinitions="auto,*,auto">
+                            <Grid ColumnDefinitions="auto,*">
                                 <Label Grid.Column="0"
-                                       Text="Advanced Search Filters"
+                                       Text="A place to find them all ..."
                                        TextColor="White"
                                        FontAttributes="Italic"
-                                       FontSize="20"
+                                       FontSize="18"
                                        Padding="3,0,0,0"
                                        VerticalOptions="Start" />
-                                <Button Grid.Column="2" Text="Settings"
-                                        TextColor="#6666666"
-                                        CornerRadius="10"
-                                        HeightRequest="30"
-                                        Margin="0"
-                                        Padding="15,0"
-                                        VerticalOptions="Center" />
+                                <ImageButton Grid.Column="1"
+                                             Source="option_dots_h.svg"
+                                             BackgroundColor="Transparent"
+                                             HeightRequest="30"
+                                             WidthRequest="30"
+                                             Margin="10,0"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="End">
+                                    <ImageButton.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="White" />
+                                    </ImageButton.Behaviors>
+                                </ImageButton>
                             </Grid>
-
-                            <!-- Filters labels -->
-                            <HorizontalStackLayout Spacing="5">
-                                <Frame CornerRadius="30"
-                                       HeightRequest="30"
-                                       BorderColor="Transparent"
-                                       Margin="0"
-                                       Padding="10, 0"
-                                       BackgroundColor="White">
-                                    <Label Text="Abv 3 - 10%"
-                                           TextColor="#5b5a5a"
-                                           VerticalOptions="Center">
-                                    </Label>
-                                </Frame>
-                                <Frame CornerRadius="30"
-                                       HeightRequest="30"
-                                       BorderColor="Transparent"
-                                       Margin="0"
-                                       Padding="10, 0"
-                                       BackgroundColor="White">
-                                    <Label Text="Abv 3 - 10%"
-                                           TextColor="#5b5a5a"
-                                           VerticalOptions="Center">
-                                    </Label>
-                                </Frame>
-                                <Frame CornerRadius="30"
-                                       HeightRequest="30"
-                                       BorderColor="Transparent"
-                                       Margin="0"
-                                       Padding="10, 0"
-                                       BackgroundColor="White">
-                                    <Label Text="Abv 3 - 10%"
-                                           TextColor="#5b5a5a"
-                                           VerticalOptions="Center">
-                                    </Label>
-                                </Frame>
-                            </HorizontalStackLayout>
                         </StackLayout>
                     </Frame>
                 </Grid>
             </Grid>
 
-            <ScrollView>
-                <StackLayout>
-                    <Grid RowDefinitions="auto,*"
-                          ColumnDefinitions="*,auto"
-                          Padding="5"
-                          ColumnSpacing="2">
-                        <Frame Grid.Row="0" Grid.Column="0"
-                               BorderColor="Orange"
-                               CornerRadius="10"
-                               Padding="10,0"
-                               Margin="0,0">
+            <tabs:TabHostView x:Name="TabHost"
+                              Margin="0,0"
+                              BackgroundColor="#272727"
+                              HeightRequest="50"
+                              SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
 
-                            <Entry Placeholder="Search for recipe names here"
-                                   PlaceholderColor="Orange" />
-                        </Frame>
-                        <Button Grid.Row="0" Grid.Column="1"
-                                Text="Go !"
-                                TextColor="White"
-                                BackgroundColor="Orange"
-                                CornerRadius="10">
-                        </Button>
-                    </Grid>
+                <tabs:TabHostView.Tabs>
+                    <tabs:MaterialUnderlinedTabItem Label="Hops" 
+                                                    Style="{StaticResource MaterialTabStyle}"
+                                                    IconImageSource="hop.svg"
+                                                    IconOptions="LeadingIcon"
+                                                    IconSize="20"
+                                                    IconTextSpacing="5"/>
+                    
+                    <tabs:MaterialUnderlinedTabItem Label="Malts"
+                                                    Style="{StaticResource MaterialTabStyle}"
+                                                    IconImageSource="barley.svg"
+                                                    IconOptions="LeadingIcon"
+                                                    IconSize="20"
+                                                    IconTextSpacing="5"/>
+                    
+                    <tabs:MaterialUnderlinedTabItem Label="Yeasts" 
+                                                    IconImageSource="yeast_full.svg"
+                                                    IconOptions="LeadingIcon"
+                                                    IconSize="20"
+                                                    IconTextSpacing="5"/>
+                    
+                    <tabs:MaterialUnderlinedTabItem Label="Styles" 
+                                                    IconImageSource="recipebook.svg"
+                                                    IconOptions="LeadingIcon"
+                                                    IconSize="20"
+                                                    IconTextSpacing="5"/>
+                </tabs:TabHostView.Tabs>
+            </tabs:TabHostView>
 
-                    <CollectionView ItemsSource="{Binding Recipes}">
-                        <!-- <CollectionView.ItemTemplate> -->
-                        <!--     <DataTemplate x:DataType="model:CompactRecipe"> -->
-                        <!--         <Frame BackgroundColor="#2b2b2b" CornerRadius="15" Margin="2" BorderColor="Transparent"> -->
-                        <!--             <Grid ColumnSpacing="5"> -->
-                        <!--                 <Grid.RowDefinitions> -->
-                        <!--                     <RowDefinition Height="*" /> -->
-                        <!--                     <RowDefinition Height="*" /> -->
-                        <!--                     <RowDefinition Height="*" /> -->
-                        <!--                 </Grid.RowDefinitions> -->
-                        <!--                 <Grid.ColumnDefinitions> -->
-                        <!--                     <ColumnDefinition Width="Auto" /> -->
-                        <!--                     <ColumnDefinition Width="Auto" /> -->
-                        <!--                 </Grid.ColumnDefinitions> -->
-                        <!--                 <Frame CornerRadius="100" -->
-                        <!--                        BorderColor="White" -->
-                        <!--                        Margin="0,0,10,0" -->
-                        <!--                        Padding="7" -->
-                        <!--                        Grid.RowSpan="3"> -->
-                        <!--                     <Image -->
-                        <!--                         WidthRequest="80" -->
-                        <!--                         HeightRequest="80" -->
-                        <!--                         Aspect="AspectFit" -->
-                        <!--                         HorizontalOptions="Center" -->
-                        <!--                         VerticalOptions="Center" -->
-                        <!--                         Source="{Binding ImageSource}" /> -->
-                        <!--                 </Frame> -->
-                        <!--                 <Label Grid.Row="1" Grid.Column="1" TextColor="White" -->
-                        <!--                        Text="{Binding Name}" -->
-                        <!--                        FontAttributes="Bold" /> -->
-                        <!--                 <Label Grid.Row="2" TextColor="White" -->
-                        <!--                        Grid.Column="1" -->
-                        <!--                        Text="{Binding Brewer}" -->
-                        <!--                        FontAttributes="Italic" /> -->
-                        <!--             </Grid> -->
-                        <!--         </Frame> -->
-                        <!--     </DataTemplate> -->
-                        <!-- </CollectionView.ItemTemplate> -->
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
+            <tabs:ViewSwitcher x:Name="Switcher"
+                               x:DataType="viewmodel:ReferencesPageViewModel"
+                               Margin="0"
+                               SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
+                
+                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
+                                  
+                                  AccentColor="{StaticResource Primary}"
+                                  UseActivityIndicator="True" />
+                
+                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
+                                  AccentColor="{StaticResource Primary}"
+                                  UseActivityIndicator="True" />
+                
+                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
+                                  AccentColor="{StaticResource Primary}"
+                                  UseActivityIndicator="True" />
+                
+                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
+                                  AccentColor="{StaticResource Primary}"
+                                  UseActivityIndicator="True" />
+            </tabs:ViewSwitcher>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

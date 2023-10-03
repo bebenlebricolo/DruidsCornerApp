@@ -34,4 +34,9 @@ public class CompactHopModel
     /// States whether this resource was set as a favorite by the user or not
     /// </summary>
     public bool Favorite { get; set; } = false;
+
+    /// <summary>
+    /// List of tags for the selected Hop variety
+    /// </summary>
+    public List<string> Tags { get; set; } = new();
 }

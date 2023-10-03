@@ -8,7 +8,7 @@
     xmlns:main="clr-namespace:DruidsCornerApp.Views.MainContext"
     x:Name="Shell"
     FlyoutBehavior="Flyout"
-    TabBarBackgroundColor="#649665"
+    TabBarBackgroundColor="#081705"
     TabBarDisabledColor="Grey"
     TabBarForegroundColor="White"
     TabBarTitleColor="Grey"

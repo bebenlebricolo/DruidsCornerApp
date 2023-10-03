@@ -86,19 +86,4 @@ public partial class HopReferenceView : ContentView
             StockedAmount = 0
         });
     }
-    
-    private void Button_OnClicked(object? sender, EventArgs e)
-    {
-       InitFakeHops();
-    }
-
-    private void ScrollView_OnScrolled(object? sender, ScrolledEventArgs e)
-    {
-        Console.WriteLine($"ScrollX: {e.ScrollX}, ScrollY: {e.ScrollY}");
-    }
-
-    private void ItemsView_OnScrolled(object? sender, ItemsViewScrolledEventArgs e)
-    {
-        Console.WriteLine($"ScrollX: {e.HorizontalDelta}, ScrollY: {e.VerticalDelta}");
-    }
 }

@@ -54,7 +54,6 @@ public static class MauiProgram
         
         builder.Services.AddTransient<RecipeExplorerViewModel>();
         builder.Services.AddTransient<ReferencesPageViewModel>();
-        builder.Services.AddTransient<HopReferenceViewModel>();
         
         builder.Services.AddTransient<MainClient>(service =>
         {
@@ -88,6 +87,11 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        // Init the ServiceCollectionProvider so that I can retrieve services from the code later on
+        // Note : I know this is a bit crappy regarding the "ASP .net way" but I'm forced to do this because of 
+        // templated instantiation of pages that require parameterless constructor (thus preventing automatic dependency injection)
+        RuntimeServiceProvider.Create(builder.Services.BuildServiceProvider());
+        
         return builder.Build();
     }
 }

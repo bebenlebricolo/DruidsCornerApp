@@ -58,8 +58,20 @@
 
 
     <ContentPage.Content>
-        <StackLayout Margin="0" Padding="0">
-            <Grid RowDefinitions="*">
+        <Grid Margin="0" Padding="0"
+              RowDefinitions="auto,auto,*">
+            <!-- Critical Note : the third row containing the tab views is requiring the "*" automatic sizing. Using
+            the "auto" mode lets the inner grids (tabviews inherits a grid) to have an infinite size, thus impeding 
+            underlying scroll views : they don't detect that their parent layouts are restricting them, so they don't trigger scrolling
+            mechanisms. To prevent that, we need to specify to this top grid to perform "*" sizing so that 
+            inner views will scale up way past the viewport boundaries, then allowing the inner scrollviews to start scrolling.
+            Yes, it's very weird and unclear as heck, but it does the job.
+            
+            The real issue being : ScrollView only trigger scroll events if its content grows bigger than the wrapping layout.
+            Grid with "auto" layout basically allow the content to grow at will (infinite size), so inner scroll view are never constrained
+              -->
+            <Grid Grid.Row="0"
+                  RowDefinitions="*">
                 <Frame x:Name="HeaderImageFrame"
                        BackgroundColor="Transparent"
                        CornerRadius="0"
@@ -137,6 +149,7 @@
             </Grid>
 
             <tabs:TabHostView x:Name="TabHost"
+                              Grid.Row="1"
                               Margin="0,0"
                               BackgroundColor="#272727"
                               HeightRequest="50"
@@ -172,6 +185,7 @@
             </tabs:TabHostView>
 
             <tabs:ViewSwitcher x:Name="Switcher"
+                               Grid.Row="2"
                                x:DataType="viewmodel:ReferencesPageViewModel"
                                Margin="0"
                                SelectedIndex="0">
@@ -198,6 +212,6 @@
                 <!--                   AccentColor="{StaticResource Primary}" -->
                 <!--                   UseActivityIndicator="True" /> -->
             </tabs:ViewSwitcher>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -55,9 +55,8 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    
-    
+
+
     <ContentPage.Content>
         <StackLayout Margin="0" Padding="0">
             <Grid RowDefinitions="*">
@@ -144,55 +143,60 @@
                               SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
 
                 <tabs:TabHostView.Tabs>
-                    <tabs:MaterialUnderlinedTabItem Label="Hops" 
+                    <tabs:MaterialUnderlinedTabItem Label="Hops"
                                                     Style="{StaticResource MaterialTabStyle}"
                                                     IconImageSource="hop.svg"
                                                     IconOptions="LeadingIcon"
                                                     IconSize="20"
-                                                    IconTextSpacing="5"/>
-                    
+                                                    IconTextSpacing="5" />
+
                     <tabs:MaterialUnderlinedTabItem Label="Malts"
                                                     Style="{StaticResource MaterialTabStyle}"
                                                     IconImageSource="barley.svg"
                                                     IconOptions="LeadingIcon"
                                                     IconSize="20"
-                                                    IconTextSpacing="5"/>
-                    
-                    <tabs:MaterialUnderlinedTabItem Label="Yeasts" 
+                                                    IconTextSpacing="5" />
+
+                    <tabs:MaterialUnderlinedTabItem Label="Yeasts"
                                                     IconImageSource="yeast_full.svg"
                                                     IconOptions="LeadingIcon"
                                                     IconSize="20"
-                                                    IconTextSpacing="5"/>
-                    
-                    <tabs:MaterialUnderlinedTabItem Label="Styles" 
+                                                    IconTextSpacing="5" />
+
+                    <tabs:MaterialUnderlinedTabItem Label="Styles"
                                                     IconImageSource="recipebook.svg"
                                                     IconOptions="LeadingIcon"
                                                     IconSize="20"
-                                                    IconTextSpacing="5"/>
+                                                    IconTextSpacing="5" />
                 </tabs:TabHostView.Tabs>
             </tabs:TabHostView>
 
             <tabs:ViewSwitcher x:Name="Switcher"
                                x:DataType="viewmodel:ReferencesPageViewModel"
                                Margin="0"
-                               SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
-                
-                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
-                                  
-                                  AccentColor="{StaticResource Primary}"
-                                  UseActivityIndicator="True" />
-                
-                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
-                                  AccentColor="{StaticResource Primary}"
-                                  UseActivityIndicator="True" />
-                
-                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
-                                  AccentColor="{StaticResource Primary}"
-                                  UseActivityIndicator="True" />
-                
-                <tabs:DelayedView x:TypeArguments="views:HopReferenceView"
-                                  AccentColor="{StaticResource Primary}"
-                                  UseActivityIndicator="True" />
+                               SelectedIndex="0">
+                <!-- SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}" -->
+
+                <tabs:LazyView x:TypeArguments="views:HopReferenceView"
+                               AccentColor="{StaticResource Primary}"
+                               UseActivityIndicator="True">
+                </tabs:LazyView>
+                <!-- <tabs:DelayedView x:TypeArguments="views:HopReferenceView" -->
+                <!--                    -->
+                <!--                   AccentColor="{StaticResource Primary}" -->
+                <!--                   UseActivityIndicator="True" /> -->
+                <!-- -->
+                <!-- <tabs:DelayedView x:TypeArguments="views:HopReferenceView" -->
+                <!--                   AccentColor="{StaticResource Primary}" -->
+                <!--                   UseActivityIndicator="True" /> -->
+                <!-- -->
+                <!-- <tabs:DelayedView x:TypeArguments="views:HopReferenceView" -->
+                <!--                   AccentColor="{StaticResource Primary}" -->
+                <!--                   UseActivityIndicator="True" /> -->
+                <!-- -->
+                <!-- <tabs:DelayedView x:TypeArguments="views:HopReferenceView" -->
+                <!--                   AccentColor="{StaticResource Primary}" -->
+                <!--                   UseActivityIndicator="True" /> -->
             </tabs:ViewSwitcher>
         </StackLayout>
     </ContentPage.Content>

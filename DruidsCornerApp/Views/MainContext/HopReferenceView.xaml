@@ -4,167 +4,111 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
              xmlns:model="clr-namespace:DruidsCornerApp.Models.MainContext"
-             x:Class="DruidsCornerApp.Views.MainContext.HopReferenceView">
-    <ScrollView>
-        <StackLayout>
-            <Grid RowDefinitions="auto,*"
-                  ColumnDefinitions="*,auto"
-                  Padding="5"
-                  ColumnSpacing="2">
-                <Frame Grid.Row="0" Grid.Column="0"
-                       BorderColor="Orange"
-                       CornerRadius="10"
-                       Padding="10,0"
-                       Margin="0,0">
+             x:Class="DruidsCornerApp.Views.MainContext.HopReferenceView"
+             x:DataType="viewmodel:ReferencesPageViewModel"
+             x:Name="this">
 
-                    <Entry Placeholder="Search for recipe names here"
-                           PlaceholderColor="LightCoral"
-                           FontAttributes="Italic"
-                           TextColor="Orange" />
-                </Frame>
-                <Button Grid.Row="0" Grid.Column="1"
-                        Text="Go !"
-                        TextColor="White"
-                        BackgroundColor="Orange"
-                        CornerRadius="10">
-                </Button>
-            </Grid>
+    <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="auto,*"
+              ColumnDefinitions="*,auto"
+              Padding="5"
+              ColumnSpacing="2">
+            <Frame Grid.Row="0" Grid.Column="0"
+                   BorderColor="Orange"
+                   CornerRadius="10"
+                   Padding="10,0"
+                   Margin="0,0">
 
-            <CollectionView x:DataType="viewmodel:HopReferenceViewModel"
-                            ItemsSource="{Binding Path=Hops}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:CompactHopModel">
-                        <Frame BackgroundColor="#2b2b2b"
-                               CornerRadius="10"
-                               Margin="0"
-                               Padding="10"
-                               BorderColor="Transparent">
-                            <Grid ColumnSpacing="10"
-                                  ColumnDefinitions="auto,*,auto,auto">
-                                <!-- Hop thumbnail -->
-                                <Frame Grid.Column="0"
-                                       CornerRadius="100"
-                                       BorderColor="White"
-                                       Margin="0,0,10,0"
-                                       Padding="7">
-                                    <Image
-                                        WidthRequest="80"
-                                        HeightRequest="80"
-                                        Aspect="AspectFit"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        Source="hop_image.png" />
-                                </Frame>
+                <Entry Placeholder="Search for recipe names here"
+                       PlaceholderColor="LightCoral"
+                       FontAttributes="Italic"
+                       TextColor="Orange" />
+            </Frame>
+            <Button Grid.Row="0" Grid.Column="1"
+                    Text="Go !"
+                    TextColor="White"
+                    BackgroundColor="Orange"
+                    CornerRadius="10">
+            </Button>
+        </Grid>
 
-                                <!-- Hop name, id -->
-                                <Grid Grid.Column="1"
-                                      ColumnDefinitions="auto,auto"
-                                      RowDefinitions="auto,auto,auto">
-                                    
-                                    <Label Grid.Column="0"
-                                           Grid.Row="0"
-                                           Grid.ColumnSpan="2"
-                                           TextColor="White"
-                                           Text="{Binding Name}"
-                                           FontSize="15"
-                                           Padding="0,0,0,5"
-                                           FontAttributes="Bold" />
-                                    
-                                    <Label Grid.Column="0"
-                                           Grid.Row="1"
-                                           TextColor="White"
-                                           Text="Alpha acids :"
-                                           Padding="0,0,0,5"/>
-                                    <Label Grid.Column="1"
-                                           Grid.Row="1"
-                                           TextColor="White"
-                                           Text="{Binding AlphaAcids}"
-                                           FontAttributes="Italic" />
-                                    
-                                    <Label Grid.Column="0"
-                                           Grid.Row="2"
-                                           TextColor="White"
-                                           Text="Purpose :"/>
-                                    <Label Grid.Column="0"
-                                           Grid.Row="2"
-                                           TextColor="White"
-                                           Text="{Binding Purpose}"
-                                           FontAttributes="Italic" />
-                                    
+        <ScrollView Grid.Row="1"
+                    x:Name="DataScrollView"
+                    Orientation="Vertical"
+                    Scrolled="ScrollView_OnScrolled">
+            
+            
+            <Grid RowDefinitions="*">
+                <CollectionView ItemsSource="{Binding Path=Hops}"
+                                BindingContext="{x:Reference this}"
+                                Scrolled="ItemsView_OnScrolled">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CompactHopModel">
+                            <Frame BackgroundColor="#2b2b2b"
+                                   CornerRadius="10"
+                                   Margin="0"
+                                   Padding="10"
+                                   BorderColor="Transparent">
+                                <Grid ColumnSpacing="10"
+                                      ColumnDefinitions="auto,*,auto,auto">
+                                    <!-- Hop thumbnail -->
+                                    <Frame Grid.Column="0"
+                                           CornerRadius="100"
+                                           BorderColor="Transparent"
+                                           IsClippedToBounds="True"
+                                           Margin="0,0,10,0"
+                                           Padding="0">
+                                        <Image
+                                            WidthRequest="80"
+                                            HeightRequest="80"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Source="hop_image.png" />
+                                    </Frame>
+
+                                    <!-- Hop name, id -->
+                                    <Grid Grid.Column="1"
+                                          ColumnDefinitions="auto,auto"
+                                          RowDefinitions="auto,auto,auto">
+
+                                        <Label Grid.Column="0"
+                                               Grid.Row="0"
+                                               Grid.ColumnSpan="2"
+                                               TextColor="White"
+                                               Text="{Binding Name}"
+                                               FontSize="15"
+                                               Padding="0,0,0,5"
+                                               FontAttributes="Bold" />
+
+                                        <Label Grid.Column="0"
+                                               Grid.Row="1"
+                                               TextColor="White"
+                                               Text="Alpha acids :"
+                                               Padding="0,0,0,5" />
+                                        <Label Grid.Column="1"
+                                               Grid.Row="1"
+                                               TextColor="White"
+                                               Text="{Binding AlphaAcids}"
+                                               FontAttributes="Italic" />
+
+                                        <Label Grid.Column="0"
+                                               Grid.Row="2"
+                                               TextColor="White"
+                                               Text="Purpose :" />
+                                        <Label Grid.Column="1"
+                                               Grid.Row="2"
+                                               TextColor="White"
+                                               Text="{Binding Purpose}"
+                                               FontAttributes="Italic" />
+
+                                    </Grid>
                                 </Grid>
-                                
-                                <!-- Beer specs -->
-                                <!-- <VerticalStackLayout Grid.Column="2" -->
-                                <!--                      HorizontalOptions="Center"> -->
-                                <!--     <Grid ColumnDefinitions="auto,auto" -->
-                                <!--           RowDefinitions="auto,auto,auto" -->
-                                <!--           ColumnSpacing="8" -->
-                                <!--           Padding="10,0"> -->
-                                <!--         <Label TextColor="White" -->
-                                <!--                Text="Abv :" -->
-                                <!--                FontAttributes="Bold" /> -->
-                                <!--         <Label Grid.Column="1" -->
-                                <!--                TextColor="White" -->
-                                <!--                Text="{Binding Abv}" /> -->
-                                <!-- -->
-                                <!--         <Label Grid.Row="1" -->
-                                <!--                TextColor="White" -->
-                                <!--                Text="Ibu :" -->
-                                <!--                FontAttributes="Bold" /> -->
-                                <!--         <Label Grid.Column="1" -->
-                                <!--                Grid.Row="1" -->
-                                <!--                TextColor="White" -->
-                                <!--                Text="{Binding Ibu}" /> -->
-                                <!-- -->
-                                <!--         <Label Grid.Row="2" -->
-                                <!--                TextColor="White" -->
-                                <!--                Text="Ebc :" -->
-                                <!--                FontAttributes="Bold" /> -->
-                                <!--         <Label Grid.Column="1" -->
-                                <!--                Grid.Row="2" -->
-                                <!--                TextColor="White" -->
-                                <!--                Text="{Binding Ebc}" /> -->
-                                <!--     </Grid> -->
-                                <!-- -->
-                                <!--     ~1~ Qr code and rating stack @1@ -->
-                                <!--     <HorizontalStackLayout Spacing="10" -->
-                                <!--                            Padding="0,10"> -->
-                                <!--         <HorizontalStackLayout> -->
-                                <!--             <Image Source="star.svg" -->
-                                <!--                    HeightRequest="20" -->
-                                <!--                    WidthRequest="20" -->
-                                <!--                    VerticalOptions="Center"> -->
-                                <!--                 <Image.Behaviors> -->
-                                <!--                     <toolkit:IconTintColorBehavior TintColor="#ff6a00" /> -->
-                                <!--                 </Image.Behaviors> -->
-                                <!--             </Image> -->
-                                <!--             <Label Text="{Binding Rating}" -->
-                                <!--                    TextColor="#ff6a00" -->
-                                <!--                    VerticalOptions="Center" /> -->
-                                <!--             <Label Text="/5" -->
-                                <!--                    TextColor="#ff6a00" -->
-                                <!--                    VerticalOptions="Center" /> -->
-                                <!--         </HorizontalStackLayout> -->
-                                <!--         <Image Source="qrcode.svg" -->
-                                <!--                HeightRequest="25" -->
-                                <!--                WidthRequest="25"> -->
-                                <!--             <Image.Behaviors> -->
-                                <!--                 <toolkit:IconTintColorBehavior TintColor="#ff6a00" /> -->
-                                <!--             </Image.Behaviors> -->
-                                <!--         </Image> -->
-                                <!--     </HorizontalStackLayout> -->
-                                <!-- </VerticalStackLayout> -->
-                                <!-- <Image Grid.Column="3" -->
-                                <!--        Source="heart.svg" -->
-                                <!--        HeightRequest="20" -->
-                                <!--        WidthRequest="20" -->
-                                <!--        HorizontalOptions="End" -->
-                                <!--        VerticalOptions="Start" /> -->
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-    </ScrollView>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentView>

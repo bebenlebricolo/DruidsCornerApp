@@ -189,12 +189,12 @@
                                Grid.Row="2"
                                x:DataType="viewmodel:ReferencesPageViewModel"
                                Margin="0"
-                               SelectedIndex="0">
-                <!-- SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}" -->
+                               SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
 
                 <tabs:LazyView x:TypeArguments="views:HopReferenceView"
                                AccentColor="{StaticResource Primary}"
-                               UseActivityIndicator="True">
+                               UseActivityIndicator="True"
+                               BindingContext="{Binding }">
                 </tabs:LazyView>
                 <!-- <tabs:DelayedView x:TypeArguments="views:HopReferenceView" -->
                 <!--                    -->

@@ -98,4 +98,18 @@ public partial class ReferencesPageViewModel : BaseViewModel
     {
         InitFakeHops();
     }
+
+    [RelayCommand]
+    public async Task AddOneHop(CancellationToken cancellationToken)
+    {
+        Hops.Add(new CompactHopModel()
+        {
+            Name = "Fake hop!",
+            Purpose = "Don't know",
+            Rating = 4.1,
+            AlphaAcids = "9 - 12 %",
+            Favorite = true,
+            StockedAmount = 0
+        });
+    }
 }

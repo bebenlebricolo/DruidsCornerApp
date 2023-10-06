@@ -174,7 +174,7 @@ public partial class AccountCreationPageViewModel : BaseViewModel
             await signinPopup.Close();
             
             // Go to the new AppShell now, where our application core is.
-            Application.Current.MainPage = new AppShell(_secureStorageService);
+            Application.Current!.MainPage = new AppShell(_secureStorageService);
         }
         catch (AuthenticationException ex)
         {

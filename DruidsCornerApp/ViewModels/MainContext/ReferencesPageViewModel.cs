@@ -102,9 +102,10 @@ public partial class ReferencesPageViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task RefreshData(CancellationToken cancellationToken)
+    public Task RefreshData(CancellationToken cancellationToken)
     {
         InitFakeHops();
+        return Task.CompletedTask;
     }
 
     [RelayCommand]
@@ -149,6 +150,14 @@ public partial class ReferencesPageViewModel : BaseViewModel
     [RelayCommand]
     public Task HopCardClicked(CompactHopModel hopModel)
     {
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task HopToggleFavorite(CompactHopModel hopModel)
+    {
+        hopModel.Favorite = !hopModel.Favorite;
+        
         return Task.CompletedTask;
     }
 }

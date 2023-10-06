@@ -1,42 +1,53 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace DruidsCornerApp.Models.MainContext;
 
 /// <summary>
 /// Compact Recipe that allows the recipe browser to list recipes with minimal data
 /// </summary>
-public class CompactHopModel
+public partial class CompactHopModel : ObservableObject
 {
+    //public event Notify FavoriteToggled;
+    
     /// <summary>
     /// Recipe's Alcoholic content
     /// </summary>
-    public string Name { get; set; } = "";
+    [ObservableProperty]
+    private string _name  = "";
 
     /// <summary>
     /// Hop alpha acid content range
     /// </summary>
-    public string AlphaAcids { get; set; } = "";
+    [ObservableProperty]
+    private string _alphaAcids = "";
     
     /// <summary>
     /// Recipe's bitterness grade
     /// </summary>
-    public string Purpose { get; set; } = "Aromatic";
+    [ObservableProperty]
+    private string _purpose  = "Aromatic";
 
     /// <summary>
     /// States the amount of this hop that we currently have in stock
     /// </summary>
-    public double StockedAmount { get; set; } = 153;
+    [ObservableProperty]
+    private double _stockedAmount  = 153;
 
     /// <summary>
     /// States the global rating of this resource amongst the community
     /// </summary>
-    public double Rating { get; set; } = 2.5;
+    [ObservableProperty]
+    private double _rating  = 2.5;
 
     /// <summary>
     /// States whether this resource was set as a favorite by the user or not
     /// </summary>
-    public bool Favorite { get; set; } = false;
+    [ObservableProperty]
+    private bool _favorite = false;
 
     /// <summary>
     /// List of tags for the selected Hop variety
     /// </summary>
-    public List<string> Tags { get; set; } = new();
+    [ObservableProperty]
+    private List<string> _tags  = new();
 }

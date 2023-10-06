@@ -218,7 +218,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         }
 
         // Go to the new AppShell now, where our application core is.
-        Application.Current.MainPage = new AppShell(_secureStorageService);
+        Application.Current!.MainPage = new AppShell(_secureStorageService);
     }
 
     /// <summary>

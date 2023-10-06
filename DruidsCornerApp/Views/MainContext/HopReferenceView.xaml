@@ -12,16 +12,17 @@
 
     <Grid RowDefinitions="*">
         <ScrollView Grid.Row="0"
-                    x:Name="TopScrollView">
+                    x:Name="TopScrollView"
+                    Scrolled="TopScrollView_OnScrolled">
             <!-- Top grid -->
             <Grid RowDefinitions="auto,*,auto">
-                
+
                 <!-- Search and filter parameters -->
                 <Grid RowDefinitions="*,auto,*"
                       Padding="0,2"
                       ColumnSpacing="2"
                       RowSpacing="2">
-                    
+
                     <!-- Hop names entry -->
                     <Frame Grid.Row="0"
                            BorderColor="Orange"
@@ -29,55 +30,85 @@
                            Padding="10,0"
                            Margin="0,0">
                         <Grid ColumnDefinitions="*,auto"
-                              RowDefinitions="*">
-                            <Entry Grid.Column="0" 
+                              RowDefinitions="auto">
+                            <Entry Grid.Column="0"
                                    x:Name="HopNameTextEntry"
                                    Placeholder="Search for hop names here"
                                    PlaceholderColor="LightCoral"
                                    FontAttributes="Italic"
                                    TextColor="Orange" />
-                            
+
                             <!-- The "+" button that lets you enter new labels -->
-                            <ImageButton Grid.Column="1"
-                                         Source="plus_sign.svg"
-                                         HeightRequest="25"
-                                         WidthRequest="25"
-                                         BackgroundColor="Orange"
-                                         CornerRadius="15"
-                                         Margin="0,5"
-                                         x:DataType="viewmodel:ReferencesPageViewModel"
-                                         Command="{Binding AddHopNameFilterLabelCommand}"
-                                         CommandParameter="{x:Reference HopNameTextEntry}"
-                                />
+                            <Frame Grid.Column="1"
+                                   BorderColor="Transparent"
+                                   CornerRadius="30"
+                                   Padding="5"
+                                   Margin="0"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Orange">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer x:DataType="viewmodel:ReferencesPageViewModel"
+                                                          Command="{Binding AddHopNameFilterLabelCommand}"
+                                                          CommandParameter="{x:Reference HopNameTextEntry}" />
+                                </Frame.GestureRecognizers>
+
+                                <Image Source="plus_sign.svg"
+                                       HeightRequest="15"
+                                       WidthRequest="15"
+                                       Aspect="AspectFit" />
+                            </Frame>
                         </Grid>
                     </Frame>
-                    
-                    <!-- Names tags list -->
-                    <CollectionView Grid.Row="1" 
-                                    x:Name="NamesList"
-                                    x:DataType="viewmodel:ReferencesPageViewModel"
-                                    ItemsSource="{Binding HopsNames}"
-                                    ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame CornerRadius="10"
-                                       BackgroundColor="WhiteSmoke"
-                                       BorderColor="Orange">
 
-                                    <Grid ColumnDefinitions="auto,auto">
-                                        <Label Grid.Column="1" Text="{Binding }"
-                                                BackgroundColor="WhiteSmoke"
-                                                TextColor="Orange"
-                                                HorizontalOptions="Start"
-                                                VerticalOptions="Center"/>
-                                        <ImageButton Source="minus_sign.svg"
-                                                     BackgroundColor="Orange"
-                                                     HeightRequest="25"
-                                                     WidthRequest="25"
-                                                     CornerRadius="15"
-                                                     HorizontalOptions="End"
-                                                     VerticalOptions="Center"/>
-                                        
+                    <!-- Names tags list -->
+                    <CollectionView Grid.Row="1"
+                                    x:Name="HopNamesCollectionView"
+                                    x:DataType="viewmodel:ReferencesPageViewModel"
+                                    ItemsSource="{Binding HopsNames, Mode=Default}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="5" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="system:String">
+                                <Frame CornerRadius="15"
+                                       BackgroundColor="WhiteSmoke"
+                                       BorderColor="Orange"
+                                       Padding="5,2"
+                                       Margin="0">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=RemoveHopNameFilterLabelCommand }"
+                                            CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+
+                                    <Grid ColumnDefinitions="auto,auto"
+                                          ColumnSpacing="5"
+                                          Padding="2">
+                                        <Label Grid.Column="0"
+                                               x:Name="HopNameLabel"
+                                               Text="{Binding }"
+                                               BackgroundColor="WhiteSmoke"
+                                               TextColor="Coral"
+                                               FontAttributes="Italic"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center" />
+                                        <Frame Grid.Column="1"
+                                               Padding="0"
+                                               Margin="0"
+                                               BackgroundColor="Orange"
+                                               BorderColor="Transparent"
+                                               CornerRadius="10"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center">
+                                            <Image Source="minus_sign.svg"
+                                                   HeightRequest="10"
+                                                   WidthRequest="10"
+                                                   Aspect="AspectFit" />
+                                        </Frame>
+
+
                                     </Grid>
                                 </Frame>
                             </DataTemplate>
@@ -85,29 +116,33 @@
                     </CollectionView>
                     <Grid Grid.Row="2"
                           ColumnDefinitions="auto,*,auto"
-                          HeightRequest="30">
+                          Padding="0"
+                          Margin="0"
+                          HeightRequest="35">
                         <Button Grid.Column="0"
                                 Text="Advanced search filters"
                                 BackgroundColor="WhiteSmoke"
                                 TextColor="#222222"
-                                CornerRadius="15"
-                                Padding="8,0"/>
+                                CornerRadius="10"
+                                Padding="8,0"
+                                Margin="0" />
                         <Button Grid.Column="2"
                                 Text="Go !"
                                 TextColor="White"
                                 BackgroundColor="Orange"
-                                CornerRadius="15"
-                                Padding="5,0">
+                                CornerRadius="10"
+                                Padding="8,0"
+                                Margin="0">
                         </Button>
                     </Grid>
                 </Grid>
-                
-                
-                
+
+
                 <CollectionView x:DataType="viewmodel:ReferencesPageViewModel"
                                 x:Name="DataCollectionView"
                                 Grid.Row="1"
-                                ItemsSource="{Binding Path=Hops}">
+                                ItemsSource="{Binding Path=Hops}"
+                                SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:CompactHopModel">
                             <Frame BackgroundColor="#2b2b2b"
@@ -115,6 +150,11 @@
                                    Margin="0"
                                    Padding="10"
                                    BorderColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopCardClickedCommand}"
+                                        CommandParameter="{Binding . }" />
+                                </Frame.GestureRecognizers>
 
                                 <Grid ColumnSpacing="10"
                                       ColumnDefinitions="auto,*,auto,auto">
@@ -184,28 +224,38 @@
                                                HorizontalOptions="End"
                                                VerticalOptions="Start" />
 
-                                        <HorizontalStackLayout Grid.Row="2"
+                                        <Frame Grid.Row="2"
+                                               CornerRadius="20"
+                                               BorderColor="#33ff6a00"
+                                               BackgroundColor="Transparent"
+                                               Padding="10,5"
+                                               Margin="0">
+                                        <HorizontalStackLayout 
                                                                Spacing="10"
                                                                Padding="0"
                                                                VerticalOptions="End"
                                                                HorizontalOptions="End">
-                                            <HorizontalStackLayout>
-                                                <Image Source="star.svg"
+                                            <Grid ColumnDefinitions="auto,auto,auto">
+                                                <Image Grid.Column="0"
+                                                       Source="star.svg"
                                                        HeightRequest="20"
                                                        WidthRequest="20"
                                                        VerticalOptions="Center"
-                                                       HorizontalOptions="Center">
+                                                       HorizontalOptions="Start"
+                                                       Margin="0,0,3,0">
                                                     <Image.Behaviors>
                                                         <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
                                                     </Image.Behaviors>
                                                 </Image>
-                                                <Label Text="{Binding Rating}"
+                                                <Label Grid.Column="1"
+                                                       Text="{Binding Rating}"
                                                        TextColor="#ff6a00"
                                                        VerticalOptions="Center" />
-                                                <Label Text="/5"
+                                                <Label Grid.Column="2"
+                                                       Text="/5"
                                                        TextColor="#ff6a00"
                                                        VerticalOptions="Center" />
-                                            </HorizontalStackLayout>
+                                            </Grid>
                                             <Image Source="qrcode.svg"
                                                    HeightRequest="25"
                                                    WidthRequest="25">
@@ -214,6 +264,7 @@
                                                 </Image.Behaviors>
                                             </Image>
                                         </HorizontalStackLayout>
+                                        </Frame>
                                     </Grid>
                                 </Grid>
                             </Frame>
@@ -227,22 +278,34 @@
 
                 </Button>
             </Grid>
-            
+
         </ScrollView>
-        
+
         <!-- Go up button - lets the user go to the top of the scrolling list -->
-        <ImageButton Grid.Row="0"
-                     HorizontalOptions="End"
-                     VerticalOptions="End"
-                     BackgroundColor="#222222"
-                     IsVisible="True"
-                     Clicked="GoUpButtonClicked"
-                     Padding="2"
-                     Margin="20"
-                     CornerRadius="20"
-                     HeightRequest="40"
-                     WidthRequest="40"
-                     Source="about.svg">
-        </ImageButton>
+        <Frame x:Name="GoUpPageButton" 
+               Grid.Row="0"
+               Padding="10"
+               Margin="15"
+               
+               IsVisible="False"
+               CornerRadius="30"
+               BackgroundColor="#222222"
+               BorderColor="Transparent"
+               HasShadow="True"
+               HorizontalOptions="End"
+               VerticalOptions="End" >
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GoUpButtonClicked"/>
+            </Frame.GestureRecognizers>
+            <Image Source="up_chevron.svg"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   TranslationY="-2"
+                   Aspect="AspectFit">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#666666"/>
+                </Image.Behaviors>
+            </Image>
+        </Frame>
     </Grid>
 </ContentView>

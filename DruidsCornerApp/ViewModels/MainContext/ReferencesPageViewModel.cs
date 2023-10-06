@@ -16,9 +16,11 @@ public partial class ReferencesPageViewModel : BaseViewModel
 {
     private readonly ILogger<RecipeExplorerViewModel> _logger;
 
-    public ObservableCollection<CompactHopModel> Hops { get; private set; } = new();
+    [ObservableProperty]
+    private ObservableCollection<CompactHopModel> _hops = new();
 
-    public ObservableCollection<string> HopsNames { get; private set; } = new();
+    [ObservableProperty]
+    private ObservableCollection<string> _hopsNames = new();
     
     [ObservableProperty]
     private HopReferenceFilters _hopFilters = new HopReferenceFilters();
@@ -123,13 +125,30 @@ public partial class ReferencesPageViewModel : BaseViewModel
     [RelayCommand]
     public Task AddHopNameFilterLabel(Entry entryView, CancellationToken cancellationToken)
     {
-        if (!HopsNames.Contains(entryView.Text))
+        if (!HopsNames.Contains(entryView.Text) && !string.IsNullOrEmpty(entryView.Text))
         {
             HopsNames.Add(entryView.Text);
             HopFilters.Names.Add(entryView.Text);
         }
 
         entryView.Text = "";
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task RemoveHopNameFilterLabel(string hopName)
+    {
+        if (HopsNames.Contains(hopName))
+        {
+            HopsNames.Remove(hopName);
+            HopFilters.Names.Remove(hopName);
+        }
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task HopCardClicked(CompactHopModel hopModel)
+    {
         return Task.CompletedTask;
     }
 }

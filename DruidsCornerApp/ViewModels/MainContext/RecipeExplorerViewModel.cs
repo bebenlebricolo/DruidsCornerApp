@@ -18,7 +18,7 @@ public partial class RecipeExplorerViewModel : BaseViewModel
     private readonly MainClient _apiClient;
 
     public ObservableCollection<CompactRecipeModel> Recipes { get; } = new ObservableCollection<CompactRecipeModel>();
-
+    
     /// <summary>
     /// 
     /// </summary>

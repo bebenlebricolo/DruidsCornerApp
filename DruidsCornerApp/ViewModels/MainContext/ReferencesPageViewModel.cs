@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DruidsCornerApiClient.Models.RecipeDb;
@@ -16,6 +17,11 @@ public partial class ReferencesPageViewModel : BaseViewModel
     private readonly ILogger<RecipeExplorerViewModel> _logger;
 
     public ObservableCollection<CompactHopModel> Hops { get; private set; } = new();
+
+    public ObservableCollection<string> HopsNames { get; private set; } = new();
+    
+    [ObservableProperty]
+    private HopReferenceFilters _hopFilters = new HopReferenceFilters();
     
     [ObservableProperty]
     private int _selectedViewModelIndex = 0;
@@ -100,7 +106,7 @@ public partial class ReferencesPageViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task AddOneHop(CancellationToken cancellationToken)
+    public Task AddOneHop(CancellationToken cancellationToken)
     {
         Hops.Add(new CompactHopModel()
         {
@@ -111,5 +117,19 @@ public partial class ReferencesPageViewModel : BaseViewModel
             Favorite = true,
             StockedAmount = 0
         });
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task AddHopNameFilterLabel(Entry entryView, CancellationToken cancellationToken)
+    {
+        if (!HopsNames.Contains(entryView.Text))
+        {
+            HopsNames.Add(entryView.Text);
+            HopFilters.Names.Add(entryView.Text);
+        }
+
+        entryView.Text = "";
+        return Task.CompletedTask;
     }
 }

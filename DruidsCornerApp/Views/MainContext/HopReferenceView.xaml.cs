@@ -9,4 +9,12 @@ public partial class HopReferenceView : ContentView
     {
         InitializeComponent();
     }
+
+    private async void GoUpButtonClicked(object? sender, EventArgs e)
+    {
+        // Go to origin of view
+        var task = TopScrollView.ScrollToAsync(0, 0, true);
+        DataCollectionView.ScrollTo(0);
+        await task;
+    }
 }

@@ -151,6 +151,7 @@
         <EmbeddedResource Remove="Platforms\Tizen\**" />
         <None Remove="appsettings.json" />
         <EmbeddedResource Include="appsettings.json" />
+        <MauiXaml Remove="Controls\MainContext\FavoriteButton.xaml" />
     </ItemGroup>
 
     <ItemGroup>

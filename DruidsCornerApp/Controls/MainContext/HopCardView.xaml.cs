@@ -11,8 +11,6 @@ namespace DruidsCornerApp.Controls.MainContext;
 
 public partial class HopCardView : ContentView
 {
-    private readonly ImageSource _heartSource = ImageSource.FromFile("heart.svg");
-    private readonly ImageSource _heartFullSource = ImageSource.FromFile("heart_full.svg");
     private readonly CompactHopModel? _hopModel;
 
     // public static readonly BindableProperty DataProperty = BindableProperty.Create(nameof(Data),
@@ -54,21 +52,7 @@ public partial class HopCardView : ContentView
 
     private void HandleHopFavorite()
     {
-        if (_hopModel == null)
-        {
-            // For now this error case is silenced (absence of BindingContext is tolerated, but the control won't be fully functional)
-            return;
-        }
-
-
-        if (_hopModel.Favorite)
-        {
-            FavoriteHeartImage.Source = _heartFullSource;
-        }
-        else
-        {
-            FavoriteHeartImage.Source = _heartSource;
-        }
+        
     }
 
     private void HopModelFavoritePropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -78,4 +62,5 @@ public partial class HopCardView : ContentView
             HandleHopFavorite();
         }
     }
+    
 }

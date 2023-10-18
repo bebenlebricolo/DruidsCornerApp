@@ -17,15 +17,6 @@ public partial class HopReferenceView : ContentView
     public HopReferenceView()
     {
         InitializeComponent();
-        
-        //HopCardsCollectionView.BindingContext = BindingContext;
-        // HopCardsCollectionView.SetBinding(ItemsView.ItemsSourceProperty, "Hops");
-        // HopCardsCollectionView.ItemTemplate = new DataTemplate(() =>
-        // {
-        //     var cardView = new HopCardView();
-        //     cardView.BindingContext = BindingContext;
-        //     return cardView;
-        // });
     }
     
     private async void GoUpButtonClicked(object? sender, EventArgs e)

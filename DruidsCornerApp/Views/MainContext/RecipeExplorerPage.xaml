@@ -5,6 +5,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
              xmlns:models="clr-namespace:DruidsCornerApp.Models.MainContext"
+             xmlns:controls="clr-namespace:DruidsCornerApp.Controls.MainContext"
              x:Class="DruidsCornerApp.Views.MainContext.RecipeExplorerPage"
              x:DataType="viewmodel:RecipeExplorerViewModel"
              Shell.FlyoutBehavior="Flyout"
@@ -245,13 +246,14 @@
                                     <Grid Grid.Column="5"
                                           RowDefinitions="auto,*,auto"
                                           Padding="0">
-
-                                        <Image Grid.Row="0"
-                                               Source="heart.svg"
-                                               HeightRequest="20"
-                                               WidthRequest="20"
-                                               HorizontalOptions="End"
-                                               VerticalOptions="Start" />
+                                        <controls:FavoriteButton Grid.Row="0"
+                                                                 x:Name="FavoriteButton"
+                                                                 RequestedIconSize="20"
+                                                                 VerticalOptions="Start"
+                                                                 HorizontalOptions="End"
+                                                                 DefaultIcon="heart.svg"
+                                                                 FavoriteIcon="heart_full.svg"
+                                                                 Favorite="{Binding Favorite}"/>
 
                                         <HorizontalStackLayout Grid.Row="2"
                                                                Spacing="10"

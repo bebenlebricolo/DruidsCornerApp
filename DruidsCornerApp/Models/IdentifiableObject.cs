@@ -9,5 +9,5 @@ public record IdentifiableObject
     /// <summary>
     /// Object global unique identifier
     /// </summary>
-    public string Uuid { get; set; } = "";
+    public string Id { get; set; } = "";
 }

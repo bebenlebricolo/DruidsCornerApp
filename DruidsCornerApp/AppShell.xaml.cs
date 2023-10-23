@@ -3,6 +3,7 @@ using DruidsCornerApp.Models;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.MainContext;
+using DruidsCornerApp.Views.References;
 
 namespace DruidsCornerApp;
 using DruidsCornerApp.Views.Login;
@@ -16,6 +17,9 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 		_storageService = storageService;
+		
+		
+		Routing.RegisterRoute("References/HopPage", typeof(HopPage));
 	}
 
 	protected override async void OnAppearing()

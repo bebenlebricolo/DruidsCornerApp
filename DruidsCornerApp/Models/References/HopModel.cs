@@ -4,7 +4,7 @@ namespace DruidsCornerApp.Models.References;
 /// Models a Hop with all its characteristics.
 /// Most of this model is derived from what we could find on BeerMaverick website
 /// </summary>
-public record HopModel : IdentifiableObject
+public record HopModel : RatableObject
 {
     /// <summary>
     /// Hop name

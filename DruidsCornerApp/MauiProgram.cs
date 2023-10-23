@@ -4,13 +4,16 @@ using DruidsCornerApiClient.Services.Interfaces;
 using DruidsCornerApp.Services;
 using DruidsCornerApp.Services.Authentication;
 using DruidsCornerApp.Services.Config;
+using DruidsCornerApp.Services.ResourceProviders;
 using DruidsCornerApp.Utils;
 using DruidsCornerApp.ViewModels;
 using DruidsCornerApp.ViewModels.Login;
 using DruidsCornerApp.ViewModels.MainContext;
+using DruidsCornerApp.ViewModels.References;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.MainContext;
+using DruidsCornerApp.Views.References;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
 using Sharpnado.Tabs;
@@ -44,6 +47,7 @@ public static class MauiProgram
         builder.Services.AddTransient<RecipeExplorerPage>();
         builder.Services.AddTransient<HopReferenceView>();
         builder.Services.AddTransient<ReferencesPage>();
+        builder.Services.AddTransient<HopPage>();
 
         // Registering view models here (for dependency injection)
         builder.Services.AddTransient<DefaultPageViewModel>();
@@ -54,6 +58,7 @@ public static class MauiProgram
         
         builder.Services.AddTransient<RecipeExplorerViewModel>();
         builder.Services.AddTransient<ReferencesPageViewModel>();
+        builder.Services.AddTransient<HopPageViewModel>();
         
         builder.Services.AddTransient<MainClient>(service =>
         {
@@ -79,10 +84,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<IGoogleAccountManager, GoogleAccountManager>();
         builder.Services.AddSingleton<IGuestAuthService, GuestAuthService>();
 
-        // Configuration providers
+        // Resources and Configuration providers
         builder.Services.AddSingleton<ConfigProvider>();
+        builder.Services.AddSingleton<HopProvider>();
 
-        //builder.Logging.AddTraceLogger(options => { options.MinLevel = LogLevel.Information; });
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

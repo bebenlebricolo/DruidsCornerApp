@@ -3,7 +3,7 @@ using Firebase.Auth.Requests;
 namespace DruidsCornerApp.Services;
 
 /// <summary>
-/// I need to have a f*@!?;m***!! ServiceCollectionProvider at hands so that I can manually (...)
+/// I need to have a f*@!?;m***!! ServiceCollectionProvider at hands so that I can manually
 /// retrieve services at runtime, since some pages are built on-the-fly using parameterless constructors, thus preventing me
 /// to use the MVVM model because parameterless means that the instantiated objects (which are views or pages) require their viewmodel
 /// to properly function...

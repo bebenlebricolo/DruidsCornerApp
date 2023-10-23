@@ -1,17 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using DruidsCornerApp.Models.References;
+using DruidsCornerApp.Services.ResourceProviders;
 using DruidsCornerApp.ViewModels.References;
 
 namespace DruidsCornerApp.Views.References;
 
-public partial class HopPage : ContentPage
+public partial class HopPage : ContentPage, IQueryAttributable
 {
-    public HopPage(HopPageViewModel viewModel)
+    private readonly HopPageViewModel _viewModel;
+    private readonly HopProvider _hopProvider;
+    
+    public HopPage(HopPageViewModel viewModel,
+                   HopProvider hopProvider)
     {
         InitializeComponent();
         BindingContext = viewModel;
+        _viewModel = viewModel;
+        _hopProvider = hopProvider;
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        var id = query["id"] as string;
+        _viewModel.LoadHopFromId(id!);
     }
 }

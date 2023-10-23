@@ -45,24 +45,4 @@ public partial class HopReferenceView : ContentView
             HopNameEntryPlusButton.IsVisible = false;
         }
     }
-
-    private void DataCollectionView_OnChildAdded(object? sender, ElementEventArgs e)
-    {
-        // Display the heart icon if hop is in favorite
-        var frame = (Frame)e.Element;
-        var hopModel = (CompactHopModel)frame.BindingContext;
-        var heartImage = frame.FindByName<Image>("FavoriteHeartImage");
-        if (heartImage != null)
-        {
-            if (hopModel.Favorite)
-            {
-                heartImage.Source = _heartFullSource;
-            }
-            else
-            {
-                heartImage.Source = _heartSource;
-            }
-            
-        }
-    }
 }

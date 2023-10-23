@@ -3,85 +3,205 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="DruidsCornerApp.Views.References.HopPage">
+             xmlns:model="clr-namespace:DruidsCornerApp.Models.References"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.References"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             x:Class="DruidsCornerApp.Views.References.HopPage"
+             x:DataType="viewmodel:HopPageViewModel"
+             Title="{Binding HopModel.Name}"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <Grid Grid.Row="0"
-                  RowDefinitions="*">
-                <Frame x:Name="HeaderImageFrame"
-                       BackgroundColor="Transparent"
-                       CornerRadius="0"
-                       Padding="0"
-                       Margin="0"
-                       IsClippedToBounds="True"
-                       HeightRequest="90"
-                       VerticalOptions="Start"
-                       BorderColor="Transparent">
-                    <Image Source="reference_background_header.jpg"
-                           Aspect="AspectFill"
-                           Margin="0"
-                           Scale="1.3"
-                           TranslationY="10" />
-                </Frame>
-                <Grid RowDefinitions="auto,*,auto">
-                    <!-- Header Grid : hamburger and title-->
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-                        <!-- Hamburger button -->
-                        <ImageButton Source="hamburger.svg"
-                                     HeightRequest="25"
-                                     WidthRequest="25"
-                                     Margin="10,10,0,0">
-                            <ImageButton.Behaviors>
-                                <toolkit:IconTintColorBehavior TintColor="White" />
-                            </ImageButton.Behaviors>
-                        </ImageButton>
-                        <Label Grid.Column="2"
-                               Text="Reference book"
-                               TextColor="White"
-                               FontSize="25"
-                               Margin="10,0"
-                               HorizontalOptions="End"
-                               VerticalOptions="Center" />
-                    </Grid>
+        <ScrollView>
+            <Grid RowDefinitions="auto,auto">
 
+                <!-- Header and banner container -->
+                <Grid RowDefinitions="auto">
+                    <!-- Header background image -->
+                    <Frame Grid.Row="0"
+                           x:Name="HeaderImageFrame"
+                           BackgroundColor="Transparent"
+                           CornerRadius="0"
+                           Padding="0"
+                           Margin="0"
+                           IsClippedToBounds="True"
+                           HeightRequest="120"
+                           VerticalOptions="Start"
+                           BorderColor="Transparent">
+                        <Image Source="hop_page_background_header.jpg"
+                               Aspect="AspectFill"
+                               Margin="0"
+                               Scale="1.3"
+                               TranslationY="10" />
+                    </Frame>
 
                     <!-- Banner -->
-                    <Frame Grid.Row="2"
-                           BackgroundColor="#33ffffff"
-                           CornerRadius="0"
-                           Margin="0"
-                           Padding="10,10"
-                           VerticalOptions="End"
-                           BorderColor="Transparent">
-                        <StackLayout>
-                            <Grid ColumnDefinitions="auto,*">
-                                <Label Grid.Column="0"
-                                       Text="A place to find them all ..."
-                                       TextColor="White"
-                                       FontAttributes="Italic"
-                                       FontSize="18"
-                                       Padding="3,0,0,0"
-                                       VerticalOptions="Start" />
-                                <ImageButton Grid.Column="1"
-                                             Source="option_dots_h.svg"
-                                             BackgroundColor="Transparent"
-                                             HeightRequest="30"
-                                             WidthRequest="30"
-                                             Margin="10,0"
-                                             VerticalOptions="Center"
-                                             HorizontalOptions="End">
-                                    <ImageButton.Behaviors>
-                                        <toolkit:IconTintColorBehavior TintColor="White" />
-                                    </ImageButton.Behaviors>
-                                </ImageButton>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
+                    <Grid Grid.Row="0"
+                          RowDefinitions="auto,*,auto">
+                        <!-- Header Grid : hamburger and title-->
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <!-- Hamburger button -->
+                            <ImageButton Source="hamburger.svg"
+                                         HeightRequest="25"
+                                         WidthRequest="25"
+                                         Margin="10,10,0,0">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="White" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
+                            <Label Grid.Column="2"
+                                   Text="Hop Reference"
+                                   TextColor="White"
+                                   FontSize="25"
+                                   Margin="10,0"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Center" />
+                        </Grid>
+
+
+                        <!-- Banner -->
+                        <Frame Grid.Row="2"
+                               BackgroundColor="#33ffffff"
+                               CornerRadius="0"
+                               Margin="0"
+                               Padding="10,10"
+                               VerticalOptions="End"
+                               BorderColor="Transparent">
+                            <StackLayout>
+                                <Grid ColumnDefinitions="auto,*">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding HopModel.Name}"
+                                           TextColor="#222222"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           Padding="3,0"
+                                           Margin="3,0"
+                                           VerticalOptions="Start" />
+                                    <ImageButton Grid.Column="1"
+                                                 Source="option_dots_h.svg"
+                                                 BackgroundColor="Transparent"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30"
+                                                 Margin="10,0"
+                                                 VerticalOptions="Center"
+                                                 HorizontalOptions="End">
+                                        <ImageButton.Behaviors>
+                                            <toolkit:IconTintColorBehavior TintColor="White" />
+                                        </ImageButton.Behaviors>
+                                    </ImageButton>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+
+                <!-- Hop content -->
+                <Grid Grid.Row="1"
+                      RowDefinitions="auto, auto, auto, auto, auto"
+                      RowSpacing="20">
+                    <!-- Hop attributes -->
+                    <Grid Grid.Row="0"
+                          RowDefinitions="auto, auto, auto, auto"
+                          ColumnDefinitions="*,*">
+                        <Label Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               Text="Basics"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Purpose"
+                               FontSize="18" />
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Country"
+                               FontSize="18" />
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="International Code"
+                               FontSize="18" />
+
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding HopModel.Purpose}" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding HopModel.Country}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="1"
+                               Text="{Binding HopModel.InternationalCode}" />
+                    </Grid>
+
+                    <!-- Hop Origin text -->
+                    <Grid Grid.Row="1"
+                          RowDefinitions="auto, auto"
+                          RowSpacing="3">
+                        <Label Grid.Row="0"
+                               Text="Origin"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Text="{Binding HopModel.OriginTxt}" />
+                    </Grid>
+
+                    <!-- Hop Flavor and aroma text -->
+                    <Grid Grid.Row="2"
+                          RowDefinitions="auto, auto"
+                          RowSpacing="5">
+                        <Label Grid.Row="0"
+                               Text="Flavor and Aroma"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Text="{Binding HopModel.FlavorTxt}" />
+                    </Grid>
+
+                    <!-- Hop's tags -->
+                    <Grid Grid.Row="3"
+                          RowDefinitions="auto, auto"
+                          RowSpacing="5">
+                        <Label Text="Tags"
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                        <CollectionView Grid.Row="1" 
+                                             ItemsSource="{Binding HopModel.Tags}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="5" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <Frame BackgroundColor="WhiteSmoke"
+                                           CornerRadius="20"
+                                           Padding="6,3"
+                                           Margin="0">
+                                        <Label Text="{Binding }"
+                                               TextColor="Black"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <!-- Hop Organoleptic properties -->
+                    <Grid Grid.Row="4"
+                          RowDefinitions="auto, auto"
+                          RowSpacing="5">
+                        <Label Grid.Row="0"
+                               Text="Organoleptic Properties"
+                               FontSize="20"
+                               FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                               Text="Lots of stuff here" />
+                    </Grid>
                 </Grid>
             </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

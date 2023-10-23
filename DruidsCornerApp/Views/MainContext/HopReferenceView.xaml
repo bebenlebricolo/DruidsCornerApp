@@ -141,7 +141,7 @@
                     </Grid>
                 </Grid>
 
-
+                <!--Hops card view -->
                 <CollectionView x:DataType="viewmodel:ReferencesPageViewModel"
                                 x:Name="HopCardsCollectionView"
                                 Grid.Row="1"

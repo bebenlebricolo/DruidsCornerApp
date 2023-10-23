@@ -149,9 +149,9 @@
     <ItemGroup>
         <EmbeddedResource Remove="Platforms\MacCatalyst\**" />
         <EmbeddedResource Remove="Platforms\Tizen\**" />
-        <None Remove="appsettings.json" />
         <EmbeddedResource Include="appsettings.json" />
-        <MauiXaml Remove="Controls\MainContext\FavoriteButton.xaml" />
+        <EmbeddedResource Include="Resources\StaticData\hops.json" />
+        <EmbeddedResource Include="Resources\StaticData\yeasts.json" />
     </ItemGroup>
 
     <ItemGroup>
@@ -240,6 +240,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DruidsCornerApiClient\DruidsCornerApiClient.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="Resources\StaticData\" />
     </ItemGroup>
 
 

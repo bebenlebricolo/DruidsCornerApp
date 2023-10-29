@@ -43,6 +43,9 @@ public static class MauiProgram
         builder.Services.AddTransient<GoogleSignInPage>();
         builder.Services.AddTransient<ResetPasswordPage>();
         
+        // Resources pages view models
+        builder.Services.AddTransient<HopPageViewModel>();
+        
         // Recipes related pages
         builder.Services.AddTransient<RecipeExplorerPage>();
         builder.Services.AddTransient<HopReferenceView>();
@@ -58,7 +61,8 @@ public static class MauiProgram
         
         builder.Services.AddTransient<RecipeExplorerViewModel>();
         builder.Services.AddTransient<ReferencesPageViewModel>();
-        builder.Services.AddTransient<HopPageViewModel>();
+        builder.Services.AddTransient<HopReferenceViewModel>();
+       
         
         builder.Services.AddTransient<MainClient>(service =>
         {

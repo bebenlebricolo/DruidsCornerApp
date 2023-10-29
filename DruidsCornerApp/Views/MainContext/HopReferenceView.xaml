@@ -3,12 +3,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
-             xmlns:view="clr-namespace:DruidsCornerApp.Views.MainContext"
              xmlns:controls="clr-namespace:DruidsCornerApp.Controls.MainContext"
-             xmlns:model="clr-namespace:DruidsCornerApp.Models.MainContext"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
              x:Class="DruidsCornerApp.Views.MainContext.HopReferenceView">
 
     <Grid RowDefinitions="*">
@@ -37,8 +34,8 @@
                                    Placeholder="Search for hop names here"
                                    PlaceholderColor="LightCoral"
                                    FontAttributes="Italic"
-                                   TextColor="Orange" 
-                                   TextChanged="HopNameTextEntry_OnTextChanged"/>
+                                   TextColor="Orange"
+                                   TextChanged="HopNameTextEntry_OnTextChanged" />
 
                             <!-- The "+" button that lets you enter new labels -->
                             <Frame Grid.Column="1"
@@ -52,7 +49,7 @@
                                    BackgroundColor="Orange">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer x:DataType="viewmodel:ReferencesPageViewModel"
-                                                          Command="{Binding AddHopNameFilterLabelCommand}"
+                                                          Command="{Binding HopReferenceViewModel.AddHopNameFilterLabelCommand}"
                                                           CommandParameter="{x:Reference HopNameTextEntry}" />
                                 </Frame.GestureRecognizers>
 
@@ -65,59 +62,64 @@
                     </Frame>
 
                     <!-- Names tags list -->
-                    <CollectionView Grid.Row="1"
-                                    x:Name="HopNamesCollectionView"
-                                    x:DataType="viewmodel:ReferencesPageViewModel"
-                                    ItemsSource="{Binding HopsNames, Mode=Default}"
-                                    SelectionMode="None">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Horizontal"
-                                               ItemSpacing="5" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="system:String">
-                                <Frame CornerRadius="15"
-                                       BackgroundColor="WhiteSmoke"
-                                       BorderColor="Orange"
-                                       Padding="5,2"
-                                       Margin="0">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=RemoveHopNameFilterLabelCommand }"
-                                            CommandParameter="{Binding .}" />
-                                    </Frame.GestureRecognizers>
+                    <RefreshView Grid.Row="1"
+                                 x:DataType="viewmodel:ReferencesPageViewModel"
+                                 IsRefreshing="{Binding HopReferenceViewModel.IsLoading}">
+                        <CollectionView 
+                                        x:Name="HopNamesCollectionView"
+                                        ItemsSource="{Binding HopReferenceViewModel.Hops , Mode=Default}"
+                                        SelectionMode="None"
+                                        RemainingItemsThreshold="4"
+                                        RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsCommand}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="5" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="system:String">
+                                    <Frame CornerRadius="15"
+                                           BackgroundColor="WhiteSmoke"
+                                           BorderColor="Orange"
+                                           Padding="5,2"
+                                           Margin="0">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopReferenceViewModel.RemoveHopNameFilterLabelCommand }"
+                                                CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
 
-                                    <Grid ColumnDefinitions="auto,auto"
-                                          ColumnSpacing="5"
-                                          Padding="2">
-                                        <Label Grid.Column="0"
-                                               x:Name="HopNameLabel"
-                                               Text="{Binding }"
-                                               BackgroundColor="WhiteSmoke"
-                                               TextColor="Coral"
-                                               FontAttributes="Italic"
-                                               HorizontalOptions="Start"
-                                               VerticalOptions="Center" />
-                                        <Frame Grid.Column="1"
-                                               Padding="0"
-                                               Margin="0"
-                                               BackgroundColor="Orange"
-                                               BorderColor="Transparent"
-                                               CornerRadius="10"
-                                               HorizontalOptions="End"
-                                               VerticalOptions="Center">
-                                            <Image Source="minus_sign.svg"
-                                                   HeightRequest="10"
-                                                   WidthRequest="10"
-                                                   Aspect="AspectFit" />
-                                        </Frame>
+                                        <Grid ColumnDefinitions="auto,auto"
+                                              ColumnSpacing="5"
+                                              Padding="2">
+                                            <Label Grid.Column="0"
+                                                   x:Name="HopNameLabel"
+                                                   Text="{Binding }"
+                                                   BackgroundColor="WhiteSmoke"
+                                                   TextColor="Coral"
+                                                   FontAttributes="Italic"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center" />
+                                            <Frame Grid.Column="1"
+                                                   Padding="0"
+                                                   Margin="0"
+                                                   BackgroundColor="Orange"
+                                                   BorderColor="Transparent"
+                                                   CornerRadius="10"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center">
+                                                <Image Source="minus_sign.svg"
+                                                       HeightRequest="10"
+                                                       WidthRequest="10"
+                                                       Aspect="AspectFit" />
+                                            </Frame>
 
 
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
                     <Grid Grid.Row="2"
                           ColumnDefinitions="auto,*,auto"
                           Padding="0"
@@ -145,20 +147,22 @@
                 <CollectionView x:DataType="viewmodel:ReferencesPageViewModel"
                                 x:Name="HopCardsCollectionView"
                                 Grid.Row="1"
-                                ItemsSource="{Binding Path=Hops}"
+                                ItemsSource="{Binding Path=HopReferenceViewModel.Hops}"
                                 SelectionMode="None">
-                    
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <!-- https://github.com/dotnet/maui/issues/9131  -> Need to wrap in a grid, otherwise BindingContext is not forwarded -->
-                            <Grid> <controls:HopCardView BindingContext="{Binding}"/> </Grid>
+                            <Grid>
+                                <controls:HopCardView BindingContext="{Binding}" />
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Button Grid.Row="2"
                         Text="Add fake hop !"
                         x:DataType="viewmodel:ReferencesPageViewModel"
-                        Command="{Binding Path=AddOneHopCommand}">
+                        Command="{Binding Path=HopReferenceViewModel.AddOneHopCommand}">
 
                 </Button>
             </Grid>
@@ -166,20 +170,20 @@
         </ScrollView>
 
         <!-- Go up button - lets the user go to the top of the scrolling list -->
-        <Frame x:Name="GoUpPageButton" 
+        <Frame x:Name="GoUpPageButton"
                Grid.Row="0"
                Padding="10"
                Margin="15"
-               
+
                IsVisible="False"
                CornerRadius="30"
                BackgroundColor="#222222"
                BorderColor="Transparent"
                HasShadow="True"
                HorizontalOptions="End"
-               VerticalOptions="End" >
+               VerticalOptions="End">
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="GoUpButtonClicked"/>
+                <TapGestureRecognizer Tapped="GoUpButtonClicked" />
             </Frame.GestureRecognizers>
             <Image Source="up_chevron.svg"
                    HeightRequest="20"
@@ -187,7 +191,7 @@
                    TranslationY="-2"
                    Aspect="AspectFit">
                 <Image.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="#666666"/>
+                    <toolkit:IconTintColorBehavior TintColor="#666666" />
                 </Image.Behaviors>
             </Image>
         </Frame>

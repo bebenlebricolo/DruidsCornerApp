@@ -125,7 +125,7 @@ public partial class HopReferenceViewModel : BaseViewModel
     /// </summary>
     /// <param name="compactHop"></param>
     [RelayCommand]
-    public Task LoadMoreHops(CollectionView hopCardCollectionView)
+    public Task LoadMoreHops()
     {
         var hops = _hopProvider.GetAllHops();
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
@@ -136,8 +136,9 @@ public partial class HopReferenceViewModel : BaseViewModel
                 Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
             }
             
-            // Scroll up in order to prevent multiple firing (or at least that's what I'm trying to do)
-            hopCardCollectionView.ScrollTo(currentIndex - RemainingItemsThresholdReached);
+            // Here this command is called repeatedly.
+            // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
+            // So the first event is never completely resolved (?)
         }
         return Task.CompletedTask;
     }

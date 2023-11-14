@@ -148,7 +148,10 @@
                                 x:Name="HopCardsCollectionView"
                                 Grid.Row="1"
                                 ItemsSource="{Binding Path=HopReferenceViewModel.Hops}"
-                                SelectionMode="None">
+                                SelectionMode="None"
+                                RemainingItemsThreshold="{Binding HopReferenceViewModel.RemainingItemsThresholdReached}"
+                                RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsCommand}"
+                                RemainingItemsThresholdReachedCommandParameter="{x:Reference HopCardsCollectionView}">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

@@ -125,17 +125,20 @@ public partial class HopReferenceViewModel : BaseViewModel
     /// </summary>
     /// <param name="compactHop"></param>
     [RelayCommand]
-    public Task LoadMoreHops()
+    public Task LoadMoreHops(CollectionView hopCardCollectionView)
     {
-        //IsLoading = true;
         var hops = _hopProvider.GetAllHops();
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
-        for (int i = currentIndex; i < (currentIndex + RemainingItemsThresholdReached); i++)
+        if (currentIndex != hops.Count - 1)
         {
-            Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
+            for (int i = currentIndex; i < (currentIndex + RemainingItemsThresholdReached); i++)
+            {
+                Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
+            }
+            
+            // Scroll up in order to prevent multiple firing (or at least that's what I'm trying to do)
+            hopCardCollectionView.ScrollTo(currentIndex - RemainingItemsThresholdReached);
         }
-        //IsLoading = false;
-
         return Task.CompletedTask;
     }
 }

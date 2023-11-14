@@ -16,7 +16,7 @@
            BorderColor="Transparent">
         <Frame.GestureRecognizers>
             <TapGestureRecognizer
-                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopCardClickedCommand}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopReferenceViewModel.HopCardClickedCommand}"
                 CommandParameter="{Binding  }" />
         </Frame.GestureRecognizers>
 

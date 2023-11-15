@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 namespace DruidsCornerApp.Models.Config;
 
 /// <summary>
-/// Represents Firebase's authentication configuration.
+/// Represents global authentication configuration.
 /// </summary>
 public record AuthConfig
 {

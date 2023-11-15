@@ -1,3 +1,5 @@
+using DruidsCornerApp.Views.MainContext;
+
 namespace DruidsCornerApp.Utils;
 using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
@@ -43,6 +45,11 @@ public static class Navigator
     public static string GetGoogleSignInPageRoute()
     {
         return $"{GetRootLoginPage()}/{nameof(GoogleSignInPage)}";
+    }
+
+    public static string GetRecipesBrowserPageRoute()
+    {
+        return $"{GetRootLoginPage()}/{nameof(RecipeExplorerPage)}";
     }
     
 }

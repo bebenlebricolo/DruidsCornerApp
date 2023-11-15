@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <RunConfiguration>
+        <EnvironmentVariables>
+            <WEBAPI_DOMAIN>www.somedomain.com</WEBAPI_DOMAIN>
+            <ACCESS_TOKEN>test</ACCESS_TOKEN>
+        </EnvironmentVariables>
+    </RunConfiguration>
+</RunSettings>

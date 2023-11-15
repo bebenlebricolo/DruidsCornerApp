@@ -7,6 +7,9 @@
 *sln.DotSettings.user
 *.csproj.user*
 
+# Test runsettings usually contains environment variable such as JWT Token that need to stay secrets !
+.runsettings
+
 # Local configuration
 AuthConfig.json
 google-services.json
@@ -20,6 +23,8 @@ obj
 diydog-db
 TestResults
 
+# Concepts and Mockups
+DruidsCornerApp/Concepts
 
 # Locally published app
 published

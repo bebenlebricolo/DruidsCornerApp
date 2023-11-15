@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
+             xmlns:models="clr-namespace:DruidsCornerApp.Models.MainContext"
+             xmlns:controls="clr-namespace:DruidsCornerApp.Controls.MainContext"
+             x:Class="DruidsCornerApp.Views.MainContext.RecipeExplorerPage"
+             x:DataType="viewmodel:RecipeExplorerViewModel"
+             Shell.FlyoutBehavior="Flyout"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#333333" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*" Margin="0" Padding="0">
+            <Grid Grid.Row="0"
+                  RowDefinitions="*">
+                <Frame x:Name="HeaderImageFrame"
+                       BackgroundColor="Transparent"
+                       CornerRadius="0"
+                       Padding="0"
+                       Margin="0"
+                       HeightRequest="150"
+                       BorderColor="Transparent">
+                    <Image Source="explorer_background_header.jpg"
+                           Aspect="AspectFill"
+                           Margin="0" />
+                </Frame>
+                <Grid RowDefinitions="auto,*,auto">
+                    <!-- Header Grid : hamburger and title-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Hamburger button -->
+                        <ImageButton Source="hamburger.svg"
+                                     HeightRequest="25"
+                                     WidthRequest="25"
+                                     Margin="10,10,0,0">
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="White" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+                        <Label Grid.Column="2"
+                               Text="Explore"
+                               TextColor="White"
+                               FontSize="25"
+                               Margin="10,0"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center" />
+                    </Grid>
+                    <ImageButton Grid.Row="1"
+                                 Source="option_dots_h.svg"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Margin="10,0"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End">
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="White" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
+
+                    <!-- Advanced search banner -->
+                    <Frame Grid.Row="2"
+                           BackgroundColor="#33ffffff"
+                           CornerRadius="0"
+                           Margin="0"
+                           Padding="10"
+                           VerticalOptions="End"
+                           BorderColor="Transparent">
+                        <StackLayout>
+                            <Grid ColumnDefinitions="auto,*,auto">
+                                <Label Grid.Column="0"
+                                       Text="Advanced Search Filters"
+                                       TextColor="White"
+                                       FontAttributes="Italic"
+                                       FontSize="20"
+                                       Padding="3,0,0,0"
+                                       VerticalOptions="Start" />
+                                <Button Grid.Column="2" Text="Settings"
+                                        TextColor="#6666666"
+                                        CornerRadius="10"
+                                        HeightRequest="30"
+                                        Margin="0"
+                                        Padding="15,0"
+                                        VerticalOptions="Center" />
+                            </Grid>
+
+                            <!-- Filters labels -->
+                            <HorizontalStackLayout Spacing="5">
+                                <Frame CornerRadius="30"
+                                       HeightRequest="30"
+                                       BorderColor="Transparent"
+                                       Margin="0"
+                                       Padding="10, 0"
+                                       BackgroundColor="White">
+                                    <Label Text="Abv 3 - 10%"
+                                           TextColor="#5b5a5a"
+                                           VerticalOptions="Center">
+                                    </Label>
+                                </Frame>
+                                <Frame CornerRadius="30"
+                                       HeightRequest="30"
+                                       BorderColor="Transparent"
+                                       Margin="0"
+                                       Padding="10, 0"
+                                       BackgroundColor="White">
+                                    <Label Text="Abv 3 - 10%"
+                                           TextColor="#5b5a5a"
+                                           VerticalOptions="Center">
+                                    </Label>
+                                </Frame>
+                                <Frame CornerRadius="30"
+                                       HeightRequest="30"
+                                       BorderColor="Transparent"
+                                       Margin="0"
+                                       Padding="10, 0"
+                                       BackgroundColor="White">
+                                    <Label Text="Abv 3 - 10%"
+                                           TextColor="#5b5a5a"
+                                           VerticalOptions="Center">
+                                    </Label>
+                                </Frame>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" RowDefinitions="auto,*">
+                <Grid Grid.Row="0"
+                      RowDefinitions="auto,*"
+                      ColumnDefinitions="*,auto"
+                      Padding="0,2"
+                      ColumnSpacing="2">
+                    <Frame Grid.Row="0" Grid.Column="0"
+                           BorderColor="#ff6a00"
+                           CornerRadius="10"
+                           Padding="10,0"
+                           Margin="0,0">
+
+                        <Entry Placeholder="Search for recipe names here"
+                               PlaceholderColor="#ff6a00" />
+                    </Frame>
+                    <Button Grid.Row="0" Grid.Column="1"
+                            Text="Search !"
+                            Padding="20,0"
+                            TextColor="White"
+                            BackgroundColor="#ff6a00"
+                            CornerRadius="10">
+                    </Button>
+                </Grid>
+                <!-- Recipes collection -->
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding Recipes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:CompactRecipeModel">
+                            <Frame BackgroundColor="#2b2b2b"
+                                   CornerRadius="10"
+                                   Margin="0"
+                                   IsClippedToBounds="False"
+                                   Padding="10"
+                                   BorderColor="Transparent">
+                                <Grid ColumnSpacing="10"
+                                      ColumnDefinitions="auto,auto,auto,*,auto"
+                                      RowDefinitions="*">
+                                    <!-- Beer thumbnail -->
+                                    <Frame Grid.Column="0"
+                                           CornerRadius="150"
+                                           HeightRequest="80"
+                                           WidthRequest="80"
+                                           BorderColor="White"
+                                           Margin="0,0,10,0"
+                                           Padding="0">
+                                        <Image
+                                            WidthRequest="80"
+                                            HeightRequest="80"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Source="{Binding ImageSource}" />
+                                    </Frame>
+
+                                    <!-- Beer name, id -->
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label TextColor="White"
+                                               Text="{Binding Name}"
+                                               FontSize="15"
+                                               Padding="0,0,0,5"
+                                               FontAttributes="Bold" />
+                                        <Label TextColor="White"
+                                               Text="{Binding Style}"
+                                               Padding="0,0,0,5"
+                                               FontAttributes="Italic" />
+                                        <Label TextColor="White"
+                                               Text="{Binding Brewer}"
+                                               FontAttributes="Italic" />
+                                        <Label TextColor="White"
+                                               Text="{Binding BrewDate}"
+                                               FontAttributes="Italic" />
+                                    </VerticalStackLayout>
+
+                                    <!-- Beer specs -->
+                                    <VerticalStackLayout Grid.Column="3"
+                                                         HorizontalOptions="Center">
+                                        <Grid ColumnDefinitions="auto,auto"
+                                              RowDefinitions="auto,auto,auto"
+                                              ColumnSpacing="8"
+                                              Padding="10,0">
+                                            <Label TextColor="White"
+                                                   Text="Abv :"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="1"
+                                                   TextColor="White"
+                                                   Text="{Binding Abv}" />
+
+                                            <Label Grid.Row="1"
+                                                   TextColor="White"
+                                                   Text="Ibu :"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="1"
+                                                   Grid.Row="1"
+                                                   TextColor="White"
+                                                   Text="{Binding Ibu}" />
+
+                                            <Label Grid.Row="2"
+                                                   TextColor="White"
+                                                   Text="Ebc :"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="1"
+                                                   Grid.Row="2"
+                                                   TextColor="White"
+                                                   Text="{Binding Ebc}" />
+                                        </Grid>
+                                    </VerticalStackLayout>
+
+                                    <!-- Qr code and rating stack -->
+                                    <Grid Grid.Column="5"
+                                          RowDefinitions="auto,*,auto"
+                                          Padding="0">
+                                        <controls:FavoriteButton Grid.Row="0"
+                                                                 x:Name="FavoriteButton"
+                                                                 RequestedIconSize="20"
+                                                                 VerticalOptions="Start"
+                                                                 HorizontalOptions="End"
+                                                                 DefaultIcon="heart.svg"
+                                                                 FavoriteIcon="heart_full.svg"
+                                                                 Favorite="{Binding Favorite}"/>
+
+                                        <HorizontalStackLayout Grid.Row="2"
+                                                               Spacing="10"
+                                                               Padding="0"
+                                                               VerticalOptions="End">
+                                            <HorizontalStackLayout>
+                                                <Image Source="star.svg"
+                                                       HeightRequest="20"
+                                                       WidthRequest="20"
+                                                       VerticalOptions="Center"
+                                                       HorizontalOptions="Center">
+                                                    <Image.Behaviors>
+                                                        <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                                    </Image.Behaviors>
+                                                </Image>
+                                                <Label Text="{Binding Rating}"
+                                                       TextColor="#ff6a00"
+                                                       VerticalOptions="Center" />
+                                                <Label Text="/5"
+                                                       TextColor="#ff6a00"
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                            <Image Source="qrcode.svg"
+                                                   HeightRequest="25"
+                                                   WidthRequest="25">
+                                                <Image.Behaviors>
+                                                    <toolkit:IconTintColorBehavior TintColor="#ff6a00" />
+                                                </Image.Behaviors>
+                                            </Image>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

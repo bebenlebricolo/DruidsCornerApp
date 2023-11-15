@@ -198,7 +198,8 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         }
         else
         {
-            // Do something !
+            // We have a selected account, continue to Browsing page
+            await Shell.Current.GoToAsync(Navigator.GetRecipesBrowserPageRoute(), true);
         }
     }
 
@@ -215,6 +216,9 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         {
             await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
         }
+
+        // Go to the new AppShell now, where our application core is.
+        Application.Current!.MainPage = new AppShell(_secureStorageService);
     }
 
     /// <summary>

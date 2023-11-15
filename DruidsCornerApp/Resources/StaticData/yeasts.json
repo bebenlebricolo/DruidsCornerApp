@@ -1,0 +1,4295 @@
+{
+    "yeasts": [
+        {
+            "name": "House",
+            "id": "f370a790-728f-49ea-8e56-71c9b5aec226",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a01-house-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Extremely versatile English ale strain, allowing both malt and hops to shine. The best of both worlds, House is clean and allows malt and hops to shine. This strain is extremely versatile and flocculent enough to drop out of the beer quickly. Best strain choice for any and all English inspired recipes however, does extremely well in hopped up American styles too. House is clean at cold temperatures with increased esters as fermentation temperatures rise.",
+            "tags": [
+                "clean",
+                "english",
+                "flocculent",
+                "slightly",
+                "ester",
+                "forward",
+                "versatile"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 75.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+                "59831535-8478-4ca5-9fd5-d25d2f95aae4",
+                "a29502a1-dd76-44a4-9672-3159aefabdcd",
+                "c2e1a2b7-cb96-4c1f-b20e-485283ff1e35",
+                "67ce86f2-7df0-4625-86f8-8dbf5b265268"
+            ],
+            "commonBeerStyles": [
+                "English IPA",
+                "Extra Special Bitter",
+                "Pale Ale",
+                "English Mild",
+                "Bitter",
+                "Stout",
+                "Sweet",
+                "Brown Porter",
+                "Irish Red Ale",
+                "Stout",
+                "Oatmeal",
+                "Stout",
+                "Tropical",
+                "British Strong Ale",
+                "English Barleywine",
+                "Old Ale",
+                "Stout",
+                "Foreign Extra",
+                "American IPA",
+                "Black IPA",
+                "American Pale Ale",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "Imperial IPA",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "Stout",
+                "Irish Dry",
+                "Scottish Ale",
+                "Wee Heavy",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "American Amber Ale",
+                "American Brown Ale",
+                "Hazy IPA",
+                "White IPA",
+                "California Common"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Barbarian",
+            "id": "338d61b7-e7bb-4e79-b94f-830b4e595f80",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a04-barbarian-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Excellent yeast strain for any hop forward beers. Wonderfully suited for juicy, hazy New England IPAs. Commonly referred to as the conan yeast strain, it's ready to attack your IPA. Barbarian produces stone fruit esters that work great when paired with citrus hops. Barbarian will give you what you need for an exceptionally balanced IPA, leaving a nice round and full bodied mouthfeel.",
+            "tags": [
+                "stonefruit",
+                "peach",
+                "apricot",
+                "citrus",
+                "pineapple",
+                "tropical",
+                "clean"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 74.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "f0605f7e-31be-4680-b2ee-03711f2fbfd9",
+                "b440525b-2740-4282-bf56-fa0d274cb22e",
+                "d0821fa3-dc29-4586-b627-07e9d3c736b4",
+                "0fe41934-cdb2-4251-a880-279d4d3cc0eb",
+                "a456fdc7-b20c-46ea-97bf-43976043d74c",
+                "a37cc1aa-e9e1-4a44-aeef-4a8ae25a49dc",
+                "16365fa4-0b71-4296-b3c8-d16578f8df26",
+                "2e49903f-07fe-40e7-86a0-ee84558119c0"
+            ],
+            "commonBeerStyles": [
+                "American Pale Ale",
+                "Black IPA",
+                "White IPA",
+                "Imperial IPA",
+                "American Pale Ale",
+                "English IPA",
+                "Red IPA",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "American Amber Ale",
+                "American Brown Ale"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Flagship",
+            "id": "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a07-flagship-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Commonly referred to as chico\" this yeast is a craft brewing standard. This strain is the go-to for craft brewers, highly popular- this strain performs well at standard ale temperatures but can be used in the low 60s to produce exceptionally crisp ales. Flocculation is in the middle of the road and will typically require filtration or fining to achieve crystal clear beers.",
+            "tags": [
+                "american",
+                "chico",
+                "clean",
+                "crisp",
+                "versatile",
+                "westcoast"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 77.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "dfa2c227-fec5-412b-9cab-3ff82e55c7a9",
+                "1d5619a7-54dd-407b-b256-3ea95dda39c8",
+                "cc11e9bb-78e5-4e58-ab98-73adbe2e6a4e",
+                "210c7fff-4c34-4d9b-ab0d-ec678bdce3c8",
+                "07d9fac4-07f0-47d3-8b28-cf4cd7d980ae",
+                "db214572-c307-4fe1-93c7-d0351f5f64c9",
+                "c639e670-832d-4f30-93bb-ab3e5b37dfcc",
+                "ae5ae5f2-9799-4571-a8d0-87554660290b",
+                "dd655187-307e-4b23-970c-8fafe6840094"
+            ],
+            "commonBeerStyles": [
+                "American IPA",
+                "American Pale Ale",
+                "American Stout",
+                "Stout",
+                "Tropical",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Imperial IPA",
+                "Blonde Ale",
+                "American Amber Ale",
+                "American Brown Ale",
+                "California Common",
+                "Black IPA",
+                "Irish Red Ale",
+                "Wee Heavy",
+                "Hazy IPA",
+                "British Strong Ale",
+                "Red IPA",
+                "English Barleywine",
+                "White IPA",
+                "Red Ale",
+                "Robust Porter",
+                "Winter Seasonal Beer",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "Berliner Weisse",
+                "Gose",
+                "Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "Brown Porter",
+                "English IPA",
+                "Scottish Ale",
+                "Stout",
+                "Sweet",
+                "Stout",
+                "Oatmeal",
+                "Old Ale",
+                "Stout",
+                "Foreign Extra",
+                "Bi\u00e8re de Garde"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Pub",
+            "id": "f06dc558-7d6a-4f30-b1d0-9cd069aa608f",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a09-pub-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Beloved and highly flocculent British ale strain. Well suited for a variety of beer styles. Brewers swear by this strain to achieve super bright ales in a short amount of time. One of the most flocculent brewer's strains around, Pub will rip through fermentation and then drop out of the beer quickly. Pub produces higher levels of esters than most domestic ale strains, making it an excellent choice for when balance between malt and yeast derived esters is necessary. Be sure to give beers made with Pub a sufficient diacetyl rest.",
+            "tags": [
+                "clean",
+                "english",
+                "esb",
+                "fullers",
+                "highly-flocculent",
+                "high",
+                "esters",
+                "british",
+                "ale"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 64.0,
+                "max": 70.0
+            },
+            "flocculation": "Very High",
+            "optimalTemperature": {
+                "min": 21,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "f370a790-728f-49ea-8e56-71c9b5aec226",
+                "7b4cc8d4-7617-4c26-bab0-a4f0d3e52a91",
+                "978a707c-f878-40ad-b410-da02f9e24d79"
+            ],
+            "commonBeerStyles": [
+                "Extra Special Bitter",
+                "English IPA",
+                "English Mild",
+                "Bitter",
+                "Old Ale",
+                "Winter Seasonal Beer",
+                "American Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "Brown Porter",
+                "Irish Red Ale",
+                "Stout",
+                "Oatmeal",
+                "British Strong Ale",
+                "English Barleywine",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "California Common",
+                "American Amber Ale",
+                "American Brown Ale",
+                "American IPA",
+                "Black IPA",
+                "Hazy IPA",
+                "Red Ale",
+                "American Pale Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "Imperial IPA",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Darkness",
+            "id": "ecbac04f-b68c-40e4-b943-42ddf492677a",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a10-darkness-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Brewers love this yeast strain for dark beers. Its high alcohol tolerance make it a go-to for big beers. A beautiful strain for stout, porter, brown, and amber ales. Darkness produces a unique character that matches up perfectly with roasted and caramel malts. This strain is alcohol tolerant, so don't hesitate to throw high gravity worts its way.",
+            "tags": [
+                "alcohol-tolerant",
+                "caramel",
+                "dark-beer",
+                "high-abv",
+                "porter",
+                "stout",
+                "barleywine"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 71.0,
+                "max": 75.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "3a76e79f-85dc-4df6-9cf5-c8a1cafc09b5",
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+                "b6631fc5-8389-4c11-9cb3-614cfe342dbd",
+                "2f818136-7a4c-4c51-9550-5537d61ccc8d",
+                "18f29689-3de7-446f-8bac-98b3432ded01",
+                "cc5f8205-2bc3-4e64-a118-b973472010d4"
+            ],
+            "commonBeerStyles": [
+                "Stout",
+                "Irish Dry",
+                "American Stout",
+                "American Barleywine",
+                "Black IPA",
+                "American Brown Ale",
+                "Robust Porter",
+                "Winter Seasonal Beer",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Brown Porter",
+                "Stout",
+                "Sweet",
+                "Stout",
+                "Oatmeal",
+                "Stout",
+                "Foreign Extra",
+                "Stout",
+                "Tropical",
+                "British Strong Ale",
+                "Wee Heavy",
+                "Irish Red Ale",
+                "Red IPA",
+                "Red Ale",
+                "Wheatwine",
+                "English Mild",
+                "Extra Special Bitter",
+                "Bitter",
+                "English IPA",
+                "Scottish Ale",
+                "English Barleywine",
+                "Old Ale",
+                "American IPA",
+                "American Pale Ale",
+                "Imperial IPA"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Independence",
+            "id": "b6631fc5-8389-4c11-9cb3-614cfe342dbd",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a15-independence-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "American ale yeast strain, slightly ester forward and loves to play with hops. Independence is the strain for bringing some new character into your hop-driven beers. Higher in esters than Flagship, this yeast will give some fruit character that will take your hoppy beers to a new level. While it shines in pale ales and IPAs, Independence is a great all-around strain and will also work well in stouts and English ales.",
+            "tags": [
+                "american",
+                "clean",
+                "esters",
+                "flocculant",
+                "hoppy"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 72.0,
+                "max": 76.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+                "f370a790-728f-49ea-8e56-71c9b5aec226"
+            ],
+            "commonBeerStyles": [
+                "American IPA",
+                "American Pale Ale",
+                "Blonde Ale",
+                "Stout",
+                "Sweet",
+                "Stout",
+                "Oatmeal",
+                "Cream Ale",
+                "California Common",
+                "American Amber Ale",
+                "American Brown Ale",
+                "Black IPA",
+                "Hazy IPA",
+                "Red IPA",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "Imperial IPA",
+                "American Barleywine",
+                "Irish Red Ale",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "English Mild",
+                "Extra Special Bitter",
+                "Bitter",
+                "Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "Brown Porter",
+                "English IPA",
+                "Scottish Ale",
+                "Stout",
+                "Tropical",
+                "British Strong Ale",
+                "English Barleywine",
+                "Old Ale",
+                "Stout",
+                "Foreign Extra",
+                "Wee Heavy",
+                "American Wheat Beer",
+                "White IPA"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Joystick",
+            "id": "924aca6f-3318-4f08-92f1-a3466335961d",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a18-joystick-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisae"
+            ],
+            "description": "Clean American brewing yeast strain. Excellent choice for big, high alcohol, hoppy beers. This strain is a fast mover and can be used at the low end of the ale fermentation spectrum to keep it clean. Joystick is a great choice for big, high alcohol, malt forward beers but will shine just as well in a hoppy double IPA.",
+            "tags": [
+                "fast_attenuator",
+                "alcohol_tolerant",
+                "dry",
+                "mild_fruit",
+                "mineral"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 77.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "bf7d30fa-c9c6-4e88-bd41-d6739ab3c703",
+                "bf886ae0-17e3-4845-a86c-aa4f29bd7c2c",
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16"
+            ],
+            "commonBeerStyles": [
+                "American Barleywine",
+                "American Strong Ale",
+                "Robust Porter",
+                "Imperial Stout",
+                "American Stout",
+                "American Amber Ale",
+                "American Brown Ale",
+                "Black IPA",
+                "Red Ale",
+                "Winter Seasonal Beer",
+                "California Common",
+                "Wheatwine",
+                "English Mild",
+                "Extra Special Bitter",
+                "American Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "American IPA",
+                "Hazy IPA",
+                "Red IPA",
+                "Imperial IPA",
+                "Altbier"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Citrus",
+            "id": "e089c498-989d-4458-9da9-544db2a8de6a",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a20-citrus-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "Wild saccharomyces yeast strain known to produce a huge citrus fruit ester profile. Citrus cranks out orange and lemon aromas along with some tropical fruit. Use this strain at high temps for big ester production. A wild saccharomyces strain, it will get a bit funky without the worries of a brettanomyces strain. Keep an eye on your fermentations, it does like to hit a false terminal and then slowly finish out the rest of fermentation. This strain tests positive for the STA1 gene via PCR analysis and is therefore considered to be Saccharomyces cerevisiae var. diastaticus",
+            "tags": [
+                "citrus",
+                "hazy",
+                "ipa",
+                "juicy",
+                "lemon",
+                "orange",
+                "sachh",
+                "trois",
+                "tropical-fruit",
+                "neipa",
+                "new",
+                "england",
+                "ipa"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 74.0,
+                "max": 78.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 27
+            },
+            "comparableYeasts": [
+                "338d61b7-e7bb-4e79-b94f-830b4e595f80",
+                "f084fa0d-9aa4-45c2-8a1e-93ee7a24f96b",
+                "7ffec167-6250-486c-8808-dc670df27ede",
+                "adf2c345-6267-4473-8990-de9ee3765b2a",
+                "fa2f828a-8aeb-4712-900a-dbb94517c422"
+            ],
+            "commonBeerStyles": [
+                "Hazy IPA",
+                "American Pale Ale",
+                "Imperial IPA",
+                "Red IPA",
+                "White IPA",
+                "Red Ale",
+                "American Wheat Beer",
+                "Black IPA",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "Cream Ale",
+                "Blonde Ale"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Dry Hop",
+            "id": "f084fa0d-9aa4-45c2-8a1e-93ee7a24f96b",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a24-dry-hop-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "A blend of two highly popular yeast strains, well suited for hop forward beers. Dry Hop is a blend of A20 Citrus and A04 Barbarian. When this blend goes to work on your hoppy beer, the hop aroma blows up. The combination of these strains produces amazing aromas of citrus, peach, and apricot that will accentuate your IPA, pale ale, and any other hop-driven beer. This blend contains a strain that tests positive for the STA1 gene via PCR analysis and is therefore considered to be Saccharomyces cerevisiae var. diastaticus.",
+            "tags": [
+                "citrus",
+                "stone",
+                "fruit",
+                "new",
+                "england",
+                "ipa",
+                "neipa",
+                "hazy",
+                "ester",
+                "forward"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 74.0,
+                "max": 78.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "338d61b7-e7bb-4e79-b94f-830b4e595f80",
+                "e089c498-989d-4458-9da9-544db2a8de6a",
+                "7ffec167-6250-486c-8808-dc670df27ede"
+            ],
+            "commonBeerStyles": [
+                "Hazy IPA",
+                "American IPA",
+                "American Pale Ale",
+                "Imperial IPA",
+                "White IPA",
+                "Red IPA",
+                "Red Ale",
+                "Pale Ale",
+                "English IPA",
+                "Black IPA",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Tartan",
+            "id": "3a76e79f-85dc-4df6-9cf5-c8a1cafc09b5",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a31-tartan-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Traditional Scottish brewers yeast strain, well suited for malt forward beers. Tartan is a traditional strain that accentuates the malt character of Scottish and other malt forward styles. But don't put it in a corner, it can also be used for other styles and works well in IPAs due to its clean fermentation character. For a higher ester profile, use this ale yeast at the top end of the temperature range.",
+            "tags": [
+                "clean",
+                "esters",
+                "malty",
+                "scottish"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 70.0,
+                "max": 75.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "f370a790-728f-49ea-8e56-71c9b5aec226",
+                "ecbac04f-b68c-40e4-b943-42ddf492677a",
+                "072eb1ff-432b-456a-859c-4a6bcd1c699c",
+                "ceacd40f-00a4-4432-b1a7-7ddf6bb90b28",
+                "7b71f250-fa42-4819-b7d3-76e827723f4d"
+            ],
+            "commonBeerStyles": [
+                "Wee Heavy",
+                "Red Ale",
+                "American Brown Ale",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "Black IPA",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "English Mild",
+                "Bitter",
+                "Extra Special Bitter",
+                "Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "English IPA",
+                "Stout",
+                "Oatmeal",
+                "Stout",
+                "Tropical",
+                "British Strong Ale",
+                "English Barleywine",
+                "Old Ale",
+                "Stout",
+                "Foreign Extra",
+                "California Common",
+                "American Amber Ale",
+                "American IPA",
+                "Red IPA",
+                "American Pale Ale",
+                "Imperial IPA",
+                "Altbier"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "POG",
+            "id": "5d5f2d67-85d0-4072-9d22-ba9a66f3e83d",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a37-pog-imperial-yeast/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Single isolate kveik known to produce huge tropical ester profile. After years of surviving in cold climates, this Kveik yeast is ready for the tropical lifestyle. When used at high temperatures, POG produces an extreme amount of tropical fruit aromas including pineapple and guava. At the lower end of the range, more delicate citrus, peach and kiwi aromas are noticeable. The beer style options are expansive for this yeast. Use it in a hazy/juicy IPA to complement the hops or use it in a sour fruited beer to maximize the extreme aromatics. POG likes to work fast at high fermentation temperatures. It is also strongly flocculent, which makes it great for a fast turnaround. This strain has demonstrated the need for higher wort dissolved oxygen (DO) levels than most ale strains. Target 20 ppm DO or set the oxygen regulator flow to ~50 higher than normal.",
+            "tags": [
+                "kveik",
+                "framgarden",
+                "tropical",
+                "fruity",
+                "ester",
+                "forward"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 75.0,
+                "max": 85.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 29,
+                "max": 38
+            },
+            "comparableYeasts": [
+                "adf2c345-6267-4473-8990-de9ee3765b2a",
+                "6adb9652-3b85-4027-b209-320b87ea106a",
+                "fcd90704-160e-421a-8729-7538bee07a19"
+            ],
+            "commonBeerStyles": [
+                "Kveik",
+                "American IPA",
+                "Hazy IPA",
+                "American Pale Ale",
+                "Black IPA",
+                "Red IPA",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "English IPA",
+                "Extra Special Bitter",
+                "Bitter",
+                "Stout",
+                "Tropical",
+                "Blonde Ale",
+                "American Strong Ale",
+                "Cream Ale",
+                "American Amber Lager",
+                "American Brown Ale",
+                "White IPA",
+                "Imperial IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Juice",
+            "id": "7ffec167-6250-486c-8808-dc670df27ede",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a38-juice-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "The go-to for juicy, hazy, NE IPAs. Hardly a one-trick pony, it can also be a great choice as a house ale strain. Juicy. Fruity. Juice is the go-to strain for hazy, juicy New England style IPAs. The ester profile of Juice brings out the aromas and flavors of the new school hops and creates a beer that is greater than the sum of its parts. Resulting in a beer that is at once round in mouthfeel but retains a nice sharp citrus edge. Keep an eye on this strain, it likes to move to the top of fermentation and will climb out the fermenter if too full. This strain has demonstrated the need for higher wort dissolved oxygen (DO) levels than most ale strains. Target 20-25 ppm DO or set the oxygen regulator flow to 50 higher than normal.",
+            "tags": [
+                "soft",
+                "creamy",
+                "hazy",
+                "juicy",
+                "orange",
+                "smooth",
+                "fluffy",
+                "enhanced_malt",
+                "enhanced_hop",
+                "fruity",
+                "neutral"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 72.0,
+                "max": 76.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "3b1840df-9bc4-4463-9713-032b6fbd7b4d",
+                "c92f73c2-ca40-4cfe-a4c6-ea7e06abedfa",
+                "8a430278-d2b4-4f51-be3d-54290d7bef62",
+                "acf2a067-6651-405d-a0ff-51c203d7a9c8",
+                "4bac3332-9d07-489d-ad71-9a3482084c35",
+                "e278cce3-b70b-4cb8-95bc-b7f083aa2832",
+                "b65c74af-689e-4318-a317-9ba1047323c9"
+            ],
+            "commonBeerStyles": [
+                "Hazy IPA",
+                "American IPA",
+                "American Stout",
+                "English IPA",
+                "Extra Special Bitter",
+                "Bitter",
+                "Pale Ale",
+                "Stout",
+                "Irish Dry",
+                "Brown Porter",
+                "Stout",
+                "Oatmeal",
+                "Black IPA",
+                "Red IPA",
+                "White IPA",
+                "American Pale Ale",
+                "Red Ale",
+                "Robust Porter",
+                "Winter Seasonal Beer",
+                "Imperial IPA",
+                "American Barleywine",
+                "Imperial Stout",
+                "American Strong Ale",
+                "Wheatwine",
+                "English Mild",
+                "Irish Red Ale",
+                "Stout",
+                "Tropical",
+                "Cream Ale",
+                "American Wheat Beer",
+                "Blonde Ale",
+                "California Common",
+                "American Amber Ale",
+                "American Brown Ale"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Loki",
+            "id": "adf2c345-6267-4473-8990-de9ee3765b2a",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a43-loki-imperial-yeast/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Norwegian Voss Kveik Strain. Highly versatile, can be used in a wide variety of beer styles. A traditional Norwegian Kveik strain that has an extremely wide fermentation temperature range. This strain has been traditionally used in Norwegian farmhouse style beers however, due to it's fermentation temp range can be used in a variety of beers from pseudo lagers, Belgian inspired, and hop forward beers. The possibilities seem endless when fermenting with Loki. On the cool end of the range Loki is super clean; producing little to no esters. On the high end of the fermentation range, 85-95F, it tends to produce a huge fruit ester profile.",
+            "tags": [
+                "citrus",
+                "clean",
+                "esters",
+                "fruity",
+                "kveik",
+                "norwegian",
+                "voss",
+                "norwegian",
+                "farmhouse",
+                "hazy",
+                "ipa"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 75.0,
+                "max": 85.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 38
+            },
+            "comparableYeasts": [
+                "f084fa0d-9aa4-45c2-8a1e-93ee7a24f96b",
+                "7ffec167-6250-486c-8808-dc670df27ede"
+            ],
+            "commonBeerStyles": [
+                "Kveik",
+                "American IPA",
+                "Hazy IPA",
+                "American Pale Ale",
+                "Black IPA",
+                "Red IPA",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "English IPA",
+                "Extra Special Bitter",
+                "Bitter",
+                "Stout",
+                "Tropical",
+                "Blonde Ale",
+                "American Strong Ale",
+                "Cream Ale",
+                "American Amber Lager",
+                "American Brown Ale",
+                "White IPA",
+                "Imperial IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Kveiking",
+            "id": "6adb9652-3b85-4027-b209-320b87ea106a",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a44-kveiking-imperial-yeast/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Blend of 3 kveik strains conquers wort, leaving tropical fruit flavors in its wake. Kveiking [Kuh-vahy-king] noun: A blend of three Kveik strains that can produce an insane amount of pineapple, guava and other exotic tropical fruit aromas. verb: Hopefully not an Old Norse term for an activity we should not be promoting. The Kveiking blend thrives in hot fermentations when big complex ester profiles are desired. A low pitch rate can be used to drive these aromatics even higher but the brewer should ensure this low pitch rate can be combined with a continuously high fermentation temperature. If the temperature drops too low, the corresponding level of attenuation can be low, with high terminal gravities. This blend contains flocculent and non-flocculent yeast strains, therefore the clarity of the final beers produced can be variable. Use this blend for anything from new school hazy IPAs to traditional Norwegian farmhouse brews. The Kveiking blend also works well when fermenting kettle soured worts for a strong tropical fruit character.",
+            "tags": [
+                "fruity",
+                "hot-fermentation",
+                "kveik",
+                "tropical"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 75.0,
+                "max": 85.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 24,
+                "max": 36
+            },
+            "comparableYeasts": [
+                "adf2c345-6267-4473-8990-de9ee3765b2a",
+                "338d61b7-e7bb-4e79-b94f-830b4e595f80"
+            ],
+            "commonBeerStyles": [
+                "Kveik",
+                "American IPA",
+                "Hazy IPA",
+                "American Pale Ale",
+                "Black IPA",
+                "Red IPA",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "English IPA",
+                "Extra Special Bitter",
+                "Bitter",
+                "Stout",
+                "Tropical",
+                "Blonde Ale",
+                "American Strong Ale",
+                "Cream Ale",
+                "American Amber Lager",
+                "American Brown Ale",
+                "White IPA",
+                "Imperial IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Bartleby",
+            "id": "fcd90704-160e-421a-8729-7538bee07a19",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/a46-bartleby-hornindal-kveik-imperial/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Bartleby is a hornindal Kveik strain that is a great choice for anything from a traditional Norwegian farmhouse ale to a hazy IPA. When used on the high end of the temperature range, Bartleby will produce a lot of pineapple, apricot and peach aromas. The ability to run this yeast at higher fermentation temperatures along with its high flocculation properties make it a great strain for fast turnaround times. This strain is not a part of our core availability line up, please call or email for lead time and specifics.",
+            "tags": [
+                "tropicalfruit",
+                "stonefruit",
+                "citrus",
+                "lemon",
+                "farmhouse",
+                "pineapple",
+                "fruitleather"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 75.0,
+                "max": 85.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 37
+            },
+            "comparableYeasts": [
+                "19b36ae2-8cfd-4f9a-bd52-06c08e211bdb",
+                "258d301e-d6d7-4e66-9b39-eefb1c6e126d",
+                "b1d3b991-f288-41f8-b7e0-ec6777ef50a1",
+                "e1bc6f5e-3ae0-4755-91df-64973daf78f4",
+                "f43304a5-6a7a-472c-8103-42379764a23f"
+            ],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ale",
+                "Stout",
+                "Porter",
+                "English Ale"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "American Ale",
+            "id": "4bbf184e-c2b2-4b4f-82dc-0254c1e0f032",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/american-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Excellent performance, and somewhat lower attenuation than Cali Ale. Suitable for nearly any clean style. Much like Cali Ale, exhibits clean fermentation at a wide temperature range, and accentuates hop character.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 80.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 22
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Ales"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : Medium-High.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "Anchorman Ale",
+            "id": "97ab0fac-30fe-43b7-b200-4802f301f599",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/anchorman-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Clean fermentation profile, with slightly faster attenuation and flocculation than Cali Ale Yeast. Suitable for production of clean West Coast style ales.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 80.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "Ardennes Belgian Ale",
+            "id": "0a1fb5b5-e5ae-446d-8554-a441a48b9700",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/ardennes-belgian-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 76.0,
+                "max": 76.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "Arset Kveik Blend",
+            "id": "6be3f5a1-f96c-4dab-8af1-d1b94ee46d4e",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/arset-kveik-blend-escarpment-labs/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This kveik yeast was sourced from Jakob \u00c5rset, on the farm \u00c5rset in Eidsdal, Norway. The overall flavour profile is similar to the Hornindal Kveik Blend, but this blend shows a higher degree of hop biotransformation. This blend also exhibits a broad temperature range (we have heard of sub-15\u00baC) and tolerates acidic wort quite well.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 75.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "Whiteout",
+            "id": "99541535-9c07-4a88-a70f-a0c950a45243",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/b44-whiteout-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "The go-to brewing yeast strain for wit beers. Whiteout produces an excellent balance of spicy phenolic character and esters. Along with the necessary aromatics, this strain produces a significant amount of acidity which is perfect for wits and other light colored Belgian ales. Whiteout can be flocculent during fermentation, then become non-flocculent at the end. This may lead to slower than normal fermentation.",
+            "tags": [
+                "acidity",
+                "belgian",
+                "fruity",
+                "phenolic",
+                "spicy",
+                "wheat",
+                "white",
+                "wit",
+                "witbier"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 72.0,
+                "max": 76.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "b07deeb2-7f2b-4532-a6e7-5b65c3c051f6",
+                "9b4beac2-7372-478c-858d-0bf1d9011be1",
+                "fa73ff2f-3b7c-4b7b-a824-3217b1538e54"
+            ],
+            "commonBeerStyles": [
+                "Hefeweizen",
+                "Witbier",
+                "Belgian IPA",
+                "Trappist Single",
+                "Saison"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Gnome",
+            "id": "8f711bad-ac05-487b-aec5-54989a712965",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/b45-gnome-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Versatile and unique Belgian ale yeast, excellent choice for Belgian pale ales or IPAs. Gnome is the yeast for brewing Belgian inspired beers in a hurry. This strain is extremely flocculent and drops out of the beer quickly after fermentation. Gnome produces a nice phenolic character that plays nicely with hops, as well as with caramel and toffee malt flavors. Great for Belgian ales that need to be crystal clear without filtration. Highly versatile, use Gnome in an array of Belgian beers.",
+            "tags": [
+                "clear",
+                "fast-fermenter",
+                "phenolic",
+                "spicy",
+                "versatile",
+                "flocculent"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 74.0,
+                "max": 78.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 25
+            },
+            "comparableYeasts": [
+                "99cc889a-447d-4962-b91d-b990988964c6",
+                "ccf0734b-373b-49f3-b270-4b16c9796908"
+            ],
+            "commonBeerStyles": [
+                "Belgian IPA",
+                "Belgian Pale Ale",
+                "Blonde Ale",
+                "Trappist Single",
+                "Witbier",
+                "Bi\u00e8re de Garde",
+                "Saison",
+                "Belgian Golden Strong Ale",
+                "Belgian Dark Strong Ale",
+                "Belgian Dubbel",
+                "Belgian Tripel",
+                "Belgian Quad"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Triple Double",
+            "id": "b0b66b0e-b759-4626-9f53-702a649ad791",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/b48-triple-double-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Classic high gravity Belgain strain for Trappist-style ales. The perfect strain for your classic abbey ales. Triple Double produces moderate esters with low to no phenolic characteristics. This strain is tried and true and works perfectly in a production environment. Keep an eye on Triple Double, it likes to sit on top of the wort throughout fermentation which may result in a slower than normal fermentation. This strain is very alcohol tolerant, so don't be afraid to throw high gravity worts its way.",
+            "tags": [
+                "alcohol-tolerant",
+                "belgian",
+                "esters",
+                "fruity",
+                "high-gravity",
+                "low-phenol",
+                "abbey"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 74.0,
+                "max": 78.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 25
+            },
+            "comparableYeasts": [
+                "B63",
+                "f0d2b4d8-27db-4d85-9d57-68a872aebb28",
+                "df696c2c-06b8-4ccc-8807-c47c9c8f662f"
+            ],
+            "commonBeerStyles": [
+                "Belgian Tripel",
+                "Belgian Golden Strong Ale",
+                "Belgian Dubbel",
+                "Belgian Quad",
+                "Trappist Single",
+                "Belgian Dark Strong Ale",
+                "Blonde Ale",
+                "Belgian Pale Ale"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Rustic",
+            "id": "100b4a73-7eac-4bfc-8051-1298076bf254",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/b56-rustic-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "Fantastic choice for a Belgian saison or farmhouse beer. This unique yeast can be used in your saison, farmhouse ale, or other Belgian styles where high ester levels are important. Rustic typically produces a lot of bubblegum and fruity/juicy aromas that compliment complex maltiness. Balanced by a light clove phenol profile, Rustic produces lovely flavor profiles indicative of those classic Belgain styles known and loved. This strain tests positive for the STA1 gene via PCR analysis and is therefore considered to be Saccharomyces cerevisiae var. diastaticus",
+            "tags": [
+                "belgian",
+                "bubblegum",
+                "clove",
+                "farmhouse",
+                "fruity",
+                "juicy",
+                "pepper",
+                "saison",
+                "spicy"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 72.0,
+                "max": 76.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [
+                "2dcc7747-0651-4645-9c61-33e53f43578a"
+            ],
+            "commonBeerStyles": [
+                "Saison",
+                "Blonde Ale",
+                "Bi\u00e8re de Garde"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Napoleon",
+            "id": "881d85c2-9aa1-4863-a02d-c42e3cbbf32d",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/b64-napoleon-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "Classic strain to produce French Saison where a balance of fruit esters and spicy phenols are necessary. This yeast is an insane wort attenuator. Napoleon will destroy the sugars in your saison and farmhouse beers - even the ones in which most brewer's strains have no interest. When all is said and done, Napoleon produces very dry, crisp beers with nice citrus aromas balanced by subtle black pepper phenols. Yeast settling times can be long, usually requiring filtration for bright beers. This strain tests positive for the STA1 gene via PCR analysis and is therefore considered to be Saccharomyces cerevisiae var. diastaticus",
+            "tags": [
+                "bright",
+                "citrus",
+                "crisp",
+                "dry",
+                "french-saison",
+                "phenols",
+                "saison",
+                "spicy"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 77.0,
+                "max": 83.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 26
+            },
+            "comparableYeasts": [
+                "a8ad2724-1809-45c6-b538-1fd798426b63",
+                "ee7e65d9-0df6-4f4c-b965-2d5911d24f84"
+            ],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Funk Weapon #1",
+            "id": "8dcdd47a-ab4b-441e-9d08-9b3a96a1b763",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bb0022-funk-weapon-1-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces bruxellensis"
+            ],
+            "description": "This rare, and commercially unavailable yeast isolate, produces pungent horse blanket and fresh leather aromas. Perfect for breaking out the funk in farmhouse-style beers.Funk Weapon #1 is featured in the Trinity & Epic Brewing collaboration Wild Apple Saison, and Trinity's Magical Brettanomyces Tour #4.",
+            "tags": [
+                "Horse",
+                "Blanket",
+                "Fresh",
+                "Leather"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 95.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Funk Weapon #3",
+            "id": "672e9b85-8581-47bd-844e-c512c2427d17",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bb0022-funk-weapon-3-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces bruxellensis"
+            ],
+            "description": "Funk Weapon #3 is a versatile culture that creates wildly different flavor and aroma profiles depending on the age of fermentation. Young fermentations produce mild musty funk and ripe tropical fruit, while older and bottle conditioned ferments show off unique flavors and aromas of strawberry, cherry and tropical candy. This commercially unavailable yeast isolate is ideal for 100% Brettanomyces fermentations or as a secondary strain along with a phenolic Brewer's Yeast culture.",
+            "tags": [
+                "strawberry",
+                "cherry",
+                "tropical",
+                "candy"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 95.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours",
+                "Bretts"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Funk Weapon #2",
+            "id": "f8fbdce3-0e5e-4dd7-a745-3547af623124",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bb0035c-funk-weapon-2-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces bruxellensis"
+            ],
+            "description": "This rare, and commercially unavailable yeast isolate is perfect for 100% Brettanomyces fermentations, especially Brett IPAs. Amplifies citrus and tropical fruit-forward hop flavors and aromas into a punchy ripeness. With extended time under CO2 pressure, pineapple and tropical fruit aromas will be more pronounced. Great for maintaining the nuance of hops in beer with better keeping qualities than a Brewer's Yeast fermentation.",
+            "tags": [
+                "Strong",
+                "Ripe",
+                "Fruit",
+                "Tropical"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 95.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Brett IPA"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "S. arlingtonesis",
+            "id": "d9fb02b7-7a74-4885-ba9d-38078a62daa0",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bb22204-s-arlingtonesis-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This culture ferments extremely clean in the 50'sF (lagers) & 60'sF (Kolsch and Lager hybrids), and has subtle fruity/citrus esters in the higher end of the Ale fermentation range (wheat-centric beers). May produce sulfur aromas during primary fermentation, but those will be eliminated within a couple weeks (allow longer aging if fermenting at lower temperatures). S. arlingtonesis is a higher attenuator than most ale strains, so adjustments made need to be made to grain bills or mash temperatures if a drier beer is not preferred.",
+            "tags": [
+                "Clean",
+                "malty",
+                "bready",
+                "light",
+                "citrus"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 88.0,
+                "max": 93.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 13,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Ales",
+                "Kolsch",
+                "Lager"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "AURORA",
+            "id": "fe3630e5-9f6c-4baa-9903-b45c38c4c55c",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbaur-aurora-bootleg-biology/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "The perfect yeast for homebrewers with no temperature control! Use AURORA for worry-free fermentations. Just pitch it and ditch it! AURORA creates pleasant orange and citrus esters that perfectly complement beers like IPAs made with fruit-forward hops. Easily produce rounded, complex beers at temperatures as high as 98F (37C) without being phenolic or having noticeable off flavors. At the high end of fermentation temperature, beers can finish attenuating in as little as three days!",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 76.0,
+                "max": 86.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 24,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "OSLO",
+            "id": "880bed02-e97b-4c62-9ca2-ad7978fb8275",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbosl-oslo-bootleg-biology/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "OSLO is a modern take on traditional Norwegian farmhouse brewing cultures. OSLO can comfortably produce beautifully clean, lager-like beers at temperatures as high as 98F (37C) without noticeable off flavors. At the high end of fermentation temperature, beers can finish attenuating in as little as three days! This culture's versatility and neutral flavor profile allows you to effortlessly produce most beer styles. Bootleg is the first yeast lab to release this unique Kveik-family culture sourced from a raw beer made by our good friends at Eik & Tid in Oslo, Norway.",
+            "tags": [
+                "Clean"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 76.0,
+                "max": 86.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 24,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Classic American",
+            "id": "ae5ae5f2-9799-4571-a8d0-87554660290b",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbusa1-class-c-american-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Professional brewers fondly refer to this culture as Chico. This is THE yeast for recreating authentic hop-forward beer styles like American Pale Ales, West Coast IPAs, East Coast IPAs, Brut IPAs, & Black IPAs. Reliably produces no-nonsense Blonde Ales, American Porters and Stouts. Ideal for fermenting quick sours due to its low pH tolerance. Classic American will delightfully emphasize malt character, the stickiness of hops and the refreshing qualities of bitterness. This culture will not make a pillowy beer.",
+            "tags": [
+                "Malt-forward",
+                "hop",
+                "stickiness",
+                "bitter",
+                "fruity",
+                "american",
+                "chico",
+                "clean",
+                "crisp",
+                "versatile",
+                "westcoast"
+            ],
+            "alcoholTolerance": 11.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 78.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "dfa2c227-fec5-412b-9cab-3ff82e55c7a9",
+                "1d5619a7-54dd-407b-b256-3ea95dda39c8",
+                "cc11e9bb-78e5-4e58-ab98-73adbe2e6a4e",
+                "210c7fff-4c34-4d9b-ab0d-ec678bdce3c8",
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+                "07d9fac4-07f0-47d3-8b28-cf4cd7d980ae",
+                "db214572-c307-4fe1-93c7-d0351f5f64c9",
+                "c639e670-832d-4f30-93bb-ab3e5b37dfcc",
+                "dd655187-307e-4b23-970c-8fafe6840094"
+            ],
+            "commonBeerStyles": [
+                "American Pale Ales",
+                "West Coast IPAs",
+                "East Coast IPAs",
+                "Brut IPAs",
+                "Black IPAs",
+                "Stouts"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Sour Weapon P",
+            "id": "f70ee3df-d9d8-4eda-811a-454c19603608",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbx0089-sour-weapon-p-bootleg-biology/",
+            "type": "Bacteria",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Pediococcus pentosaceus"
+            ],
+            "description": "We're excited to release our first 100% Lactic Acid Bacteria souring blend! We chose this specific blend because of its ability to sour quickly and cleanly at a range of temperatures, and due to its mild hop tolerance. While not \u201cyeast\u201d, this culture blend of two unique strains of Pediococcus pentosaceus is part of our LYP collection because it was sourced entirely from the wild: an anaerobic malt starter, and flowers from Murfreesboro, TN given to us by our good friend Art Whitaker. Perfect for quickly acidifying unhopped wort for kettle/\u201dquick\u201d sours or co-pitching with yeast.",
+            "tags": [
+                "Lactic",
+                "Acid",
+                "Sourness"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 29,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium",
+                "No available values for attenuation.",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "Saison Parfait",
+            "id": "96996253-60d6-4f3f-8d90-19082ab1bee4",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbx0104-saison-parfait-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Saison Parfait pairs classic pepper & spice saison phenolics with prominent juicy fruit esters that evoke citrus and lemon peel, and a touch of banana for complexity. Even more unique, it finishes with a balanced, full-bodied and silky mouthfeel despite its high attenuation. Saison Parfait means the \u201cPerfect Season\u201d, and is our ode to the fall harvest season. A time for hard work and also celebration. The peasants of rural Flanders and Wallonia created the Saison, and what we now call Farmhouse beers, to drink for sustenance and merriment. Bruegel likely depicted the drinking of Saison beer in his classic paintings of rural country life, \u201cThe Harvesters\u201d and \u201cPeasant Wedding\u201d.",
+            "tags": [
+                "Peppery",
+                "spice",
+                "juicy",
+                "citrus",
+                "hints",
+                "of",
+                "banana"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 90.0,
+                "max": 100.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 29
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Classic English",
+            "id": "2a8c2dbc-3f67-4787-9649-b8a1651d4fdc",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbxeng1-classic-english-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Classic English produces soft, juicy, and tropical fruit flavors when fermenting beers made with citrusy hops. This culture has become the de facto standard for making hazy New England-style IPAs in addition to the Classic New England culture. Ideal for fermenting Milkshake IPA, Brut IPA and other IPA sub-styles. Traditionally used for making ester-drive Porters, Stouts, Pale Ales, Bitters, and most English-style ales.",
+            "tags": [
+                "English",
+                "ester",
+                "driven",
+                "juicy",
+                "tropical"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 72.0,
+                "max": 76.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 22
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ales",
+                "Brut IPA",
+                "Bitters",
+                "Porters",
+                "Stouts"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "The Mad Fermentationist Saison Blend",
+            "id": "07eafb4d-0ea7-4c6e-aa69-bea3b750eaea",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbxmad1-the-mad-fermentationist-saison-blend-bootleg-biology/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Saccharomyces",
+                "Brettanomyces and Lactobacillus"
+            ],
+            "description": "Fine tuned over two years, this blend morphed over time to become an elegant powerhouse of classic Saison spice, stone-fruit Brett, lactic tartness and a dry but well-rounded body. The final master blend consists of Saison yeast, wild Saccharomyces, rare Brettanomyces and an opportunistic Lactobacillus culture. At temperatures as low as 68F (20C) The Mad Fermentationist Saison Blend exhibits a relatively clean primary fermentation profile and high attenuation. Traditional saison temperatures (around 80F/27C) bring out citrus and elevated phenols (pepper and clove). The Brett character shifts depending on wort composition, as maltier beers emphasize cherry and stone fruit qualities. This blend integrates beautifully with fruity and tropical hops, with the unique Brett culture keeping hop aromatics crisp and bright for an extended time. For best results use a highly fermentable wort, dry hopping during the tail of active fermentation, and carbonating naturally.",
+            "tags": [
+                "Citrus",
+                "Pepper",
+                "Clove",
+                "Cherry",
+                "Stone",
+                "Fruit"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 90.0,
+                "max": 100.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "NEEPAH Blend",
+            "id": "052e2aa9-05a8-489a-8d93-20646080cdc6",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbxnpa-neepah-blend-bootleg-biology/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "The NEEPAH IPA Blend is our secret weapon for delivering the juiciest, tropical fruit bomb you've ever made. Carefully cultivated from a special blend of fruit-forward yeast strains, the NEEPAH Blend is here to amplify the gorgeous rainbow of flavors in your New England-Style IPAs by providing an extra punch of danky goodness. Now you can spend less money on expensive hops and spend more time drinking the best made hazy pale in town. Looking for a versatile culture that'll deliver a new take on flavorful English Ales? The NEEPAH Blend creates decadent beers that out class those made with tired ESB strains. This blend works especially well for Brut IPAs, emphasizing the fruity hop character and reducing the perception of bitterness in dry beers.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 82.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 21
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "IPA",
+                "Hazy IPA",
+                "Pale Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Low"
+            ]
+        },
+        {
+            "name": "Sour Solera Blend",
+            "id": "7e9c79ea-0c91-4845-87c3-f92e71714d56",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbxss-sour-solera-blend-bootleg-biology/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Saccharomyces",
+                "Brettanomyces",
+                "Lactobacillus",
+                "Pediococcus"
+            ],
+            "description": "Sour Solera Blend contains a unique and complex collection of Saccharomyces, Brettanomyces, Lactobacillus, Pediococcus and other funky yeast and souring bacteria pulled from an active fermentation. This blend can sour in a matter of months at 70\u00baF or higher, or if you prefer a more prolonged fermentation, use large amounts of aged hops and/or ferment and hold at temperatures below 70\u00baF. This blend is available seasonally, and will always be changing and evolving due to the nature of solera fermentations. Warning: No two Sour Solera Blend releases will be the same, and neither will their fermentations.",
+            "tags": [
+                "sour"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 96.0,
+                "max": 100.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Sour Weapon L",
+            "id": "a75707bc-7e07-4dba-88ef-f7131cdfe67b",
+            "brand": "Bootleg Biology",
+            "link": "https://beermaverick.com/yeast/bbxswl-sour-weapon-l-bootleg-biology/",
+            "type": "Bacteria",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Lactobacillus plantarum"
+            ],
+            "description": "If you're looking to drop the pH of wort as quickly and low as possible, Sour Weapon L is your go to Lacto blend. At 98F, we've had trial batches drop the pH of wort to 3.0 after just 24 hours. When pitched at 84F, pH should reach 3.5 in 24 hours. This is the ideal bacteria blend to use for acidifying wort for quick/kettle sours, and is also very effective when co-pitched with a yeast strain. As with any Lactobacillus culture, we recommend only using in wort with zero IBUs as even small amounts of hops may prevent significant souring.",
+            "tags": [
+                "sour"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 29,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Low",
+                "No available values for attenuation.",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "SafAle BE-134",
+            "id": "8184a839-d507-42ed-a762-50f14b006dc5",
+            "brand": "Fermentis",
+            "link": "https://beermaverick.com/yeast/be-134-safale-be-134-fermentis/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "This typical brewer's yeast strain is recommended for well-attenuated beers, produces fruity, floral and phenolic notes and a dry character. Produces highly refreshing beers, it is ideal for Belgian-Saison style.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 89.0,
+                "max": 93.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 28
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : 9-11.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "SafAle BE-256",
+            "id": "281ce3f0-af35-4f0c-a0b7-bef3092ba082",
+            "brand": "Fermentis",
+            "link": "https://beermaverick.com/yeast/be-256-safale-be-256-fermentis/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Active dry brewer's yeast recommended to ferment a diversity of Belgian type beers such as abbey style known for its fruitiness and high alcohol content. It ferments very fast and reveals strong fermentation aromas. To maintain the aromatic profile at the end of the fermentation, we do recommend to crop this yeast as soon as possible after fermentation",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 82.0,
+                "max": 86.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 15,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Belgian Ales"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : 9-11.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "Belgian Sour Blend",
+            "id": "ca5c266f-8515-40d8-9d2d-9e321716b80f",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/belgian-sour-blend-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A blend of 5 Brettanomyces strains isolated from Belgian Lambic beers, alongside 4 strains of Lactobacillus and 2 strains of Pediococcus, for the production of mixed fermentation sour ales. For best results, we recommend using this blend in beer with less than 7 IBUs initially. Subsequent generations can use increasing IBUs. This is supplied at secondary fermentation pitch rates, and is intended to be used in secondary or as a copitch, alongside a primary fermentation strain of your choice.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 21,
+                "max": 32
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Low",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "CellarScience Berlin",
+            "id": "7daf12d8-50b8-4f80-afcd-783c2a377e2f",
+            "brand": "CellarScience",
+            "link": "https://beermaverick.com/yeast/berlin-lager-cellar-science-dry/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces pastorianus"
+            ],
+            "description": "Berlin is a popular yeast strain with a Berlin lineage that is famous for producing amazing lagers with soft malt character and balanced esters.",
+            "tags": [
+                "soft",
+                "malty",
+                "balanced"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 12,
+                "max": 17
+            },
+            "comparableYeasts": [
+                "74ab0334-5fee-498d-9dd3-ced8147d066b",
+                "ca3a7419-c154-4291-9ff4-e85e52ee6220",
+                "60a7ae37-fece-48eb-98d0-0f846823a61d"
+            ],
+            "commonBeerStyles": [
+                "lagers"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No available values for attenuation.",
+                "No data for Attenuation",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Berliner Brett I",
+            "id": "0523c279-0a24-4aaf-b2a6-32e867ca4e0a",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/berliner-brett-i-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Wilds & Sours"
+            ],
+            "description": "We pulled this Brett strain out of a ~40 year old bottle of Hochschule Berliner Weisse. It's a survivor! This strain of Brettanomyces anomalus works well in traditional style Berliners, and anywhere subtle, refined Brett character is desired. It shows restrained funk, and the fruit profile tends toward citrus and white wine. This strain is sold in secondary pitch rates only.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : High",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "Biergarten Lager",
+            "id": "db6d763e-c566-4dfc-9fe4-43c31ddd6324",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/biergarten-lager-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces pastorianus"
+            ],
+            "description": "A lager strain sourced from a venerable Munich brewery, this strain offers low diacetyl production and a crisp flavour profile highly suited for German Pils, Helles, Festbier or other Munich-style lagers.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 73.0,
+                "max": 73.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 9,
+                "max": 13
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Lagers"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Brett B",
+            "id": "f18e2383-ba7b-4c92-9e0d-6c171bf5d1f9",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/brett-b-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A classic Brettanomyces bruxellensis strain, isolated from a classic abbey beer, which is typically used in secondary fermentations where balanced Brett character (fruit, funk) is desired.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 78.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 27,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : Medium-High.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "Brett D",
+            "id": "4318eece-dec2-4f51-8dbd-954e3c78f74d",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/brett-d-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This strain of Brettanomyces bruxellensis is noted for very prominent pineapple esters alongside a good dose of funk. It is suitable for primary fermentation of 100% Brett beers or secondary fermentation where some extra fruit and funk is desired. Works great with hops when co-pitched with clean ale strains as well, for faster turnaround of Brett IPAs.",
+            "tags": [],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sour IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Brett Q",
+            "id": "073215d4-0187-4c64-864a-acb0aba23131",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/brett-q-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This unique Brettanomyces bruxellensis strain was originally isolated from a barrel-aged sour beer from Quebec. This strain typically completes primary fermentation within one month, and is also suitable for secondary aging of a wide range of beer styles where subtle Brett character is desired. Tasting notes include ripe strawberry, pear, apple, with underlying funk.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "Brussels Brett",
+            "id": "52d40014-36f9-4a7d-a511-58a5043bd733",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/brussels-brett-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This Brettanomyces bruxellensis strain displays a balanced selection of fruity characteristics, with testers noting plum, red berry, citrus, and red apple, alongside subtle acidity. It is suitable for primary or secondary fermentation, but does shine in secondary with extended aging, where it displays prominent funky flavours.",
+            "tags": [],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sours"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Cali Ale",
+            "id": "1969df6e-e638-4540-8fe7-911e7b5d8fbc",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/cali-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "An exceptionally versatile ale yeast, suitable for nearly any style. Clean fermentation at a wide temperature range, and accentuates hop character. Can be slow to flocculate.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 80.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 22
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "CellarScience Cali",
+            "id": "1fab223c-5199-4145-8dd8-ad31defe5b4e",
+            "brand": "CellarScience",
+            "link": "https://beermaverick.com/yeast/cali-cellar-science-dry/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces Cerevisiae"
+            ],
+            "description": "The classic American ale strain, probably Chico if we had to guess. Famous for its clean, neutral flavor and its ability to be used in any style. It emphasizes malt and hop flavors and attenuates well.",
+            "tags": [
+                "clean",
+                "neutral"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 15,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "1d5619a7-54dd-407b-b256-3ea95dda39c8",
+                "dfa2c227-fec5-412b-9cab-3ff82e55c7a9",
+                "cc11e9bb-78e5-4e58-ab98-73adbe2e6a4e"
+            ],
+            "commonBeerStyles": [
+                "Stouts",
+                "Ales",
+                "Porters"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "CellarScience English",
+            "id": "a36308f9-decf-42e8-b7f9-3a12e7503d5a",
+            "brand": "CellarScience",
+            "link": "https://beermaverick.com/yeast/cellar-science-english-ale-dry/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces Cerevisiae"
+            ],
+            "description": "A rapid fermenting English ale strain that is loved for its clean flavor, neutral aroma and dry finish. This yeast settles quickly and forms a compact sediment.",
+            "tags": [
+                "dry",
+                "clean",
+                "neutral"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 15,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "a29502a1-dd76-44a4-9672-3159aefabdcd",
+                "c2e1a2b7-cb96-4c1f-b20e-485283ff1e35",
+                "67ce86f2-7df0-4625-86f8-8dbf5b265268"
+            ],
+            "commonBeerStyles": [
+                "English Ales"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No available values for attenuation.",
+                "No data for Attenuation"
+            ]
+        },
+        {
+            "name": "Cerberus",
+            "id": "c42b5b6c-0c02-4475-b4d7-9acb57266ca5",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/cerberus-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This enigmatic strain has proven itself in many breweries who use it alone or paired with Vermont Ale to produce fruit-forward, hoppy beers. Produces and enhances tropical fruit flavours. If used alone, we recommend a highly fermentable wort. This strain is non-phenolic, but contains the STA1 gene potentially resulting in diastatic activity. However, we have not typically seen aggressive attenuation with this strain.",
+            "tags": [
+                "pineapple",
+                "coconut",
+                "lemongrass"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 70.0,
+                "max": 80.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 28
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ale"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Classic Witbier",
+            "id": "0191ebf4-1dea-4b50-bbed-b0acd4b9b0e4",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/classic-witbier-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A genre-defining Witbier strain, famous for balanced phenol and ester character with slight tartness that emphasizes wheat flavour.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 72.0,
+                "max": 78.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Witbier"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "Copenhagen Lager",
+            "id": "dc3c2d9f-5bc5-4ffb-a025-9cf9ffd4419b",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/copenhagen-lager-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces pastorianus"
+            ],
+            "description": "A workhorse lager strain, and a great choice for accentuating hops and/or more mineral-rich water profiles.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 71.0,
+                "max": 77.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 8,
+                "max": 13
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Lagers"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : Medium-High.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "Czech Lager",
+            "id": "4aed09d1-cdbb-420d-849a-7b9d9604a4b9",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/czech-lager-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces pastorianus"
+            ],
+            "description": "This traditional Czech Pilsner yeast rewards patience with a clean, crisp profile and accentuates subtleties in selected malt and hops. We recommend cold fermentation and sufficient lagering when using this strain to deliver an authentic flavour.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 74.0,
+                "max": 74.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 9,
+                "max": 13
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Czech Pilsners"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "SafBrew DA-16",
+            "id": "aa582f76-96c8-44a2-bcfd-e1311b7b50a3",
+            "brand": "Fermentis",
+            "link": "https://beermaverick.com/yeast/da-16-safbrew-da-16-fermentis/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "SafBrew DA-16 is a powerful solution (consisting of Active Dry Yeast and enzymes) for the production of very dry and flavorful beers, particularly fruity and hoppy ones such as Brut IPAs. SafBrew\u2122 DA-16 is also recommended for very high gravity wort, allowing a level of alcohol up to 16% ABV.",
+            "tags": [],
+            "alcoholTolerance": 16.0,
+            "attenuation": {
+                "min": 98.0,
+                "max": 102.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 32
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Brut IPA",
+                "IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Dry Belgian Ale",
+            "id": "e52fb7a8-db7e-40b7-a942-5f46f40afe2f",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/dry-belgian-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Obtained from an American producer of Belgian-style beers. This strain exhibits classic dry Belgian flavours, and displays an aggressive primary fermentation. We especially like this strain for Strong Golden, Tripel, and other Belgian-style beers. NOTE: This strain contains the STA1 gene, meaning it is a diastatic yeast. Many industrial yeasts are diastatic, due to the desire for very high attenuation levels. However extra care must be taken to ensure these yeasts do not cross-contaminate non-diastatic yeasts.",
+            "tags": [
+                "belgian",
+                "dry"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 85.0,
+                "max": 85.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 26
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Ales",
+                "Belgian Ales"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Ebbegarden Kveik Blend",
+            "id": "1fb2c861-256c-4358-b262-786d0d3bcf45",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/ebbegarden-kveik-blend-escarpment-labs/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This kveik yeast blend from Stordal was sourced from Jens Aage \u00d8vrebust. This blend displays prominent fruity esters, leaning toward tropical guava and mango, lending well to traditional as well as modern aromatic styles like NEIPA. Note that this blend accentuates hop bitterness slightly, so we recommend adjusting wort production to only use hops in the whirlpool and dry hop. Attenuation: 70-80% // Optimum Temp: 22-37\u00baC // Alcohol tolerance:",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 75.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 37
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [],
+            "parsingErrors": [
+                "Cannot convert value to float : High"
+            ]
+        },
+        {
+            "name": "BugFarm",
+            "id": "307708d8-c5c9-4541-a996-85f29d9c8b8d",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy01-bugfarm-east-coast-yeast/",
+            "type": "Hybrid",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "S. cerevisae",
+                "S. fermentati",
+                "Brettanomyces",
+                "Lactobacillus",
+                "Pediococcus"
+            ],
+            "description": "A large complex blend of cultures to emulate sour beers such as lambic style ales. Over time displays a citrus sourness and large barnyard profile. Contains yeast (S. cerevisiae and S. fermentati), several Brettanomyces strains, Lactobacillus and Pediococcus. The BugFarm blend changes every year and can be added at any stage of fermentation.",
+            "tags": [
+                "citrus",
+                "tart"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Unknown",
+            "optimalTemperature": null,
+            "comparableYeasts": [],
+            "commonBeerStyles": [],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Attenuation",
+                "No data for Optimal Temperature",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Flemish Ale",
+            "id": "682d2b34-2134-40cb-988f-8a9debd408ee",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy02-flemish-ale-east-coast-yeast/",
+            "type": "Hybrid",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "S. cerevisae",
+                "Brettanomyces",
+                "Lactobacillus",
+                "Pediococcus"
+            ],
+            "description": "A unique blend of yeast and bacterial cultures. Produces dry beers with sourness and notes of leather, fruit, and cherry stone.",
+            "tags": [
+                "leather",
+                "fruit",
+                "cherry",
+                "tart"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Unknown",
+            "optimalTemperature": null,
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sour Ales"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Attenuation",
+                "No data for Optimal Temperature",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "North East Ale",
+            "id": "a456fdc7-b20c-46ea-97bf-43976043d74c",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy029-north-east-ale-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Replication of the famous Conan strand of yeast. Unique strand with an abundance of citrus esters accentuating American Style hops in and IPA, Double IPA, or strong ale.",
+            "tags": [
+                "stonefruit",
+                "peach",
+                "apricot",
+                "citrus",
+                "pineapple",
+                "tropical",
+                "clean"
+            ],
+            "alcoholTolerance": 11.0,
+            "attenuation": {
+                "min": 80.0,
+                "max": 82.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 22
+            },
+            "comparableYeasts": [
+                "f0605f7e-31be-4680-b2ee-03711f2fbfd9",
+                "b440525b-2740-4282-bf56-fa0d274cb22e",
+                "d0821fa3-dc29-4586-b627-07e9d3c736b4",
+                "0fe41934-cdb2-4251-a880-279d4d3cc0eb",
+                "338d61b7-e7bb-4e79-b94f-830b4e595f80",
+                "a37cc1aa-e9e1-4a44-aeef-4a8ae25a49dc",
+                "16365fa4-0b71-4296-b3c8-d16578f8df26",
+                "2e49903f-07fe-40e7-86a0-ee84558119c0"
+            ],
+            "commonBeerStyles": [
+                "IPA",
+                "Double IPA",
+                "Strong Ale"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Farmhouse Brett",
+            "id": "afab84b4-07e5-4320-9cad-e39794634c6d",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy03-farmhouse-brett-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces boulardii"
+            ],
+            "description": "Saison brasserie blend (ECY08) with a pure Brettanomyces isolate from a small but fascinating producer of Saison. Produces a fruity and funky profile with some acidity gradually increasing over time.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 26,
+                "max": 28
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Berliner blend",
+            "id": "7c8a0bc0-b5b2-49f1-a0e4-8135a072e0f2",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy06-berliner-blend-east-coast-yeast/",
+            "type": "Hybrid",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Saccharomyces cerevisiae",
+                "Lactobacillus"
+            ],
+            "description": "Kolsch yeast and Lactobacillus blend.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "Unknown",
+            "optimalTemperature": null,
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Berliner Weiss"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Attenuation",
+                "No data for Optimal Temperature",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Scottish Heavy",
+            "id": "e25dbc58-f549-4726-a99c-113fcb9d8a95",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy07-scottish-heavy-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Leaves a fruity profile with woody, oak esters reminiscent of malt whiskey. Well suited for 90/shilling or heavier ales including old ales and barleywines due to level of attenuation (77-80%) - recommend a dextrinous wort. Suggested fermentation temp: 60-68\u00b0F.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 77.0,
+                "max": 80.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Scottish Ales",
+                "Stouts",
+                "Old Ales"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Saison Brasserie Blend",
+            "id": "b44e4c70-e787-4353-8ae9-8402f6d1d88a",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy08-saison-brasserie-blend-east-coast-yeast/",
+            "type": "Yeast Blend",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "A combination of several Saison yeasts for both fruity and spicy characteristics accompanied by dryness. Apparent Attenuation: up to 80%. Suggested fermentation temp: 75-85\u00b0 F.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 24,
+                "max": 29
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Old Newark Ale",
+            "id": "40a0e622-10c1-4efa-98a8-34f0a254fe77",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy10-old-newark-ale-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Sourced from a now defunct east coast brewery, this pure strain was identified as their ale pitching yeast. Good for all styles of American and English ales. Top fermenting, high flocculation with a solid sedimentation. Suggested fermentation temp: 60-68\u00b0F. Apparent Attenuation: 68-72% Resurrected from a freezed-dried deposit library, this pure strain of S. cerevisae is NOT the rumored Chico strain. Rumored to be Ballantine.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 76.0,
+                "max": 78.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "American Ales",
+                "English Ales"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "Kolschbier",
+            "id": "431be8b9-b178-47c0-917a-aa0c682aae86",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy21-kolschbier-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Produces a clean lager-like profile at ale temperatures. Smooth mineral and malt characters come through with a clean, lightly yeasty flavor and aroma in the finish",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 78.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 14,
+                "max": 19
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Kolsch"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Kellerbier",
+            "id": "85e22c9f-6f28-455b-b3f5-3ca6dc8f9414",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy28-kellerbier-east-coast-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "This yeast exhibits a clean, crisp lager in traditional northern German character. Use in German Pilsners including Kellerbier.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 74.0,
+                "max": 76.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 8,
+                "max": 12
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "German Pilsners"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Nordic Farmhouse",
+            "id": "1650f256-02fa-44ba-8875-b54868404348",
+            "brand": "East Coast Yeast",
+            "link": "https://beermaverick.com/yeast/ecy43-nordic-farmhouse-east-coast-yeast/",
+            "type": "Kveik Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "igmund strain of Kveik yeast (Saccharomyces cerevisiae). Traditionally used in the production of Norwegian Farmhouse Ale yielding spicy orange peel flavor, particularly if underpitched.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 78.0,
+                "max": 83.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 32,
+                "max": 41
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Kveik",
+                "American IPA",
+                "Hazy IPA",
+                "American Pale Ale",
+                "Black IPA",
+                "Red IPA",
+                "Red Ale",
+                "Robust Porter",
+                "American Stout",
+                "Winter Seasonal Beer",
+                "English IPA",
+                "Extra Special Bitter",
+                "Bitter",
+                "Stout",
+                "Tropical",
+                "Blonde Ale",
+                "American Strong Ale",
+                "Cream Ale",
+                "American Amber Lager",
+                "American Brown Ale",
+                "White IPA",
+                "Imperial IPA"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "English Ale I",
+            "id": "29a1a0dd-665b-4632-bd6a-9ed6713c8ae9",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/english-ale-i-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A classic English ale yeast, fermenting and flocculating quickly, leaving residual sugars and accentuating malt character. Suitable for production of most English ale styles.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 63.0,
+                "max": 71.0
+            },
+            "flocculation": "Very High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 21
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "English Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "English Ale II",
+            "id": "66bcfe2d-fb6a-4ba6-ba95-e22d50c4c199",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/english-ale-ii-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Higher attenuation than English Ale I, while still very flocculant. Suited for higher gravity English ales, and also great as a workhorse yeast strain for most English/American beer styles.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 72.0,
+                "max": 80.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 22
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "English Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "English Ale III",
+            "id": "10843bcc-3110-4f72-885a-0b80cf791468",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/english-ale-iIi-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Higher attenuation than English Ale I, while still very flocculant. Suited for higher gravity English ales, and also great as a workhorse yeast strain for most English/American beer styles.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 72.0,
+                "max": 80.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 22
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "English Ales"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "SafAle F-2",
+            "id": "32d17886-01c4-444b-a0af-2d0de0f2b2d6",
+            "brand": "Fermentis",
+            "link": "https://beermaverick.com/yeast/f-2-safale-f-2-fermentis/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "SafAle\u2122 F-2 brewing yeast has been selected specifically for secondary fermentation in bottle and in cask. This yeast assimilates very little amount of maltotriose but assimilates basic sugars (glucose, fructose, saccharose, maltose). It is characterized by a neutral aroma profile respecting the base beer character and settles very homogeneously at the end of fermentation.",
+            "tags": [],
+            "alcoholTolerance": 12.0,
+            "attenuation": null,
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 15,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Cask"
+            ],
+            "parsingErrors": [
+                "No data for Attenuation",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "Sour Batch Kidz",
+            "id": "d6757a0c-7bd5-45a6-8be2-f83263de9739",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/f08-sour-batch-kidz-imperial-yeast/",
+            "type": "Hybrid",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Brettanomyces",
+                "Lactobacillus",
+                "Saccharomyces cerevisiae var. diastaticus"
+            ],
+            "description": "An exclusive funky blend containing a low attenuating Belgian saison yeast, Lacto, and three Brett yeast strains. This blend is great for emulating lambics, Flanders reds, sour farmhouse ales and any other brew you would like to funk up. Keep your IBU's under 3 to allow the lacto to work. Considering the components of this blend, allow for a long conditioning period of at least 6 months to really let the brett strains to shine. This blend contains a strain that tests positive for the STA1 gene via PCR analysis and is therefore considered to be Saccharomyces cerevisiae var. diastaticus.",
+            "tags": [
+                "blend",
+                "brett",
+                "funky",
+                "lambic",
+                "tart",
+                "wild",
+                "lacto"
+            ],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 80.0,
+                "max": 95.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Flanders Red Ale",
+                "Lambic",
+                "Oud Bruin",
+                "Gueuze"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Foggy London Ale",
+            "id": "8a430278-d2b4-4f51-be3d-54290d7bef62",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/foggy-london-ale-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This yeast strain was originally isolated from a brewery in London. It displays a balanced fruity flavour profile, and accentuates malt and hop flavours. It is especially suited to production of fruity, hazy IPAs.",
+            "tags": [
+                "soft",
+                "creamy",
+                "hazy",
+                "juicy",
+                "orange",
+                "smooth",
+                "fluffy",
+                "malt",
+                "enhanced_malt",
+                "enhanced_hop",
+                "neutral"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 73.0,
+                "max": 83.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "7ffec167-6250-486c-8808-dc670df27ede",
+                "3b1840df-9bc4-4463-9713-032b6fbd7b4d",
+                "c92f73c2-ca40-4cfe-a4c6-ea7e06abedfa",
+                "acf2a067-6651-405d-a0ff-51c203d7a9c8",
+                "4bac3332-9d07-489d-ad71-9a3482084c35",
+                "e278cce3-b70b-4cb8-95bc-b7f083aa2832",
+                "b65c74af-689e-4318-a317-9ba1047323c9"
+            ],
+            "commonBeerStyles": [
+                "IPA",
+                "Pale Ales",
+                "Hazy IPAs"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : Medium-High.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "Fruit Bomb Saison",
+            "id": "bcbbc8d0-aa6b-4d1e-b6cf-4e7a50cb79cb",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/fruit-bomb-saison-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "This high-character blend contains a Saison strain with balanced ester and spice aromas, an enigmatic Brettanomyces anomala strain with tropical characteristics, and a complex and fruity Brettanomyces bruxellensis strain. Highly suited to aroma hop or fruit-forward farmhouse ales/saisons. NOTE: the Saison yeast in this blend contains the STA1 gene, meaning it is a diastatic yeast. Many Saison yeasts are diastatic, due to the desire for very high attenuation levels. However extra care must be taken to ensure these yeasts do not cross-contaminate non-diastatic yeasts.",
+            "tags": [],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 80.0,
+                "max": 80.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 22,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Fruity Witbier",
+            "id": "f2d8c0f3-063e-471b-bf62-ab42f439ec87",
+            "brand": "Escarpment Labs",
+            "link": "https://beermaverick.com/yeast/fruity-witbier-escarpment-labs/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A Witbier strain which produces lots of complex fruity esters while still prominently displaying classic Witbier character. Medium-low flocculation helps ensure classic Witbier haze.",
+            "tags": [],
+            "alcoholTolerance": 12.0,
+            "attenuation": {
+                "min": 71.0,
+                "max": 80.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 24
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Witbier"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Stefon",
+            "id": "cdbbdaea-3c18-4122-a15c-b2941369a416",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/g01-stefon-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Brewers love this traditional hefeweizen strain for any of their weizen beer needs! This is a traditional German hefeweizen strain used to produce world-class Weizen beers. Balanced with mild clove and prominent banana esters, this strain will produce amazing beers. Stefon produces a slightly higher level of acidity to give your beer a super crisp finish. Slightly underpitching will help increase the banana character.",
+            "tags": [
+                "hefeweizen",
+                "clove",
+                "banana",
+                "nutmeg",
+                "wheat",
+                "german",
+                "bavarian",
+                "hefe",
+                "weissen",
+                "weizen"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 77.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 17,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "GY107",
+                "18ea787a-655e-4713-878d-d087c97fea69",
+                "a376bd70-4ee7-4f2b-ab9f-934f7b1b248b",
+                "fd0a1c17-e44c-4de0-9491-a1856e155975",
+                "538769c4-cae2-4d0b-9a3d-c193f6fa7430",
+                "6c5579bb-8eea-4992-b81f-d778f47eefe0",
+                "942344e5-3c60-4c6d-8677-111755936a84",
+                "b51fdc05-73ef-4aa0-8927-98b9fa8e4f6b",
+                "e73112e8-4101-47db-9fb4-a88e0e5f0a77",
+                "ade238fd-6741-4ff7-8c52-dc703297b30d"
+            ],
+            "commonBeerStyles": [
+                "Hefeweize",
+                "Weissbier",
+                "Weizenbock",
+                "Roggenbier"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "Kaiser",
+            "id": "bbc4a449-708e-45ef-be53-98f52ed3566b",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/g02-kaiser-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Traditional Alt yeast strain however, this German ale strain can do just about anything. Kaiser is ready to produce an array of German-style beers. It will keep the beer clean and allow the delicate malt flavors and aromas to shine through. Characteristics of this strain make it a good choice for traditional Berliner Weisse fermentations. Kaiser is a low flocking strain, so expect long clarification times, but very low diacetyl levels.",
+            "tags": [
+                "alt",
+                "ale",
+                "clean",
+                "german",
+                "low-diacetyl",
+                "versatile"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 77.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 13,
+                "max": 18
+            },
+            "comparableYeasts": [
+                "74ff73d8-bebb-418d-9687-c825e9c52174",
+                "0fcf3a50-3635-4ef9-8768-a545307c23bb",
+                "05950398-38de-41d8-babb-6c5a4d385f16",
+                "82f7e6de-4e68-43a8-93c2-1b6a274800cc"
+            ],
+            "commonBeerStyles": [
+                "Altbier",
+                "Kolsch",
+                "Berliner Weisse",
+                "Gose",
+                "Bi\u00e8re de Garde",
+                "Blonde Ale",
+                "Pale Ale",
+                "American IPA"
+            ],
+            "parsingErrors": null
+        },
+        {
+            "name": "Dieter",
+            "id": "74ff73d8-bebb-418d-9687-c825e9c52174",
+            "brand": "Imperial Yeast",
+            "link": "https://beermaverick.com/yeast/g03-dieter-imperial-yeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Traditional Kolsch yeast strain, fairly flocculent and versatile. Dieter is a clean, crisp, traditional German Kolsch strain. A very low ester profile makes this strain perfect for Kolsch, Alt and other light colored delicate beers. Dieter has better flocculation characteristics than most Kolsch strains which allow brewers to produce clean, bright beers in a shorter amount of time.",
+            "tags": [
+                "alt",
+                "bright",
+                "clean",
+                "crisp",
+                "german",
+                "kolsch",
+                "low-ester",
+                "versatile"
+            ],
+            "alcoholTolerance": 10.0,
+            "attenuation": {
+                "min": 73.0,
+                "max": 77.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 16,
+                "max": 21
+            },
+            "comparableYeasts": [
+                "bbc4a449-708e-45ef-be53-98f52ed3566b",
+                "ca64fd71-5028-45bc-bc62-75dff6194385",
+                "0fcf3a50-3635-4ef9-8768-a545307c23bb",
+                "84c01b8f-d5ec-482f-8438-26055c1f13fa",
+                "7cf6caac-255a-4bf8-89d9-e8d9dc71ac4b"
+            ],
+            "commonBeerStyles": [
+                "Kolsch",
+                "Altbier",
+                "Gose",
+                "Bi\u00e8re de Garde",
+                "American IPA",
+                "Cream Ale",
+                "American Pale Ale",
+                "Berliner Weisse"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "BRUSSELS BRUXELLENSIS",
+            "id": "188be844-31f0-414f-a4d0-c8ddbcd9cbbf",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb001-brussels-bruxellensis-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces Bruxellensis"
+            ],
+            "description": "Produces classic Brett Barnyard characteristics plus some subtle fruity aroma and moderate acidity. Adds a tart complexity to any beer. Brettanomyces Bruxellensis This yeast is highly attenuative when left for long periods of time but tends to ferment slowly. Typically best used in combination with faster fermenting yeast in the primary or added to the secondary to add complexity while aging.",
+            "tags": [
+                "tart",
+                "fruity",
+                "aroma"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 58.0,
+                "max": 58.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Brett Beer",
+                "Sour Beer"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : 8-12.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "TART CHERRY BRETT",
+            "id": "e8d1e716-6a7e-4ce7-a266-83aee29288f2",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb002-tart-cherry-brett-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces Bruxellensis"
+            ],
+            "description": "Produces some Brett Barnyard funk plus stone fruit and cherry-like esters. This Strain also produces a moderate amount of acid that adds a tart complexity to the brew.",
+            "tags": [
+                "funk",
+                "stone",
+                "fruit",
+                "esters",
+                "cherry",
+                "esters"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 70.0,
+                "max": 85.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Lambic"
+            ],
+            "parsingErrors": [
+                "Caught wrong format for alcohol tolerance : 8-12.Trying to cope with it."
+            ]
+        },
+        {
+            "name": "GigaYeast Lacto",
+            "id": "c1d2578d-3dd0-4f56-ba6d-26f748c86b71",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb110-gigayeast-lacto-gigayeast/",
+            "type": "Bacteria",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Lactobacillus"
+            ],
+            "description": "A robust, fast souring lactic acid bacteria. Produces a clean tart flavor.",
+            "tags": [
+                "sour",
+                "tart"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 15.0,
+                "max": 40.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 37
+            },
+            "comparableYeasts": [
+                "06ddb1f4-049a-4456-9a41-6abc3012f2c1",
+                "96a6e5a7-6d7e-4869-ba77-f05e95f79591",
+                "912ceec4-94f1-4705-9d8f-3a54f1e22dca"
+            ],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Lambic",
+                "Berliner Weisse"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "FARMHOUSE SOUR",
+            "id": "544448d1-ac8c-4f2b-8fca-c21ff85bcd68",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb121-farmhouse-sour-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [
+                "Brettanomyces & Bacteria"
+            ],
+            "description": "A blend of Belgian ale yeast, Brett and lactic acid bacteria- sweet, sour and a little funky.",
+            "tags": [
+                "Pronounced",
+                "Sourness"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 89.0,
+                "max": 89.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Lambic"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "BERLINER BLEND",
+            "id": "f95ae76d-693c-49a0-9590-36a892ca2873",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb122-berliner-blend-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [],
+            "description": "A blend of neutral ale yeast and lactic acid bacteria. Use directly in a primary to make a crisp, sour beer!",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 89.0,
+                "max": 89.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 21,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sour Beer",
+                "Gose",
+                "Berliner Weisse"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "SOUR PLUM BELGIAN",
+            "id": "dbc290c7-be8b-407a-9147-d222c6cb6126",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb123-sour-plum-belgian-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [],
+            "description": "Belgian ale yeast and lactic acid bacteria. Cleaner than GB121. Creates a beer with stone fruit/plum esters and sour notes.",
+            "tags": [
+                "Sour",
+                "fruity",
+                "esters"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 77.0,
+                "max": 77.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Lambic"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "SAISON SOUR",
+            "id": "385b6813-3fa4-42f4-a639-861ee5f707ca",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb124-saison-sour-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [],
+            "description": "Sour with fruity esters and black pepper",
+            "tags": [
+                "Sour",
+                "fruity",
+                "esters",
+                "black",
+                "pepper"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 78.0,
+                "max": 78.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Sour Beer",
+                "Saison",
+                "Wild Specialty Beer",
+                "Flanders Red Ale",
+                "Oud Bruin",
+                "Lambic",
+                "Gueze",
+                "Fruit Lambic"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "SOUR CHERRY FUNK",
+            "id": "2034f61a-6990-4d6f-a09e-a16bb50cf125",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb150-sour-cherry-funk-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": true,
+            "species": [],
+            "description": "This blend creates an amazing complex, sour beer with fruity cherry esters.",
+            "tags": [
+                "tart",
+                "cherry",
+                "esters"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 51.0,
+                "max": 89.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Brett Beer"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "BRUX BLEND",
+            "id": "d509e883-d02c-4678-bb9d-2530155f001b",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gb156-brux-blend-gigayeast/",
+            "type": "Blend",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Brettanomyces"
+            ],
+            "description": "A blend of Brettanomyces yeast that produces stone fruit esters and a hint of barnyard. Creates a moderate amount of acid that adds a tart complexity to the brew.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 79.0,
+                "max": 79.0
+            },
+            "flocculation": "Unknown",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Sour Beer",
+                "Lambic"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No data for Flocculation"
+            ]
+        },
+        {
+            "name": "CellarScience German",
+            "id": "843fbd13-f356-4088-9a2e-3af88b9a8362",
+            "brand": "CellarScience",
+            "link": "https://beermaverick.com/yeast/german-lager-cellar-science-dry/",
+            "type": "Yeast",
+            "packaging": "Dry",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces pastorianus"
+            ],
+            "description": "The classic lager strain from Weihenstephan Germany that has been used for generations to produce clean, balanced lagers from pilsners to doppelbocks.",
+            "tags": [
+                "clean",
+                "balanced"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": null,
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 12,
+                "max": 17
+            },
+            "comparableYeasts": [
+                "8fa44fe6-92c5-46f3-b54c-52a252da0535",
+                "dbd82b1d-c7aa-44c6-b26c-14af65923eab",
+                "3c5772bd-84dc-495d-bc09-6ff87e0fb5c5"
+            ],
+            "commonBeerStyles": [
+                "Bocks",
+                "German Ales",
+                "Pilsners"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "No available values for attenuation.",
+                "No data for Attenuation",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "British Haze",
+            "id": "e278cce3-b70b-4cb8-95bc-b7f083aa2832",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gigayeast-british-haze-gy128/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "This strain is one of the most widely used yeast strains for New England IPA\u2019s. A slightly sweet finish and light, fruity flavor provides the perfect canvas for hazy beers as well as traditional, malt-forward ales. Beers fermented with this strain will finish with a pronounced body and a soft mouthfeel.",
+            "tags": [
+                "hazy",
+                "sweet",
+                "fruity"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 71.0,
+                "max": 75.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "3b1840df-9bc4-4463-9713-032b6fbd7b4d",
+                "c92f73c2-ca40-4cfe-a4c6-ea7e06abedfa",
+                "acf2a067-6651-405d-a0ff-51c203d7a9c8",
+                "4bac3332-9d07-489d-ad71-9a3482084c35",
+                "7ffec167-6250-486c-8808-dc670df27ede"
+            ],
+            "commonBeerStyles": [
+                "New England IPA",
+                "American IPA",
+                "English IPA",
+                "Bitter",
+                "Brown Ale"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "NorCal Ale #1",
+            "id": "dd655187-307e-4b23-970c-8fafe6840094",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy001-norcal-ale-1-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "Clean fermenting, versatile strain from one of the most famous California pale ales. Excellent for emphasizing hop flavor and aroma. Strong attenuation and good flocculation.",
+            "tags": [
+                "american",
+                "chico",
+                "clean",
+                "crisp",
+                "versatile",
+                "westcoast",
+                "neutral",
+                "malt_forward",
+                "enhanced_hops"
+            ],
+            "alcoholTolerance": 11.0,
+            "attenuation": {
+                "min": 76.0,
+                "max": 80.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 25
+            },
+            "comparableYeasts": [
+                "dfa2c227-fec5-412b-9cab-3ff82e55c7a9",
+                "1d5619a7-54dd-407b-b256-3ea95dda39c8",
+                "cc11e9bb-78e5-4e58-ab98-73adbe2e6a4e",
+                "210c7fff-4c34-4d9b-ab0d-ec678bdce3c8",
+                "68e90c6c-549f-4ce3-b75d-46f9f76bcd16",
+                "07d9fac4-07f0-47d3-8b28-cf4cd7d980ae",
+                "db214572-c307-4fe1-93c7-d0351f5f64c9",
+                "c639e670-832d-4f30-93bb-ab3e5b37dfcc",
+                "ae5ae5f2-9799-4571-a8d0-87554660290b"
+            ],
+            "commonBeerStyles": [
+                "Barley Wine",
+                "Pale Ale",
+                "Bitter",
+                "Scotch Ale",
+                "India Pale Ale",
+                "Stout"
+            ],
+            "parsingErrors": [
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "CZECH PILSNER",
+            "id": "fcea4e6c-266d-4cd2-847f-f20be22b5e6a",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy002-czech-pilsner-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Bottom fermenting yeast from a world famous pilsner. Finishes dry and leaves a hint of malt flavor.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 79.0
+            },
+            "flocculation": "Medium-High",
+            "optimalTemperature": {
+                "min": 9,
+                "max": 13
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Pilsners",
+                "Lagers"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "A TOUCH OF SPICE BELGIAN ALE",
+            "id": "92bc0757-075d-4b03-bff6-2f8a7ccb9db7",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy003-a-touch-of-spice-belgian-ale-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Abbey style yeast from the Belgian Ardennes. Spicy clove like notes and a hint of fruity esters. Medium flocculation means a clearer beer than most Belgian yeast.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 81.0,
+                "max": 84.0
+            },
+            "flocculation": "Low-Medium",
+            "optimalTemperature": {
+                "min": 20,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Belgian Ale",
+                "Dubbel",
+                "Belgian Strong",
+                "Tripel",
+                "Biere De Garde"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "GOLDEN GATE LAGER",
+            "id": "28085ed6-4520-467d-ac91-6a1a80655b72",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy005-golden-gate-lager-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Versatile Lager yeast used to create the California Common style. Ferments warm and still retains a lager character.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 79.0,
+                "max": 83.0
+            },
+            "flocculation": "Medium",
+            "optimalTemperature": {
+                "min": 13,
+                "max": 21
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "California Common",
+                "Cream Ale",
+                "Stout"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "BELGIAN MIX",
+            "id": "5752d654-ed43-46b1-b359-2824ccfccf9b",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy007-belgian-mix-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "A blend of Belgian Ale yeast combine to create robust attenuation and a complex flavor profile.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 79.0,
+                "max": 81.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Belgian Ale",
+                "Dubbel",
+                "Belgian Strong",
+                "Tripel",
+                "Biere De Garde",
+                "Saison"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "BRITISH ALE #1",
+            "id": "c2c2d149-7b16-4f25-b69a-e2fab14da541",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy011-british-ale-1-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Versatile house strain from a traditional UK Brewery. Strong attenuation, low esters and excellent flocculation for clear beer.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 75.0,
+                "max": 79.0
+            },
+            "flocculation": "High",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 25
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "British Ales",
+                "Pale/Amber Ale",
+                "Barley Wine",
+                "Scotch Ale",
+                "Bitter",
+                "Stout",
+                "India Pale Ale"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "BELGIAN ABBEY ALE",
+            "id": "9ef826f0-636b-4d86-ae3a-f3582d50bd26",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy014-belgian-abbey-ale-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Classic Belgian Ale yeast. Strong attenuation with a fruity nose and virtually no phenolics. The warmer it gets the fruitier it grows.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 79.0,
+                "max": 81.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 27
+            },
+            "comparableYeasts": [
+                "B63",
+                "ba71e1fb-3f8d-41a7-a25e-ba1ca459c422",
+                "bf1672c8-f0ee-4196-907b-51ba19e413d5"
+            ],
+            "commonBeerStyles": [
+                "Belgian Ale",
+                "Dubbel",
+                "Belgian Strong",
+                "Tripel",
+                "Biere De Garde",
+                "Saison"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance.",
+                "Caught broken link in comparable yeasts !"
+            ]
+        },
+        {
+            "name": "BELGIAN TRIPEL",
+            "id": "72f96911-9b29-4256-943f-dd49245942b6",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy015-belgian-tripel-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Belgian Ale yeast from the mother of all Tripels. Warm notes with just a hint of spice. Excellent for emphasizing the malty sweet quality prized in certain Belgians.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 74.0,
+                "max": 76.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 19,
+                "max": 23
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Belgian Ale",
+                "Dubbel",
+                "Belgian Strong",
+                "Tripel",
+                "Biere De Garde",
+                "Saison"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "ALTSTADT ALE",
+            "id": "0d1cc75a-319b-454a-a0a4-b0cb5c20333f",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy016-altstadt-ale-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "An ale yeast that ferments at cold temperatures and produces a lager like ale style. Used in traditional Alt and Kolsch styles. Leaves a nice, residual maltiness.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 77.0,
+                "max": 81.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 13,
+                "max": 20
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Kolsch",
+                "California Common",
+                "Altbier",
+                "Biere De Garde",
+                "Cream Ale"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "Bavarian Hefe",
+            "id": "bbd427d4-695f-4793-8aee-739dccdd5fd3",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy017-bavarian-hefe-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "A Hefeweizen yeast from one of Bavaria's oldest breweries. Produces the traditional clove and banana flavors associated with the style\u2014 especially when fermented warm.",
+            "tags": [
+                "hefeweizen",
+                "clove",
+                "banana",
+                "nutmeg",
+                "wheat",
+                "german",
+                "bavarian",
+                "hefe",
+                "weissen",
+                "weizen"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 77.0,
+                "max": 81.0
+            },
+            "flocculation": "Very Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 27
+            },
+            "comparableYeasts": [
+                "18ea787a-655e-4713-878d-d087c97fea69",
+                "a376bd70-4ee7-4f2b-ab9f-934f7b1b248b",
+                "fd0a1c17-e44c-4de0-9491-a1856e155975",
+                "538769c4-cae2-4d0b-9a3d-c193f6fa7430",
+                "6c5579bb-8eea-4992-b81f-d778f47eefe0",
+                "942344e5-3c60-4c6d-8677-111755936a84",
+                "cdbbdaea-3c18-4122-a15c-b2941369a416",
+                "b51fdc05-73ef-4aa0-8927-98b9fa8e4f6b",
+                "e73112e8-4101-47db-9fb4-a88e0e5f0a77",
+                "ade238fd-6741-4ff7-8c52-dc703297b30d"
+            ],
+            "commonBeerStyles": [
+                "Dunkelweizen",
+                "Gose",
+                "Hefeweizen",
+                "Weizenbock"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        },
+        {
+            "name": "SAISON #1",
+            "id": "a8ad2724-1809-45c6-b538-1fd798426b63",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy018-saison-1-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [],
+            "description": "Traditional Saison yeast from a French craft brewery. Strong attenuator that produces a dry beer with a beautiful fragrance and the traditional Saison taste of fruit and pepper.",
+            "tags": [],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 81.0,
+                "max": 83.0
+            },
+            "flocculation": "Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 27
+            },
+            "comparableYeasts": [],
+            "commonBeerStyles": [
+                "Saison",
+                "Farmhouse Ale",
+                "Belgian Ale",
+                "Biere De Garde"
+            ],
+            "parsingErrors": [
+                "No available values for alcohol tolerance."
+            ]
+        },
+        {
+            "name": "PORTLAND HEFE",
+            "id": "b07deeb2-7f2b-4532-a6e7-5b65c3c051f6",
+            "brand": "GigaYeast",
+            "link": "https://beermaverick.com/yeast/gy020-portland-hefe-gigayeast/",
+            "type": "Yeast",
+            "packaging": "Liquid",
+            "hasBacterias": false,
+            "species": [
+                "Saccharomyces cerevisiae"
+            ],
+            "description": "From the famous American Hefeweizen. Creates a delicious wheat beer with modest amounts of Banana and clove flavor",
+            "tags": [
+                "clean",
+                "cloudy",
+                "american",
+                "hefe"
+            ],
+            "alcoholTolerance": null,
+            "attenuation": {
+                "min": 76.0,
+                "max": 80.0
+            },
+            "flocculation": "Very Low",
+            "optimalTemperature": {
+                "min": 18,
+                "max": 23
+            },
+            "comparableYeasts": [
+                "9b4beac2-7372-478c-858d-0bf1d9011be1",
+                "fa73ff2f-3b7c-4b7b-a824-3217b1538e54",
+                "99541535-9c07-4a88-a70f-a0c950a45243"
+            ],
+            "commonBeerStyles": [
+                "American Wheat Beer",
+                "Weizenbock",
+                "Dunkelweizen",
+                "Hefeweizen"
+            ],
+            "parsingErrors": [
+                "Cannot convert value to float : Medium"
+            ]
+        }
+    ]
+}

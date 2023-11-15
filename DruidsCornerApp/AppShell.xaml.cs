@@ -19,7 +19,7 @@ public partial class AppShell : Shell
 		_storageService = storageService;
 		
 		
-		Routing.RegisterRoute("References/HopPage", typeof(HopPage));
+		Routing.RegisterRoute("References/HopPage", typeof(HopDetailsPage));
 	}
 
 	protected override async void OnAppearing()

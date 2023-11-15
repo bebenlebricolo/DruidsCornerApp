@@ -1,7 +1,5 @@
-using DruidsCornerApp.Controls.MainContext;
-using DruidsCornerApp.Models.MainContext;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.ViewModels.MainContext;
-using Microsoft.Extensions.Primitives;
 
 namespace DruidsCornerApp.Views.MainContext;
 
@@ -13,10 +11,20 @@ public partial class HopReferenceView : ContentView
     private readonly ImageSource _heartSource = ImageSource.FromFile("heart.svg");
     private readonly ImageSource _heartFullSource = ImageSource.FromFile("heart_full.svg");
 
-    
     public HopReferenceView()
     {
         InitializeComponent();
+        HopCardsCollectionView.Scrolled += CollectionViewScrolled;
+    }
+
+    private void CollectionViewScrolled(object? sender, EventArgs args)
+    {
+        // Its a bit weird to forward control to the view model that way, I hope it does not break the whole thing appart (...)
+        // Seems very fragile though !        
+        ItemsViewScrolledEventArgs castArgs = (ItemsViewScrolledEventArgs) args;
+        var topScrollViewScrolled = TopScrollView.ScrollY > 0;
+        var collectionViewScrolled = castArgs.FirstVisibleItemIndex != 0;
+        (BindingContext as ReferencesPageViewModel)!.HopReferenceViewModel.GoUpPageButtonVisible = topScrollViewScrolled || collectionViewScrolled; 
     }
     
     private async void GoUpButtonClicked(object? sender, EventArgs e)
@@ -27,11 +35,6 @@ public partial class HopReferenceView : ContentView
         await task;
     }
 
-    private void TopScrollView_OnScrolled(object? sender, ScrolledEventArgs e)
-    {
-        // Only trigger button visibility if we are scrolling the document
-        GoUpPageButton.IsVisible = TopScrollView.ScrollY != 0;
-    }
 
     private void HopNameTextEntry_OnTextChanged(object? sender, TextChangedEventArgs e)
     {

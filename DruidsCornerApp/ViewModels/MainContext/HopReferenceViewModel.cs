@@ -28,6 +28,16 @@ public partial class HopReferenceViewModel : BaseViewModel
     [ObservableProperty]
     private int _remainingItemsThresholdReached = 4;
 
+    [ObservableProperty]
+    private bool _goUpPageButtonVisible = false;
+    
+    /// <summary>
+    /// Amount of new items to be loaded whenever the end of the
+    /// collection is reached. A higher number will expand the collection view more than the other one.
+    /// </summary>
+    [ObservableProperty]
+    private int _loadItemCount = 15;
+    
     /// <summary>
     /// Base reference page (where the whole view is tabbed between hops, yeasts, malts and styles pages)
     /// </summary>
@@ -108,7 +118,7 @@ public partial class HopReferenceViewModel : BaseViewModel
     [RelayCommand]
     public async Task HopCardClicked(CompactHopModel hopModel)
     {
-        await Shell.Current.GoToAsync($"HopPage?id={hopModel.Id}");
+        await Shell.Current.GoToAsync($"HopPage?id={hopModel.Id}", true);
     }
 
     [RelayCommand]
@@ -123,23 +133,23 @@ public partial class HopReferenceViewModel : BaseViewModel
     /// Triggered by the view whenever reaching the bottom of the loading area
     /// It essentially sends the currentCompact Hop where the collection was loaded.
     /// </summary>
-    /// <param name="compactHop"></param>
     [RelayCommand]
     public Task LoadMoreHops()
     {
-        var hops = _hopProvider.GetAllHops();
+        var totalHops = _hopProvider.GetAllHops();
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
-        if (currentIndex != hops.Count - 1)
+        if (currentIndex != totalHops.Count - 1 )
         {
-            for (int i = currentIndex; i < (currentIndex + RemainingItemsThresholdReached); i++)
+            for (int i = currentIndex; i < (currentIndex + LoadItemCount) && (i < totalHops.Count - 1); i++)
             {
-                Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
+                Hops.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
             }
             
             // Here this command is called repeatedly.
             // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
             // So the first event is never completely resolved (?)
         }
+
         return Task.CompletedTask;
     }
 }

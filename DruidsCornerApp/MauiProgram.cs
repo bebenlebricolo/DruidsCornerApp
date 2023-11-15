@@ -50,7 +50,7 @@ public static class MauiProgram
         builder.Services.AddTransient<RecipeExplorerPage>();
         builder.Services.AddTransient<HopReferenceView>();
         builder.Services.AddTransient<ReferencesPage>();
-        builder.Services.AddTransient<HopPage>();
+        builder.Services.AddTransient<HopDetailsPage>();
 
         // Registering view models here (for dependency injection)
         builder.Services.AddTransient<DefaultPageViewModel>();

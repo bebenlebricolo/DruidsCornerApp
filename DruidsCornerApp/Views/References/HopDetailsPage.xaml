@@ -6,7 +6,7 @@
              xmlns:model="clr-namespace:DruidsCornerApp.Models.References"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.References"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             x:Class="DruidsCornerApp.Views.References.HopPage"
+             x:Class="DruidsCornerApp.Views.References.HopDetailsPage"
              x:DataType="viewmodel:HopPageViewModel"
              Title="{Binding HopModel.Name}"
              Shell.NavBarIsVisible="False">
@@ -107,7 +107,8 @@
                     <!-- Hop attributes -->
                     <Grid Grid.Row="0"
                           RowDefinitions="auto, auto, auto, auto"
-                          ColumnDefinitions="*,*">
+                          ColumnDefinitions="*,*"
+                          Padding="0,5,0,0">
                         <Label Grid.Row="0"
                                Grid.ColumnSpan="2"
                                Text="Basics"

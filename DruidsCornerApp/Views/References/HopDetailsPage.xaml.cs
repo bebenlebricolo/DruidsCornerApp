@@ -5,12 +5,12 @@ using DruidsCornerApp.ViewModels.References;
 
 namespace DruidsCornerApp.Views.References;
 
-public partial class HopPage : ContentPage, IQueryAttributable
+public partial class HopDetailsPage : ContentPage, IQueryAttributable
 {
     private readonly HopPageViewModel _viewModel;
     private readonly HopProvider _hopProvider;
     
-    public HopPage(HopPageViewModel viewModel,
+    public HopDetailsPage(HopPageViewModel viewModel,
                    HopProvider hopProvider)
     {
         InitializeComponent();

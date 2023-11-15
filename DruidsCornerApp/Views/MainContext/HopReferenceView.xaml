@@ -10,11 +10,9 @@
 
     <Grid RowDefinitions="*">
         <ScrollView Grid.Row="0"
-                    x:Name="TopScrollView"
-                    Scrolled="TopScrollView_OnScrolled">
+                    x:Name="TopScrollView">
             <!-- Top grid -->
             <Grid RowDefinitions="auto,*,auto">
-
                 <!-- Search and filter parameters -->
                 <Grid RowDefinitions="*,auto,*"
                       Padding="0,2"
@@ -65,12 +63,14 @@
                     <RefreshView Grid.Row="1"
                                  x:DataType="viewmodel:ReferencesPageViewModel"
                                  IsRefreshing="{Binding HopReferenceViewModel.IsLoading}">
-                        <CollectionView 
-                                        x:Name="HopNamesCollectionView"
-                                        ItemsSource="{Binding HopReferenceViewModel.Hops , Mode=Default}"
-                                        SelectionMode="None"
-                                        RemainingItemsThreshold="4"
-                                        RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsCommand}">
+                        <CollectionView
+                            x:Name="HopNamesCollectionView"
+                            ItemsSource="{Binding HopReferenceViewModel.Hops , Mode=Default}"
+                            SelectionMode="None"
+                            RemainingItemsThreshold="4"
+                            RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsCommand}"
+                            HeightRequest="800"
+                            ItemsUpdatingScrollMode="KeepLastItemInView">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Horizontal"
                                                    ItemSpacing="5" />
@@ -168,7 +168,6 @@
 
                 </Button>
             </Grid>
-
         </ScrollView>
 
         <!-- Go up button - lets the user go to the top of the scrolling list -->
@@ -176,8 +175,8 @@
                Grid.Row="0"
                Padding="10"
                Margin="15"
-
-               IsVisible="False"
+               x:DataType="viewmodel:ReferencesPageViewModel"
+               IsVisible="{Binding .HopReferenceViewModel.GoUpPageButtonVisible }"
                CornerRadius="30"
                BackgroundColor="#222222"
                BorderColor="Transparent"
@@ -197,5 +196,6 @@
                 </Image.Behaviors>
             </Image>
         </Frame>
+
     </Grid>
 </ContentView>

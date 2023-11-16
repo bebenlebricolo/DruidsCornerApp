@@ -5,6 +5,7 @@ using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApp.Models.MainContext;
 using DruidsCornerApp.Models.References;
 using DruidsCornerApp.Services.ResourceProviders;
+using DruidsCornerApp.Utils;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.HotReload;
 
@@ -17,10 +18,10 @@ public partial class HopReferenceViewModel : BaseViewModel
     private int _initialItemCount = 6;
     
     [ObservableProperty]
-    private ObservableCollection<CompactHopModel> _hops = new();
+    private BatchObservableCollection<CompactHopModel> _hops = new();
 
     [ObservableProperty]
-    private ObservableCollection<string> _hopsNames = new();
+    private BatchObservableCollection<string> _hopsNames = new();
     
     [ObservableProperty]
     private HopReferenceFilters _hopFilters = new HopReferenceFilters();
@@ -59,11 +60,14 @@ public partial class HopReferenceViewModel : BaseViewModel
         Hops.Clear();
         var hops = _hopProvider.GetAllHops();
 
+        var defaultList = new List<CompactHopModel>();
         // Only load a few items to speed up load time
         for(int i = 0 ; i < _initialItemCount ; i++)
         {
-            Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
+            defaultList.Add(CompactHopModelHelper.FromFullModel(hops[i]));
         }
+
+        Hops.InsertRange(defaultList);
     }
 
     [RelayCommand]
@@ -140,14 +144,16 @@ public partial class HopReferenceViewModel : BaseViewModel
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
         if (currentIndex != totalHops.Count - 1 )
         {
+            var newHopList = new List<CompactHopModel>();
             for (int i = currentIndex; i < (currentIndex + LoadItemCount) && (i < totalHops.Count - 1); i++)
             {
-                Hops.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
+                newHopList.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
             }
-            
+
             // Here this command is called repeatedly.
             // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
             // So the first event is never completely resolved (?)
+            Hops.InsertRange(newHopList);
         }
 
         return Task.CompletedTask;

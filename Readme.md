@@ -32,8 +32,16 @@ Development on .net maui is a bit crooked, especially on Linux, so there is a li
 
 ## Arch Configuration :
 ```bash
-sudo pacman -S dotnet-runtime dotnet-sdk aspnet-runtime
+# Open JDK 11 is required by MAUI SDK
 sudo pacman -S jdk11-openjdk
+
+# Used to work for dotnet 7.0 :
+sudo pacman -S dotnet-runtime dotnet-sdk aspnet-runtime
+
+# For dotnet 8.0 :
+yay -S dotnet-sdk-bin
+
+# Then, install the maui-android workload
 sudo dotnet workload install maui-android
 ```
 
@@ -58,9 +66,17 @@ Android SDK recommended optional components:
 - Install Android SDK Build Tools 32.0.0
 - Install Android SDK CommandLine Tools 7.0 (not latest)
 
+# Rider configuration
 > Note I had issues with the autocompletion (which never worked on dotnet MAUI projects so far for me on Linux), so I gave a try to Rider from JetBrains and it does the job quite nicely.
 > Just remember to correctly set the Android SDK paths and openjdk11 paths in Rider's settings :
 `Rider > File > Settings ... > Build, Execution, Deployment > Android`
+There is also a required Xamarin plugin required by Rider when working on this app.
+Usually it asks for it itself :smile:.
+
+## Rider quirks
+Sometimes, Rider will show errors in files whereas everything builds just fine.
+This can be solved by invalidate caches (File > Invalidate caches > check all checkboxes and restart )
+-> Also, don't forget to select the right targeted framework when developing (Net X.Y Android).
 
 # Authentication configuration setup
 This application needs to connect to Firebase in order to perform user authentication / authorization.
@@ -88,7 +104,7 @@ SHA-1 footprints can be retrieved from a key like so :
 ```bash
 keytool -list -v -alias <key alias> -keystore <keyfile location>
 ```
-*Note : I experienced issues with the **default jvm runtime** (hence keytool) on my machine as it **gave a 32-wide SHA-1 fingerprint**, because the default jvm 
+*Note : I experienced issues with the **default jvm runtime** (hence keytool) on my machine as it **gave a 32-wide SHA-1 fingerprint**, because the default jvm
 happened to not be the one I needed.
 So ensure the keytool used comes from the **open-jdk 11** !*
 

@@ -19,20 +19,17 @@ public partial class HopReferenceView : ContentView
 
     private void CollectionViewScrolled(object? sender, EventArgs args)
     {
-        // Its a bit weird to forward control to the view model that way, I hope it does not break the whole thing appart (...)
+        // Its a bit weird to forward control to the view model that way, I hope it does not break the whole thing apart (...)
         // Seems very fragile though !        
         ItemsViewScrolledEventArgs castArgs = (ItemsViewScrolledEventArgs) args;
-        var topScrollViewScrolled = TopScrollView.ScrollY > 0;
         var collectionViewScrolled = castArgs.FirstVisibleItemIndex != 0;
-        (BindingContext as ReferencesPageViewModel)!.HopReferenceViewModel.GoUpPageButtonVisible = topScrollViewScrolled || collectionViewScrolled; 
+        (BindingContext as ReferencesPageViewModel)!.HopReferenceViewModel.GoUpPageButtonVisible =  collectionViewScrolled; 
     }
     
-    private async void GoUpButtonClicked(object? sender, EventArgs e)
+    private void GoUpButtonClicked(object? sender, EventArgs e)
     {
         // Go to origin of view
-        var task = TopScrollView.ScrollToAsync(0, 0, true);
         HopCardsCollectionView.ScrollTo(0);
-        await task;
     }
 
 

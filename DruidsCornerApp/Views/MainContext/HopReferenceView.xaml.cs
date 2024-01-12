@@ -1,4 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using DruidsCornerApp.Models.MainContext;
+using DruidsCornerApp.Services;
 using DruidsCornerApp.ViewModels.MainContext;
 
 namespace DruidsCornerApp.Views.MainContext;
@@ -44,5 +46,11 @@ public partial class HopReferenceView : ContentView
         {
             HopNameEntryPlusButton.IsVisible = false;
         }
+    }
+
+    private void HopCardsCollectionView_OnRemainingItemsThresholdReached(object? sender, EventArgs e)
+    {
+        var model = BindingContext as ReferencesPageViewModel;
+        App.Current.Dispatcher.DispatchAsync(async () => model.HopReferenceViewModel.LoadMoreHopsAsync());
     }
 }

@@ -139,7 +139,7 @@ public partial class HopReferenceViewModel : BaseViewModel
     /// It essentially sends the currentCompact Hop where the collection was loaded.
     /// </summary>
     [RelayCommand]
-    public async Task LoadMoreHops()
+    public async Task LoadMoreHopsAsync()
     {
         var totalHops = _hopProvider.GetAllHops();
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
@@ -151,13 +151,10 @@ public partial class HopReferenceViewModel : BaseViewModel
                 newHopList.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
             }
 
-            await App.Current.Dispatcher.DispatchAsync(() =>
-            {
-                // Here this command is called repeatedly.
-                // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
-                // So the first event is never completely resolved (?)
-                Hops.InsertRange(newHopList);
-            });    
+            // Here this command is called repeatedly.
+            // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
+            // So the first event is never completely resolved (?)
+            Hops.InsertRange(newHopList);
         }
         await Task.CompletedTask;
     }

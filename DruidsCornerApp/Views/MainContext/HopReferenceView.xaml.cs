@@ -1,3 +1,4 @@
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DruidsCornerApp.Models.MainContext;
 using DruidsCornerApp.Services;
@@ -51,6 +52,7 @@ public partial class HopReferenceView : ContentView
     private void HopCardsCollectionView_OnRemainingItemsThresholdReached(object? sender, EventArgs e)
     {
         var model = BindingContext as ReferencesPageViewModel;
-        App.Current.Dispatcher.DispatchAsync(async () => model.HopReferenceViewModel.LoadMoreHopsAsync());
+        //App.Current.Dispatcher.DispatchAsync(async () => model!.HopReferenceViewModel.LoadMoreHopsAsync());
+        Task.Run(async () => await model!.HopReferenceViewModel.LoadMoreHopsAsync());
     }
 }

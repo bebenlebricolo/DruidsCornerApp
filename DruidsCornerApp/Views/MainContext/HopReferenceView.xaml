@@ -19,14 +19,13 @@
                         RemainingItemsThreshold="{Binding HopReferenceViewModel.RemainingItemsThresholdReached}"
                         RemainingItemsThresholdReached="HopCardsCollectionView_OnRemainingItemsThresholdReached"
                         >
-                        <!-- RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsAsyncCommand}" -->
 
             <CollectionView.Header>
                 <!-- Search and filter parameters -->
                 <Grid RowDefinitions="*,auto,*"
                       Padding="0,2"
-                      ColumnSpacing="2"
-                      RowSpacing="2">
+                      ColumnSpacing="1"
+                      RowSpacing="1">
 
                     <!-- Hop names entry -->
                     <Frame Grid.Row="0"
@@ -68,67 +67,42 @@
                         </Grid>
                     </Frame>
 
-                    <!-- Names tags list -->
-                    <RefreshView Grid.Row="1"
-                                 x:DataType="viewmodel:ReferencesPageViewModel"
-                                 IsRefreshing="{Binding HopReferenceViewModel.IsLoading}">
-                        <CollectionView
-                            x:Name="HopNamesCollectionView"
-                            ItemsSource="{Binding HopReferenceViewModel.Hops , Mode=Default}"
-                            SelectionMode="None"
-                            RemainingItemsThreshold="4"
-                            RemainingItemsThresholdReachedCommand="{Binding HopReferenceViewModel.LoadMoreHopsCommand}"
-                            HeightRequest="800"
-                            ItemsUpdatingScrollMode="KeepLastItemInView">
-                            <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Horizontal"
-                                                   ItemSpacing="5" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="system:String">
-                                    <Frame CornerRadius="15"
+                    <!-- Names filters (each hops names we are looking for in  the filters) -->
+                    <CollectionView
+                        Grid.Row="1"
+                        x:Name="HopNamesCollectionView"
+                        ItemsSource="{Binding HopReferenceViewModel.HopsNames , Mode=Default}"
+                        SelectionMode="Single"
+                        ItemsUpdatingScrollMode="KeepLastItemInView">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="2" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="system:String">
+                                <Frame CornerRadius="15"
+                                       BackgroundColor="WhiteSmoke"
+                                       BorderColor="Orange"
+                                       Padding="5,2"
+                                       Margin="0">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopReferenceViewModel.RemoveHopNameFilterLabelCommand }"
+                                            CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                    
+                                    <Label x:Name="HopNameLabel"
+                                           Text="{Binding }"
                                            BackgroundColor="WhiteSmoke"
-                                           BorderColor="Orange"
-                                           Padding="5,2"
-                                           Margin="0">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopReferenceViewModel.RemoveHopNameFilterLabelCommand }"
-                                                CommandParameter="{Binding .}" />
-                                        </Frame.GestureRecognizers>
+                                           TextColor="Coral"
+                                           Padding="3,2"
+                                           FontAttributes="Italic"
+                                           VerticalOptions="Center" />
 
-                                        <Grid ColumnDefinitions="auto,auto"
-                                              ColumnSpacing="5"
-                                              Padding="2">
-                                            <Label Grid.Column="0"
-                                                   x:Name="HopNameLabel"
-                                                   Text="{Binding }"
-                                                   BackgroundColor="WhiteSmoke"
-                                                   TextColor="Coral"
-                                                   FontAttributes="Italic"
-                                                   HorizontalOptions="Start"
-                                                   VerticalOptions="Center" />
-                                            <Frame Grid.Column="1"
-                                                   Padding="0"
-                                                   Margin="0"
-                                                   BackgroundColor="Orange"
-                                                   BorderColor="Transparent"
-                                                   CornerRadius="10"
-                                                   HorizontalOptions="End"
-                                                   VerticalOptions="Center">
-                                                <Image Source="minus_sign.svg"
-                                                       HeightRequest="10"
-                                                       WidthRequest="10"
-                                                       Aspect="AspectFit" />
-                                            </Frame>
-
-
-                                        </Grid>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </RefreshView>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                     <Grid Grid.Row="2"
                           ColumnDefinitions="auto,*,auto"
                           Padding="0"
@@ -161,17 +135,18 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            
+            <CollectionView.Footer>
+                <Grid>
+                    <Button Text="Add fake hop !"
+                            x:DataType="viewmodel:ReferencesPageViewModel"
+                            Command="{Binding Path=HopReferenceViewModel.AddOneHopCommand}">
+
+                    </Button>
+                </Grid>
+            </CollectionView.Footer>
         </CollectionView>
 
-        <CollectionView.Footer>
-            <Grid>
-                <Button Text="Add fake hop !"
-                        x:DataType="viewmodel:ReferencesPageViewModel"
-                        Command="{Binding Path=HopReferenceViewModel.AddOneHopCommand}">
-
-                </Button>
-            </Grid>
-        </CollectionView.Footer>
 
         <!-- Go up button - lets the user go to the top of the scrolling list -->
         <Frame x:Name="GoUpPageButton"

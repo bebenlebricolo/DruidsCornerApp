@@ -154,6 +154,9 @@ public partial class HopReferenceViewModel : BaseViewModel
             // Here this command is called repeatedly.
             // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
             // So the first event is never completely resolved (?)
+            
+            // if RecyclerView is still updating, wait before inserting new data
+            // otherwise it breaks apart (OnNotifyChanged should not be called when RecyclerView is scrolling or computing layout)
             Hops.InsertRange(newHopList);
         }
         await Task.CompletedTask;

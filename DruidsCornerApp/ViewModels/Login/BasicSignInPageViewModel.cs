@@ -115,10 +115,6 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
             }
             catch (Firebase.Auth.FirebaseAuthException fbEx)
             {
-#if __ANDROID__
-
-#endif
-
                 await PopupUtils.PopAllPopupsAsync(false);
                 switch (fbEx.Reason)
                 {
@@ -185,6 +181,16 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         }
     }
 
+    /// <summary>
+    /// Go to application's normal shell, we need to switch between the "BootShell" which only handles login stuff
+    /// and the regular normal shell where all actual app content is described.
+    /// </summary>
+    private void GoToApplicationShell()
+    {
+        // Go to the new AppShell now, where our application core is.
+        Application.Current!.MainPage = new AppShell(_secureStorageService);
+    }
+    
     [RelayCommand]
     public async Task GoogleSignInButtonClicked()
     {
@@ -198,8 +204,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
         }
         else
         {
-            // We have a selected account, continue to Browsing page
-            await Shell.Current.GoToAsync(Navigator.GetRecipesBrowserPageRoute(), true);
+            GoToApplicationShell();
         }
     }
 
@@ -217,8 +222,7 @@ public partial class BasicSignInPageViewModel : BaseViewModel, IQueryAttributabl
             await _secureStorageService.StoreAsync(AccountKeys.TokenKey, token);
         }
 
-        // Go to the new AppShell now, where our application core is.
-        Application.Current!.MainPage = new AppShell(_secureStorageService);
+        GoToApplicationShell();
     }
 
     /// <summary>

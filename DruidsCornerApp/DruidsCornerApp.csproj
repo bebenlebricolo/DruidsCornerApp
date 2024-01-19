@@ -76,19 +76,19 @@
         <MauiImage Include="Resources\Images\PngIcons\*" />
         <MauiImage Include="Resources\Images\PageHeaders\*" />
         <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-        
+
         <!-- Icons -->
         <MauiImage Include="Resources\Icons\**" />
         <MauiImage Update="Resources\Icons\hamburger.svg" />
 
-        
+
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <Compile Remove="Platforms\MacCatalyst\**" />
         <Compile Remove="Platforms\Tizen\**" />
@@ -214,7 +214,7 @@
         <PackageReference Include="Xamarin.GooglePlayServices.Auth" Version="120.7.0.2" />
         <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.2.0.5" />
         <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.8.2" />
-        <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.8.2" />
+        <PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.6.2"/>
     </ItemGroup>
 
     <ItemGroup>

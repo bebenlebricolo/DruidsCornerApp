@@ -2,8 +2,9 @@ using System.Text.Json;
 using DruidsCornerApiClient.Utils;
 using DruidsCornerApp.Models.References;
 using DruidsCornerApp.Services.StaticData;
-
+using Microsoft.Extensions.Logging;
 namespace DruidsCornerApp.Services.ResourceProviders;
+
 
 /// <summary>
 /// Hop provider plays the role as a resource provider (resource, in this context, refers to hop, yeast, beer style, etc...) from database.
@@ -17,11 +18,20 @@ public class HopProvider
     /// </summary>
     private List<HopModel> _hops = new();
 
+    private readonly ILogger<HopProvider>? _logger;
+
+    public HopProvider(ILogger<HopProvider>? logger)
+    {
+        _logger = logger;
+    }
+
     private void ReadHopsFromEmbeddedResource()
     {
+        _logger?.LogInformation("Reading stream for {hopsFile}", StaticDataProvider.GetFileName(Source.Hops));
         var stream = StaticDataProvider.GetFileStream(Source.Hops);
         if (stream != null)
         {
+            _logger?.LogInformation("Acquired stream for {hopsFile}", StaticDataProvider.GetFileName(Source.Hops));
             Dictionary<string, List<object>>? dict = JsonSerializer.Deserialize<Dictionary<string, List<object>>>(stream, JsonOptionProvider.GetJsonOptions());
             if (dict != null)
             {
@@ -33,8 +43,10 @@ public class HopProvider
                     {
                         continue;
                     }
+                    _logger?.LogInformation("Deserialized hop {name}", hop.Name);
+                    _logger?.LogInformation("Hop Caryophyllene content : {content}", hop.Caryophyllene);
                     _hops.Add(hop);
-                }    
+                }
             }
         }
     }
@@ -47,7 +59,7 @@ public class HopProvider
             ReadHopsFromEmbeddedResource();
         }
     }
-    
+
     public HopModel? GetFromId(string id)
     {
         EnsureInMemory();
@@ -61,5 +73,5 @@ public class HopProvider
         EnsureInMemory();
         return _hops;
     }
-    
+
 }

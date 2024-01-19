@@ -35,7 +35,22 @@ public static class StaticDataProvider
     /// <returns></returns>
     public static Stream? GetFileStream(Source source)
     {
-        string filesource = "";
+        string? filesource = GetFileName(source);
+        if (filesource == null)
+        {
+            return null;
+        }
+        
+        var assembly = Assembly.GetExecutingAssembly();
+        var resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(Path.GetFileName(filesource)));
+        
+        Stream? stream = assembly.GetManifestResourceStream(resourcePath)!;
+        return stream;
+    }
+
+    public static string? GetFileName(Source source)
+    {
+        string filesource;
         switch (source)
         {
             case Source.Hops :
@@ -47,10 +62,7 @@ public static class StaticDataProvider
             default :
                 return null;
         }
-        var assembly = Assembly.GetExecutingAssembly();
-        var resourcePath = assembly.GetManifestResourceNames().Single(str => str.EndsWith(Path.GetFileName(filesource)));
-        
-        Stream? stream = assembly.GetManifestResourceStream(resourcePath)!;
-        return stream;
+
+        return filesource;
     }
 }

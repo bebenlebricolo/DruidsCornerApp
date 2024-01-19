@@ -14,6 +14,7 @@ using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.MainContext;
 using DruidsCornerApp.Views.References;
+using MetroLog.MicrosoftExtensions;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
 using Sharpnado.Tabs;
@@ -80,7 +81,21 @@ public static class MauiProgram
             return new PlatformHttpClient(sha1, pkgname);
         });
 #endif
+        // Configure logging stuff
+        builder.Logging.AddTraceLogger(options =>
+        {
+            options.MinLevel = LogLevel.Trace;
+        });
+        
+        builder.Logging.AddConsoleLogger(options =>
+        {
+            options.MinLevel = LogLevel.Trace;
+        });
+        
+        builder.Logging.AddDebug();
 
+        
+        
         // Registering services here (for dependency injection)
         builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();
         builder.Services.AddSingleton<IAuthenticationService, FirebaseAuthenticationService>();
@@ -92,9 +107,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<ConfigProvider>();
         builder.Services.AddSingleton<HopProvider>();
 
-#if DEBUG
-        builder.Logging.AddDebug();
-#endif
 
         // Init the ServiceCollectionProvider so that I can retrieve services from the code later on
         // Note : I know this is a bit crappy regarding the "ASP .net way" but I'm forced to do this because of 

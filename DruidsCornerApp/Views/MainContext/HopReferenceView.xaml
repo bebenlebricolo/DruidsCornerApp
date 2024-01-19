@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:DruidsCornerApp.ViewModels.MainContext"
              xmlns:controls="clr-namespace:DruidsCornerApp.Controls.MainContext"
+             xmlns:datamodels="clr-namespace:DruidsCornerApp.Models.MainContext"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              x:Class="DruidsCornerApp.Views.MainContext.HopReferenceView">
@@ -128,10 +129,10 @@
             </CollectionView.Header>
 
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="datamodels:CompactHopModel">
                     <!-- https://github.com/dotnet/maui/issues/9131  -> Need to wrap in a grid, otherwise BindingContext is not forwarded -->
                     <Grid>
-                        <controls:HopCardView BindingContext="{Binding}" />
+                        <controls:HopCardView BindingContext="{Binding .}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

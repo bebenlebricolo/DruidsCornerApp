@@ -142,13 +142,17 @@ public partial class HopReferenceViewModel : BaseViewModel
     public async Task LoadMoreHopsAsync()
     {
         var totalHops = _hopProvider.GetAllHops();
+        _logger.LogInformation("Loaded {number} hops", totalHops.Count);
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
         if (currentIndex < totalHops.Count - 1 )
         {
+            IsLoading = true;
             var newHopList = new List<CompactHopModel>();
             for (int i = currentIndex; i < (currentIndex + LoadItemCount) && (i < totalHops.Count - 1); i++)
             {
-                newHopList.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
+                var compactHopModel = CompactHopModelHelper.FromFullModel(totalHops[i]); 
+                _logger.LogInformation("Converted Hop to compact hop model. Hop name : {name}", compactHopModel.Name);
+                newHopList.Add(compactHopModel);
             }
 
             // Here this command is called repeatedly.
@@ -158,6 +162,7 @@ public partial class HopReferenceViewModel : BaseViewModel
             // if RecyclerView is still updating, wait before inserting new data
             // otherwise it breaks apart (OnNotifyChanged should not be called when RecyclerView is scrolling or computing layout)
             Hops.InsertRange(newHopList);
+            IsLoading = false;
         }
         await Task.CompletedTask;
     }

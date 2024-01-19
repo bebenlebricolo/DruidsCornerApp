@@ -84,21 +84,22 @@
                                 <Frame CornerRadius="15"
                                        BackgroundColor="WhiteSmoke"
                                        BorderColor="Orange"
-                                       Padding="5,2"
-                                       Margin="0">
+                                       Padding="0"
+                                       Margin="0,2">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ReferencesPageViewModel}}, Path=HopReferenceViewModel.RemoveHopNameFilterLabelCommand }"
                                             CommandParameter="{Binding .}" />
                                     </Frame.GestureRecognizers>
-                                    
+
                                     <Label x:Name="HopNameLabel"
                                            Text="{Binding }"
-                                           BackgroundColor="WhiteSmoke"
+                                           BackgroundColor="Transparent"
                                            TextColor="Coral"
-                                           Padding="3,2"
                                            FontAttributes="Italic"
-                                           VerticalOptions="Center" />
+                                           VerticalOptions="Start"
+                                           Padding="6,4"
+                                           />
 
                                 </Frame>
                             </DataTemplate>
@@ -136,7 +137,7 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            
+
             <CollectionView.Footer>
                 <Grid>
                     <Button Text="Add fake hop !"

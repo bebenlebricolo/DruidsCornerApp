@@ -43,8 +43,6 @@ public class HopProvider
                     {
                         continue;
                     }
-                    _logger?.LogInformation("Deserialized hop {name}", hop.Name);
-                    _logger?.LogInformation("Hop Caryophyllene content : {content}", hop.Caryophyllene);
                     _hops.Add(hop);
                 }
             }

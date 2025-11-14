@@ -30,6 +30,7 @@ public class ActivityResultCallback : Java.Lang.Object, IActivityResultCallback
 
 public partial class GoogleAccountManager : IGoogleAccountManager
 {
+
     protected void CheckAndRequestPermissions()
     {
         var context = Microsoft.Maui.ApplicationModel.Platform.AppContext;
@@ -95,14 +96,14 @@ public partial class GoogleAccountManager : IGoogleAccountManager
         GoogleSignInClient client = GoogleSignIn.GetClient(Platform.CurrentActivity, gso);
         return client;
     }
-    
+
     private void StartGoogleAccountsListingActivity(MainActivity mainActivity)
     {
         try
         {
             var client = GetGoogleSignInClient();
             Intent signInIntent = client.SignInIntent;
-                
+
             mainActivity.StartActivityForResult(signInIntent, (int) CustomCodes.GoogleSignIn);
             mainActivity.PendingGoogleAccountSignin = true;
         }
@@ -112,8 +113,8 @@ public partial class GoogleAccountManager : IGoogleAccountManager
             _logger.LogError($"{ex.Message}");
         }
     }
-    
-    
+
+
     protected async Task<Account?> LetUserChooseAccountAsync(CancellationToken cancellationToken)
     {
         // Starts a new Android activity that lets the user choose the account he/she wants to use with the app.
@@ -131,10 +132,10 @@ public partial class GoogleAccountManager : IGoogleAccountManager
 
         // Ask the user to select an account
         MainActivity currentActivity = (MainActivity) Platform.CurrentActivity!;
-        
+
         currentActivity.StartActivityForResult(intent, (int) CustomCodes.ChooseGoogleAccount);
         await currentActivity.WaitForAccountPickupAsync(cancellationToken);
-        
+
         // When ready, pick the first available account
         var localAccount = ListAvailableLocalGoogleAccounts();
         return localAccount.FirstOrDefault();
@@ -159,7 +160,7 @@ public partial class GoogleAccountManager : IGoogleAccountManager
                 }
             }
 
-            // Well, now we don't have other solutions than to 
+            // Well, now we don't have other solutions than to
             // Request the user to enter its account credentials again !
             if (localAccounts.Count == 0)
             {
@@ -167,12 +168,12 @@ public partial class GoogleAccountManager : IGoogleAccountManager
                 return outList;
             }
 
-            
+
             // Start the Google Sign In Activity and retrieve its result asynchronously
             var mainActivity =  (MainActivity) Platform.CurrentActivity!;
             StartGoogleAccountsListingActivity(mainActivity);
             await mainActivity.WaitForAccountListingFinishedAsync(cancellationToken);
-            
+
             var googleAccount = mainActivity.GoogleAccount;
             if (googleAccount != null)
             {

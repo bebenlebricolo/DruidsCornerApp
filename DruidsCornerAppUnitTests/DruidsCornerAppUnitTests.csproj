@@ -6,8 +6,7 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
-        <OutputType Condition="'$(TargetFramework)' != 'net10.0'">Exe</OutputType>
-        <UseMaui>true</UseMaui>
+        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

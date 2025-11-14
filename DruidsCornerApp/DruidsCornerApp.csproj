@@ -1,21 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net10.0-android</TargetFrameworks>
+        <TargetFrameworks>net10.0-android;net10.0</TargetFrameworks>
         <!-- <TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net10.0-ios</TargetFrameworks> -->
-        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
-        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-        <!-- <TargetFrameworks>$(TargetFrameworks);net10.0-tizen</TargetFrameworks> -->
-
         <OutputType Condition="'$(TargetFramework)' != 'net10.0'">Exe</OutputType>
+        <OutputType Condition="'$(TargetFramework)' == 'net10.0'">Library</OutputType>
 
-    </PropertyGroup>
-
-    <PropertyGroup>
         <RootNamespace>DruidsCornerApp</RootNamespace>
         <UseMaui>true</UseMaui>
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+
+        <MauiXamlInflator>SourceGen</MauiXamlInflator>
 
         <!-- Display name -->
         <ApplicationTitle>DruidsCornerApp</ApplicationTitle>
@@ -48,7 +46,6 @@
         <AndroidSigningStorePass>android</AndroidSigningStorePass>
         <AndroidSigningKeyAlias>androiddebugkey</AndroidSigningKeyAlias>
         <AndroidSigningKeyPass>android</AndroidSigningKeyPass>
-        <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     </PropertyGroup>
 
     <!-- Android Release mode sign keys -->
@@ -119,9 +116,6 @@
         <Compile Update="Views\Login\ResetPasswordPage.xaml.cs">
             <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
             <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Services\Authentication\GoogleAccountManager.cs">
-          <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
         </Compile>
         <Compile Update="BootShell.xaml.cs">
           <DependentUpon>BootShell.xaml</DependentUpon>

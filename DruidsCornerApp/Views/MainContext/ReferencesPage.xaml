@@ -58,6 +58,7 @@
 
 
     <ContentPage.Content>
+
         <Grid Margin="0" Padding="0"
               RowDefinitions="auto,auto,*">
             <!-- Critical Note : the third row containing the tab views is requiring the "*" automatic sizing. Using
@@ -214,5 +215,6 @@
                 <!--                   UseActivityIndicator="True" /> -->
             </tabs:ViewSwitcher>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

@@ -5,6 +5,7 @@ using DruidsCornerApiClient.Models.RecipeDb;
 using DruidsCornerApp.Models.MainContext;
 using DruidsCornerApp.Models.References;
 using DruidsCornerApp.Services.ResourceProviders;
+using DruidsCornerApp.Utils;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.HotReload;
 
@@ -17,10 +18,10 @@ public partial class HopReferenceViewModel : BaseViewModel
     private int _initialItemCount = 6;
     
     [ObservableProperty]
-    private ObservableCollection<CompactHopModel> _hops = new();
+    private BatchObservableCollection<CompactHopModel> _hops = new();
 
     [ObservableProperty]
-    private ObservableCollection<string> _hopsNames = new();
+    private BatchObservableCollection<string> _hopsNames = new();
     
     [ObservableProperty]
     private HopReferenceFilters _hopFilters = new HopReferenceFilters();
@@ -59,25 +60,28 @@ public partial class HopReferenceViewModel : BaseViewModel
         Hops.Clear();
         var hops = _hopProvider.GetAllHops();
 
+        var defaultList = new List<CompactHopModel>();
         // Only load a few items to speed up load time
         for(int i = 0 ; i < _initialItemCount ; i++)
         {
-            Hops.Add(CompactHopModelHelper.FromFullModel(hops[i]));
+            defaultList.Add(CompactHopModelHelper.FromFullModel(hops[i]));
         }
+
+        Hops.InsertRange(defaultList);
     }
 
     [RelayCommand]
-    public Task RefreshData(CancellationToken cancellationToken)
+    public async Task RefreshData(CancellationToken cancellationToken)
     {
         IsLoading = true;
         Hops.Clear();
         InitFakeHops();
         IsLoading = false;
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
     [RelayCommand]
-    public Task AddOneHop(CancellationToken cancellationToken)
+    public async Task AddOneHop(CancellationToken cancellationToken)
     {
         Hops.Add(new CompactHopModel()
         {
@@ -88,11 +92,11 @@ public partial class HopReferenceViewModel : BaseViewModel
             Favorite = true,
             StockedAmount = 0
         });
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
     [RelayCommand]
-    public Task AddHopNameFilterLabel(Entry entryView, CancellationToken cancellationToken)
+    public async Task AddHopNameFilterLabel(Entry entryView, CancellationToken cancellationToken)
     {
         if (!HopsNames.Contains(entryView.Text) && !string.IsNullOrEmpty(entryView.Text))
         {
@@ -101,18 +105,19 @@ public partial class HopReferenceViewModel : BaseViewModel
         }
 
         entryView.Text = "";
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
     [RelayCommand]
-    public Task RemoveHopNameFilterLabel(string hopName)
+    public async Task RemoveHopNameFilterLabel(string hopName)
     {
         if (HopsNames.Contains(hopName))
         {
             HopsNames.Remove(hopName);
             HopFilters.Names.Remove(hopName);
         }
-        return Task.CompletedTask;
+
+        await Task.CompletedTask;
     }
 
     [RelayCommand]
@@ -122,11 +127,11 @@ public partial class HopReferenceViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public Task HopToggleFavorite(CompactHopModel hopModel)
+    public async Task HopToggleFavorite(CompactHopModel hopModel)
     {
         hopModel.Favorite = !hopModel.Favorite;
         
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
     /// <summary>
@@ -134,22 +139,31 @@ public partial class HopReferenceViewModel : BaseViewModel
     /// It essentially sends the currentCompact Hop where the collection was loaded.
     /// </summary>
     [RelayCommand]
-    public Task LoadMoreHops()
+    public async Task LoadMoreHopsAsync()
     {
         var totalHops = _hopProvider.GetAllHops();
+        _logger.LogInformation("Loaded {number} hops", totalHops.Count);
         var currentIndex = Hops.Count != 0 ? Hops.Count - 1 : 0;
-        if (currentIndex != totalHops.Count - 1 )
+        if (currentIndex < totalHops.Count - 1 )
         {
+            IsLoading = true;
+            var newHopList = new List<CompactHopModel>();
             for (int i = currentIndex; i < (currentIndex + LoadItemCount) && (i < totalHops.Count - 1); i++)
             {
-                Hops.Add(CompactHopModelHelper.FromFullModel(totalHops[i]));
+                var compactHopModel = CompactHopModelHelper.FromFullModel(totalHops[i]); 
+                _logger.LogInformation("Converted Hop to compact hop model. Hop name : {name}", compactHopModel.Name);
+                newHopList.Add(compactHopModel);
             }
-            
+
             // Here this command is called repeatedly.
             // This might be caused by the CollectionView firing it's load more item event, whereas it's being loaded with new item already.
             // So the first event is never completely resolved (?)
+            
+            // if RecyclerView is still updating, wait before inserting new data
+            // otherwise it breaks apart (OnNotifyChanged should not be called when RecyclerView is scrolling or computing layout)
+            Hops.InsertRange(newHopList);
+            IsLoading = false;
         }
-
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 }

@@ -11,10 +11,10 @@ public partial class DefaultPageViewModel : BaseViewModel
     private readonly ILogger<DefaultPageViewModel> _logger;
     private readonly ISecureStorageService _secureStorageService;
 
-    
+
     /// <summary>
-    /// Welcome Page view model, simply used to bind some commands
-    /// and reroute user upon startup 
+    /// The Welcome Page view model, simply used to bind some commands
+    /// and reroute user upon startup
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="secureStorageService"></param>

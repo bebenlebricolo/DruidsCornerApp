@@ -14,6 +14,7 @@ using DruidsCornerApp.Views;
 using DruidsCornerApp.Views.Login;
 using DruidsCornerApp.Views.MainContext;
 using DruidsCornerApp.Views.References;
+using MetroLog.MicrosoftExtensions;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
 using Sharpnado.Tabs;
@@ -35,17 +36,17 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-        
+
         // Registering Pages here (for dependency injection)
         builder.Services.AddTransient<WelcomePage>();
         builder.Services.AddTransient<BasicSignInPage>();
         builder.Services.AddTransient<AccountCreationPage>();
         builder.Services.AddTransient<GoogleSignInPage>();
         builder.Services.AddTransient<ResetPasswordPage>();
-        
+
         // Resources pages view models
         builder.Services.AddTransient<HopPageViewModel>();
-        
+
         // Recipes related pages
         builder.Services.AddTransient<RecipeExplorerPage>();
         builder.Services.AddTransient<HopReferenceView>();
@@ -58,12 +59,12 @@ public static class MauiProgram
         builder.Services.AddTransient<ResetPasswordPageViewModel>();
         builder.Services.AddTransient<GoogleSignInPageViewModel>();
         builder.Services.AddTransient<AccountCreationPageViewModel>();
-        
+
         builder.Services.AddTransient<RecipeExplorerViewModel>();
         builder.Services.AddTransient<ReferencesPageViewModel>();
         builder.Services.AddTransient<HopReferenceViewModel>();
-       
-        
+
+
         builder.Services.AddTransient<MainClient>(service =>
         {
             var configProvider = service.GetService<ConfigProvider>();
@@ -71,15 +72,29 @@ public static class MauiProgram
             var logger = service.GetService<ILogger<BaseClient>>();
             return new MainClient(logger!, clientConfiguration!, new HttpClient());
         });
-        
+
 #if __ANDROID__
-        builder.Services.AddTransient<HttpClient, PlatformHttpClient>(client =>
+        builder.Services.AddTransient<HttpClient, PlatformHttpClient>(_ =>
         {
             var sha1 = PackageUtils.SigToGoogleFormat(PackageUtils.GetPackageDefaultSignature()!);
             var pkgname = PackageUtils.GetPackageName();
             return new PlatformHttpClient(sha1, pkgname);
         });
 #endif
+        // Configure logging stuff
+        builder.Logging.AddTraceLogger(options =>
+        {
+            options.MinLevel = LogLevel.Trace;
+        });
+
+        builder.Logging.AddConsoleLogger(options =>
+        {
+            options.MinLevel = LogLevel.Trace;
+        });
+
+        builder.Logging.AddDebug();
+
+
 
         // Registering services here (for dependency injection)
         builder.Services.AddSingleton<IAuthConfigProvider, LocalAuthConfigProvider>();
@@ -92,15 +107,12 @@ public static class MauiProgram
         builder.Services.AddSingleton<ConfigProvider>();
         builder.Services.AddSingleton<HopProvider>();
 
-#if DEBUG
-        builder.Logging.AddDebug();
-#endif
 
         // Init the ServiceCollectionProvider so that I can retrieve services from the code later on
-        // Note : I know this is a bit crappy regarding the "ASP .net way" but I'm forced to do this because of 
+        // Note : I know this is a bit crappy regarding the "ASP .net way" but I'm forced to do this because of
         // templated instantiation of pages that require parameterless constructor (thus preventing automatic dependency injection)
         RuntimeServiceProvider.Create(builder.Services.BuildServiceProvider());
-        
+
         return builder.Build();
     }
 }

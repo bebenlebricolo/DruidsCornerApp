@@ -26,7 +26,7 @@ public partial class BasicHeader : ContentView
             OnPropertyChanged();
         }
     }
-    
+
     public double TitleFontSize
     {
         get => (double)GetValue(TitleFontSizeProperty);
@@ -36,7 +36,7 @@ public partial class BasicHeader : ContentView
             OnPropertyChanged();
         }
     }
-    
+
     public new Color BackgroundColor
     {
         get => (Color)GetValue(BackgroundColorProperty);
@@ -46,7 +46,7 @@ public partial class BasicHeader : ContentView
             OnPropertyChanged();
         }
     }
-    
+
     public string BackIcon
     {
         get => (string)GetValue(BackIconProperty);
@@ -121,7 +121,7 @@ public partial class BasicHeader : ContentView
                                                                                          propertyChanged: OnBackgroundColorPropertyChanged
                                                                                         );
 
-  
+
     public static BindableProperty BackIconProperty = BindableProperty.Create(nameof(BackIcon),
                                                                           typeof(string),
                                                                           typeof(BasicHeader),
@@ -165,12 +165,12 @@ public partial class BasicHeader : ContentView
         control.TitleLabel.Text = control.Title;
         control.InvalidateLayout();
     }
-    
+
     private static void OnTitleFontSizePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         var control = (BasicHeader) bindable;
         control.TitleFontSize = (double) newvalue;
-        control.TitleLabel.FontSize = control.TitleFontSize; 
+        control.TitleLabel.FontSize = control.TitleFontSize;
         control.InvalidateLayout();
     }
 
@@ -181,7 +181,7 @@ public partial class BasicHeader : ContentView
         control.TitleLabel.TextColor = control.TitleColor;
         control.InvalidateLayout();
     }
-    
+
     private static void OnBackgroundColorPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         var control = (BasicHeader)bindable;
@@ -197,7 +197,7 @@ public partial class BasicHeader : ContentView
         control.BackButton.Source = ImageSource.FromFile(control.BackIcon);
         control.InvalidateLayout();
     }
-    
+
     private static void OnBackIconHeightRequestPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         var control = (BasicHeader)bindable;
@@ -205,7 +205,7 @@ public partial class BasicHeader : ContentView
         control.BackButton.HeightRequest = control.BackIconHeightRequest ;
         control.InvalidateLayout();
     }
-    
+
     private static void OnBackIconWidthRequestPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         var control = (BasicHeader)bindable;
@@ -213,7 +213,7 @@ public partial class BasicHeader : ContentView
         control.BackButton.WidthRequest = control.BackIconWidthRequest;
         control.InvalidateLayout();
     }
-    
+
     private static void OnBackIconColorPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         var control = (BasicHeader)bindable;
@@ -222,7 +222,7 @@ public partial class BasicHeader : ContentView
         behavior.TintColor = control.BackIconColor;
         control.InvalidateLayout();
     }
-    
+
     #endregion BindersEvents
 
 

@@ -32,3 +32,4 @@ published
 # Python local cache and Virtual environments
 .venv
 __pycache__
+.swp

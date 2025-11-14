@@ -86,7 +86,7 @@
                                        Padding="3,0,0,0"
                                        VerticalOptions="Start" />
                                 <Button Grid.Column="2" Text="Settings"
-                                        TextColor="#6666666"
+                                        TextColor="#66666666"
                                         CornerRadius="10"
                                         HeightRequest="30"
                                         Margin="0"

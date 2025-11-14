@@ -110,7 +110,7 @@ So ensure the keytool used comes from the **open-jdk 11** !*
 
 # Sign the .apk in both Debug and Release modes (for debug and deployment purposes)
 In Rider :
-select ProjectProperties > <Debug | Release> "Sign the .APK file using the next keystore information" > File in the blanks !
+select ProjectProperties > <Debug | Release> "Sign the .APK file using the next keystore information" > Fill in the blanks !
 ```
 * Keystore : <path to the keystore file>
 * Password : <Keystore password>

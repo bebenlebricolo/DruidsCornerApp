@@ -6,4 +6,9 @@ public class GoogleOAuth2Authenticator : IWebAuthenticator
     {
         throw new NotImplementedException();
     }
+
+    public Task<WebAuthenticatorResult> AuthenticateAsync(WebAuthenticatorOptions webAuthenticatorOptions, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -18,17 +18,32 @@ public partial class HopReferenceView : ContentView
     {
         InitializeComponent();
         HopCardsCollectionView.Scrolled += CollectionViewScrolled;
+
+        var view = new CollectionView();
+        // view.RemainingItemsThreshold                         // Triggers list reloading when only X elements are still hidden by the view
+        // view.RemainingItemsThresholdReached                  // event
+        // view.RemainingItemsThresholdReachedCommand           // Command that'll be triggered whenever the threshold is reached
+        //view.RemainingItemsThresholdReachedCommandParameter   // Command parameters
+
+    }
+
+    private async void GoUpButtonClicked(object? sender, EventArgs e)
+    {
+        // Go to origin of view
+        var task = TopScrollView.ScrollToAsync(0, 0, true);
+        HopCardsCollectionView.ScrollTo(0);
+        await task;
     }
 
     private void CollectionViewScrolled(object? sender, EventArgs args)
     {
         // Its a bit weird to forward control to the view model that way, I hope it does not break the whole thing apart (...)
-        // Seems very fragile though !        
+        // Seems very fragile though !
         ItemsViewScrolledEventArgs castArgs = (ItemsViewScrolledEventArgs) args;
         var collectionViewScrolled = castArgs.FirstVisibleItemIndex != 0;
-        (BindingContext as ReferencesPageViewModel)!.HopReferenceViewModel.GoUpPageButtonVisible =  collectionViewScrolled; 
+        (BindingContext as ReferencesPageViewModel)!.HopReferenceViewModel.GoUpPageButtonVisible =  collectionViewScrolled;
     }
-    
+
     private void GoUpButtonClicked(object? sender, EventArgs e)
     {
         // Go to origin of view

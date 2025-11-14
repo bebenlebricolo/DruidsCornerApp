@@ -14,19 +14,106 @@ public partial class ReferencesPageViewModel : ObservableObject
 
     public HopReferenceViewModel HopReferenceViewModel { get; }
 
+    private readonly HopProvider _hopProvider;
+
+    [ObservableProperty]
+    private ObservableCollection<string> _hopsNames = new();
+
+    [ObservableProperty]
+    private HopReferenceFilters _hopFilters = new HopReferenceFilters();
+
     [ObservableProperty]
     private int _selectedViewModelIndex = 0;
-    
+
     /// <summary>
     /// Base reference page (where the whole view is tabbed between hops, yeasts, malts and styles pages)
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="hopReferenceViewModel"></param>
     public ReferencesPageViewModel(ILogger<ReferencesPageViewModel> logger,
-                                   HopReferenceViewModel hopReferenceViewModel
-    )
+                                   HopReferenceViewModel hopReferenceViewModel,
+                                   HopProvider hopProvider )
     {
         _logger = logger;
         HopReferenceViewModel = hopReferenceViewModel;
+        _hopProvider = hopProvider;
+        InitFakeHops();
+    }
+
+    private void InitFakeHops()
+    {
+        Hops.Clear();
+        var hops = _hopProvider.GetAllHops();
+
+        foreach (var hop in hops)
+        {
+            Hops.Add(CompactHopModelHelper.FromFullModel(hop));
+        }
+    }
+
+    [RelayCommand]
+    public Task RefreshData(CancellationToken cancellationToken)
+    {
+        InitFakeHops();
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task HopCollectionViewLoadMoreHops(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task AddOneHop(CancellationToken cancellationToken)
+    {
+        Hops.Add(new CompactHopModel()
+        {
+            Name = "Fake hop!",
+            Purpose = "Don't know",
+            Rating = 4.1,
+            AlphaAcids = "9 - 12 %",
+            Favorite = true,
+            StockedAmount = 0
+        });
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task AddHopNameFilterLabel(Entry entryView, CancellationToken cancellationToken)
+    {
+        if (!HopsNames.Contains(entryView.Text) && !string.IsNullOrEmpty(entryView.Text))
+        {
+            HopsNames.Add(entryView.Text);
+            HopFilters.Names.Add(entryView.Text);
+        }
+
+        entryView.Text = "";
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public Task RemoveHopNameFilterLabel(string hopName)
+    {
+        if (HopsNames.Contains(hopName))
+        {
+            HopsNames.Remove(hopName);
+            HopFilters.Names.Remove(hopName);
+        }
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    public async Task HopCardClicked(CompactHopModel hopModel)
+    {
+        await Shell.Current.GoToAsync($"HopPage?id={hopModel.Id}");
+    }
+
+    [RelayCommand]
+    public Task HopToggleFavorite(CompactHopModel hopModel)
+    {
+        hopModel.Favorite = !hopModel.Favorite;
+
+        return Task.CompletedTask;
     }
 }
